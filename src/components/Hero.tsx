@@ -6,7 +6,7 @@ export function Hero() {
       <div className="hero-word" aria-label="A Caverna">A CAVERNA</div>
       <div className="hero-stage" aria-label="Identidade visual da Igreja A Caverna">
         <div className="hero-glow" />
-        <img className="hero-person" src="/assets/figma/d01-07.png" alt="Líder da Igreja A Caverna ministrando" />
+        <img className="hero-person" src="/assets/whatsapp/foto-01.jpeg" alt="Líder da Igreja A Caverna ministrando" />
       </div>
       <a className="hero-cta" href="#sobre">CONHEÇA A CAVERNA</a>
       <div className="hero-info">

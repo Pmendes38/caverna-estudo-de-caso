@@ -3,16 +3,16 @@ import { Hero } from './Hero';
 import { SiteHeader } from './SiteHeader';
 
 const galleryA = [
-  { src: '/assets/figma/gallery-a-01.png', alt: 'Comunidade reunida em culto', className: 'gallery-a-main' },
-  { src: '/assets/figma/gallery-a-02.png', alt: 'Momento de adoração', className: 'gallery-a-secondary' },
-  { src: '/assets/figma/gallery-a-04.png', alt: 'Pessoa chegando à comunidade', className: 'gallery-a-entering' },
+  { src: '/assets/whatsapp/foto-13.jpeg', alt: 'Comunidade reunida em culto', className: 'gallery-a-main' },
+  { src: '/assets/whatsapp/foto-26.jpeg', alt: 'Momento de adoração', className: 'gallery-a-secondary' },
+  { src: '/assets/whatsapp/foto-10.jpeg', alt: 'Pessoa chegando à comunidade', className: 'gallery-a-entering' },
 ];
 
 const galleryB = [
-  { src: '/assets/figma/gallery-b-02.png', alt: 'Pessoa deixando o encontro', className: 'gallery-b-leaving' },
-  { src: '/assets/figma/gallery-b-06.png', alt: 'Vida em comunidade', className: 'gallery-b-main' },
-  { src: '/assets/figma/gallery-b-11.png', alt: 'Momento de comunhão', className: 'gallery-b-secondary' },
-  { src: '/assets/figma/gallery-b-03.png', alt: 'Culto da Igreja A Caverna', className: 'gallery-b-last' },
+  { src: '/assets/whatsapp/foto-10.jpeg', alt: 'Pessoa deixando o encontro', className: 'gallery-b-leaving' },
+  { src: '/assets/whatsapp/foto-07.jpeg', alt: 'Vida em comunidade', className: 'gallery-b-main' },
+  { src: '/assets/whatsapp/foto-09.jpeg', alt: 'Momento de comunhão', className: 'gallery-b-secondary' },
+  { src: '/assets/whatsapp/foto-08.jpeg', alt: 'Culto da Igreja A Caverna', className: 'gallery-b-last' },
 ];
 
 function Scene({ children, index, progress }: { children: ReactNode; index: number; progress: number }) {
@@ -110,7 +110,7 @@ function MobileHero() {
     <section className="mobile-panel mobile-hero-panel" aria-label="Início">
       <SiteHeader />
       <div className="mobile-hero-word" aria-hidden="true">A CAVERNA</div>
-      <img className="mobile-hero-person" src="/assets/figma/d01-07.png" alt="Líder da Igreja A Caverna ministrando" />
+      <img className="mobile-hero-person" src="/assets/whatsapp/foto-01.jpeg" alt="Líder da Igreja A Caverna ministrando" />
       <a className="mobile-hero-cta" href="#sobre">CONHEÇA A CAVERNA</a>
       <p className="mobile-hero-info">COMUNIDADE DE FÉ A CAVERNA<br /><span>Igreja que edifica igreja</span></p>
       <a className="mobile-scroll-hint" href="#sobre">↓ ROLE PARA DESCOBRIR</a>
@@ -159,17 +159,17 @@ function MobileGallery() {
     <>
       <section className="mobile-panel mobile-gallery mobile-gallery-a" id="comunidade" aria-label="Galeria de comunidade">
         <div className="mobile-state-label">03&nbsp; • &nbsp;VIDA EM COMUNIDADE</div>
-        <img className="mobile-gallery-main" src="/assets/figma/gallery-a-01.png" alt="Comunidade reunida" />
-        <img className="mobile-gallery-small mobile-gallery-small--left" src="/assets/figma/gallery-a-02.png" alt="Momento de comunhão" />
-        <img className="mobile-gallery-small mobile-gallery-small--right" src="/assets/figma/gallery-a-04.png" alt="Encontro da igreja" />
+        <img className="mobile-gallery-main" src="/assets/whatsapp/foto-13.jpeg" alt="Comunidade reunida" />
+        <img className="mobile-gallery-small mobile-gallery-small--left" src="/assets/whatsapp/foto-26.jpeg" alt="Momento de comunhão" />
+        <img className="mobile-gallery-small mobile-gallery-small--right" src="/assets/whatsapp/foto-10.jpeg" alt="Encontro da igreja" />
         <p className="mobile-gallery-index">01 / 02</p>
       </section>
       <section className="mobile-panel mobile-gallery mobile-gallery-b" aria-label="Galeria de pertencimento">
         <div className="mobile-state-label">04&nbsp; • &nbsp;UM LUGAR PARA PERTENCER</div>
-        <img className="mobile-gallery-small mobile-gallery-b--left" src="/assets/figma/gallery-b-02.png" alt="Pessoa chegando" />
-        <img className="mobile-gallery-main mobile-gallery-b--main" src="/assets/figma/gallery-b-06.png" alt="Vida em comunidade" />
-        <img className="mobile-gallery-small mobile-gallery-b--bottom-left" src="/assets/figma/gallery-b-11.png" alt="Momento de adoração" />
-        <img className="mobile-gallery-small mobile-gallery-b--bottom-right" src="/assets/figma/gallery-b-03.png" alt="Culto da igreja" />
+        <img className="mobile-gallery-small mobile-gallery-b--left" src="/assets/whatsapp/foto-10.jpeg" alt="Pessoa chegando" />
+        <img className="mobile-gallery-main mobile-gallery-b--main" src="/assets/whatsapp/foto-07.jpeg" alt="Vida em comunidade" />
+        <img className="mobile-gallery-small mobile-gallery-b--bottom-left" src="/assets/whatsapp/foto-09.jpeg" alt="Momento de adoração" />
+        <img className="mobile-gallery-small mobile-gallery-b--bottom-right" src="/assets/whatsapp/foto-08.jpeg" alt="Culto da igreja" />
         <div className="mobile-gallery-quote">“UM LUGAR PARA<br />PERTENCER, CRESCER<br />E SERVIR.”</div>
         <p className="mobile-gallery-index">02 / 02</p>
       </section>
