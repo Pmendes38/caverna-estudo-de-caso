@@ -1,4 +1,4 @@
-import { siteContent, whatsappUrl } from '../data/siteContent';
+import { siteContent } from '../data/siteContent';
 
 export function Hero() {
   return (
