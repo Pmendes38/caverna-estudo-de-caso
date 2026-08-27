@@ -2,7 +2,7 @@ import { siteContent, whatsappUrl } from '../data/siteContent';
 
 const ministries = [
   ['DISCIPULADO', 'Crescer na Palavra e na comunhão.', '/assets/whatsapp/foto-38.jpeg'],
-  ['ORAÇÃO', 'Compartilhar necessidades e interceder.', '/assets/whatsapp/foto-46.jpeg'],
+  ['ORAÇÃO', 'Compartilhar necessidades e interceder.', '/assets/attached/ministry-prayer.jpg'],
   ['MISSÕES', 'Servir pessoas dentro e fora da comunidade.', '/assets/whatsapp/foto-53.jpeg'],
   ['CRIANÇAS E FAMÍLIAS', 'Edificar cada geração da igreja.', '/assets/whatsapp/foto-20.jpeg'],
 ];
