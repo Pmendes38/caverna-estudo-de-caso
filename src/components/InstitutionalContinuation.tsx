@@ -1,10 +1,10 @@
 import { siteContent, whatsappUrl } from '../data/siteContent';
 
 const ministries = [
-  ['DISCIPULADO', 'Crescer na Palavra e na comunhão.', '/assets/raw-06.png'],
-  ['ORAÇÃO', 'Compartilhar necessidades e interceder.', '/assets/raw-05.png'],
-  ['MISSÕES', 'Servir pessoas dentro e fora da comunidade.', '/assets/raw-07.png'],
-  ['CRIANÇAS E FAMÍLIAS', 'Edificar cada geração da igreja.', '/assets/raw-08.png'],
+  ['DISCIPULADO', 'Crescer na Palavra e na comunhão.', '/assets/figma/institutional-02.png'],
+  ['ORAÇÃO', 'Compartilhar necessidades e interceder.', '/assets/figma/institutional-03.png'],
+  ['MISSÕES', 'Servir pessoas dentro e fora da comunidade.', '/assets/figma/institutional-11.png'],
+  ['CRIANÇAS E FAMÍLIAS', 'Edificar cada geração da igreja.', '/assets/figma/institutional-13.png'],
 ];
 
 export function InstitutionalContinuation() {
@@ -13,7 +13,7 @@ export function InstitutionalContinuation() {
       <section className="institutional-about" id="sobre">
         <p className="institutional-label">01 / A CAVERNA</p>
         <div className="institutional-split">
-          <div className="institutional-photo"><img src="/assets/raw-03.png" alt="Comunidade da Igreja A Caverna reunida" /></div>
+          <div className="institutional-photo"><img src="/assets/figma/institutional-04.png" alt="Comunidade da Igreja A Caverna reunida" /></div>
           <div className="institutional-copy">
             <h2>UM LUGAR DE<br />ABRIGO, FÉ E<br />EDIFICAÇÃO.</h2>
             <p>A Caverna é uma comunidade cristã no Jardim Ingá, nascida de trabalhos missionários e construída como lugar de acolhimento, crescimento e serviço.</p>
@@ -54,14 +54,14 @@ export function InstitutionalContinuation() {
             <p>Espaço para apresentar visão, valores, liderança e a forma como a comunidade compreende sua missão.</p>
             <a href="#fe">NOSSA IDENTIDADE&nbsp; ↗</a>
           </div>
-          <div className="institutional-photo"><img src="/assets/raw-05.png" alt="Liderança ministrando em um culto" /></div>
+          <div className="institutional-photo"><img src="/assets/figma/institutional-03.png" alt="Liderança ministrando em um culto" /></div>
         </div>
       </section>
 
       <section className="institutional-event">
         <p className="institutional-label">05 / PRÓXIMO EVENTO</p>
         <div className="event-split">
-          <div className="institutional-photo"><img src="/assets/raw-06.png" alt="Próximo encontro da comunidade" /></div>
+          <div className="institutional-photo"><img src="/assets/figma/institutional-10.png" alt="Próximo encontro da comunidade" /></div>
           <div className="event-copy">
             <span>DATA • HORÁRIO • LOCAL</span>
             <h2>NOME DO PRÓXIMO<br />ENCONTRO</h2>
