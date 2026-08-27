@@ -1,7 +1,71 @@
+import { useEffect, useState } from 'react';
 import { siteContent, whatsappUrl } from '../data/siteContent';
 
 const mapsQuery = encodeURIComponent(`${siteContent.churchName}, ${siteContent.address}`);
 const mapsEmbedUrl = `https://www.google.com/maps?q=${mapsQuery}&output=embed`;
+
+function getNextPublicService(now: Date) {
+  const target = new Date(now);
+  const daysUntilSaturday = (6 - target.getDay() + 7) % 7;
+  target.setDate(target.getDate() + daysUntilSaturday);
+  target.setHours(19, 30, 0, 0);
+
+  if (target.getTime() <= now.getTime()) target.setDate(target.getDate() + 7);
+  return target;
+}
+
+function getCountdown(now: Date) {
+  const target = getNextPublicService(now);
+  const totalSeconds = Math.max(Math.floor((target.getTime() - now.getTime()) / 1000), 0);
+
+  return {
+    days: Math.floor(totalSeconds / 86400),
+    hours: Math.floor((totalSeconds % 86400) / 3600),
+    minutes: Math.floor((totalSeconds % 3600) / 60),
+    seconds: totalSeconds % 60,
+  };
+}
+
+function formatCountdown(value: number) {
+  return String(value).padStart(2, '0');
+}
+
+function EventCountdown() {
+  const [now, setNow] = useState(() => new Date());
+  const countdown = getCountdown(now);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setNow(new Date()), 1000);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const units = [
+    ['DIAS', countdown.days],
+    ['HORAS', countdown.hours],
+    ['MIN', countdown.minutes],
+    ['SEG', countdown.seconds],
+  ] as const;
+
+  return (
+    <div className="event-countdown" aria-live="polite" aria-label="Contagem regressiva para o próximo culto público">
+      <div className="event-countdown-header">
+        <div>
+          <span>PRÓXIMA REUNIÃO</span>
+          <strong>Próximo sábado às 19:30 • Culto Público</strong>
+        </div>
+        <a href="#agenda">Ver agenda</a>
+      </div>
+      <div className="event-countdown-grid">
+        {units.map(([label, value]) => (
+          <div className="event-countdown-unit" key={label}>
+            <strong>{formatCountdown(value)}</strong>
+            <span>{label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const ministries = [
   ['DISCIPULADO', 'Crescer na Palavra e na comunhão.', '/assets/whatsapp/foto-38.jpeg'],
@@ -29,7 +93,7 @@ export function InstitutionalContinuation() {
         <p className="institutional-label">02 / ENCONTRE-NOS</p>
         <h2>HÁ UM LUGAR<br />PARA VOCÊ AQUI.</h2>
         <div className="schedule-grid">
-          <article><span>SÁBADO</span><strong>CULTO PÚBLICO</strong><small>19H</small></article>
+          <article><span>SÁBADO</span><strong>CULTO PÚBLICO</strong><small>19H30</small></article>
           <article><span>QUINTA</span><strong>DISCIPULADO</strong><small>19H30</small></article>
           <article><span>DURANTE A SEMANA</span><strong>PROGRAMAÇÕES E MISSÕES</strong><small>CONSULTE A AGENDA</small></article>
         </div>
@@ -78,6 +142,7 @@ export function InstitutionalContinuation() {
             <span>DATA • HORÁRIO • LOCAL</span>
             <h2>NOME DO PRÓXIMO<br />ENCONTRO</h2>
             <p>Resumo do encontro, para quem é e como participar.</p>
+            <EventCountdown />
             <a href="#agenda">VER PROGRAMAÇÃO&nbsp; ↗</a>
           </div>
         </div>
