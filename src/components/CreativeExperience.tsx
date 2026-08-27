@@ -110,7 +110,7 @@ function MobileHero() {
     <section className="mobile-panel mobile-hero-panel" aria-label="Início">
       <SiteHeader />
       <div className="mobile-hero-word" aria-hidden="true">A CAVERNA</div>
-      <img className="mobile-hero-person" src="/assets/whatsapp/foto-01.jpeg" alt="Líder da Igreja A Caverna ministrando" />
+      <img className="mobile-hero-person" src="/assets/figma/d01-07.png" alt="Líder da Igreja A Caverna ministrando" />
       <a className="mobile-hero-cta" href="#sobre">CONHEÇA A CAVERNA</a>
       <p className="mobile-hero-info">COMUNIDADE DE FÉ A CAVERNA<br /><span>Igreja que edifica igreja</span></p>
       <a className="mobile-scroll-hint" href="#sobre">↓ ROLE PARA DESCOBRIR</a>

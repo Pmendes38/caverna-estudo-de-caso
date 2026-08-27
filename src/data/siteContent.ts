@@ -46,7 +46,7 @@ export const siteContent = {
       number: '03',
       title: 'FÉ EM MOVIMENTO',
       tags: 'MISSÃO  •  SERVIÇO  •  PRESENÇA',
-      image: '/assets/whatsapp/foto-01.jpeg',
+      image: '/assets/figma/d01-07.png',
       alt: 'Protagonista da identidade visual da Igreja A Caverna',
       href: '#processo',
     },
