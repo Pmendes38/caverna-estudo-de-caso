@@ -104,7 +104,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .affirm-strong--three { top: 620px; left: 245px; font-size: 112px; }
 .editorial-horizon { position: absolute; top: 505px; left: 80px; right: 80px; height: 3px; background: var(--accent); animation: horizon-grow 1.2s ease-out both; }
 
-.gallery-panel .gallery-image { position: absolute; display: block; max-width: none; border-radius: 12px; object-fit: contain; object-position: center; filter: saturate(.78) contrast(1.04); animation: gallery-rise 1.1s cubic-bezier(.16,1,.3,1) both; }
+.gallery-panel .gallery-image { position: absolute; display: block; max-width: none; border-radius: 50px; object-fit: contain; object-position: center; filter: saturate(.78) contrast(1.04); animation: gallery-rise 1.1s cubic-bezier(.16,1,.3,1) both; }
 .gallery-a-main { top: 90px; left: 560px; width: 360px; height: 560px; }
 .gallery-a-secondary { top: 230px; left: 950px; width: 300px; height: 430px; animation-delay: .15s !important; }
 .gallery-a-entering { top: 90px; left: 1290px; width: 300px; height: 650px; animation-delay: .3s !important; }
@@ -229,10 +229,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .institutional-ministries .institutional-label { color: var(--accent); }
 .institutional-ministries h2 { margin-bottom: 30px; font-size: 52px; }
 .ministry-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1280px; }
-.ministry-card { height: 400px; padding: 24px 22px; border-radius: 12px; }
+.ministry-card { height: 400px; padding: 24px 22px; border-radius: 50px; }
 .ministry-card--gray { background: #2e2e30; }
 .ministry-card--plum { background: #4a2040; }
-.ministry-card img { width: 100%; height: 180px; margin-bottom: 18px; border-radius: 12px; object-fit: cover; }
+.ministry-card img { width: 100%; height: 180px; margin-bottom: 18px; border-radius: 50px; object-fit: cover; }
 .ministry-card h3 { margin: 0 0 12px; font-size: 21px; line-height: 1.05; }
 .ministry-card p { margin: 0; font-size: 15px; line-height: 1.25; }
 .institutional-identity { min-height: 700px; background: #f5f0e8; }
@@ -444,7 +444,7 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .mobile-affirm-strong--three { top: 580px; font-size: 44px; }
   .mobile-gallery { background: #09090a; color: #f5f0e8; }
   .mobile-state-label { position: absolute; z-index: 3; top: 12px; left: 12px; padding: 6px 8px; background: var(--accent); color: #09090a; font-size: 9px; font-weight: 700; }
-  .mobile-gallery img { position: absolute; display: block; max-width: none; border-radius: 8px; object-fit: contain; object-position: center; }
+  .mobile-gallery img { position: absolute; display: block; max-width: none; border-radius: 50px; object-fit: contain; object-position: center; }
   .mobile-gallery-main { top: 170px; left: 31%; width: 220px; height: 360px; }
   .mobile-gallery-small { width: 180px; height: 230px; }
   .mobile-gallery-small--left { top: 555px; left: 25px; }
