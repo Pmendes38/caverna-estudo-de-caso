@@ -241,6 +241,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .institutional-identity { min-height: 700px; background: #f5f0e8; }
 .institutional-split--identity .institutional-photo { height: 480px; }
 .institutional-split--identity .institutional-copy { height: 480px; }
+.institutional-split--identity .institutional-photo img { object-position: center top; }
 .institutional-split--identity .institutional-copy h2 { font-size: 38px; }
 .institutional-split--identity .institutional-copy p { font-size: 17px; }
 .institutional-event { min-height: 650px; background: #bb8055; color: #09090a; }
