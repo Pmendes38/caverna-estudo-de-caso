@@ -97,7 +97,9 @@ function DesktopGalleryB() {
 function DesktopExit() {
   return (
     <section className="experience-panel experience-exit" aria-label="Saída para o site institucional">
-      <div className="exit-black-transition" />
+      <div className="exit-black-transition">
+        <img src="/assets/whatsapp/d06-comunidade.png" alt="Comunidade da Igreja A Caverna reunida" />
+      </div>
       <h2>UMA IGREJA QUE EDIFICA IGREJA.</h2>
       <p>Agora, caminhe com a gente.</p>
       <a href="#sobre">CONTINUAR PARA O SITE&nbsp; →</a>
@@ -180,7 +182,9 @@ function MobileGallery() {
 function MobileExit() {
   return (
     <section className="mobile-panel mobile-exit" aria-label="Saída para o site institucional">
-      <div className="mobile-exit-black" />
+      <div className="mobile-exit-black">
+        <img src="/assets/whatsapp/d06-comunidade.png" alt="Comunidade da Igreja A Caverna reunida" />
+      </div>
       <h2>UMA IGREJA QUE<br />EDIFICA IGREJA.</h2>
       <p>Agora, caminhe com a gente.</p>
       <a href="#sobre">CONTINUAR&nbsp; →</a>

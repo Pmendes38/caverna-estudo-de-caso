@@ -118,7 +118,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .gallery-quote { top: 680px; left: 620px; font-size: 46px; }
 
 .experience-exit { background: #f5f0e8; color: #09090a; text-align: center; }
-.exit-black-transition { position: absolute; top: 0; left: 0; width: 100%; height: 300px; background: #09090a; }
+.exit-black-transition { position: absolute; top: 0; left: 0; width: 100%; height: 300px; overflow: hidden; background: #09090a; }
+.exit-black-transition img { width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center top; }
 .experience-exit h2 { position: absolute; top: 410px; left: 50%; width: 1240px; transform: translateX(-50%); margin: 0; font-family: "Be Vietnam Pro", Inter, Arial, sans-serif; font-size: 62px; line-height: 1; letter-spacing: -.05em; }
 .experience-exit p { position: absolute; top: 610px; left: 50%; transform: translateX(-50%); margin: 0; font-size: 20px; }
 .experience-exit a { position: absolute; top: 700px; left: 50%; transform: translateX(-50%); padding: 16px 30px; background: var(--accent); font-size: 16px; font-weight: 700; white-space: nowrap; }
@@ -445,7 +446,8 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .mobile-gallery-b--bottom-right { top: 455px; left: 220px; width: 220px; height: 330px; }
   .mobile-gallery-quote { position: absolute; z-index: 2; top: 640px; left: 20px; color: #f5f0e8; font-size: 22px; font-weight: 800; line-height: .98; letter-spacing: -.04em; }
   .mobile-exit { background: #f5f0e8; color: #09090a; text-align: center; }
-  .mobile-exit-black { position: absolute; top: 0; left: 0; width: 100%; height: 220px; background: #09090a; }
+  .mobile-exit-black { position: absolute; top: 0; left: 0; width: 100%; height: 220px; overflow: hidden; background: #09090a; }
+  .mobile-exit-black img { width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center top; }
   .mobile-exit h2 { position: absolute; top: 320px; left: 20px; right: 20px; margin: 0; font-size: 38px; line-height: .98; letter-spacing: -.06em; }
   .mobile-exit p { position: absolute; top: 580px; left: 20px; right: 20px; margin: 0; font-size: 14px; }
   .mobile-exit a { position: absolute; top: 650px; left: 50%; transform: translateX(-50%); padding: 14px 24px; background: var(--accent); font-size: 12px; font-weight: 700; white-space: nowrap; }
