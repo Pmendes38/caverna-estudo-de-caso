@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { type CSSProperties, type ReactNode, useEffect, useRef, useState } from 'react';
 import { Hero } from './Hero';
 import { SiteHeader } from './SiteHeader';
 
@@ -14,6 +14,28 @@ const galleryB = [
   { src: '/assets/raw-06.png', alt: 'Momento de comunhão', className: 'gallery-b-secondary' },
   { src: '/assets/raw-08.png', alt: 'Culto da Igreja A Caverna', className: 'gallery-b-last' },
 ];
+
+function Scene({ children, index, progress }: { children: ReactNode; index: number; progress: number }) {
+  const trackPosition = progress * 5;
+  const enterProgress = index === 0
+    ? 1
+    : Math.min(Math.max(trackPosition - (index - 1), 0), 1);
+  const exitProgress = index === 0
+    ? Math.min(Math.max(1 - trackPosition, 0), 1)
+    : Math.min(Math.max(index + 1 - trackPosition, 0), 1);
+  const style = {
+    '--scene-enter-opacity': enterProgress,
+    '--scene-enter-muted-opacity': enterProgress * .62,
+    '--scene-enter-ghost-opacity': enterProgress * .13,
+    '--scene-enter-affirm-ghost-opacity': enterProgress * .08,
+    '--scene-exit-opacity': exitProgress,
+    '--scene-enter-x': `${(1 - enterProgress) * 70}px`,
+    '--scene-exit-x': `${(1 - exitProgress) * 90}px`,
+    '--scene-enter-scale': 0.94 + enterProgress * 0.06,
+  } as CSSProperties;
+
+  return <div className="experience-scene" style={style}>{children}</div>;
+}
 
 function DesktopManifestoNot() {
   return (
@@ -191,12 +213,12 @@ export function CreativeExperience() {
       <section ref={experienceRef} className="creative-experience" id="inicio">
         <div className="experience-sticky">
           <div className="experience-track" style={{ transform: `translate3d(${-progress * 500}vw, 0, 0)` }}>
-            <div className="experience-panel experience-panel--hero"><SiteHeader /><Hero /></div>
-            <DesktopManifestoNot />
-            <DesktopManifestoAffirm />
-            <DesktopGalleryA />
-            <DesktopGalleryB />
-            <DesktopExit />
+            <Scene index={0} progress={progress}><div className="experience-panel experience-panel--hero"><SiteHeader /><Hero /></div></Scene>
+            <Scene index={1} progress={progress}><DesktopManifestoNot /></Scene>
+            <Scene index={2} progress={progress}><DesktopManifestoAffirm /></Scene>
+            <Scene index={3} progress={progress}><DesktopGalleryA /></Scene>
+            <Scene index={4} progress={progress}><DesktopGalleryB /></Scene>
+            <Scene index={5} progress={progress}><DesktopExit /></Scene>
           </div>
         </div>
       </section>
