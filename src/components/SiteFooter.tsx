@@ -1,0 +1,20 @@
+import { siteContent, whatsappUrl } from '../data/siteContent';
+
+export function SiteFooter() {
+  return (
+    <footer className="site-footer" id="contato">
+      <div className="footer-brand">A CAVERNA</div>
+      <div className="footer-column">
+        <a href={`mailto:${siteContent.email}`}>E-MAIL</a>
+        <a href={whatsappUrl('Olá! Quero falar com a Igreja A Caverna.')}>WHATSAPP</a>
+        <a href="#contato">LOCALIZAÇÃO</a>
+      </div>
+      <div className="footer-column">
+        <a href="https://instagram.com/igreja.acaverna" target="_blank" rel="noreferrer">INSTAGRAM</a>
+        <a href="#inicio">VOLTAR AO TOPO</a>
+        <a href="#contato">PRIVACIDADE</a>
+      </div>
+      <p className="footer-address">{siteContent.address}</p>
+    </footer>
+  );
+}
