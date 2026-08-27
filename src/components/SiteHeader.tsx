@@ -9,7 +9,7 @@ export function SiteHeader() {
         <a className="hero-nav-link hero-nav-link--active" href="#inicio">[INÍCIO]</a>
         <a className="hero-nav-link" href="#sobre">[A CAVERNA]</a>
         <a className="hero-nav-logo" href="#inicio" aria-label="Ir para o início">
-          <img src="/assets/figma/d01-03.png" alt="Símbolo da Igreja A Caverna" />
+          <img src="/assets/brand/logo-a-caverna.png" alt="Símbolo da Igreja A Caverna" />
         </a>
         <a className="hero-nav-link" href="#agenda">[AGENDA]</a>
         <a className="hero-nav-link" href="#contato">[CONTATO]</a>

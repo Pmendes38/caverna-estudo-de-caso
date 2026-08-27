@@ -256,6 +256,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .institutional-footer-bottom { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; font-size: 14px; }
 .institutional-footer-bottom strong { font-size: 24px; }
 
+@media (min-width: 1440px) {
+  .institutional-continuation section,
+  .institutional-continuation .institutional-footer {
+    padding-left: max(80px, calc((100vw - 1440px) / 2 + 80px));
+    padding-right: max(80px, calc((100vw - 1440px) / 2 + 80px));
+  }
+}
+
 .section-light, .section-white, .section-dark { padding: 72px 5vw; }
 .section-light { background: var(--paper); }
 .section-white { background: var(--white); }
