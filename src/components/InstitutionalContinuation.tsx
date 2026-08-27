@@ -38,7 +38,7 @@ export function InstitutionalContinuation() {
         <div className="ministry-grid">
           {ministries.map(([title, description, image], index) => (
             <article className={`ministry-card ministry-card--${index % 2 ? 'plum' : 'gray'}`} key={title}>
-              <img className={`ministry-card-image ministry-card-image--${index === 0 ? 'bottom' : index === 1 || index === 3 ? 'top' : 'center'}`} src={image} alt="" />
+              <img className={`ministry-card-image ministry-card-image--${index === 0 ? 'bottom' : index === 1 ? 'top' : 'center'}`} src={image} alt="" />
               <h3>{title}</h3>
               <p>{description}</p>
             </article>
