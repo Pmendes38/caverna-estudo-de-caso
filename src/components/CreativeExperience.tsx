@@ -5,11 +5,11 @@ import { SiteHeader } from './SiteHeader';
 const galleryA = [
   { src: '/assets/whatsapp/foto-13.jpeg', alt: 'Comunidade reunida em culto', className: 'gallery-a-main' },
   { src: '/assets/whatsapp/foto-26.jpeg', alt: 'Momento de adoração', className: 'gallery-a-secondary' },
-  { src: '/assets/whatsapp/foto-10.jpeg', alt: 'Pessoa chegando à comunidade', className: 'gallery-a-entering' },
+  { src: '/assets/attached/gallery-card-01.jpg', alt: 'Cantora ministrando na Igreja A Caverna', className: 'gallery-a-entering' },
 ];
 
 const galleryB = [
-  { src: '/assets/whatsapp/foto-10.jpeg', alt: 'Pessoa deixando o encontro', className: 'gallery-b-leaving' },
+  { src: '/assets/attached/gallery-card-02.jpg', alt: 'Cantora ministrando na Igreja A Caverna', className: 'gallery-b-leaving' },
   { src: '/assets/whatsapp/foto-07.jpeg', alt: 'Vida em comunidade', className: 'gallery-b-main' },
   { src: '/assets/whatsapp/foto-09.jpeg', alt: 'Momento de comunhão', className: 'gallery-b-secondary' },
   { src: '/assets/whatsapp/foto-08.jpeg', alt: 'Culto da Igreja A Caverna', className: 'gallery-b-last' },
@@ -163,12 +163,12 @@ function MobileGallery() {
         <div className="mobile-state-label">03&nbsp; • &nbsp;VIDA EM COMUNIDADE</div>
         <img className="mobile-gallery-main" src="/assets/whatsapp/foto-13.jpeg" alt="Comunidade reunida" />
         <img className="mobile-gallery-small mobile-gallery-small--left" src="/assets/whatsapp/foto-26.jpeg" alt="Momento de comunhão" />
-        <img className="mobile-gallery-small mobile-gallery-small--right" src="/assets/whatsapp/foto-10.jpeg" alt="Encontro da igreja" />
+        <img className="mobile-gallery-small mobile-gallery-small--right" src="/assets/attached/gallery-card-01.jpg" alt="Cantora ministrando na Igreja A Caverna" />
         <p className="mobile-gallery-index">01 / 02</p>
       </section>
       <section className="mobile-panel mobile-gallery mobile-gallery-b" aria-label="Galeria de pertencimento">
         <div className="mobile-state-label">04&nbsp; • &nbsp;UM LUGAR PARA PERTENCER</div>
-        <img className="mobile-gallery-small mobile-gallery-b--left" src="/assets/whatsapp/foto-10.jpeg" alt="Pessoa chegando" />
+        <img className="mobile-gallery-small mobile-gallery-b--left" src="/assets/attached/gallery-card-02.jpg" alt="Cantora ministrando na Igreja A Caverna" />
         <img className="mobile-gallery-main mobile-gallery-b--main" src="/assets/whatsapp/foto-07.jpeg" alt="Vida em comunidade" />
         <img className="mobile-gallery-small mobile-gallery-b--bottom-left" src="/assets/whatsapp/foto-09.jpeg" alt="Momento de adoração" />
         <img className="mobile-gallery-small mobile-gallery-b--bottom-right" src="/assets/whatsapp/foto-08.jpeg" alt="Culto da igreja" />
