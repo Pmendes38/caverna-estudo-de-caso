@@ -1,5 +1,8 @@
 import { siteContent, whatsappUrl } from '../data/siteContent';
 
+const mapsQuery = encodeURIComponent(`${siteContent.churchName}, ${siteContent.address}`);
+const mapsEmbedUrl = `https://www.google.com/maps?q=${mapsQuery}&output=embed`;
+
 const ministries = [
   ['DISCIPULADO', 'Crescer na Palavra e na comunhão.', '/assets/whatsapp/foto-38.jpeg'],
   ['ORAÇÃO', 'Compartilhar necessidades e interceder.', '/assets/attached/ministry-prayer.jpg'],
@@ -61,7 +64,16 @@ export function InstitutionalContinuation() {
       <section className="institutional-event">
         <p className="institutional-label">05 / PRÓXIMO EVENTO</p>
         <div className="event-split">
-          <div className="institutional-photo"><img src="/assets/figma/institutional-10.png" alt="Mapa de localização da Igreja A Caverna" /></div>
+          <div className="institutional-photo institutional-map">
+            <iframe
+              className="map-frame"
+              src={mapsEmbedUrl}
+              title="Localização da Igreja A Caverna no Google Maps"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
           <div className="event-copy">
             <span>DATA • HORÁRIO • LOCAL</span>
             <h2>NOME DO PRÓXIMO<br />ENCONTRO</h2>
