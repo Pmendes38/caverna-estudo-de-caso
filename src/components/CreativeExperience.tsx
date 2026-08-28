@@ -98,7 +98,7 @@ function DesktopExit() {
   return (
     <section className="experience-panel experience-exit" aria-label="Saída para o site institucional">
       <div className="exit-black-transition">
-        <img src="/assets/whatsapp/d06-comunidade.png" alt="Comunidade da Igreja A Caverna reunida" />
+        <img src="/assets/attached/black-transition.png" alt="Comunidade da Igreja A Caverna reunida" />
       </div>
       <h2>VOCÊ JÁ SABE O QUE NÃO SOMOS.<br />AGORA, CONHEÇA QUEM SOMOS.</h2>
       <p>Conheça nossa fé, nossa história e a vida em comunidade na A Caverna.</p>
@@ -183,7 +183,7 @@ function MobileExit() {
   return (
     <section className="mobile-panel mobile-exit" aria-label="Saída para o site institucional">
       <div className="mobile-exit-black">
-        <img src="/assets/whatsapp/d06-comunidade.png" alt="Comunidade da Igreja A Caverna reunida" />
+        <img src="/assets/attached/black-transition.png" alt="Comunidade da Igreja A Caverna reunida" />
       </div>
       <h2>VOCÊ JÁ SABE<br />O QUE NÃO SOMOS.<br />AGORA, CONHEÇA<br />QUEM SOMOS.</h2>
       <p>Conheça nossa fé, nossa história e a vida em comunidade na A Caverna.</p>
