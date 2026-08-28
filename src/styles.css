@@ -236,6 +236,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .ministry-card-image--bottom { object-position: center bottom; }
 .ministry-card-image--top { object-position: center top; }
 .ministry-card-image--center { object-position: center; }
+.ministry-card-image--children { object-position: center 30%; }
 .ministry-card h3 { margin: 0 0 12px; font-size: 21px; line-height: 1.05; }
 .ministry-card p { margin: 0; font-size: 15px; line-height: 1.25; }
 .institutional-identity { min-height: 700px; background: #f5f0e8; }
