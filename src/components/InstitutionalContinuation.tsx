@@ -3,6 +3,7 @@ import { siteContent, whatsappUrl } from '../data/siteContent';
 
 const mapsQuery = encodeURIComponent(`${siteContent.churchName}, ${siteContent.address}`);
 const mapsEmbedUrl = `https://www.google.com/maps?q=${mapsQuery}&output=embed`;
+const publicService = { title: 'CULTO PÚBLICO', timeLabel: '19H30' };
 
 function getNextPublicService(now: Date) {
   const target = new Date(now);
@@ -19,6 +20,7 @@ function getCountdown(now: Date) {
   const totalSeconds = Math.max(Math.floor((target.getTime() - now.getTime()) / 1000), 0);
 
   return {
+    target,
     days: Math.floor(totalSeconds / 86400),
     hours: Math.floor((totalSeconds % 86400) / 3600),
     minutes: Math.floor((totalSeconds % 3600) / 60),
@@ -33,6 +35,12 @@ function formatCountdown(value: number) {
 function EventCountdown() {
   const [now, setNow] = useState(() => new Date());
   const countdown = getCountdown(now);
+  const eventDate = new Intl.DateTimeFormat('pt-BR', {
+    weekday: 'long',
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  }).format(countdown.target);
 
   useEffect(() => {
     const timer = window.setInterval(() => setNow(new Date()), 1000);
@@ -47,23 +55,28 @@ function EventCountdown() {
   ] as const;
 
   return (
-    <div className="event-countdown" aria-live="polite" aria-label="Contagem regressiva para o próximo culto público">
-      <div className="event-countdown-header">
-        <div>
-          <span>PRÓXIMA REUNIÃO</span>
-          <strong>Próximo sábado às 19:30 • Culto Público</strong>
-        </div>
-        <a href="#agenda">Ver agenda</a>
-      </div>
-      <div className="event-countdown-grid">
-        {units.map(([label, value]) => (
-          <div className="event-countdown-unit" key={label}>
-            <strong>{formatCountdown(value)}</strong>
-            <span>{label}</span>
+    <>
+      <span>PRÓXIMA REUNIÃO</span>
+      <h2>{publicService.title.split(' ')[0]}<br />{publicService.title.split(' ').slice(1).join(' ')}</h2>
+      <p>{eventDate} às {publicService.timeLabel}<br />{siteContent.address}</p>
+      <div className="event-countdown" aria-live="polite" aria-label="Contagem regressiva para o próximo culto público">
+        <div className="event-countdown-header">
+          <div>
+            <span>PRÓXIMA REUNIÃO</span>
+            <strong>{eventDate} às {publicService.timeLabel} • {publicService.title}</strong>
           </div>
-        ))}
+          <a href="#agenda">Ver agenda</a>
+        </div>
+        <div className="event-countdown-grid">
+          {units.map(([label, value]) => (
+            <div className="event-countdown-unit" key={label}>
+              <strong>{formatCountdown(value)}</strong>
+              <span>{label}</span>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -139,9 +152,6 @@ export function InstitutionalContinuation() {
             />
           </div>
           <div className="event-copy">
-            <span>DATA • HORÁRIO • LOCAL</span>
-            <h2>NOME DO PRÓXIMO<br />ENCONTRO</h2>
-            <p>Resumo do encontro, para quem é e como participar.</p>
             <EventCountdown />
             <a href="#agenda">VER PROGRAMAÇÃO&nbsp; ↗</a>
           </div>
