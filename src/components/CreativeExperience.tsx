@@ -30,8 +30,10 @@ function Scene({ children, index, progress }: { children: ReactNode; index: numb
     : clamp((fadeOutEnd - trackPosition) / Math.max(fadeOutEnd - fadeOutStart, .001));
   const sceneRevealProgress = index === 0
     ? 1
-    : clamp((trackPosition - (index - .55)) / .75);
-  const revealStep = (step: number) => clamp((sceneRevealProgress - (step - 1) * .105) / .18);
+    : clamp((trackPosition - (index - .25)) / .65);
+  const revealCount = index === 1 || index === 2 ? 6 : index === 3 || index === 4 ? 5 : 1;
+  const revealedSteps = Math.floor(sceneRevealProgress * revealCount);
+  const revealStep = (step: number) => step <= revealedSteps ? 1 : 0;
   const style = {
     '--scene-enter-opacity': enterProgress,
     '--scene-enter-muted-opacity': enterProgress * .62,
