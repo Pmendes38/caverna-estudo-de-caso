@@ -17,12 +17,21 @@ const galleryB = [
 
 function Scene({ children, index, progress }: { children: ReactNode; index: number; progress: number }) {
   const trackPosition = progress * 5;
+  const clamp = (value: number) => Math.min(Math.max(value, 0), 1);
+  const fadeInStart = index === 0 ? 0 : index - .45;
+  const fadeInEnd = index === 0 ? 0 : index - .05;
+  const fadeOutStart = index === 5 ? 5 : index + .55;
+  const fadeOutEnd = index === 5 ? 5 : index + .95;
   const enterProgress = index === 0
     ? 1
-    : Math.min(Math.max(trackPosition - (index - 1), 0), 1);
-  const exitProgress = index === 0
-    ? Math.min(Math.max(1 - trackPosition, 0), 1)
-    : Math.min(Math.max(index + 1 - trackPosition, 0), 1);
+    : clamp((trackPosition - fadeInStart) / Math.max(fadeInEnd - fadeInStart, .001));
+  const exitProgress = index === 5
+    ? 1
+    : clamp((fadeOutEnd - trackPosition) / Math.max(fadeOutEnd - fadeOutStart, .001));
+  const sceneRevealProgress = index === 0
+    ? 1
+    : clamp((trackPosition - (index - .55)) / .75);
+  const revealStep = (step: number) => clamp((sceneRevealProgress - (step - 1) * .105) / .18);
   const style = {
     '--scene-enter-opacity': enterProgress,
     '--scene-enter-muted-opacity': enterProgress * .62,
@@ -34,6 +43,14 @@ function Scene({ children, index, progress }: { children: ReactNode; index: numb
     '--scene-exit-x': `${(1 - exitProgress) * 90}px`,
     '--scene-enter-scale': 0.94 + enterProgress * 0.06,
     '--scene-enter-y': `${(1 - enterProgress) * 18}px`,
+    '--scene-reveal-ghost': clamp(sceneRevealProgress / .32),
+    '--scene-reveal-1': revealStep(1),
+    '--scene-reveal-2': revealStep(2),
+    '--scene-reveal-3': revealStep(3),
+    '--scene-reveal-4': revealStep(4),
+    '--scene-reveal-5': revealStep(5),
+    '--scene-reveal-6': revealStep(6),
+    '--scene-reveal-7': revealStep(7),
   } as CSSProperties;
 
   return <div className="experience-scene" style={style}>{children}</div>;
