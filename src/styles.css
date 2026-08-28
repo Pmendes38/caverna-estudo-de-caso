@@ -63,6 +63,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .experience-scene:has(.experience-exit) { background: #f5f0e8; }
   .experience-scene > .experience-panel { width: min(1440px, 100%); margin-inline: auto; }
   .experience-scene:has(.experience-exit) > .experience-panel { width: 100%; }
+  .experience-scene .experience-exit { --exit-image-height: clamp(300px, 20.8333vw, 420px); }
 }
 
 .experience-panel--hero .hero { width: 100%; height: 100%; min-height: 0; }
@@ -119,12 +120,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .gallery-index { left: 72px; bottom: 38px; color: var(--accent); font-size: 14px; }
 .gallery-quote { top: 680px; left: 620px; font-size: 46px; }
 
-.experience-exit { background: #f5f0e8; color: #09090a; text-align: center; }
-.exit-black-transition { position: absolute; top: 0; left: 0; width: 100%; height: 300px; overflow: hidden; background: #09090a; }
+.experience-exit { --exit-image-height: 300px; background: #f5f0e8; color: #09090a; text-align: center; }
+.exit-black-transition { position: absolute; top: 0; left: 0; width: 100%; height: var(--exit-image-height); overflow: hidden; background: #09090a; }
 .exit-black-transition img { width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center 32%; }
-.experience-exit h2 { position: absolute; top: 410px; left: 50%; width: 1240px; transform: translateX(-50%); margin: 0; font-family: "Be Vietnam Pro", Inter, Arial, sans-serif; font-size: 62px; line-height: 1; letter-spacing: -.05em; }
-.experience-exit p { position: absolute; top: 610px; left: 50%; transform: translateX(-50%); margin: 0; font-size: 20px; }
-.experience-exit a { position: absolute; top: 700px; left: 50%; transform: translateX(-50%); padding: 16px 30px; background: var(--accent); font-size: 16px; font-weight: 700; white-space: nowrap; }
+.experience-exit h2 { position: absolute; top: calc(var(--exit-image-height) + 110px); left: 50%; width: 1240px; transform: translateX(-50%); margin: 0; font-family: "Be Vietnam Pro", Inter, Arial, sans-serif; font-size: 62px; line-height: 1; letter-spacing: -.05em; }
+.experience-exit p { position: absolute; top: calc(var(--exit-image-height) + 310px); left: 50%; transform: translateX(-50%); margin: 0; font-size: 20px; }
+.experience-exit a { position: absolute; top: calc(var(--exit-image-height) + 400px); left: 50%; transform: translateX(-50%); padding: 16px 30px; background: var(--accent); font-size: 16px; font-weight: 700; white-space: nowrap; }
 
 /* The desktop sequence is driven by scroll progress. Scenes overlap and
    crossfade, with small parallax movements keeping the composition alive. */
