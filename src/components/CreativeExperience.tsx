@@ -18,10 +18,10 @@ const galleryB = [
 function Scene({ children, index, progress }: { children: ReactNode; index: number; progress: number }) {
   const trackPosition = progress * 5;
   const clamp = (value: number) => Math.min(Math.max(value, 0), 1);
-  const fadeInStart = index === 0 ? 0 : index === 1 ? .35 : index - .45;
-  const fadeInEnd = index === 0 ? 0 : index === 1 ? .75 : index - .05;
-  const fadeOutStart = index === 0 ? .35 : index === 5 ? 5 : index + .55;
-  const fadeOutEnd = index === 0 ? .65 : index === 5 ? 5 : index + .95;
+  const fadeInStart = index === 0 ? 0 : index === 1 ? .25 : index - .45;
+  const fadeInEnd = index === 0 ? 0 : index === 1 ? .65 : index - .05;
+  const fadeOutStart = index === 0 ? .25 : index === 5 ? 5 : index + .55;
+  const fadeOutEnd = index === 0 ? .55 : index === 5 ? 5 : index + .95;
   const enterProgress = index === 0
     ? 1
     : clamp((trackPosition - fadeInStart) / Math.max(fadeInEnd - fadeInStart, .001));
