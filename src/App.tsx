@@ -1,12 +1,21 @@
 import { CreativeExperience } from './components/CreativeExperience';
 import { InstitutionalContinuation } from './components/InstitutionalContinuation';
+import { SiteOpening } from './components/SiteOpening';
+import { SaturdayLive } from './components/SaturdayLive';
+import { pageKeyFromPath, Subpage } from './components/Subpage';
 import './styles.css';
 
 function App() {
+  const subpage = pageKeyFromPath(window.location.pathname);
+
+  if (subpage) return <Subpage page={subpage} />;
+
   return (
     <div className="site-shell">
+      <SiteOpening />
       <main>
         <CreativeExperience />
+        <SaturdayLive />
         <InstitutionalContinuation />
       </main>
     </div>

@@ -10,7 +10,7 @@ export function SiteFooter() {
         <a href="#contato">LOCALIZAÇÃO</a>
       </div>
       <div className="footer-column">
-        <a href="https://instagram.com/igreja.acaverna" target="_blank" rel="noreferrer">INSTAGRAM</a>
+        <a href="https://instagram.com/a_cavernaa" target="_blank" rel="noreferrer">INSTAGRAM</a>
         <a href="#inicio">VOLTAR AO TOPO</a>
         <a href="#contato">PRIVACIDADE</a>
       </div>

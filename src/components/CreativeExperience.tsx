@@ -1,5 +1,6 @@
 import { type CSSProperties, type ReactNode, useEffect, useRef, useState } from 'react';
 import { Hero } from './Hero';
+import { LiveNowButton } from './LiveNowButton';
 import { SiteHeader } from './SiteHeader';
 
 const galleryA = [
@@ -16,21 +17,26 @@ const galleryB = [
 ];
 
 function Scene({ children, index, progress }: { children: ReactNode; index: number; progress: number }) {
-  const trackPosition = progress * 5;
+  const d06Start = 2.3;
+  const d06StartProgress = .88;
+  const trackPosition = progress <= d06StartProgress
+    ? (progress / d06StartProgress) * d06Start
+    : d06Start + ((progress - d06StartProgress) / (1 - d06StartProgress)) * (5 - d06Start);
   const clamp = (value: number) => Math.min(Math.max(value, 0), 1);
-  const fadeInStart = index === 0 ? 0 : index === 1 ? .25 : index - .45;
-  const fadeInEnd = index === 0 ? 0 : index === 1 ? .65 : index - .05;
-  const fadeOutStart = index === 0 ? .25 : index === 5 ? 5 : index + .55;
-  const fadeOutEnd = index === 0 ? .55 : index === 5 ? 5 : index + .95;
+  const fadeInStart = index === 0 ? 0 : index === 1 ? 0 : index === 2 ? .65 : index === 3 ? 1.3 : index === 4 ? 1.8 : 2.3;
+  const fadeInEnd = index === 0 ? 0 : index === 1 ? .125 : index === 2 ? .775 : index === 3 ? 1.425 : index === 4 ? 1.925 : 2.425;
+  const fadeOutStart = index === 0 ? 0 : index === 1 ? .65 : index === 2 ? 1.3 : index === 3 ? 1.8 : index === 4 ? 2.3 : 5;
+  const fadeOutEnd = index === 0 ? .125 : index === 1 ? .775 : index === 2 ? 1.425 : index === 3 ? 1.925 : index === 4 ? 2.425 : 5;
   const enterProgress = index === 0
     ? 1
     : clamp((trackPosition - fadeInStart) / Math.max(fadeInEnd - fadeInStart, .001));
   const exitProgress = index === 5
     ? 1
     : clamp((fadeOutEnd - trackPosition) / Math.max(fadeOutEnd - fadeOutStart, .001));
+  const revealStart = index === 1 ? .0375 : index === 2 ? .6875 : index === 3 ? 1.25 : index === 4 ? 1.75 : index - .25;
   const sceneRevealProgress = index === 0
     ? 1
-    : clamp((trackPosition - (index - .25)) / .65);
+    : clamp((trackPosition - revealStart) / (index === 1 || index === 2 ? .525 : index === 3 || index === 4 ? .4375 : .65));
   const revealCount = index === 1 || index === 2 ? 6 : index === 3 || index === 4 ? 5 : 1;
   const revealedSteps = Math.floor(sceneRevealProgress * revealCount);
   const revealStep = (step: number) => step <= revealedSteps ? 1 : 0;
@@ -60,7 +66,7 @@ function Scene({ children, index, progress }: { children: ReactNode; index: numb
 
 function DesktopManifestoNot() {
   return (
-    <section className="experience-panel manifesto-not" aria-label="Manifesto: o que não somos">
+    <a className="experience-panel experience-panel-link manifesto-not" href="/nossa-fe" aria-label="Conheça nossa fé: o que não somos">
       <p className="experience-eyebrow">MANIFESTO 01&nbsp; • &nbsp;O QUE NÃO SOMOS</p>
       <p className="manifesto-ghost" aria-hidden="true">NÃO</p>
       <div className="manifesto-copy manifesto-copy--truth"><p>NÃO DILUÍMOS</p><p>A <em>VERDADE.</em></p></div>
@@ -71,13 +77,13 @@ function DesktopManifestoNot() {
       <div className="manifesto-copy manifesto-copy--prosperity"><p>PROSPERIDADE</p><p>NÃO É <em>SALVAÇÃO.</em></p></div>
       <div className="editorial-axis" />
       <p className="experience-progress">01 / 02&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;ROLE PARA CONTINUAR&nbsp; →</p>
-    </section>
+    </a>
   );
 }
 
 function DesktopManifestoAffirm() {
   return (
-    <section className="experience-panel manifesto-affirm" aria-label="Manifesto: o que afirmamos">
+    <a className="experience-panel experience-panel-link manifesto-affirm" href="/nossa-fe" aria-label="Conheça nossa fé: o que afirmamos">
       <p className="experience-eyebrow">MANIFESTO 02&nbsp; • &nbsp;O QUE AFIRMAMOS</p>
       <p className="manifesto-ghost" aria-hidden="true">IGREJA</p>
       <p className="affirm-muted affirm-muted--one">NÃO FORMAMOS CELEBRIDADES.</p>
@@ -88,28 +94,50 @@ function DesktopManifestoAffirm() {
       <p className="affirm-strong affirm-strong--three">SOMOS <em>IGREJA.</em></p>
       <div className="editorial-horizon" />
       <p className="experience-progress">02 / 02&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;A GALERIA COMEÇA&nbsp; →</p>
-    </section>
+    </a>
   );
 }
 
 function DesktopGalleryA() {
   return (
-    <section className="experience-panel gallery-panel gallery-a" aria-label="Galeria: vida em comunidade">
+    <a className="experience-panel experience-panel-link gallery-panel gallery-a" href="/comunidade" aria-label="Conheça nossa comunidade">
       {galleryA.map((image) => <img key={image.className} className={`gallery-image ${image.className}`} src={image.src} alt={image.alt} />)}
       <div className="gallery-title"><p>VIDA EM</p><p>COMUNIDADE</p></div>
       <p className="gallery-subtitle">Culto • comunhão • discipulado • missão</p>
       <p className="gallery-index">01 / 02</p>
-    </section>
+    </a>
   );
 }
 
 function DesktopGalleryB() {
   return (
-    <section className="experience-panel gallery-panel gallery-b" aria-label="Galeria: um lugar para pertencer">
+    <a className="experience-panel experience-panel-link gallery-panel gallery-b" href="/comunidade" aria-label="Conheça nossa comunidade">
       {galleryB.map((image) => <img key={image.className} className={`gallery-image ${image.className}`} src={image.src} alt={image.alt} />)}
       <div className="gallery-quote"><p>“UM LUGAR PARA</p><p>PERTENCER, CRESCER</p><p>E SERVIR.”</p></div>
       <p className="gallery-index">02 / 02</p>
-    </section>
+    </a>
+  );
+}
+
+function MobileScene({ children, index, progress }: { children: ReactNode; index: number; progress: number }) {
+  const trackPosition = progress * 5;
+  const clamp = (value: number) => Math.min(Math.max(value, 0), 1);
+  const enterProgress = index === 0 ? 1 : clamp((trackPosition - (index - .2)) / .2);
+  const exitProgress = index === 5 ? 1 : clamp((index + 1 - trackPosition) / .2);
+  const opacity = Math.min(enterProgress, exitProgress);
+  const y = enterProgress < 1 ? (1 - enterProgress) * 18 : -(1 - exitProgress) * 18;
+
+  return (
+    <div
+      className="mobile-scene"
+      style={{
+        '--mobile-scene-opacity': opacity,
+        '--mobile-scene-y': `${y}px`,
+        pointerEvents: opacity > .5 ? 'auto' : 'none',
+      } as CSSProperties}
+    >
+      {children}
+    </div>
   );
 }
 
@@ -119,7 +147,7 @@ function DesktopExit() {
       <div className="exit-black-transition">
         <img src="/assets/attached/black-transition.png" alt="Comunidade da Igreja A Caverna reunida" />
       </div>
-      <h2>VOCÊ JÁ SABE O QUE NÃO SOMOS.<br />AGORA, CONHEÇA QUEM SOMOS.</h2>
+      <h2>VOCÊ JÁ SABE O QUE NÃO SOMOS<br />AGORA CONHEÇA QUEM SOMOS</h2>
       <p>Conheça nossa fé, nossa história e a vida em comunidade na A Caverna.</p>
       <a href="#sobre">CONHEÇA A CAVERNA&nbsp; ↓</a>
     </section>
@@ -131,70 +159,83 @@ function MobileHero() {
     <section className="mobile-panel mobile-hero-panel" aria-label="Início">
       <SiteHeader />
       <div className="mobile-hero-word" aria-hidden="true">A CAVERNA</div>
-      <img className="mobile-hero-person" src="/assets/figma/d01-07.png" alt="Líder da Igreja A Caverna ministrando" />
-      <a className="mobile-hero-cta" href="#sobre">CONHEÇA A CAVERNA</a>
+      <img className="mobile-hero-person" src="/assets/figma/d01-mobile-protagonist.png" alt="Líder da Igreja A Caverna ministrando" />
+      <div className="mobile-hero-actions">
+        <a className="mobile-hero-cta" href="#sobre">CONHEÇA A CAVERNA</a>
+        <LiveNowButton className="mobile-hero-live-cta" />
+      </div>
       <p className="mobile-hero-info">COMUNIDADE DE FÉ A CAVERNA<br /><span>Igreja que edifica igreja</span></p>
       <a className="mobile-scroll-hint" href="#sobre">↓ ROLE PARA DESCOBRIR</a>
     </section>
   );
 }
 
-function MobileNot() {
+function MobileNot({ progress }: { progress: number }) {
+  const sceneProgress = Math.min(Math.max((progress * 5 - 1) / 1, 0), 1);
+  const reveal = (index: number) => Math.min(Math.max((sceneProgress - index * .14) / .22, 0), 1);
+  const revealStyle = (index: number) => ({ opacity: reveal(index), transform: `translate3d(0, ${(1 - reveal(index)) * 10}px, 0)` });
+
   return (
-    <section className="mobile-panel mobile-not" id="fe" aria-label="Manifesto: o que não somos">
-      <p className="mobile-eyebrow">MANIFESTO 01&nbsp; • &nbsp;O QUE NÃO SOMOS</p>
+    <a className="mobile-panel mobile-panel-link mobile-not" href="/nossa-fe" aria-label="Conheça nossa fé: o que não somos">
+      <p className="mobile-eyebrow">MANIFESTO 01 • NÃO SOMOS</p>
       <p className="mobile-ghost" aria-hidden="true">NÃO</p>
       <div className="mobile-editorial-axis" />
       <div className="mobile-not-copy">
-        <p>NÃO DILUÍMOS<br />A <em>VERDADE.</em></p>
-        <p>A <em>BÍBLIA</em><br />NÃO SE ADAPTA.</p>
-        <p>O PÚLPITO <em>NÃO É</em><br />AUTOAJUDA.</p>
-        <p>CULTO <em>NÃO É</em><br />ESPETÁCULO.</p>
-        <p>O EVANGELHO <em>NÃO ESTÁ À VENDA.</em></p>
-        <p>PROSPERIDADE<br />NÃO É <em>SALVAÇÃO.</em></p>
+        <p className="mobile-not-copy--truth" style={revealStyle(0)}>NÃO DILUÍMOS<br />A <em>VERDADE.</em></p>
+        <p className="mobile-not-copy--bible" style={revealStyle(1)}>A <em>BÍBLIA</em><br />NÃO SE ADAPTA.</p>
+        <p className="mobile-not-copy--pulpit" style={revealStyle(2)}>O PÚLPITO <em>NÃO É</em><br />AUTOAJUDA.</p>
+        <p className="mobile-not-copy--worship" style={revealStyle(3)}>CULTO <em>NÃO É</em><br />ESPETÁCULO.</p>
+        <p className="mobile-not-copy--gospel" style={revealStyle(4)}>O EVANGELHO<br /><em>NÃO ESTÁ À VENDA.</em></p>
+        <p className="mobile-not-copy--prosperity" style={revealStyle(5)}>PROSPERIDADE<br />NÃO É <em>SALVAÇÃO.</em></p>
       </div>
       <p className="mobile-progress">01 / 02&nbsp;&nbsp; • &nbsp;&nbsp;ROLE&nbsp; →</p>
-    </section>
+    </a>
   );
 }
 
-function MobileAffirm() {
+function MobileAffirm({ progress }: { progress: number }) {
+  const sceneProgress = Math.min(Math.max((progress * 5 - 2) / 1, 0), 1);
+  const reveal = (index: number) => Math.min(Math.max((sceneProgress - index * .24) / .28, 0), 1);
+  const revealStyle = (index: number) => ({ opacity: reveal(index), transform: `translate3d(0, ${(1 - reveal(index)) * 10}px, 0)` });
+
   return (
-    <section className="mobile-panel mobile-affirm" aria-label="Manifesto: o que afirmamos">
-      <p className="mobile-eyebrow">MANIFESTO 02&nbsp; • &nbsp;O QUE AFIRMAMOS</p>
+    <a className="mobile-panel mobile-panel-link mobile-affirm" href="/nossa-fe" aria-label="Conheça nossa fé: o que afirmamos">
+      <p className="mobile-eyebrow">MANIFESTO 02 • AFIRMAMOS</p>
       <p className="mobile-affirm-ghost" aria-hidden="true">IGREJA</p>
-      <p className="mobile-affirm-muted mobile-affirm-muted--one">NÃO FORMAMOS</p>
-      <p className="mobile-affirm-strong mobile-affirm-strong--one">DISCÍPULOS.</p>
-      <p className="mobile-affirm-muted mobile-affirm-muted--two">NÃO SEGUIMOS</p>
-      <p className="mobile-affirm-strong mobile-affirm-strong--two">CRISTO.</p>
+      <p className="mobile-affirm-muted mobile-affirm-muted--one" style={revealStyle(0)}>NÃO FORMAMOS CELEBRIDADES.</p>
+      <p className="mobile-affirm-strong mobile-affirm-strong--one" style={revealStyle(0)}>FORMAMOS <em>DISCÍPULOS.</em></p>
+      <p className="mobile-affirm-muted mobile-affirm-muted--two" style={revealStyle(1)}>NÃO SEGUIMOS TENDÊNCIAS.</p>
+      <p className="mobile-affirm-strong mobile-affirm-strong--two" style={revealStyle(1)}>SEGUIMOS <em>CRISTO.</em></p>
       <div className="mobile-editorial-horizon" />
-      <p className="mobile-affirm-muted mobile-affirm-muted--three">NÃO SOMOS UM PRODUTO.</p>
-      <p className="mobile-affirm-strong mobile-affirm-strong--three">SOMOS <em>IGREJA.</em></p>
+      <p className="mobile-affirm-muted mobile-affirm-muted--three" style={revealStyle(2)}>NÃO SOMOS UM PRODUTO.</p>
+      <p className="mobile-affirm-strong mobile-affirm-strong--three" style={revealStyle(2)}>SOMOS <em>IGREJA.</em></p>
       <p className="mobile-progress">02 / 02&nbsp;&nbsp; • &nbsp;&nbsp;GALERIA&nbsp; →</p>
-    </section>
+    </a>
   );
 }
 
-function MobileGallery() {
+function MobileGalleryA() {
   return (
-    <>
-      <section className="mobile-panel mobile-gallery mobile-gallery-a" id="comunidade" aria-label="Galeria de comunidade">
-        <div className="mobile-state-label">03&nbsp; • &nbsp;VIDA EM COMUNIDADE</div>
-        <img className="mobile-gallery-main" src="/assets/whatsapp/foto-13.jpeg" alt="Comunidade reunida" />
-        <img className="mobile-gallery-small mobile-gallery-small--left" src="/assets/whatsapp/foto-26.jpeg" alt="Momento de comunhão" />
-        <img className="mobile-gallery-small mobile-gallery-small--right" src="/assets/attached/gallery-card-01.jpg" alt="Cantora ministrando na Igreja A Caverna" />
-        <p className="mobile-gallery-index">01 / 02</p>
-      </section>
-      <section className="mobile-panel mobile-gallery mobile-gallery-b" aria-label="Galeria de pertencimento">
-        <div className="mobile-state-label">04&nbsp; • &nbsp;UM LUGAR PARA PERTENCER</div>
-        <img className="mobile-gallery-small mobile-gallery-b--left" src="/assets/attached/gallery-card-02.jpg" alt="Cantora ministrando na Igreja A Caverna" />
-        <img className="mobile-gallery-main mobile-gallery-b--main" src="/assets/whatsapp/foto-07.jpeg" alt="Vida em comunidade" />
-        <img className="mobile-gallery-small mobile-gallery-b--bottom-left" src="/assets/whatsapp/foto-09.jpeg" alt="Momento de adoração" />
-        <img className="mobile-gallery-small mobile-gallery-b--bottom-right" src="/assets/whatsapp/foto-08.jpeg" alt="Culto da igreja" />
-        <div className="mobile-gallery-quote">“UM LUGAR PARA<br />PERTENCER, CRESCER<br />E SERVIR.”</div>
-        <p className="mobile-gallery-index">02 / 02</p>
-      </section>
-    </>
+    <a className="mobile-panel mobile-panel-link mobile-gallery mobile-gallery-a" href="/comunidade" aria-label="Conheça nossa comunidade">
+      <div className="mobile-gallery-title"><p>VIDA EM</p><p>COMUNIDADE</p></div>
+      <img className="mobile-gallery-main" src="/assets/whatsapp/foto-13.jpeg" alt="Comunidade reunida" />
+      <img className="mobile-gallery-small mobile-gallery-small--left" src="/assets/whatsapp/foto-26.jpeg" alt="Momento de comunhão" />
+      <img className="mobile-gallery-small mobile-gallery-small--right" src="/assets/attached/gallery-card-01.jpg" alt="Cantora ministrando na Igreja A Caverna" />
+      <p className="mobile-gallery-index">01 / 02</p>
+    </a>
+  );
+}
+
+function MobileGalleryB() {
+  return (
+    <a className="mobile-panel mobile-panel-link mobile-gallery mobile-gallery-b" href="/comunidade" aria-label="Conheça nossa comunidade">
+      <img className="mobile-gallery-small mobile-gallery-b--left" src="/assets/attached/gallery-card-02.jpg" alt="Cantora ministrando na Igreja A Caverna" />
+      <img className="mobile-gallery-main mobile-gallery-b--main" src="/assets/whatsapp/foto-07.jpeg" alt="Vida em comunidade" />
+      <img className="mobile-gallery-small mobile-gallery-b--bottom-left" src="/assets/whatsapp/foto-09.jpeg" alt="Momento de adoração" />
+      <img className="mobile-gallery-small mobile-gallery-b--bottom-right" src="/assets/whatsapp/foto-08.jpeg" alt="Culto da igreja" />
+      <div className="mobile-gallery-quote">UM LUGAR<br />PARA PERTENCER.</div>
+      <p className="mobile-gallery-index">02 / 02</p>
+    </a>
   );
 }
 
@@ -204,7 +245,7 @@ function MobileExit() {
       <div className="mobile-exit-black">
         <img src="/assets/attached/black-transition.png" alt="Comunidade da Igreja A Caverna reunida" />
       </div>
-      <h2>VOCÊ JÁ SABE<br />O QUE NÃO SOMOS.<br />AGORA, CONHEÇA<br />QUEM SOMOS.</h2>
+      <h2>VOCÊ JÁ SABE<br />O QUE NÃO SOMOS<br />AGORA CONHEÇA<br />QUEM SOMOS</h2>
       <p>Conheça nossa fé, nossa história e a vida em comunidade na A Caverna.</p>
       <a href="#sobre">CONHEÇA A CAVERNA&nbsp; ↓</a>
     </section>
@@ -213,12 +254,14 @@ function MobileExit() {
 
 export function CreativeExperience() {
   const experienceRef = useRef<HTMLElement>(null);
+  const mobileExperienceRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
+  const [mobileProgress, setMobileProgress] = useState(0);
 
   useEffect(() => {
     const updateProgress = () => {
       const element = experienceRef.current;
-      if (!element || window.innerWidth <= 760) return;
+      if (!element || window.innerWidth <= 1024) return;
       const start = element.offsetTop;
       const distance = Math.max(element.offsetHeight - window.innerHeight, 1);
       const next = Math.min(Math.max((window.scrollY - start) / distance, 0), 1);
@@ -230,6 +273,24 @@ export function CreativeExperience() {
     return () => {
       window.removeEventListener('scroll', updateProgress);
       window.removeEventListener('resize', updateProgress);
+    };
+  }, []);
+
+  useEffect(() => {
+    const updateMobileProgress = () => {
+      const element = mobileExperienceRef.current;
+      if (!element || window.innerWidth > 1024) return;
+      const start = element.offsetTop;
+      const distance = Math.max(element.offsetHeight - window.innerHeight, 1);
+      const next = Math.min(Math.max((window.scrollY - start) / distance, 0), 1);
+      setMobileProgress(next);
+    };
+    updateMobileProgress();
+    window.addEventListener('scroll', updateMobileProgress, { passive: true });
+    window.addEventListener('resize', updateMobileProgress);
+    return () => {
+      window.removeEventListener('scroll', updateMobileProgress);
+      window.removeEventListener('resize', updateMobileProgress);
     };
   }, []);
 
@@ -247,12 +308,17 @@ export function CreativeExperience() {
           </div>
         </div>
       </section>
-      <div className="mobile-experience">
-        <MobileHero />
-        <MobileNot />
-        <MobileAffirm />
-        <MobileGallery />
-        <MobileExit />
+      <div ref={mobileExperienceRef} className="mobile-experience">
+        <div className="mobile-experience-sticky">
+          <div className="mobile-experience-track">
+            <MobileScene index={0} progress={mobileProgress}><MobileHero /></MobileScene>
+            <MobileScene index={1} progress={mobileProgress}><MobileNot progress={mobileProgress} /></MobileScene>
+            <MobileScene index={2} progress={mobileProgress}><MobileAffirm progress={mobileProgress} /></MobileScene>
+            <MobileScene index={3} progress={mobileProgress}><MobileGalleryA /></MobileScene>
+            <MobileScene index={4} progress={mobileProgress}><MobileGalleryB /></MobileScene>
+            <MobileScene index={5} progress={mobileProgress}><MobileExit /></MobileScene>
+          </div>
+        </div>
       </div>
     </>
   );
