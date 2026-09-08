@@ -72,12 +72,13 @@ export function ProtagonistPicture({ index, className, alt }: { index: number; c
   const desktop = desktopProtagonistAssets[index % desktopProtagonistAssets.length];
   const tablet = tabletProtagonistAssets[index % tabletProtagonistAssets.length];
   const mobile = mobileProtagonistAssets[index % mobileProtagonistAssets.length];
+  const toneClass = index === 0 ? 'protagonist--original' : 'protagonist--alternate';
 
   return (
     <picture>
       <source media="(max-width: 720px)" srcSet={mobile.srcSet} sizes={mobile.sizes} />
       <source media="(max-width: 1024px)" srcSet={tablet.srcSet} sizes={tablet.sizes} />
-      <img className={className} src={desktop.src} srcSet={desktop.srcSet} sizes={desktop.sizes} alt={alt} decoding="async" fetchPriority="high" />
+      <img className={`${className} ${toneClass}`} src={desktop.src} srcSet={desktop.srcSet} sizes={desktop.sizes} alt={alt} decoding="async" fetchPriority="high" />
     </picture>
   );
 }
