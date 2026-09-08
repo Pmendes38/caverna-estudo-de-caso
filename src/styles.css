@@ -2427,3 +2427,37 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
     padding-top: 66px;
   }
 }
+
+/* Let the liturgy copy wrap naturally around its image, like a document flow. */
+.caverna-liturgy-flow {
+  display: flow-root;
+  color: #09090a;
+  font-size: 16px;
+  line-height: 1.18;
+}
+
+.caverna-liturgy-flow::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.caverna-liturgy-flow p {
+  margin: 0 0 16px;
+}
+
+.caverna-liturgy-flow-image {
+  float: right;
+  width: min(62%, 820px);
+  height: 260px;
+  margin: 0 0 24px 32px;
+}
+
+@media (max-width: 1024px) {
+  .caverna-liturgy-flow-image {
+    float: none;
+    width: 100%;
+    height: 300px;
+    margin: 0 0 24px;
+  }
+}
