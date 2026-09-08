@@ -5,18 +5,18 @@ import { SiteHeader, subpageLinks, type PageKey } from './SiteHeader';
 const assets = {
   hero: '/assets/figma/d01-01.png',
   community: '/assets/treated/community.jpeg',
-  communityHero: '/assets/treated/community.jpeg',
+  communityHero: '/assets/treated/community-hero.jpeg',
   agendaHero: '/assets/treated/worship.jpeg',
-  visitHero: '/assets/treated/community.jpeg',
+  visitHero: '/assets/treated/visit.jpeg',
   contactHero: '/assets/treated/prayer.jpeg',
   teaching: '/assets/treated/discipulado.jpeg',
   prayer: '/assets/treated/prayer.jpeg',
   worship: '/assets/treated/worship.jpeg',
   outreach: '/assets/treated/mission-reino.jpeg',
-  children: '/assets/treated/community.jpeg',
+  children: '/assets/treated/children.jpeg',
   street: '/assets/treated/mission-andarilhos.jpeg',
   building: '/assets/treated/history-2017.jpeg',
-  contribution: '/assets/treated/community.jpeg',
+  contribution: '/assets/treated/contribution.jpeg',
   history2013: '/assets/treated/history-2013.jpeg',
   history2015: '/assets/treated/history-2015.jpeg',
   history2017: '/assets/treated/history-2017.jpeg',
@@ -24,6 +24,7 @@ const assets = {
   missionAmazonia: '/assets/treated/mission-amazonia.jpeg',
   missionReino: '/assets/treated/mission-reino.jpeg',
   sports: '/assets/treated/sports-jiujitsu.jpeg',
+  sportsHero: '/assets/treated/sports-hero.jpeg',
   sportsIdentity: '/assets/treated/sports-jiujitsu.jpeg',
   sportsMedal: '/assets/treated/sports-jiujitsu.jpeg',
   sportsPodium: '/assets/treated/sports-taekwondo.jpeg',
@@ -199,7 +200,7 @@ function SportsPage() {
   return (
     <PageFrame page="esportes">
       <main>
-        <section className="subpage-hero subpage-hero--plum subpage-community-hero sports-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[ESPORTES DA CAVERNA]</p><h1>ESPORTE TAMBÉM É<br />VIDA EM COMUNIDADE</h1><p>Apoiamos 3 atletas de jiu-jitsu, 2 de judô e 1 de taekwondo. Também caminhamos com o Sons of Caverna, nossa equipe de paintball.</p></div><ImageSlot src={assets.sports} alt="Atletas da Igreja A Caverna" className="slot--brown" /></section>
+        <section className="subpage-hero subpage-hero--plum subpage-community-hero sports-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[ESPORTES DA CAVERNA]</p><h1>ESPORTE TAMBÉM É<br />VIDA EM COMUNIDADE</h1><p>Apoiamos 3 atletas de jiu-jitsu, 2 de judô e 1 de taekwondo. Também caminhamos com o Sons of Caverna, nossa equipe de paintball.</p></div><ImageSlot src={assets.sportsHero} alt="Atletas da Igreja A Caverna" className="slot--brown" /></section>
         <section className="subpage-section subpage-section--paper sports-modalities"><h2>ESPORTES DA CAVERNA</h2><div className="community-photo-grid">{modalities.map(([title, text, slot, src]) => <article className="community-path-card" key={title}><ImageSlot src={src} alt={title} className={slot} /><h3>{title}</h3><p>{text}</p></article>)}</div></section>
         <section className="subpage-section subpage-section--dark sports-paintball"><h2>PAINTBALL E APOIO A ATLETAS</h2><div className="sports-support-grid"><InfoCard title="PAINTBALL" dark>Sons of Caverna. Encontro mensal, aberto a participações.</InfoCard><InfoCard title="APOIO A ATLETAS" dark>Apoio atual a trajetórias de jiu-jitsu, judô e taekwondo.</InfoCard><InfoCard title="COMO A GENTE APOIA" dark>Apoiamos atletas e fazemos do esporte parte da nossa vida em comunidade.</InfoCard></div></section>
         <section className="subpage-cta"><h2>DISCIPLINA TAMBÉM É<br />UMA FORMA DE CAMINHAR</h2><div><p>O esporte aproxima pessoas, exige constância e se torna parte da caminhada da comunidade.</p><Button href="/contato">FALE COM A EQUIPE&nbsp; →</Button></div></section>
@@ -314,7 +315,7 @@ function AgendaPage() {
   return (
     <PageFrame page="agenda">
       <main>
-        <section className="subpage-hero subpage-hero--dark agenda-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[AGENDA]</p><h1>UMA IGREJA PARA ALÉM<br />DO FINAL DE SEMANA</h1><p>Discipulado às quintas, culto público aos sábados e Reino em Nós em datas sazonais.</p></div><ImageSlot src={assets.agendaHero} alt="Culto, púlpito ou louvor" className="agenda-hero-slot slot--gray" /></section>
+        <section className="subpage-hero subpage-hero--dark agenda-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[AGENDA]</p><h1>A IGREJA SE REÚNE<br />DURANTE A SEMANA</h1><p>Discipulado às quintas, culto público aos sábados e Reino em Nós em datas sazonais.</p></div><ImageSlot src={assets.agendaHero} alt="Culto, púlpito ou louvor" className="agenda-hero-slot slot--gray" /></section>
         <section className="subpage-section subpage-section--paper agenda-regular"><h2>QUANDO A CAVERNA SE REÚNE</h2><div className="agenda-schedule-list"><InfoCard title="QUINTA-FEIRA · 19H30">DISCIPULADO<br /><small>Ensino da Palavra, proximidade e formação de discípulos.</small></InfoCard><InfoCard title="SÁBADO · 19H30">CULTO PÚBLICO<br /><small>Encontro aberto para cultuar, ouvir a Palavra e estar com a comunidade.</small></InfoCard><a className="agenda-whatsapp" href={whatsappUrl('Olá! Gostaria de confirmar a programação da Caverna.')}>CONFIRMAR PELO WHATSAPP&nbsp; →<span>A programação sazonal pode mudar. Fale com a equipe.</span></a></div></section>
         <section className="subpage-section subpage-section--plum agenda-events"><h2>PROJETOS MISSIONÁRIOS</h2><div className="agenda-event-grid"><ImageSlot src={assets.missionReino} alt="Projeto missionário" className="slot--brown" /><div className="agenda-event-copy"><InfoCard title="DATAS SAZONAIS" dark>As frentes do Reino em Nós são marcadas conforme cada período. Confirme pelo WhatsApp.</InfoCard><InfoCard title="ACOMPANHE AS ATUALIZAÇÕES" dark>Instagram: @a_cavernaa</InfoCard></div></div></section>
         <section className="subpage-cta"><h2>PLANEJE SUA<br />PRIMEIRA VISITA</h2><div><p>Quintas e sábados, às 19H30. Se precisar de orientação, fale com a gente.</p><Button href="/visite-nos">VISITE-NOS&nbsp; →</Button></div></section>

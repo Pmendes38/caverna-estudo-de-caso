@@ -1,5 +1,5 @@
 import { type CSSProperties, type ReactNode, useEffect, useRef, useState } from 'react';
-import { getCurrentProtagonist, Hero } from './Hero';
+import { getCurrentMobileProtagonist, Hero } from './Hero';
 import { LiveNowButton } from './LiveNowButton';
 import { SiteHeader } from './SiteHeader';
 
@@ -155,7 +155,7 @@ function DesktopExit() {
 }
 
 function MobileHero() {
-  const [protagonist] = useState(() => getCurrentProtagonist());
+  const [protagonist] = useState(() => getCurrentMobileProtagonist());
 
   return (
     <section className="mobile-panel mobile-hero-panel" aria-label="Início">

@@ -3,13 +3,17 @@ import { siteContent } from '../data/siteContent';
 import { LiveNowButton } from './LiveNowButton';
 
 export const protagonistImages = [
-  '/assets/figma/d01-01.png',
-  '/assets/figma/d01-02.png',
-  '/assets/figma/d01-07.png',
-  '/assets/figma/d01-08.png',
-  '/assets/figma/d01-09.png',
-  '/assets/figma/d01-10.png',
+  '/assets/site-images/d01-desktop/hero-01.png',
+  '/assets/site-images/d01-desktop/hero-02.png',
+  '/assets/site-images/d01-desktop/hero-03.png',
+  '/assets/site-images/d01-desktop/hero-04.png',
+  '/assets/site-images/d01-desktop/hero-05.png',
+  '/assets/site-images/d01-desktop/hero-06.png',
 ];
+
+export const mobileProtagonistImages = protagonistImages.map((_, index) =>
+  `/assets/site-images/d01-mobile/hero-${String(index + 1).padStart(2, '0')}.png`,
+);
 
 export function getRotatingProtagonist() {
   const storageKey = 'igreja-ac-protagonist-index';
@@ -26,6 +30,12 @@ export function getCurrentProtagonist() {
   const stored = window.localStorage.getItem('igreja-ac-protagonist-index');
   const index = stored === null ? 0 : Number.parseInt(stored, 10);
   return protagonistImages[Number.isFinite(index) ? index % protagonistImages.length : 0];
+}
+
+export function getCurrentMobileProtagonist() {
+  const stored = window.localStorage.getItem('igreja-ac-protagonist-index');
+  const index = stored === null ? 0 : Number.parseInt(stored, 10);
+  return mobileProtagonistImages[Number.isFinite(index) ? index % mobileProtagonistImages.length : 0];
 }
 
 export function Hero() {

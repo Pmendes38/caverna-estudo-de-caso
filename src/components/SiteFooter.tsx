@@ -3,7 +3,9 @@ import { siteContent, whatsappUrl } from '../data/siteContent';
 export function SiteFooter() {
   return (
     <footer className="site-footer" id="contato">
-      <div className="footer-brand">A CAVERNA</div>
+      <a className="footer-brand" href="#inicio" aria-label="Voltar para o início">
+        <img src="/assets/brand/logo-a-caverna.png" alt="Igreja A Caverna" />
+      </a>
       <div className="footer-column">
         <a href={`mailto:${siteContent.email}`}>E-MAIL</a>
         <a href={whatsappUrl('Olá! Quero falar com a Igreja A Caverna.')}>WHATSAPP</a>

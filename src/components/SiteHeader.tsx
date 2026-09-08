@@ -3,7 +3,7 @@ import { useState } from 'react';
 export type PageKey = 'caverna' | 'fe' | 'comunidade' | 'agenda' | 'visite' | 'contato' | 'contribua' | 'discipulado' | 'oracao' | 'missoes' | 'criancas' | 'esportes';
 
 export const subpageLinks: Array<{ key: PageKey; label: string; href: string }> = [
-  { key: 'caverna', label: 'QUEM SOMOS', href: '/a-caverna' },
+  { key: 'caverna', label: 'QUEM SOMOS?', href: '/a-caverna' },
   { key: 'fe', label: 'NOSSA FÉ', href: '/nossa-fe' },
   { key: 'comunidade', label: 'COMUNIDADE', href: '/comunidade' },
   { key: 'missoes', label: 'MISSÕES', href: '/missoes' },
