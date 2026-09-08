@@ -28,8 +28,7 @@ export function SiteOpening() {
   return (
     <div className={`site-opening${closing ? ' site-opening--closing' : ''}`} role="status" aria-label="Igreja A Caverna">
       <div className="site-opening-content">
-        <img className="site-opening-mark" src="/assets/brand/logo-a-caverna.png" alt="" aria-hidden="true" />
-        <span className="site-opening-wordmark">A CAVERNA</span>
+        <img className="site-opening-mark" src="/assets/brand/logo-a-caverna-horizontal.png" alt="Igreja A Caverna" />
         <span className="site-opening-rule" aria-hidden="true" />
         <span className="site-opening-caption">IGREJA QUE EDIFICA IGREJA</span>
       </div>

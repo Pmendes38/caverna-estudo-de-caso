@@ -50,7 +50,7 @@ const pageNames: Record<PageKey, string> = {
 function SubpageFooter() {
   return (
     <footer className="subpage-footer">
-      <img className="subpage-footer-logo" src="/assets/brand/logo-a-caverna.png" alt="Igreja A Caverna" />
+      <img className="subpage-footer-logo" src="/assets/brand/logo-a-caverna-horizontal.png" alt="Igreja A Caverna" />
       <div className="subpage-footer-links">
         {subpageLinks.map((link) => <a href={link.href} key={link.key}>{link.label}</a>)}
       </div>

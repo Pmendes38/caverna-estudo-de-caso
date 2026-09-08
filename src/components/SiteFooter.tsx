@@ -4,7 +4,7 @@ export function SiteFooter() {
   return (
     <footer className="site-footer" id="contato">
       <a className="footer-brand" href="#inicio" aria-label="Voltar para o início">
-        <img src="/assets/brand/logo-a-caverna.png" alt="Igreja A Caverna" />
+        <img src="/assets/brand/logo-a-caverna-horizontal.png" alt="Igreja A Caverna" />
       </a>
       <div className="footer-column">
         <a href={`mailto:${siteContent.email}`}>E-MAIL</a>
