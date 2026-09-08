@@ -141,10 +141,10 @@ export function EventVisual({ mode, onDiscipleshipClick }: { mode: EventMode; on
 }
 
 const ministries = [
-  { title: 'DISCIPULADO', description: 'Cresça na Palavra e caminhe em comunhão.', image: '/assets/treated/discipulado.jpeg', href: '/discipulado' },
-  { title: 'ORAÇÃO', description: 'Não caminhe sozinho. Deixe alguém orar com você.', image: '/assets/treated/prayer.jpeg', href: '/oracao' },
-  { title: 'MISSÕES', description: 'Sirva pessoas dentro e fora da comunidade.', image: '/assets/treated/mission-reino.jpeg', href: '/missoes' },
-  { title: 'ESPORTES DA CAVERNA', description: 'Atletas, disciplina e comunidade em movimento.', image: '/assets/treated/sports-jiujitsu.jpeg', href: '/esportes' },
+  { title: 'DISCIPULADO', description: 'Cresça na Palavra e caminhe em comunhão.', image: '/assets/whatsapp/foto-38.jpeg', href: '/discipulado' },
+  { title: 'ORAÇÃO', description: 'Não caminhe sozinho. Deixe alguém orar com você.', image: '/assets/attached/ministry-prayer.jpg', href: '/oracao' },
+  { title: 'MISSÕES', description: 'Sirva pessoas dentro e fora da comunidade.', image: '/assets/whatsapp/foto-53.jpeg', href: '/missoes' },
+  { title: 'ESPORTES DA CAVERNA', description: 'Atletas, disciplina e comunidade em movimento.', image: '/assets/sports/jiu-jitsu-atleta.jpeg', href: '/esportes' },
 ];
 
 export function InstitutionalContinuation() {
@@ -153,7 +153,7 @@ export function InstitutionalContinuation() {
       <section className="institutional-about" id="sobre">
         <p className="institutional-label">01 / A CAVERNA</p>
         <div className="institutional-split">
-          <div className="institutional-photo"><img src="/assets/treated/community.jpeg" alt="Comunidade da Igreja A Caverna reunida" /></div>
+          <div className="institutional-photo"><img src="/assets/whatsapp/foto-43.jpeg" alt="Comunidade da Igreja A Caverna reunida" /></div>
           <div className="institutional-copy">
             <h2>UMA IGREJA<br />NASCIDA DA<br />MISSÃO</h2>
             <p>A Caverna começou nas ruas de Ceilândia, em 2016. Em 2017, a missão chegou ao Jardim Ingá e se tornou comunidade: firmada na Palavra, centrada em Cristo e presente na vida das pessoas.</p>
@@ -194,7 +194,7 @@ export function InstitutionalContinuation() {
             <p>A missão trouxe pessoas até nós. A Palavra nos firma, a comunidade nos aproxima e o serviço nos envia para além do prédio.</p>
             <a className="institutional-action" href="/nossa-fe">NOSSA IDENTIDADE&nbsp; ↗</a>
           </div>
-          <div className="institutional-photo"><img src="/assets/treated/worship.jpeg" alt="Liderança ministrando em um culto" /></div>
+          <div className="institutional-photo"><img src="/assets/whatsapp/foto-46.jpeg" alt="Liderança ministrando em um culto" /></div>
         </div>
       </section>
 
