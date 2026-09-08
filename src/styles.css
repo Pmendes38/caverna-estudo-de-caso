@@ -2296,6 +2296,11 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 
 /* D05 / Galeria horizontal B: composition matched to the Figma frame. */
 @media (min-width: 1025px) {
+  .experience-scene:has(.gallery-b) > .experience-panel {
+    width: min(1440px, 100%);
+    margin-inline: auto;
+  }
+
   .gallery-b-leaving { top: 180px; left: 0; width: 270px; height: 570px; border-radius: 6px; object-fit: cover; }
   .gallery-b-main { top: 90px; left: 310px; width: 400px; height: 650px; border-radius: 6px; object-fit: cover; }
   .gallery-b-secondary { top: 240px; left: 750px; width: 300px; height: 440px; border-radius: 6px; object-fit: cover; }
