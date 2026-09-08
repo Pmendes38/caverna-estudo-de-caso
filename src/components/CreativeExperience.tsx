@@ -1,19 +1,19 @@
 import { type CSSProperties, type ReactNode, useEffect, useRef, useState } from 'react';
-import { Hero } from './Hero';
+import { getCurrentProtagonist, Hero } from './Hero';
 import { LiveNowButton } from './LiveNowButton';
 import { SiteHeader } from './SiteHeader';
 
 const galleryA = [
-  { src: '/assets/whatsapp/foto-13.jpeg', alt: 'Comunidade reunida em culto', className: 'gallery-a-main' },
-  { src: '/assets/whatsapp/foto-26.jpeg', alt: 'Momento de adoração', className: 'gallery-a-secondary' },
-  { src: '/assets/attached/gallery-card-01.jpg', alt: 'Cantora ministrando na Igreja A Caverna', className: 'gallery-a-entering' },
+  { src: '/assets/treated/community.jpeg', alt: 'Comunidade reunida', className: 'gallery-a-main' },
+  { src: '/assets/treated/worship.jpeg', alt: 'Momento de adoração', className: 'gallery-a-secondary' },
+  { src: '/assets/treated/prayer.jpeg', alt: 'Momento de oração', className: 'gallery-a-entering' },
 ];
 
 const galleryB = [
-  { src: '/assets/attached/gallery-card-02.jpg', alt: 'Cantora ministrando na Igreja A Caverna', className: 'gallery-b-leaving' },
-  { src: '/assets/whatsapp/foto-07.jpeg', alt: 'Vida em comunidade', className: 'gallery-b-main' },
-  { src: '/assets/whatsapp/foto-09.jpeg', alt: 'Momento de comunhão', className: 'gallery-b-secondary' },
-  { src: '/assets/whatsapp/foto-08.jpeg', alt: 'Culto da Igreja A Caverna', className: 'gallery-b-last' },
+  { src: '/assets/treated/discipulado.jpeg', alt: 'Encontro de discipulado', className: 'gallery-b-leaving' },
+  { src: '/assets/treated/community.jpeg', alt: 'Vida em comunidade', className: 'gallery-b-main' },
+  { src: '/assets/treated/prayer.jpeg', alt: 'Momento de comunhão', className: 'gallery-b-secondary' },
+  { src: '/assets/treated/mission-reino.jpeg', alt: 'Ação missionária da comunidade', className: 'gallery-b-last' },
 ];
 
 function Scene({ children, index, progress }: { children: ReactNode; index: number; progress: number }) {
@@ -155,11 +155,13 @@ function DesktopExit() {
 }
 
 function MobileHero() {
+  const [protagonist] = useState(() => getCurrentProtagonist());
+
   return (
     <section className="mobile-panel mobile-hero-panel" aria-label="Início">
       <SiteHeader />
       <div className="mobile-hero-word" aria-hidden="true">A CAVERNA</div>
-      <img className="mobile-hero-person" src="/assets/figma/d01-mobile-protagonist.png" alt="Líder da Igreja A Caverna ministrando" />
+      <img className="mobile-hero-person" src={protagonist} alt="Líder da Igreja A Caverna ministrando" />
       <div className="mobile-hero-actions">
         <a className="mobile-hero-cta" href="#sobre">CONHEÇA A CAVERNA</a>
         <LiveNowButton className="mobile-hero-live-cta" />
@@ -218,8 +220,8 @@ function MobileGalleryA() {
   return (
     <a className="mobile-panel mobile-panel-link mobile-gallery mobile-gallery-a" href="/comunidade" aria-label="Conheça nossa comunidade">
       <div className="mobile-gallery-title"><p>VIDA EM</p><p>COMUNIDADE</p></div>
-      <img className="mobile-gallery-main" src="/assets/whatsapp/foto-13.jpeg" alt="Comunidade reunida" />
-      <img className="mobile-gallery-small mobile-gallery-small--left" src="/assets/whatsapp/foto-26.jpeg" alt="Momento de comunhão" />
+      <img className="mobile-gallery-main" src="/assets/treated/community.jpeg" alt="Comunidade reunida" />
+      <img className="mobile-gallery-small mobile-gallery-small--left" src="/assets/treated/worship.jpeg" alt="Momento de comunhão" />
       <img className="mobile-gallery-small mobile-gallery-small--right" src="/assets/attached/gallery-card-01.jpg" alt="Cantora ministrando na Igreja A Caverna" />
       <p className="mobile-gallery-index">01 / 02</p>
     </a>
@@ -230,9 +232,9 @@ function MobileGalleryB() {
   return (
     <a className="mobile-panel mobile-panel-link mobile-gallery mobile-gallery-b" href="/comunidade" aria-label="Conheça nossa comunidade">
       <img className="mobile-gallery-small mobile-gallery-b--left" src="/assets/attached/gallery-card-02.jpg" alt="Cantora ministrando na Igreja A Caverna" />
-      <img className="mobile-gallery-main mobile-gallery-b--main" src="/assets/whatsapp/foto-07.jpeg" alt="Vida em comunidade" />
-      <img className="mobile-gallery-small mobile-gallery-b--bottom-left" src="/assets/whatsapp/foto-09.jpeg" alt="Momento de adoração" />
-      <img className="mobile-gallery-small mobile-gallery-b--bottom-right" src="/assets/whatsapp/foto-08.jpeg" alt="Culto da igreja" />
+      <img className="mobile-gallery-main mobile-gallery-b--main" src="/assets/treated/community.jpeg" alt="Vida em comunidade" />
+      <img className="mobile-gallery-small mobile-gallery-b--bottom-left" src="/assets/treated/prayer.jpeg" alt="Momento de adoração" />
+      <img className="mobile-gallery-small mobile-gallery-b--bottom-right" src="/assets/treated/mission-reino.jpeg" alt="Culto da igreja" />
       <div className="mobile-gallery-quote">UM LUGAR<br />PARA PERTENCER.</div>
       <p className="mobile-gallery-index">02 / 02</p>
     </a>

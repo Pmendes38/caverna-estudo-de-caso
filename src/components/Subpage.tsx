@@ -3,26 +3,32 @@ import { siteContent, whatsappUrl } from '../data/siteContent';
 import { SiteHeader, subpageLinks, type PageKey } from './SiteHeader';
 
 const assets = {
-    hero: '/assets/attached/caverna-hero.jpeg',
-    community: '/assets/whatsapp/foto-13.jpeg',
-    communityHero: '/assets/attached/community-hero.jpeg',
-    agendaHero: '/assets/attached/agenda-hero.jpeg',
-    visitHero: '/assets/attached/visit-hero.jpeg',
-    contactHero: '/assets/attached/contact-hero.jpeg',
-    teaching: '/assets/attached/faith-hero.jpeg',
-  prayer: '/assets/attached/ministry-prayer.jpg',
-  worship: '/assets/whatsapp/foto-43.jpeg',
-  outreach: '/assets/whatsapp/foto-53.jpeg',
-  children: '/assets/whatsapp/foto-20.jpeg',
-  street: '/assets/whatsapp/foto-28.jpeg',
-  building: '/assets/whatsapp/foto-46.jpeg',
-    contribution: '/assets/whatsapp/foto-50.jpeg',
-  sports: '/assets/sports/jiu-jitsu-atleta.jpeg',
-  sportsIdentity: '/assets/sports/jiu-jitsu-identidade.jpeg',
-  sportsMedal: '/assets/sports/jiu-jitsu-medal.jpeg',
-  sportsPodium: '/assets/sports/jiu-jitsu-podio.jpeg',
-  sportsChampion: '/assets/sports/jiu-jitsu-campeao.jpeg',
-  sportsMedalDetail: '/assets/sports/jiu-jitsu-medal-detail.jpeg',
+  hero: '/assets/figma/d01-01.png',
+  community: '/assets/treated/community.jpeg',
+  communityHero: '/assets/treated/community.jpeg',
+  agendaHero: '/assets/treated/worship.jpeg',
+  visitHero: '/assets/treated/community.jpeg',
+  contactHero: '/assets/treated/prayer.jpeg',
+  teaching: '/assets/treated/discipulado.jpeg',
+  prayer: '/assets/treated/prayer.jpeg',
+  worship: '/assets/treated/worship.jpeg',
+  outreach: '/assets/treated/mission-reino.jpeg',
+  children: '/assets/treated/community.jpeg',
+  street: '/assets/treated/mission-andarilhos.jpeg',
+  building: '/assets/treated/history-2017.jpeg',
+  contribution: '/assets/treated/community.jpeg',
+  history2013: '/assets/treated/history-2013.jpeg',
+  history2015: '/assets/treated/history-2015.jpeg',
+  history2017: '/assets/treated/history-2017.jpeg',
+  history2019: '/assets/treated/history-2019.jpeg',
+  missionAmazonia: '/assets/treated/mission-amazonia.jpeg',
+  missionReino: '/assets/treated/mission-reino.jpeg',
+  sports: '/assets/treated/sports-jiujitsu.jpeg',
+  sportsIdentity: '/assets/treated/sports-jiujitsu.jpeg',
+  sportsMedal: '/assets/treated/sports-jiujitsu.jpeg',
+  sportsPodium: '/assets/treated/sports-taekwondo.jpeg',
+  sportsChampion: '/assets/treated/sports-taekwondo.jpeg',
+  sportsMedalDetail: '/assets/treated/sports-paintball.jpeg',
 };
 
 const pageNames: Record<PageKey, string> = {
@@ -103,20 +109,20 @@ function PageFrame({ page, children }: { page: PageKey; children: ReactNode }) {
 function CavernaPage() {
   const [activeMoment, setActiveMoment] = useState<string | null>(null);
   const moments = [
-    ['2013', 'A RUA SE TORNA CAMPO', 'Os projetos missionários já alcançavam o Jardim Ingá. A missão acontecia onde as pessoas estavam, antes de existir uma igreja chamada A Caverna.', 'street'],
-    ['2015', 'A MISSÃO SE EXPANDE', 'As frentes urbanas crescem e alcançam diferentes cidades e realidades. Asilos, escolas, recuperação e pessoas em situação de rua passam a fazer parte de uma rotina intensa de missão.', 'outreach'],
-    ['2016', 'A MISSÃO VIRA COMUNIDADE', 'As pessoas alcançadas precisavam de mais do que encontros pontuais. Em fevereiro começam as primeiras reuniões em Ceilândia. A missão começa a ganhar forma de comunidade, e nasce o nome A Caverna.', 'teal'],
-    ['2017', 'A CAVERNA CRIA RAÍZES NO JARDIM INGÁ', 'A comunidade deixa Ceilândia e passa a se reunir no Jardim Ingá, inicialmente na escola Coração de Mãe. Em fevereiro, a Comunidade de Fé A Caverna também é formalmente constituída.', 'brown'],
-    ['2019', 'A MISSÃO MUDA DE LUGAR', 'A igreja troca de templo para um lugar conhecido por um bar famoso do Jardim Ingá. Onde abundou o pecado, superabundou a graça. Hoje, o antigo espaço é um altar de adoração e vida com Deus.', 'gold'],
-    ['2020', 'A PANDEMIA', 'Com a pandemia, os projetos são interrompidos e o cuidado se volta para a igreja e para as famílias. Entre cultos online e encontros nos lares, a comunidade aprende a se estruturar e amadurecer.', 'teal'],
-    ['2025', 'UMA NOVA FASE', 'A origem missionária permanece, mas a visão se amplia. A igreja amadurece sua linguagem e passa a comunicar com mais clareza que o Evangelho não pertence a um perfil específico de pessoas.', 'brown'],
+    ['2013', 'A RUA SE TORNA CAMPO', 'Os projetos missionários já alcançavam o Jardim Ingá. A missão acontecia onde as pessoas estavam, antes de existir uma igreja chamada A Caverna.', 'history2013'],
+    ['2015', 'A MISSÃO SE EXPANDE', 'As frentes urbanas crescem e alcançam diferentes cidades e realidades. Asilos, escolas, recuperação e pessoas em situação de rua passam a fazer parte de uma rotina intensa de missão.', 'history2015'],
+    ['2016', 'A MISSÃO VIRA COMUNIDADE', 'As pessoas alcançadas precisavam de mais do que encontros pontuais. Em fevereiro começam as primeiras reuniões em Ceilândia. A missão começa a ganhar forma de comunidade, e nasce o nome A Caverna.', 'history2013'],
+    ['2017', 'A CAVERNA CRIA RAÍZES NO JARDIM INGÁ', 'A comunidade deixa Ceilândia e passa a se reunir no Jardim Ingá, inicialmente na escola Coração de Mãe. Em fevereiro, a Comunidade de Fé A Caverna também é formalmente constituída.', 'history2017'],
+    ['2019', 'A MISSÃO MUDA DE LUGAR', 'A igreja troca de templo para um lugar conhecido por um bar famoso do Jardim Ingá. Onde abundou o pecado, superabundou a graça. Hoje, o antigo espaço é um altar de adoração e vida com Deus.', 'history2019'],
+    ['2020', 'A PANDEMIA', 'Com a pandemia, os projetos são interrompidos e o cuidado se volta para a igreja e para as famílias. Entre cultos online e encontros nos lares, a comunidade aprende a se estruturar e amadurecer.', 'worship'],
+    ['2025', 'UMA NOVA FASE', 'A origem missionária permanece, mas a visão se amplia. A igreja amadurece sua linguagem e passa a comunicar com mais clareza que o Evangelho não pertence a um perfil específico de pessoas.', 'community'],
   ];
   return (
     <PageFrame page="caverna">
       <main>
         <section className="subpage-hero subpage-hero--plum caverna-hero">
           <div className="subpage-hero-copy"><p className="subpage-kicker">[QUEM SOMOS]</p><h1>UMA IGREJA<br />NASCIDA DA MISSÃO</h1><p>Começamos em Ceilândia, em 2016. Em 2017, a missão chegou ao Jardim Ingá e se tornou comunidade.</p></div>
-          <ImageSlot alt="Foto da Igreja A Caverna a definir" className="caverna-hero-image" />
+          <ImageSlot alt="Área de destaque da Igreja A Caverna" className="caverna-hero-image" />
         </section>
         <section className="subpage-section subpage-section--paper caverna-history">
           <h2 className="caverna-history-title">NOSSA HISTÓRIA</h2>
@@ -130,7 +136,7 @@ function CavernaPage() {
               if (!moment) return null;
               const [year, title, text, tone] = moment;
               const index = moments.findIndex(([momentYear]) => momentYear === year);
-              return <aside className={`caverna-timeline-overlay${index === 0 ? ' caverna-timeline-overlay--first' : ''}${index === moments.length - 1 ? ' caverna-timeline-overlay--last' : ''}`} style={{ '--timeline-index': index } as CSSProperties} aria-live="polite"><div className={`caverna-timeline-overlay-image slot--${tone}`} /><div className="caverna-timeline-overlay-copy"><span>{year}</span><h3>{title}</h3><p>{text}</p><small>IMAGEM DE ARQUIVO • FOTO HISTÓRICA A CONFIRMAR</small></div></aside>;
+              return <aside className={`caverna-timeline-overlay${index === 0 ? ' caverna-timeline-overlay--first' : ''}${index === moments.length - 1 ? ' caverna-timeline-overlay--last' : ''}`} style={{ '--timeline-index': index } as CSSProperties} aria-live="polite"><ImageSlot src={assets[tone as keyof typeof assets] as string} alt={`Registro histórico de ${year}`} className="caverna-timeline-overlay-image" /><div className="caverna-timeline-overlay-copy"><span>{year}</span><h3>{title}</h3><p>{text}</p></div></aside>;
             })()}
           </div>
         </section>
@@ -310,7 +316,7 @@ function AgendaPage() {
       <main>
         <section className="subpage-hero subpage-hero--dark agenda-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[AGENDA]</p><h1>UMA IGREJA PARA ALÉM<br />DO FINAL DE SEMANA</h1><p>Discipulado às quintas, culto público aos sábados e Reino em Nós em datas sazonais.</p></div><ImageSlot src={assets.agendaHero} alt="Culto, púlpito ou louvor" className="agenda-hero-slot slot--gray" /></section>
         <section className="subpage-section subpage-section--paper agenda-regular"><h2>QUANDO A CAVERNA SE REÚNE</h2><div className="agenda-schedule-list"><InfoCard title="QUINTA-FEIRA · 19H30">DISCIPULADO<br /><small>Ensino da Palavra, proximidade e formação de discípulos.</small></InfoCard><InfoCard title="SÁBADO · 19H30">CULTO PÚBLICO<br /><small>Encontro aberto para cultuar, ouvir a Palavra e estar com a comunidade.</small></InfoCard><a className="agenda-whatsapp" href={whatsappUrl('Olá! Gostaria de confirmar a programação da Caverna.')}>CONFIRMAR PELO WHATSAPP&nbsp; →<span>A programação sazonal pode mudar. Fale com a equipe.</span></a></div></section>
-        <section className="subpage-section subpage-section--plum agenda-events"><h2>PROJETOS MISSIONÁRIOS</h2><div className="agenda-event-grid"><ImageSlot alt="Projeto missionário" className="slot--brown" /><div className="agenda-event-copy"><InfoCard title="DATAS SAZONAIS" dark>As frentes do Reino em Nós são marcadas conforme cada período. Confirme pelo WhatsApp.</InfoCard><InfoCard title="ACOMPANHE AS ATUALIZAÇÕES" dark>Instagram: @a_cavernaa</InfoCard></div></div></section>
+        <section className="subpage-section subpage-section--plum agenda-events"><h2>PROJETOS MISSIONÁRIOS</h2><div className="agenda-event-grid"><ImageSlot src={assets.missionReino} alt="Projeto missionário" className="slot--brown" /><div className="agenda-event-copy"><InfoCard title="DATAS SAZONAIS" dark>As frentes do Reino em Nós são marcadas conforme cada período. Confirme pelo WhatsApp.</InfoCard><InfoCard title="ACOMPANHE AS ATUALIZAÇÕES" dark>Instagram: @a_cavernaa</InfoCard></div></div></section>
         <section className="subpage-cta"><h2>PLANEJE SUA<br />PRIMEIRA VISITA</h2><div><p>Quintas e sábados, às 19H30. Se precisar de orientação, fale com a gente.</p><Button href="/visite-nos">VISITE-NOS&nbsp; →</Button></div></section>
       </main>
     </PageFrame>
@@ -336,8 +342,8 @@ function ContactPage() {
     <PageFrame page="contato">
       <main>
         <section className="subpage-hero subpage-hero--dark contact-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[CONTATO E ORAÇÃO]</p><h1>NÃO CARREGUE<br />SOZINHO</h1><p>Se você precisa de oração ou quer conversar, deixe uma mensagem. Vamos ouvir você e caminhar perto.</p></div><ImageSlot src={assets.contactHero} alt="Cuidado em comunidade" className="slot--brown" /></section>
-        <section className="subpage-section subpage-section--paper contact-form-section"><div className="form-section-grid"><div><p className="subpage-kicker">FALE COM A GENTE</p><h2>CONTATO GERAL</h2><p>Envie uma mensagem e a equipe da comunidade responderá assim que possível.</p><StaticForm /></div><div className="contact-side"><ImageSlot alt="Acolhimento na comunidade" className="slot--plum" /><InfoCard title="OUTROS CANAIS">WhatsApp: (00) 00000-0000<br />Instagram: @a_cavernaa</InfoCard></div></div></section>
-        <section id="oracao" className="subpage-section subpage-section--plum prayer-section"><div className="form-section-grid"><div className="prayer-copy"><p className="subpage-kicker">PEDIDO DE ORAÇÃO</p><h2>PODEMOS ORAR<br />POR VOCÊ</h2><p>Compartilhe seu pedido, identificado ou anônimo, e deixe alguém interceder com você.</p><ImageSlot alt="Intercessão em comunidade" className="slot--teal" /></div><StaticForm prayer /></div></section>
+        <section className="subpage-section subpage-section--paper contact-form-section"><div className="form-section-grid"><div><p className="subpage-kicker">FALE COM A GENTE</p><h2>CONTATO GERAL</h2><p>Envie uma mensagem e a equipe da comunidade responderá assim que possível.</p><StaticForm /></div><div className="contact-side"><ImageSlot src={assets.community} alt="Acolhimento na comunidade" className="slot--plum" /><InfoCard title="OUTROS CANAIS">WhatsApp: (00) 00000-0000<br />Instagram: @a_cavernaa</InfoCard></div></div></section>
+        <section id="oracao" className="subpage-section subpage-section--plum prayer-section"><div className="form-section-grid"><div className="prayer-copy"><p className="subpage-kicker">PEDIDO DE ORAÇÃO</p><h2>PODEMOS ORAR<br />POR VOCÊ</h2><p>Compartilhe seu pedido, identificado ou anônimo, e deixe alguém interceder com você.</p><ImageSlot src={assets.prayer} alt="Intercessão em comunidade" className="slot--teal" /></div><StaticForm prayer /></div></section>
       </main>
     </PageFrame>
   );
@@ -349,7 +355,7 @@ function ContributionPage() {
       <main>
         <section className="subpage-hero subpage-hero--brown contribution-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[CONTRIBUA]</p><h1>GENEROSIDADE<br />NÃO É PRODUTO</h1><p>Contribuir é participar da missão e da vida da comunidade com liberdade, consciência e responsabilidade.</p></div><ImageSlot src={assets.contribution} alt="Partilha e serviço" className="slot--plum" /></section>
         <section className="subpage-section subpage-section--paper contribution-methods"><p className="subpage-kicker">FORMAS DE CONTRIBUIR</p><div className="subpage-card-row"><InfoCard title="PIX">Fale com a equipe para receber os dados e contribuir com segurança.</InfoCard><InfoCard title="OUTRAS FORMAS">Prefere outra forma? Converse com a equipe e encontre o melhor caminho.</InfoCard><InfoCard title="QUER PARTICIPAR?">Dê um passo concreto para fazer parte do que a comunidade está construindo.</InfoCard></div></section>
-        <section className="subpage-section subpage-section--dark contribution-destination"><div className="contribution-destination-grid"><ImageSlot alt="Serviço da comunidade" className="slot--teal" /><div><p className="subpage-kicker">PARA ONDE VAI</p><h2>SUA GENEROSIDADE<br />VIRA CUIDADO</h2><p>Os recursos ajudam a manter a vida da igreja, o cuidado com pessoas, a missão e a edificação da comunidade.</p><Button href="/contato">QUERO PARTICIPAR</Button></div></div></section>
+        <section className="subpage-section subpage-section--dark contribution-destination"><div className="contribution-destination-grid"><ImageSlot src={assets.community} alt="Serviço da comunidade" className="slot--teal" /><div><p className="subpage-kicker">PARA ONDE VAI</p><h2>SUA GENEROSIDADE<br />VIRA CUIDADO</h2><p>Os recursos ajudam a manter a vida da igreja, o cuidado com pessoas, a missão e a edificação da comunidade.</p><Button href="/contato">QUERO PARTICIPAR</Button></div></div></section>
         <section className="subpage-section subpage-section--paper contribution-principles"><p className="subpage-kicker">COMO ENTENDEMOS A CONTRIBUIÇÃO</p><div className="subpage-card-row"><InfoCard title="LIBERDADE">Contribua porque deseja participar, sem coerção, promessa de retorno ou barganha espiritual.</InfoCard><InfoCard title="RESPONSABILIDADE">Pergunte, acompanhe e ajude a construir uma igreja que cuida com transparência.</InfoCard><InfoCard title="COMUNIDADE">Seus recursos ajudam a manter pessoas, missão e edificação em movimento.</InfoCard></div></section>
       </main>
     </PageFrame>

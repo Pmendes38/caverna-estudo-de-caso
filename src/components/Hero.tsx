@@ -2,20 +2,16 @@ import { useState } from 'react';
 import { siteContent } from '../data/siteContent';
 import { LiveNowButton } from './LiveNowButton';
 
-const protagonistImages = [
-  '/assets/figma/d01-07.png',
+export const protagonistImages = [
   '/assets/figma/d01-01.png',
   '/assets/figma/d01-02.png',
-  '/assets/figma/d01-03.png',
-  '/assets/figma/d01-04.png',
-  '/assets/figma/d01-05.png',
-  '/assets/figma/d01-06.png',
+  '/assets/figma/d01-07.png',
   '/assets/figma/d01-08.png',
   '/assets/figma/d01-09.png',
   '/assets/figma/d01-10.png',
 ];
 
-function getRotatingProtagonist() {
+export function getRotatingProtagonist() {
   const storageKey = 'igreja-ac-protagonist-index';
   const stored = window.localStorage.getItem(storageKey);
   const previousIndex = stored === null ? -1 : Number.parseInt(stored, 10);
@@ -24,6 +20,12 @@ function getRotatingProtagonist() {
     : 0;
   window.localStorage.setItem(storageKey, String(nextIndex));
   return protagonistImages[nextIndex];
+}
+
+export function getCurrentProtagonist() {
+  const stored = window.localStorage.getItem('igreja-ac-protagonist-index');
+  const index = stored === null ? 0 : Number.parseInt(stored, 10);
+  return protagonistImages[Number.isFinite(index) ? index % protagonistImages.length : 0];
 }
 
 export function Hero() {

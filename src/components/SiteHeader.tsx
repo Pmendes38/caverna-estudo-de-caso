@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { siteContent } from '../data/siteContent';
 
 export type PageKey = 'caverna' | 'fe' | 'comunidade' | 'agenda' | 'visite' | 'contato' | 'contribua' | 'discipulado' | 'oracao' | 'missoes' | 'criancas' | 'esportes';
 
@@ -15,7 +14,14 @@ export const subpageLinks: Array<{ key: PageKey; label: string; href: string }> 
   { key: 'contribua', label: 'CONTRIBUA', href: '/contribua' },
 ];
 
-const [homeStartLink, homeAthletesLink, homeCavernaLink, homeAgendaLink, homeCommunityLink, homeContactLink] = siteContent.navigation;
+const homeNavigation = [
+  { label: '[INÍCIO]', href: '#inicio', aria: 'Ir para o início' },
+  { label: '[NOSSOS ATLETAS]', href: '/esportes', aria: 'Conheça nossos atletas' },
+  { label: '[QUEM SOMOS?]', href: '/a-caverna', aria: 'Conheça a história da igreja' },
+  { label: '[AGENDA]', href: '/agenda', aria: 'Ver a agenda' },
+  { label: '[COMUNIDADE]', href: '/comunidade', aria: 'Conheça a comunidade' },
+  { label: '[CONTATO]', href: '/contato', aria: 'Entrar em contato' },
+];
 
 type SiteHeaderProps = {
   activePage?: PageKey;
@@ -45,15 +51,15 @@ export function SiteHeader({ activePage, subpage = false }: SiteHeaderProps) {
         </nav>
       ) : (
         <nav className="hero-nav" aria-label="Navegação principal">
-          <a className="hero-nav-link hero-nav-link--active" href={homeStartLink.href} aria-label="Ir para o início">{homeStartLink.label}</a>
-          <a className="hero-nav-link" href={homeAthletesLink.href} aria-label="Conheça nossos atletas">{homeAthletesLink.label}</a>
-          <a className="hero-nav-link" href={homeCavernaLink.href} aria-label="Quem somos">{homeCavernaLink.label}</a>
+          <a className="hero-nav-link hero-nav-link--active" href={homeNavigation[0].href} aria-label={homeNavigation[0].aria}>{homeNavigation[0].label}</a>
+          <a className="hero-nav-link" href={homeNavigation[1].href} aria-label={homeNavigation[1].aria}>{homeNavigation[1].label}</a>
+          <a className="hero-nav-link" href={homeNavigation[2].href} aria-label={homeNavigation[2].aria}>{homeNavigation[2].label}</a>
           <a className="hero-nav-logo" href="#inicio" aria-label="Ir para o início">
             <img src="/assets/brand/logo-a-caverna.png" alt="Símbolo da Igreja A Caverna" />
           </a>
-          <a className="hero-nav-link" href={homeAgendaLink.href} aria-label="Ver a agenda">{homeAgendaLink.label}</a>
-          <a className="hero-nav-link" href={homeCommunityLink.href} aria-label="Conheça a comunidade">{homeCommunityLink.label}</a>
-          <a className="hero-nav-link" href={homeContactLink.href} aria-label="Entrar em contato">{homeContactLink.label}</a>
+          <a className="hero-nav-link" href={homeNavigation[3].href} aria-label={homeNavigation[3].aria}>{homeNavigation[3].label}</a>
+          <a className="hero-nav-link" href={homeNavigation[4].href} aria-label={homeNavigation[4].aria}>{homeNavigation[4].label}</a>
+          <a className="hero-nav-link" href={homeNavigation[5].href} aria-label={homeNavigation[5].aria}>{homeNavigation[5].label}</a>
         </nav>
       )}
 

@@ -1601,3 +1601,86 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
     width: 132px;
   }
 }
+
+/* Final visual pass: keep the shared Figma frame stable on every subpage. */
+@media (min-width: 1025px) {
+  .subpage .site-header {
+    height: 126px;
+    padding: 22px 56px;
+    background: #09090a;
+  }
+
+  .subpage-nav {
+    align-items: center;
+    min-height: 82px;
+  }
+
+  .subpage-nav-brand img {
+    width: 112px;
+    height: 112px;
+  }
+
+  .subpage-nav-links {
+    align-items: center;
+    gap: 18px;
+    padding-top: 4px;
+  }
+
+  .subpage-hero h1 {
+    max-width: 800px;
+    white-space: normal;
+    text-wrap: balance;
+  }
+
+  .subpage-hero-copy > p:last-child {
+    max-width: 570px;
+  }
+
+  .subpage--caverna .caverna-hero-image {
+    background: #4a2040;
+  }
+
+  .subpage--caverna .caverna-hero-image::after {
+    display: none;
+  }
+}
+
+.subpage-image img {
+  border-radius: inherit;
+}
+
+.subpage-hero > .subpage-image img {
+  object-position: center;
+}
+
+.subpage--comunidade .subpage-hero > .subpage-image img,
+.subpage--visite .subpage-hero > .subpage-image img,
+.subpage--contribua .subpage-hero > .subpage-image img {
+  object-position: center 42%;
+}
+
+.subpage--contato .subpage-hero > .subpage-image img,
+.subpage--agenda .subpage-hero > .subpage-image img,
+.subpage--missoes .subpage-hero > .subpage-image img {
+  object-position: center 50%;
+}
+
+@media (max-width: 1024px) {
+  .subpage .site-header {
+    height: 72px;
+    padding: 12px;
+  }
+
+  .subpage-hero h1 {
+    max-width: 100%;
+    text-wrap: balance;
+  }
+
+  .subpage--caverna .caverna-hero-image {
+    background: #4a2040;
+  }
+
+  .subpage--caverna .caverna-hero-image::after {
+    display: none;
+  }
+}
