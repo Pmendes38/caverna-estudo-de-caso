@@ -12,6 +12,282 @@
   --accent: #f1ac33;
 }
 
+/* A Caverna / node 485:3 — desktop frame translated from the Figma layout. */
+@media (min-width: 1025px) {
+  .subpage--caverna .site-header {
+    height: 86px;
+    padding: 26px 56px;
+  }
+
+  .subpage--caverna .subpage-nav {
+    min-height: 0;
+    align-items: flex-start;
+  }
+
+  .subpage--caverna .subpage-hero {
+    height: 474px;
+    min-height: 474px;
+    padding: 72px 56px 0;
+  }
+
+  .subpage--caverna .subpage-hero-copy {
+    align-self: flex-start;
+    max-width: 800px;
+    transform: none;
+  }
+
+  .subpage--caverna .subpage-hero h1 {
+    max-width: 800px;
+    font-size: 72px;
+    line-height: 1.18;
+    letter-spacing: -.07em;
+  }
+
+  .subpage--caverna .caverna-hero-image {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    height: auto;
+    background: #4a2040;
+  }
+
+  .subpage--caverna .caverna-hero-image img {
+    opacity: .9;
+    filter: saturate(.86) contrast(.94) brightness(.8);
+    object-position: center 46%;
+  }
+
+  .subpage--caverna .caverna-hero-image::after {
+    display: block;
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background: linear-gradient(90deg, #4a2040 0%, rgba(74, 32, 64, .84) 18%, rgba(74, 32, 64, .38) 48%, rgba(74, 32, 64, .1) 72%, transparent 100%);
+  }
+
+  .subpage--caverna .caverna-history {
+    min-height: 1039px;
+    padding: 66px 56px 72px;
+    gap: 40px;
+  }
+
+  .subpage--caverna .caverna-history-title {
+    font-size: 44px;
+  }
+
+  .subpage--caverna .subpage-history-grid {
+    grid-template-columns: 480px 1fr;
+    gap: 32px;
+  }
+
+  .subpage--caverna .subpage-history-grid > div:first-child p {
+    font-size: 16px;
+    line-height: 1.18;
+  }
+
+  .subpage--caverna .subpage-history-grid .subpage-card-row {
+    gap: 20px;
+  }
+
+  .subpage--caverna .subpage-history-grid .subpage-info-card {
+    min-height: 129px;
+    padding: 24px;
+  }
+
+  .caverna-history-story,
+  .caverna-liturgy-story,
+  .caverna-house-copy {
+    color: #09090a;
+  }
+
+  .caverna-history-story {
+    min-height: 95px;
+    font-size: 16px;
+    line-height: 1.18;
+  }
+
+  .caverna-history-story p,
+  .caverna-house-copy p,
+  .caverna-liturgy-story p {
+    margin: 0 0 12px;
+  }
+
+  .caverna-history-story a,
+  .caverna-house-copy a {
+    color: #741f60;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .subpage--caverna .subpage-small-heading {
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.18;
+  }
+
+  .subpage--caverna .caverna-timeline {
+    height: 470px;
+    min-height: 470px;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .subpage--caverna .caverna-timeline-line {
+    top: 90px;
+    right: 40px;
+    left: 40px;
+  }
+
+  .subpage--caverna .caverna-timeline-year {
+    top: 32px;
+    font-size: 18px;
+  }
+
+  .subpage--caverna .caverna-timeline-marker {
+    top: 81px;
+  }
+
+  .subpage--caverna .caverna-timeline-item strong {
+    top: 132px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .subpage--caverna .caverna-timeline-item > span:not(.caverna-timeline-year):not(.caverna-timeline-marker) {
+    top: 190px;
+    font-size: 11px;
+    line-height: 15px;
+  }
+
+  .subpage--caverna .caverna-timeline-item:nth-of-type(2) .caverna-timeline-marker,
+  .subpage--caverna .caverna-timeline-item:nth-of-type(6) .caverna-timeline-marker {
+    background: #f1ac33;
+  }
+
+  .subpage--caverna .caverna-values {
+    min-height: 0;
+    padding: 66px 56px;
+    gap: 38px;
+  }
+
+  .subpage--caverna .caverna-values h2 {
+    margin: 0;
+    font-size: 44px;
+  }
+
+  .subpage--caverna .caverna-liturgy {
+    min-height: 0;
+    padding: 66px 56px 0;
+  }
+
+  .subpage--caverna .caverna-liturgy-grid {
+    grid-template-columns: 480px minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
+  }
+
+  .subpage--caverna .caverna-liturgy-grid > div {
+    max-width: 480px;
+  }
+
+  .subpage--caverna .caverna-liturgy-grid p {
+    margin: 0 0 16px;
+    font-size: 16px;
+    line-height: 1.18;
+  }
+
+  .subpage--caverna .caverna-liturgy-grid .subpage-image {
+    width: 100%;
+    height: 260px;
+  }
+
+  .subpage--caverna .caverna-liturgy-story {
+    min-height: 90px;
+    padding-top: 38px;
+    font-size: 16px;
+    line-height: 1.18;
+  }
+
+  .subpage--caverna .caverna-house {
+    min-height: 0;
+    padding: 10px 56px 72px;
+  }
+
+  .subpage--caverna .caverna-house h2 {
+    margin-bottom: 32px;
+  }
+
+  .subpage--caverna .caverna-gallery {
+    grid-template-columns: 500px 320px 460px;
+    grid-template-rows: 260px 260px;
+    gap: 24px;
+    height: 544px;
+  }
+
+  .subpage--caverna .caverna-house-copy {
+    max-width: 1328px;
+    margin-top: 30px;
+    font-size: 16px;
+    line-height: 1.18;
+  }
+
+  .subpage--caverna .caverna-house-copy p:nth-child(2) {
+    font-size: 24px;
+  }
+
+  .subpage--caverna .subpage-cta {
+    grid-template-columns: 1fr 470px;
+    padding: 72px 56px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .subpage--caverna .caverna-hero-image img {
+    object-position: center 42%;
+  }
+
+  .subpage--caverna .caverna-hero-image::after {
+    display: block;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(74, 32, 64, .12), rgba(74, 32, 64, .58));
+  }
+
+  .subpage--caverna .caverna-history,
+  .subpage--caverna .caverna-liturgy,
+  .subpage--caverna .caverna-house {
+    min-height: 0;
+  }
+
+  .caverna-history-story,
+  .caverna-liturgy-story,
+  .caverna-house-copy {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .caverna-history-story a,
+  .caverna-house-copy a {
+    display: inline-block;
+    margin-top: 4px;
+  }
+
+  .subpage--caverna .caverna-liturgy-grid .subpage-image {
+    height: 280px;
+  }
+
+  .subpage--caverna .caverna-gallery {
+    height: auto;
+  }
+
+  .subpage--caverna .caverna-house-copy p:nth-child(2) {
+    font-size: 18px;
+  }
+}
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; min-width: 320px; background: var(--paper); }
@@ -1729,6 +2005,170 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 }
 
+/* A Caverna cascade end: keep the Figma composition after shared responsive rules. */
+@media (min-width: 1025px) {
+  .subpage--caverna .subpage-hero-copy { width: 800px; }
+  .subpage--caverna .subpage-hero h1 { white-space: nowrap; }
+  .subpage--caverna .site-header { height: 86px; padding: 26px 56px; }
+  .subpage--caverna .subpage-nav { min-height: 0; align-items: flex-start; }
+  .subpage--caverna .subpage-hero { height: 474px; min-height: 474px; padding: 72px 56px 0; }
+  .subpage--caverna .subpage-hero-copy { align-self: flex-start; max-width: 800px; transform: none; }
+  .subpage--caverna .subpage-hero h1 { max-width: 800px; font-size: 72px; line-height: 1.18; letter-spacing: -.07em; }
+  .subpage--caverna .caverna-hero-image { top: 0; right: 0; bottom: 0; width: 50%; height: auto; background: #4a2040; }
+  .subpage--caverna .caverna-hero-image img { opacity: .9; filter: saturate(.86) contrast(.94) brightness(.8); object-position: center 46%; }
+  .subpage--caverna .caverna-hero-image::after { display: block; content: ""; position: absolute; z-index: 1; inset: 0; background: linear-gradient(90deg, #4a2040 0%, rgba(74,32,64,.84) 18%, rgba(74,32,64,.38) 48%, rgba(74,32,64,.1) 72%, transparent 100%); }
+  .subpage--caverna .caverna-history { min-height: 1039px; padding: 66px 56px 72px; gap: 40px; }
+  .subpage--caverna .caverna-history-title { font-size: 44px; }
+  .subpage--caverna .subpage-history-grid { grid-template-columns: 480px 1fr; gap: 32px; }
+  .subpage--caverna .subpage-history-grid > div:first-child p { font-size: 16px; line-height: 1.18; }
+  .subpage--caverna .subpage-history-grid .subpage-info-card { min-height: 129px; padding: 24px; }
+  .caverna-history-story, .caverna-liturgy-story, .caverna-house-copy { color: #09090a; }
+  .caverna-history-story { min-height: 95px; font-size: 16px; line-height: 1.18; }
+  .caverna-history-story p, .caverna-house-copy p, .caverna-liturgy-story p { margin: 0 0 12px; }
+  .caverna-history-story a, .caverna-house-copy a { color: #741f60; font-size: 11px; font-weight: 700; }
+  .subpage--caverna .subpage-small-heading { margin: 0; font-size: 24px; line-height: 1.18; }
+  .subpage--caverna .caverna-timeline { height: 470px; min-height: 470px; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 16px; }
+  .subpage--caverna .caverna-timeline-line { top: 90px; right: 40px; left: 40px; }
+  .subpage--caverna .caverna-timeline-year { top: 32px; font-size: 18px; }
+  .subpage--caverna .caverna-timeline-marker { top: 81px; }
+  .subpage--caverna .caverna-timeline-item strong { top: 132px; font-size: 13px; line-height: 16px; }
+  .subpage--caverna .caverna-timeline-item > span:not(.caverna-timeline-year):not(.caverna-timeline-marker) { top: 190px; font-size: 11px; line-height: 15px; }
+  .subpage--caverna .caverna-timeline-item:nth-of-type(2) .caverna-timeline-marker, .subpage--caverna .caverna-timeline-item:nth-of-type(6) .caverna-timeline-marker { background: #f1ac33; }
+  .subpage--caverna .caverna-values { min-height: 0; padding: 66px 56px; gap: 38px; }
+  .subpage--caverna .caverna-values h2 { margin: 0; font-size: 44px; }
+  .subpage--caverna .caverna-liturgy { min-height: 0; padding: 66px 56px 0; }
+  .subpage--caverna .caverna-liturgy-grid { grid-template-columns: 480px minmax(0, 1fr); gap: 32px; align-items: start; }
+  .subpage--caverna .caverna-liturgy-grid > div { max-width: 480px; }
+  .subpage--caverna .caverna-liturgy-grid p { margin: 0 0 16px; font-size: 16px; line-height: 1.18; }
+  .subpage--caverna .caverna-liturgy-grid .subpage-image { width: 100%; height: 260px; }
+  .subpage--caverna .caverna-liturgy-story { min-height: 90px; padding-top: 38px; font-size: 16px; line-height: 1.18; }
+  .subpage--caverna .caverna-house { min-height: 0; padding: 10px 56px 72px; }
+  .subpage--caverna .caverna-house h2 { margin-bottom: 32px; }
+  .subpage--caverna .caverna-gallery { grid-template-columns: 500px 320px 460px; grid-template-rows: 260px 260px; gap: 24px; height: 544px; }
+  .subpage--caverna .caverna-house-copy { max-width: 1328px; margin-top: 30px; font-size: 16px; line-height: 1.18; }
+  .subpage--caverna .caverna-house-copy p:nth-child(2) { font-size: 24px; }
+  .subpage--caverna .subpage-cta { grid-template-columns: 1fr 470px; padding: 72px 56px; }
+}
+
+@media (max-width: 1024px) {
+  .subpage--caverna .caverna-hero-image img { object-position: center 42%; }
+  .subpage--caverna .caverna-hero-image::after { display: block; content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(74,32,64,.12), rgba(74,32,64,.58)); }
+  .subpage--caverna .caverna-history, .subpage--caverna .caverna-liturgy, .subpage--caverna .caverna-house { min-height: 0; }
+  .caverna-history-story, .caverna-liturgy-story, .caverna-house-copy { font-size: 14px; line-height: 1.4; }
+  .caverna-history-story a, .caverna-house-copy a { display: inline-block; margin-top: 4px; }
+  .subpage--caverna .caverna-liturgy-grid .subpage-image { height: 280px; }
+  .subpage--caverna .caverna-gallery { height: auto; }
+  .subpage--caverna .caverna-house-copy p:nth-child(2) { font-size: 18px; }
+}
+
+/* Last cascade layer for the A Caverna Figma frame. */
+@media (min-width: 1025px) {
+  .subpage--caverna .site-header { height: 86px; padding: 26px 56px; }
+  .subpage--caverna .subpage-nav { min-height: 0; align-items: flex-start; }
+  .subpage--caverna .subpage-hero { height: 474px; min-height: 474px; padding: 72px 56px 0; }
+  .subpage--caverna .subpage-hero-copy { align-self: flex-start; max-width: 800px; transform: none; }
+  .subpage--caverna .subpage-hero h1 { max-width: 800px; font-size: 72px; line-height: 1.18; letter-spacing: -.07em; }
+  .subpage--caverna .caverna-hero-image { top: 0; right: 0; bottom: 0; width: 50%; height: auto; background: #4a2040; }
+  .subpage--caverna .caverna-hero-image img { opacity: .9; filter: saturate(.86) contrast(.94) brightness(.8); object-position: center 46%; }
+  .subpage--caverna .caverna-hero-image::after { display: block; content: ""; position: absolute; z-index: 1; inset: 0; background: linear-gradient(90deg, #4a2040 0%, rgba(74,32,64,.84) 18%, rgba(74,32,64,.38) 48%, rgba(74,32,64,.1) 72%, transparent 100%); }
+  .subpage--caverna .caverna-history { min-height: 1039px; padding: 66px 56px 72px; gap: 40px; }
+  .subpage--caverna .caverna-history-title { font-size: 44px; }
+  .subpage--caverna .subpage-history-grid { grid-template-columns: 480px 1fr; gap: 32px; }
+  .subpage--caverna .subpage-history-grid > div:first-child p { font-size: 16px; line-height: 1.18; }
+  .subpage--caverna .subpage-history-grid .subpage-info-card { min-height: 129px; padding: 24px; }
+  .caverna-history-story, .caverna-liturgy-story, .caverna-house-copy { color: #09090a; }
+  .caverna-history-story { min-height: 95px; font-size: 16px; line-height: 1.18; }
+  .caverna-history-story p, .caverna-house-copy p, .caverna-liturgy-story p { margin: 0 0 12px; }
+  .caverna-history-story a, .caverna-house-copy a { color: #741f60; font-size: 11px; font-weight: 700; }
+  .subpage--caverna .subpage-small-heading { margin: 0; font-size: 24px; line-height: 1.18; }
+  .subpage--caverna .caverna-timeline { height: 470px; min-height: 470px; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 16px; }
+  .subpage--caverna .caverna-timeline-line { top: 90px; right: 40px; left: 40px; }
+  .subpage--caverna .caverna-timeline-year { top: 32px; font-size: 18px; }
+  .subpage--caverna .caverna-timeline-marker { top: 81px; }
+  .subpage--caverna .caverna-timeline-item strong { top: 132px; font-size: 13px; line-height: 16px; }
+  .subpage--caverna .caverna-timeline-item > span:not(.caverna-timeline-year):not(.caverna-timeline-marker) { top: 190px; font-size: 11px; line-height: 15px; }
+  .subpage--caverna .caverna-timeline-item:nth-of-type(2) .caverna-timeline-marker, .subpage--caverna .caverna-timeline-item:nth-of-type(6) .caverna-timeline-marker { background: #f1ac33; }
+  .subpage--caverna .caverna-values { min-height: 0; padding: 66px 56px; gap: 38px; }
+  .subpage--caverna .caverna-values h2 { margin: 0; font-size: 44px; }
+  .subpage--caverna .caverna-liturgy { min-height: 0; padding: 66px 56px 0; }
+  .subpage--caverna .caverna-liturgy-grid { grid-template-columns: 480px minmax(0, 1fr); gap: 32px; align-items: start; }
+  .subpage--caverna .caverna-liturgy-grid > div { max-width: 480px; }
+  .subpage--caverna .caverna-liturgy-grid p { margin: 0 0 16px; font-size: 16px; line-height: 1.18; }
+  .subpage--caverna .caverna-liturgy-grid .subpage-image { width: 100%; height: 260px; }
+  .subpage--caverna .caverna-liturgy-story { min-height: 90px; padding-top: 38px; font-size: 16px; line-height: 1.18; }
+  .subpage--caverna .caverna-house { min-height: 0; padding: 10px 56px 72px; }
+  .subpage--caverna .caverna-house h2 { margin-bottom: 32px; }
+  .subpage--caverna .caverna-gallery { grid-template-columns: 500px 320px 460px; grid-template-rows: 260px 260px; gap: 24px; height: 544px; }
+  .subpage--caverna .caverna-house-copy { max-width: 1328px; margin-top: 30px; font-size: 16px; line-height: 1.18; }
+  .subpage--caverna .caverna-house-copy p:nth-child(2) { font-size: 24px; }
+  .subpage--caverna .subpage-cta { grid-template-columns: 1fr 470px; padding: 72px 56px; }
+}
+
+@media (max-width: 1024px) {
+  .subpage--caverna .caverna-hero-image img { object-position: center 42%; }
+  .subpage--caverna .caverna-hero-image::after { display: block; content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(74,32,64,.12), rgba(74,32,64,.58)); }
+  .subpage--caverna .caverna-history, .subpage--caverna .caverna-liturgy, .subpage--caverna .caverna-house { min-height: 0; }
+  .caverna-history-story, .caverna-liturgy-story, .caverna-house-copy { font-size: 14px; line-height: 1.4; }
+  .caverna-history-story a, .caverna-house-copy a { display: inline-block; margin-top: 4px; }
+  .subpage--caverna .caverna-liturgy-grid .subpage-image { height: 280px; }
+  .subpage--caverna .caverna-gallery { height: auto; }
+  .subpage--caverna .caverna-house-copy p:nth-child(2) { font-size: 18px; }
+}
+
+/* Final A Caverna frame overrides. */
+@media (min-width: 1025px) {
+  .subpage--caverna .site-header { height: 86px; padding: 26px 56px; }
+  .subpage--caverna .subpage-nav { min-height: 0; align-items: flex-start; }
+  .subpage--caverna .subpage-hero { height: 474px; min-height: 474px; padding: 72px 56px 0; }
+  .subpage--caverna .subpage-hero-copy { align-self: flex-start; max-width: 800px; transform: none; }
+  .subpage--caverna .subpage-hero h1 { max-width: 800px; font-size: 72px; line-height: 1.18; letter-spacing: -.07em; }
+  .subpage--caverna .caverna-hero-image { top: 0; right: 0; bottom: 0; width: 50%; height: auto; background: #4a2040; }
+  .subpage--caverna .caverna-hero-image img { opacity: .9; filter: saturate(.86) contrast(.94) brightness(.8); object-position: center 46%; }
+  .subpage--caverna .caverna-hero-image::after { display: block; content: ""; position: absolute; z-index: 1; inset: 0; background: linear-gradient(90deg, #4a2040 0%, rgba(74,32,64,.84) 18%, rgba(74,32,64,.38) 48%, rgba(74,32,64,.1) 72%, transparent 100%); }
+  .subpage--caverna .caverna-history { min-height: 1039px; padding: 66px 56px 72px; gap: 40px; }
+  .subpage--caverna .caverna-history-title { font-size: 44px; }
+  .subpage--caverna .subpage-history-grid { grid-template-columns: 480px 1fr; gap: 32px; }
+  .subpage--caverna .subpage-history-grid > div:first-child p { font-size: 16px; line-height: 1.18; }
+  .subpage--caverna .subpage-history-grid .subpage-info-card { min-height: 129px; padding: 24px; }
+  .caverna-history-story, .caverna-liturgy-story, .caverna-house-copy { color: #09090a; }
+  .caverna-history-story { min-height: 95px; font-size: 16px; line-height: 1.18; }
+  .caverna-history-story p, .caverna-house-copy p, .caverna-liturgy-story p { margin: 0 0 12px; }
+  .caverna-history-story a, .caverna-house-copy a { color: #741f60; font-size: 11px; font-weight: 700; }
+  .subpage--caverna .subpage-small-heading { margin: 0; font-size: 24px; line-height: 1.18; }
+  .subpage--caverna .caverna-timeline { height: 470px; min-height: 470px; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 16px; }
+  .subpage--caverna .caverna-timeline-line { top: 90px; right: 40px; left: 40px; }
+  .subpage--caverna .caverna-timeline-year { top: 32px; font-size: 18px; }
+  .subpage--caverna .caverna-timeline-marker { top: 81px; }
+  .subpage--caverna .caverna-timeline-item strong { top: 132px; font-size: 13px; line-height: 16px; }
+  .subpage--caverna .caverna-timeline-item > span:not(.caverna-timeline-year):not(.caverna-timeline-marker) { top: 190px; font-size: 11px; line-height: 15px; }
+  .subpage--caverna .caverna-timeline-item:nth-of-type(2) .caverna-timeline-marker, .subpage--caverna .caverna-timeline-item:nth-of-type(6) .caverna-timeline-marker { background: #f1ac33; }
+  .subpage--caverna .caverna-values { min-height: 0; padding: 66px 56px; gap: 38px; }
+  .subpage--caverna .caverna-values h2 { margin: 0; font-size: 44px; }
+  .subpage--caverna .caverna-liturgy { min-height: 0; padding: 66px 56px 0; }
+  .subpage--caverna .caverna-liturgy-grid { grid-template-columns: 480px minmax(0, 1fr); gap: 32px; align-items: start; }
+  .subpage--caverna .caverna-liturgy-grid > div { max-width: 480px; }
+  .subpage--caverna .caverna-liturgy-grid p { margin: 0 0 16px; font-size: 16px; line-height: 1.18; }
+  .subpage--caverna .caverna-liturgy-grid .subpage-image { width: 100%; height: 260px; }
+  .subpage--caverna .caverna-liturgy-story { min-height: 90px; padding-top: 38px; font-size: 16px; line-height: 1.18; }
+  .subpage--caverna .caverna-house { min-height: 0; padding: 10px 56px 72px; }
+  .subpage--caverna .caverna-house h2 { margin-bottom: 32px; }
+  .subpage--caverna .caverna-gallery { grid-template-columns: 500px 320px 460px; grid-template-rows: 260px 260px; gap: 24px; height: 544px; }
+  .subpage--caverna .caverna-house-copy { max-width: 1328px; margin-top: 30px; font-size: 16px; line-height: 1.18; }
+  .subpage--caverna .caverna-house-copy p:nth-child(2) { font-size: 24px; }
+  .subpage--caverna .subpage-cta { grid-template-columns: 1fr 470px; padding: 72px 56px; }
+}
+
+@media (max-width: 1024px) {
+  .subpage--caverna .caverna-hero-image img { object-position: center 42%; }
+  .subpage--caverna .caverna-hero-image::after { display: block; content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(74,32,64,.12), rgba(74,32,64,.58)); }
+  .subpage--caverna .caverna-history, .subpage--caverna .caverna-liturgy, .subpage--caverna .caverna-house { min-height: 0; }
+  .caverna-history-story, .caverna-liturgy-story, .caverna-house-copy { font-size: 14px; line-height: 1.4; }
+  .caverna-history-story a, .caverna-house-copy a { display: inline-block; margin-top: 4px; }
+  .subpage--caverna .caverna-liturgy-grid .subpage-image { height: 280px; }
+  .subpage--caverna .caverna-gallery { height: auto; }
+  .subpage--caverna .caverna-house-copy p:nth-child(2) { font-size: 18px; }
+}
+
 .subpage-image img {
   border-radius: inherit;
 }
@@ -1796,4 +2236,27 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .subpage--caverna .caverna-hero-image::after {
     display: none;
   }
+}
+
+/* Ensure the Caverna frame remains the final cascade layer. */
+@media (min-width: 1025px) {
+  .subpage--caverna .subpage-hero-copy { width: 800px; }
+  .subpage--caverna .subpage-hero h1 { white-space: nowrap; }
+  .subpage--caverna .site-header { height: 86px; padding: 26px 56px; }
+  .subpage--caverna .subpage-hero { height: 474px; min-height: 474px; padding: 72px 56px 0; }
+  .subpage--caverna .subpage-hero-copy { align-self: flex-start; transform: none; }
+  .subpage--caverna .caverna-hero-image::after { display: block; content: ""; position: absolute; z-index: 1; inset: 0; background: linear-gradient(90deg, #4a2040 0%, rgba(74,32,64,.84) 18%, rgba(74,32,64,.38) 48%, rgba(74,32,64,.1) 72%, transparent 100%); }
+  .subpage--caverna .caverna-history { min-height: 1039px; padding: 66px 56px 72px; gap: 40px; }
+  .subpage--caverna .caverna-timeline { height: 470px; min-height: 470px; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 16px; }
+  .subpage--caverna .caverna-values { min-height: 0; padding: 66px 56px; }
+  .subpage--caverna .caverna-liturgy { min-height: 0; padding: 66px 56px 0; }
+  .subpage--caverna .caverna-liturgy-grid { grid-template-columns: 480px minmax(0, 1fr); gap: 32px; align-items: start; }
+  .subpage--caverna .caverna-liturgy-grid .subpage-image { height: 260px; }
+  .subpage--caverna .caverna-house { min-height: 0; padding: 10px 56px 72px; }
+  .subpage--caverna .caverna-gallery { grid-template-columns: 500px 320px 460px; grid-template-rows: 260px 260px; gap: 24px; height: 544px; }
+  .subpage--caverna .subpage-cta { grid-template-columns: 1fr 470px; padding: 72px 56px; }
+}
+
+@media (max-width: 1024px) {
+  .subpage--caverna .caverna-hero-image::after { display: block; content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(74,32,64,.12), rgba(74,32,64,.58)); }
 }

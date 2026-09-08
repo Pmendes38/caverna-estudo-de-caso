@@ -4,6 +4,7 @@ import { SiteHeader, subpageLinks, type PageKey } from './SiteHeader';
 
 const assets = {
   hero: '/assets/figma/d01-01.png',
+  cavernaHero: '/assets/attached/caverna-hero.jpeg',
   community: '/assets/treated/community.jpeg',
   communityHero: '/assets/treated/community-hero.jpeg',
   agendaHero: '/assets/treated/worship.jpeg',
@@ -117,7 +118,7 @@ function PageFrame({ page, children }: { page: PageKey; children: ReactNode }) {
 }
 
 function CavernaPage() {
-  const [activeMoment, setActiveMoment] = useState<string | null>(null);
+  const [activeMoment, setActiveMoment] = useState<string | null>('2025');
   const moments = [
     ['2013', 'A RUA SE TORNA CAMPO', 'Os projetos missionários já alcançavam o Jardim Ingá. A missão acontecia onde as pessoas estavam, antes de existir uma igreja chamada A Caverna.', 'history2013'],
     ['2015', 'A MISSÃO SE EXPANDE', 'As frentes urbanas crescem e alcançam diferentes cidades e realidades. Asilos, escolas, recuperação e pessoas em situação de rua passam a fazer parte de uma rotina intensa de missão.', 'history2015'],
@@ -131,12 +132,13 @@ function CavernaPage() {
     <PageFrame page="caverna">
       <main>
         <section className="subpage-hero subpage-hero--plum caverna-hero">
-          <div className="subpage-hero-copy"><p className="subpage-kicker">[QUEM SOMOS]</p><h1>UMA IGREJA<br />NASCIDA DA MISSÃO</h1><p>Começamos em Ceilândia, em 2016. Em 2017, a missão chegou ao Jardim Ingá e se tornou comunidade.</p></div>
-          <ImageSlot alt="Área de destaque da Igreja A Caverna" className="caverna-hero-image" />
+          <div className="subpage-hero-copy"><p className="subpage-kicker">[QUEM SOMOS]</p><h1>A IGREJA QUE<br />NASCEU DA MISSÃO</h1><p>Começamos em Ceilândia, em 2016. Em 2017, a missão chegou ao Jardim Ingá e se tornou comunidade.</p></div>
+          <ImageSlot src={assets.cavernaHero} alt="Comunidade reunida na Igreja A Caverna" className="caverna-hero-image" />
         </section>
         <section className="subpage-section subpage-section--paper caverna-history">
           <h2 className="caverna-history-title">NOSSA HISTÓRIA</h2>
-          <div className="subpage-history-grid"><div><p>A Caverna não começou com um prédio procurando por pessoas. Começou com gente sendo alcançada nas ruas e com a responsabilidade de permanecer perto, ensinar e cuidar.</p></div><div className="subpage-card-row"><InfoCard title="PERMANECER">A missão não termina quando alguém chega. A gente permanece perto.</InfoCard><InfoCard title="EDIFICAR">Igreja que edifica igreja: pessoas formadas para formar outras pessoas.</InfoCard></div></div>
+          <div className="subpage-history-grid"><div><p>A Caverna nasceu nas ruas, entre projetos missionários que alcançavam pessoas em escolas, asilos, casas de recuperação e diferentes contextos da cidade. Mas logo entendemos que anunciar o Evangelho era apenas o começo. Quem chegava precisava encontrar ensino, comunhão, cuidado e alguém disposto a permanecer.</p></div><div className="subpage-card-row"><InfoCard title="PERMANECER">A missão não termina quando alguém chega. A gente permanece perto.</InfoCard><InfoCard title="EDIFICAR">Anunciar o Evangelho não é o fim. A gente permanece para ensinar e formar.</InfoCard></div></div>
+          <div className="caverna-history-story"><p>Foi dessa necessidade que a missão começou a se tornar comunidade. Em 2016, as primeiras reuniões deram forma àquilo que depois se tornaria a Igreja A Caverna. Desde então, atravessamos mudanças, aprendemos a cuidar melhor das pessoas e amadurecemos nossa forma de viver aquilo que permanece no centro da nossa história: formar discípulos de Jesus Cristo.</p><a href="/a-caverna">CLIQUE PARA VER NOSSA HISTÓRIA COMPLETA&nbsp; →</a></div>
           <h2 className="subpage-small-heading">MOMENTOS QUE FORMARAM A CAVERNA</h2>
           <div className="caverna-timeline" onMouseLeave={() => setActiveMoment(null)}>
             <div className="caverna-timeline-line" />
@@ -151,9 +153,9 @@ function CavernaPage() {
           </div>
         </section>
         <section className="subpage-section subpage-section--dark caverna-values"><h2>MISSÃO, VISÃO E VALORES</h2><div className="subpage-card-row"><InfoCard title="MISSÃO" dark>Anunciar o evangelho e edificar a igreja por meio da verdade, da comunhão e do serviço.</InfoCard><InfoCard title="VISÃO" dark>Ser referência de comunidade cristã com identidade, profundidade e presença local.</InfoCard><InfoCard title="VALORES" dark>Cristo no centro. Escritura. Comunidade. Compaixão. Serviço. Edificação.</InfoCard></div></section>
-        <section className="subpage-section subpage-section--paper caverna-liturgy"><h2>NOSSA LITURGIA</h2><div className="caverna-liturgy-grid"><div><p>A liturgia da Caverna reúne Palavra, oração, louvor e comunhão. Não é um espetáculo: é a igreja reunida para adorar a Deus e cuidar uns dos outros.</p><p>Em cada encontro, a comunidade aprende a servir com alegria e a permanecer perto.</p></div><ImageSlot src={assets.liturgy} alt="Louvor na Igreja A Caverna" className="slot--plum" /></div></section>
-        <section className="subpage-section subpage-section--paper caverna-house"><h2>NOSSA CASA</h2><div className="caverna-gallery"><ImageSlot src={assets.houseMesa} alt="Mesa compartilhada na Igreja A Caverna" className="slot--brown" /><ImageSlot src={assets.houseCommunity} alt="Comunidade reunida na Igreja A Caverna" className="slot--teal" /><ImageSlot src={assets.houseLouvor} alt="Louvor na Igreja A Caverna" className="slot--plum" /><ImageSlot src={assets.houseInstrumento1} alt="Música na Igreja A Caverna" className="slot--gray" /><ImageSlot src={assets.houseInstrumento2} alt="Músico servindo na Igreja A Caverna" className="slot--brown" /></div><p>Mais do que um endereço, nossa casa é um lugar de encontro. Aqui recebemos pessoas, partilhamos a vida e construímos uma comunidade centrada em Cristo.</p></section>
-        <section className="subpage-cta"><h2>VENHA CONHECER<br />A NOSSA FAMÍLIA</h2><div><p>Descubra como a Caverna une missão, fé e vida compartilhada para formar pessoas que caminham juntas.</p><Button href="/nossa-fe">CONHEÇA O QUE CREMOS&nbsp; →</Button><Button href="/comunidade">COMECE A CAMINHAR&nbsp; →</Button></div></section>
+        <section className="subpage-section subpage-section--paper caverna-liturgy"><h2>NOSSA LITURGIA</h2><div className="caverna-liturgy-grid"><div><p>Nos reunimos aos sábados, a partir das 19h30. Essa escolha não nasce de uma observância sabática, mas da realidade da nossa comunidade. Muitos de nós trabalham durante a semana em Brasília e enfrentam longos deslocamentos. Por isso, preservamos o domingo como um tempo de descanso, família e vida em casa.</p><p>Nosso culto começa com louvor e adoração. Depois, fazemos algo que se tornou parte importante de quem somos: paramos para estar à mesa. Cada pessoa pode trazer algo de casa, contribuir com o que será preparado ou simplesmente chegar. Não é um intervalo e não é um lanche vendido pela igreja. É comunhão.</p></div><ImageSlot src={assets.liturgy} alt="Louvor na Igreja A Caverna" className="slot--plum" /></div><div className="caverna-liturgy-story"><p>É nesse momento que conversamos, recebemos quem chegou pela primeira vez, reencontramos quem passou a semana longe e partilhamos a mesa como família.</p><p>Depois da comunhão, voltamos nossa atenção para a Palavra de Deus, com ensino e exposição das Escrituras. Não trabalhamos com um horário rígido para encerrar o culto. Queremos ter tempo para adorar, estar juntos e ouvir a Palavra sem transformar a reunião em uma corrida contra o relógio.</p></div></section>
+        <section className="subpage-section subpage-section--paper caverna-house"><h2>NOSSA CASA</h2><div className="caverna-gallery"><ImageSlot src={assets.houseMesa} alt="Mesa compartilhada na Igreja A Caverna" className="slot--brown" /><ImageSlot src={assets.houseLouvor} alt="Louvor na Igreja A Caverna" className="slot--plum" /><ImageSlot src={assets.houseCommunity} alt="Comunidade reunida na Igreja A Caverna" className="slot--teal" /><ImageSlot src={assets.houseInstrumento1} alt="Música na Igreja A Caverna" className="slot--gray" /><ImageSlot src={assets.houseInstrumento2} alt="Músico servindo na Igreja A Caverna" className="slot--brown" /></div><div className="caverna-house-copy"><p>A Caverna fica no Jardim Ingá, na Av. Dr. Danton Jobim, Quadra 32, Lote 04, próxima ao tradicional Pit Dog do Jeovan, um dos pontos mais conhecidos da região.</p><p>Nossa casa está em reforma para receber melhor a comunidade. Se você quiser fazer parte dessa construção, pode nos ajudar com contribuições e ofertas.</p><a href="/contribua">CLIQUE PARA VER COMO CONTRIBUIR&nbsp; →</a></div></section>
+        <section className="subpage-cta"><h2>UMA IDENTIDADE QUE<br />VEM DA HISTÓRIA</h2><div><p>A história continua: um povo reunido em torno de Cristo para viver, servir e anunciar.</p><Button href="/nossa-fe">NOSSA FÉ&nbsp; →</Button><Button href="/comunidade">CONHEÇA A COMUNIDADE&nbsp; →</Button></div></section>
       </main>
     </PageFrame>
   );
