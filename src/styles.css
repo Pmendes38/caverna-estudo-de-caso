@@ -2470,7 +2470,7 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
       linear-gradient(90deg, #4a2040 0%, rgba(74, 32, 64, .84) 18%, rgba(74, 32, 64, .38) 48%, rgba(74, 32, 64, .1) 72%, transparent 100%),
       url('/assets/attached/caverna-hero.jpeg');
     background-position: center top, right top;
-    background-size: 100% 560px, 50% 560px;
+    background-size: 100% 560px, auto 560px;
     background-repeat: no-repeat;
   }
 
