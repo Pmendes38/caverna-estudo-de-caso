@@ -690,6 +690,13 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 .caverna-gallery .subpage-image:nth-child(4) { grid-row: 1; grid-column: 3; }
 .caverna-gallery .subpage-image:nth-child(5) { grid-row: 2; grid-column: 3; }
 .caverna-values { min-height: 430px; }
+.caverna-liturgy { min-height: 580px; }
+.caverna-liturgy-grid { display: grid; grid-template-columns: minmax(280px, .72fr) minmax(0, 1.28fr); gap: 48px; align-items: center; }
+.caverna-liturgy-grid > div { max-width: 480px; }
+.caverna-liturgy-grid p { margin: 0 0 18px; font-size: 17px; line-height: 1.45; }
+.caverna-liturgy-grid .subpage-image { height: 420px; }
+.caverna-house { min-height: 760px; }
+.caverna-house > p { max-width: 720px; margin: 30px 0 0; font-size: 17px; line-height: 1.45; }
 .subpage-cta { display: grid; grid-template-columns: 1fr 470px; gap: 54px; padding: 72px max(56px, calc((100vw - 1440px) / 2 + 56px)); background: #f1ac33; color: #09090a; }
 .subpage-cta h2 { margin: 0; font-size: clamp(50px, 4.1vw, 64px); font-weight: 800; line-height: 1.02; letter-spacing: -.07em; }
 .subpage-cta > div { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
@@ -1296,6 +1303,11 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .caverna-history { gap: 24px !important; }
   .caverna-history-title { font-size: 36px; }
   .caverna-history .subpage-small-heading { font-size: 20px; }
+  .caverna-liturgy-grid { display: flex; flex-direction: column; align-items: stretch; gap: 24px; }
+  .caverna-liturgy-grid > div { max-width: none; }
+  .caverna-liturgy-grid .subpage-image { height: 300px; }
+  .caverna-house { min-height: 0; }
+  .caverna-house > p { font-size: 14px; }
   .caverna-values { gap: 24px; }
   .caverna-values h2 { font-size: 36px; }
   .faith-hero, .agenda-hero, .visit-hero, .contribution-hero { height: auto !important; min-height: 0 !important; padding: 112px 20px 42px !important; }

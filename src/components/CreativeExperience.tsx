@@ -4,16 +4,15 @@ import { LiveNowButton } from './LiveNowButton';
 import { SiteHeader } from './SiteHeader';
 
 const galleryA = [
-  { src: '/assets/treated/community.jpeg', alt: 'Comunidade reunida', className: 'gallery-a-main' },
-  { src: '/assets/treated/worship.jpeg', alt: 'Momento de adoração', className: 'gallery-a-secondary' },
-  { src: '/assets/treated/prayer.jpeg', alt: 'Momento de oração', className: 'gallery-a-entering' },
+  { src: '/assets/site-images/d04-d06-gallery/d04-01.jpg', alt: 'Comunidade servindo nas ruas', className: 'gallery-a-main' },
+  { src: '/assets/site-images/d04-d06-gallery/d04-02.jpg', alt: 'Música e comunhão na comunidade', className: 'gallery-a-secondary' },
+  { src: '/assets/site-images/d04-d06-gallery/d04-03.jpg', alt: 'Mesa compartilhada na comunidade', className: 'gallery-a-entering' },
 ];
 
 const galleryB = [
-  { src: '/assets/treated/discipulado.jpeg', alt: 'Encontro de discipulado', className: 'gallery-b-leaving' },
-  { src: '/assets/treated/community.jpeg', alt: 'Vida em comunidade', className: 'gallery-b-main' },
-  { src: '/assets/treated/prayer.jpeg', alt: 'Momento de comunhão', className: 'gallery-b-secondary' },
-  { src: '/assets/treated/mission-reino.jpeg', alt: 'Ação missionária da comunidade', className: 'gallery-b-last' },
+  { src: '/assets/site-images/d04-d06-gallery/d05-01.jpg', alt: 'Cuidado e discipulado na comunidade', className: 'gallery-b-leaving' },
+  { src: '/assets/site-images/d04-d06-gallery/d05-02.jpg', alt: 'Vida em comunidade', className: 'gallery-b-main' },
+  { src: '/assets/site-images/d04-d06-gallery/d05-03.jpg', alt: 'Momento de oração', className: 'gallery-b-secondary' },
 ];
 
 function Scene({ children, index, progress }: { children: ReactNode; index: number; progress: number }) {
@@ -145,7 +144,7 @@ function DesktopExit() {
   return (
     <section className="experience-panel experience-exit" aria-label="Saída para o site institucional">
       <div className="exit-black-transition">
-        <img src="/assets/attached/black-transition.png" alt="Comunidade da Igreja A Caverna reunida" />
+        <img src="/assets/site-images/d04-d06-gallery/d06-01.jpg" alt="Comunidade da Igreja A Caverna reunida em oração" />
       </div>
       <h2>VOCÊ JÁ SABE O QUE NÃO SOMOS<br />AGORA CONHEÇA QUEM SOMOS</h2>
       <p>Conheça nossa fé, nossa história e a vida em comunidade na A Caverna.</p>
@@ -220,9 +219,9 @@ function MobileGalleryA() {
   return (
     <a className="mobile-panel mobile-panel-link mobile-gallery mobile-gallery-a" href="/comunidade" aria-label="Conheça nossa comunidade">
       <div className="mobile-gallery-title"><p>VIDA EM</p><p>COMUNIDADE</p></div>
-      <img className="mobile-gallery-main" src="/assets/treated/community.jpeg" alt="Comunidade reunida" />
-      <img className="mobile-gallery-small mobile-gallery-small--left" src="/assets/treated/worship.jpeg" alt="Momento de comunhão" />
-      <img className="mobile-gallery-small mobile-gallery-small--right" src="/assets/attached/gallery-card-01.jpg" alt="Cantora ministrando na Igreja A Caverna" />
+      <img className="mobile-gallery-main" src="/assets/site-images/d04-d06-gallery/d04-01.jpg" alt="Comunidade servindo nas ruas" />
+      <img className="mobile-gallery-small mobile-gallery-small--left" src="/assets/site-images/d04-d06-gallery/d04-02.jpg" alt="Música e comunhão na comunidade" />
+      <img className="mobile-gallery-small mobile-gallery-small--right" src="/assets/site-images/d04-d06-gallery/d04-03.jpg" alt="Mesa compartilhada na comunidade" />
       <p className="mobile-gallery-index">01 / 02</p>
     </a>
   );
@@ -231,10 +230,9 @@ function MobileGalleryA() {
 function MobileGalleryB() {
   return (
     <a className="mobile-panel mobile-panel-link mobile-gallery mobile-gallery-b" href="/comunidade" aria-label="Conheça nossa comunidade">
-      <img className="mobile-gallery-small mobile-gallery-b--left" src="/assets/attached/gallery-card-02.jpg" alt="Cantora ministrando na Igreja A Caverna" />
-      <img className="mobile-gallery-main mobile-gallery-b--main" src="/assets/treated/community.jpeg" alt="Vida em comunidade" />
-      <img className="mobile-gallery-small mobile-gallery-b--bottom-left" src="/assets/treated/prayer.jpeg" alt="Momento de adoração" />
-      <img className="mobile-gallery-small mobile-gallery-b--bottom-right" src="/assets/treated/mission-reino.jpeg" alt="Culto da igreja" />
+      <img className="mobile-gallery-small mobile-gallery-b--left" src="/assets/site-images/d04-d06-gallery/d05-01.jpg" alt="Cuidado e discipulado na comunidade" />
+      <img className="mobile-gallery-main mobile-gallery-b--main" src="/assets/site-images/d04-d06-gallery/d05-02.jpg" alt="Vida em comunidade" />
+      <img className="mobile-gallery-small mobile-gallery-b--bottom-left" src="/assets/site-images/d04-d06-gallery/d05-03.jpg" alt="Momento de oração" />
       <div className="mobile-gallery-quote">UM LUGAR<br />PARA PERTENCER.</div>
       <p className="mobile-gallery-index">02 / 02</p>
     </a>
@@ -245,7 +243,7 @@ function MobileExit() {
   return (
     <section className="mobile-panel mobile-exit" aria-label="Saída para o site institucional">
       <div className="mobile-exit-black">
-        <img src="/assets/attached/black-transition.png" alt="Comunidade da Igreja A Caverna reunida" />
+        <img src="/assets/site-images/d04-d06-gallery/d06-01.jpg" alt="Comunidade da Igreja A Caverna reunida em oração" />
       </div>
       <h2>VOCÊ JÁ SABE<br />O QUE NÃO SOMOS<br />AGORA CONHEÇA<br />QUEM SOMOS</h2>
       <p>Conheça nossa fé, nossa história e a vida em comunidade na A Caverna.</p>

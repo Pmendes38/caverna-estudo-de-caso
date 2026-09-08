@@ -17,10 +17,19 @@ const assets = {
   street: '/assets/treated/mission-andarilhos.jpeg',
   building: '/assets/treated/history-2017.jpeg',
   contribution: '/assets/treated/contribution.jpeg',
-  history2013: '/assets/treated/history-2013.jpeg',
-  history2015: '/assets/treated/history-2015.jpeg',
-  history2017: '/assets/treated/history-2017.jpeg',
-  history2019: '/assets/treated/history-2019.jpeg',
+  history2013: '/assets/site-images/quem-somos/timeline/2013.jpg',
+  history2015: '/assets/site-images/quem-somos/timeline/2015.jpg',
+  history2016: '/assets/site-images/quem-somos/timeline/2016.jpg',
+  history2017: '/assets/site-images/quem-somos/timeline/2017.jpg',
+  history2019: '/assets/site-images/quem-somos/timeline/2019.jpg',
+  history2020: '/assets/site-images/quem-somos/timeline/2020.jpg',
+  history2025: '/assets/site-images/d04-d06-gallery/d06-01.jpg',
+  liturgy: '/assets/site-images/quem-somos/liturgia/culto.jpg',
+  houseMesa: '/assets/site-images/quem-somos/casa/mesa.jpg',
+  houseCommunity: '/assets/site-images/quem-somos/casa/comunidade.jpg',
+  houseLouvor: '/assets/site-images/quem-somos/casa/louvor.png',
+  houseInstrumento1: '/assets/site-images/quem-somos/casa/instrumento-01.jpg',
+  houseInstrumento2: '/assets/site-images/quem-somos/casa/instrumento-02.jpg',
   missionAmazonia: '/assets/treated/mission-amazonia.jpeg',
   missionReino: '/assets/treated/mission-reino.jpeg',
   sports: '/assets/treated/sports-jiujitsu.jpeg',
@@ -33,7 +42,7 @@ const assets = {
 };
 
 const pageNames: Record<PageKey, string> = {
-  caverna: 'A Caverna',
+  caverna: 'Quem Somos',
   fe: 'Nossa Fé',
   comunidade: 'Comunidade',
   agenda: 'Agenda',
@@ -112,11 +121,11 @@ function CavernaPage() {
   const moments = [
     ['2013', 'A RUA SE TORNA CAMPO', 'Os projetos missionários já alcançavam o Jardim Ingá. A missão acontecia onde as pessoas estavam, antes de existir uma igreja chamada A Caverna.', 'history2013'],
     ['2015', 'A MISSÃO SE EXPANDE', 'As frentes urbanas crescem e alcançam diferentes cidades e realidades. Asilos, escolas, recuperação e pessoas em situação de rua passam a fazer parte de uma rotina intensa de missão.', 'history2015'],
-    ['2016', 'A MISSÃO VIRA COMUNIDADE', 'As pessoas alcançadas precisavam de mais do que encontros pontuais. Em fevereiro começam as primeiras reuniões em Ceilândia. A missão começa a ganhar forma de comunidade, e nasce o nome A Caverna.', 'history2013'],
+    ['2016', 'A MISSÃO VIRA COMUNIDADE', 'As pessoas alcançadas precisavam de mais do que encontros pontuais. Em fevereiro começam as primeiras reuniões em Ceilândia. A missão começa a ganhar forma de comunidade, e nasce o nome A Caverna.', 'history2016'],
     ['2017', 'A CAVERNA CRIA RAÍZES NO JARDIM INGÁ', 'A comunidade deixa Ceilândia e passa a se reunir no Jardim Ingá, inicialmente na escola Coração de Mãe. Em fevereiro, a Comunidade de Fé A Caverna também é formalmente constituída.', 'history2017'],
     ['2019', 'A MISSÃO MUDA DE LUGAR', 'A igreja troca de templo para um lugar conhecido por um bar famoso do Jardim Ingá. Onde abundou o pecado, superabundou a graça. Hoje, o antigo espaço é um altar de adoração e vida com Deus.', 'history2019'],
-    ['2020', 'A PANDEMIA', 'Com a pandemia, os projetos são interrompidos e o cuidado se volta para a igreja e para as famílias. Entre cultos online e encontros nos lares, a comunidade aprende a se estruturar e amadurecer.', 'worship'],
-    ['2025', 'UMA NOVA FASE', 'A origem missionária permanece, mas a visão se amplia. A igreja amadurece sua linguagem e passa a comunicar com mais clareza que o Evangelho não pertence a um perfil específico de pessoas.', 'community'],
+    ['2020', 'A PANDEMIA', 'Com a pandemia, os projetos são interrompidos e o cuidado se volta para a igreja e para as famílias. Entre cultos online e encontros nos lares, a comunidade aprende a se estruturar e amadurecer.', 'history2020'],
+    ['2025', 'UMA NOVA FASE', 'A origem missionária permanece, mas a visão se amplia. A igreja amadurece sua linguagem e passa a comunicar com mais clareza que o Evangelho não pertence a um perfil específico de pessoas.', 'history2025'],
   ];
   return (
     <PageFrame page="caverna">
@@ -142,6 +151,8 @@ function CavernaPage() {
           </div>
         </section>
         <section className="subpage-section subpage-section--dark caverna-values"><h2>MISSÃO, VISÃO E VALORES</h2><div className="subpage-card-row"><InfoCard title="MISSÃO" dark>Anunciar o evangelho e edificar a igreja por meio da verdade, da comunhão e do serviço.</InfoCard><InfoCard title="VISÃO" dark>Ser referência de comunidade cristã com identidade, profundidade e presença local.</InfoCard><InfoCard title="VALORES" dark>Cristo no centro. Escritura. Comunidade. Compaixão. Serviço. Edificação.</InfoCard></div></section>
+        <section className="subpage-section subpage-section--paper caverna-liturgy"><h2>NOSSA LITURGIA</h2><div className="caverna-liturgy-grid"><div><p>A liturgia da Caverna reúne Palavra, oração, louvor e comunhão. Não é um espetáculo: é a igreja reunida para adorar a Deus e cuidar uns dos outros.</p><p>Em cada encontro, a comunidade aprende a servir com alegria e a permanecer perto.</p></div><ImageSlot src={assets.liturgy} alt="Louvor na Igreja A Caverna" className="slot--plum" /></div></section>
+        <section className="subpage-section subpage-section--paper caverna-house"><h2>NOSSA CASA</h2><div className="caverna-gallery"><ImageSlot src={assets.houseMesa} alt="Mesa compartilhada na Igreja A Caverna" className="slot--brown" /><ImageSlot src={assets.houseCommunity} alt="Comunidade reunida na Igreja A Caverna" className="slot--teal" /><ImageSlot src={assets.houseLouvor} alt="Louvor na Igreja A Caverna" className="slot--plum" /><ImageSlot src={assets.houseInstrumento1} alt="Música na Igreja A Caverna" className="slot--gray" /><ImageSlot src={assets.houseInstrumento2} alt="Músico servindo na Igreja A Caverna" className="slot--brown" /></div><p>Mais do que um endereço, nossa casa é um lugar de encontro. Aqui recebemos pessoas, partilhamos a vida e construímos uma comunidade centrada em Cristo.</p></section>
         <section className="subpage-cta"><h2>VENHA CONHECER<br />A NOSSA FAMÍLIA</h2><div><p>Descubra como a Caverna une missão, fé e vida compartilhada para formar pessoas que caminham juntas.</p><Button href="/nossa-fe">CONHEÇA O QUE CREMOS&nbsp; →</Button><Button href="/comunidade">COMECE A CAMINHAR&nbsp; →</Button></div></section>
       </main>
     </PageFrame>
