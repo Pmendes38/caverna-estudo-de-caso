@@ -2399,3 +2399,31 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .subpage--criancas { --subpage-header-image: url('/assets/treated/children.jpeg'); }
   .subpage--esportes { --subpage-header-image: url('/assets/treated/sports-hero.jpeg'); }
 }
+
+/* Keep the liturgy flow continuous and let its image fill the remaining frame. */
+@media (min-width: 1025px) {
+  .subpage--caverna .caverna-liturgy,
+  .subpage--caverna .caverna-house {
+    background: #f5f0e8;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .subpage--caverna .caverna-liturgy {
+    padding-bottom: 66px;
+  }
+
+  .subpage--caverna .caverna-liturgy-grid > div:first-child {
+    max-width: 480px;
+  }
+
+  .subpage--caverna .caverna-liturgy-grid > .subpage-image {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .subpage--caverna .caverna-house {
+    padding-top: 66px;
+  }
+}
