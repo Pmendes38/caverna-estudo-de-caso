@@ -8,8 +8,10 @@ type ProtagonistAsset = {
   sizes: string;
 };
 
+const PROTAGONIST_COUNT = 16;
+
 function createProtagonistAssets(directory: string, widths: [number, number, number]): ProtagonistAsset[] {
-  return Array.from({ length: 6 }, (_, index) => {
+  return Array.from({ length: PROTAGONIST_COUNT }, (_, index) => {
     const name = `hero-${String(index + 1).padStart(2, '0')}`;
     return {
       src: `/assets/site-images/${directory}/${name}@3x.png`,
@@ -39,7 +41,7 @@ export function getRotatingProtagonistIndex() {
   const stored = window.localStorage.getItem(storageKey);
   const previousIndex = stored === null ? -1 : Number.parseInt(stored, 10);
   const nextIndex = Number.isFinite(previousIndex)
-    ? (previousIndex + 1) % desktopProtagonistAssets.length
+    ? (previousIndex + 1 + desktopProtagonistAssets.length) % desktopProtagonistAssets.length
     : 0;
   window.localStorage.setItem(storageKey, String(nextIndex));
   return nextIndex;
@@ -48,7 +50,9 @@ export function getRotatingProtagonistIndex() {
 export function getCurrentProtagonistIndex() {
   const stored = window.localStorage.getItem('igreja-ac-protagonist-index');
   const index = stored === null ? 0 : Number.parseInt(stored, 10);
-  return Number.isFinite(index) ? index % desktopProtagonistAssets.length : 0;
+  return Number.isFinite(index)
+    ? ((index % desktopProtagonistAssets.length) + desktopProtagonistAssets.length) % desktopProtagonistAssets.length
+    : 0;
 }
 
 export function getCurrentProtagonist() {
