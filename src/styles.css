@@ -37,11 +37,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 .site-header { position: absolute; z-index: 100; top: 0; left: 0; right: 0; height: 114px; padding: 19px 5.55vw; color: var(--white); pointer-events: auto; }
-.hero-nav { position: relative; z-index: 101; display: grid; grid-template-columns: 1fr 1fr 1fr 150px 1fr 1fr 1fr; align-items: center; width: min(1440px, 100%); height: 75px; margin: 0 auto; pointer-events: auto; }
-.hero-nav-link { position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center; justify-self: start; min-height: 44px; padding: 12px 14px; color: inherit; font-size: 14px; font-weight: 700; line-height: 1; text-decoration: none; cursor: pointer; pointer-events: auto; transition: opacity .2s ease, color .2s ease, background-color .2s ease; }
+.hero-nav { position: relative; z-index: 101; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) 180px repeat(3, minmax(0, 1fr)); column-gap: clamp(18px, 2vw, 36px); align-items: center; width: min(1680px, 100%); height: 75px; margin: 0 auto; pointer-events: auto; }
+.hero-nav-link { position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center; justify-self: center; min-height: 44px; padding: 12px 8px; color: inherit; font-size: clamp(11px, .78vw, 13px); font-weight: 700; line-height: 1; text-align: center; text-decoration: none; cursor: pointer; pointer-events: auto; transition: opacity .2s ease, color .2s ease, background-color .2s ease; }
 .hero-nav-link { z-index: 102; }
-.hero-nav-link:nth-of-type(2), .hero-nav-link:nth-of-type(3), .hero-nav-link:nth-of-type(5), .hero-nav-link:nth-of-type(6) { justify-self: center; }
-.hero-nav-link:nth-of-type(7) { justify-self: end; }
 .hero-nav-link:hover, .hero-nav-link:focus-visible { color: var(--accent); background: rgba(241, 172, 51, .1); outline: 1px solid rgba(241, 172, 51, .65); outline-offset: -1px; }
 .hero-nav-link--active { color: var(--accent); }
 .hero-nav-logo { position: relative; z-index: 102; display: grid; place-items: center; width: 150px; height: 44px; }

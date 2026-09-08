@@ -9,6 +9,8 @@ type ProtagonistAsset = {
 };
 
 const PROTAGONIST_COUNT = 16;
+const PROTAGONIST_STORAGE_ID = 'igreja-ac-protagonist-rotation-v2';
+const PROTAGONIST_ROTATION_LENGTH = PROTAGONIST_COUNT * 2 - 2;
 
 function createProtagonistAssets(directory: string, widths: [number, number, number]): ProtagonistAsset[] {
   return Array.from({ length: PROTAGONIST_COUNT }, (_, index) => {
@@ -37,22 +39,25 @@ export function getRotatingProtagonist() {
 }
 
 export function getRotatingProtagonistIndex() {
-  const storageKey = 'igreja-ac-protagonist-index';
-  const stored = window.localStorage.getItem(storageKey);
-  const previousIndex = stored === null ? -1 : Number.parseInt(stored, 10);
-  const nextIndex = Number.isFinite(previousIndex)
-    ? (previousIndex + 1 + desktopProtagonistAssets.length) % desktopProtagonistAssets.length
+  const stored = window.localStorage.getItem(PROTAGONIST_STORAGE_ID);
+  const previousStep = stored === null ? 0 : Number.parseInt(stored, 10);
+  const step = Number.isFinite(previousStep)
+    ? ((previousStep % PROTAGONIST_ROTATION_LENGTH) + PROTAGONIST_ROTATION_LENGTH) % PROTAGONIST_ROTATION_LENGTH
     : 0;
-  window.localStorage.setItem(storageKey, String(nextIndex));
-  return nextIndex;
+  const protagonistIndex = step % 2 === 0 ? 0 : (step + 1) / 2;
+  window.localStorage.setItem(PROTAGONIST_STORAGE_ID, String((step + 1) % PROTAGONIST_ROTATION_LENGTH));
+  return protagonistIndex;
 }
 
 export function getCurrentProtagonistIndex() {
-  const stored = window.localStorage.getItem('igreja-ac-protagonist-index');
-  const index = stored === null ? 0 : Number.parseInt(stored, 10);
-  return Number.isFinite(index)
-    ? ((index % desktopProtagonistAssets.length) + desktopProtagonistAssets.length) % desktopProtagonistAssets.length
+  const stored = window.localStorage.getItem(PROTAGONIST_STORAGE_ID);
+  if (stored === null) return 0;
+
+  const step = Number.parseInt(stored, 10);
+  const normalizedStep = Number.isFinite(step)
+    ? ((step - 1) % PROTAGONIST_ROTATION_LENGTH + PROTAGONIST_ROTATION_LENGTH) % PROTAGONIST_ROTATION_LENGTH
     : 0;
+  return normalizedStep % 2 === 0 ? 0 : (normalizedStep + 1) / 2;
 }
 
 export function getCurrentProtagonist() {
