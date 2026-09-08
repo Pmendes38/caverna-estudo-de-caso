@@ -2316,3 +2316,37 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .mobile-gallery-b--bottom-right { top: 56svh; right: 16px; left: auto; width: min(165px, 43vw); height: 30svh; }
   .mobile-gallery-b .mobile-gallery-quote { top: 78svh; left: 16px; max-width: 330px; }
 }
+
+/* Desktop subpage header: reserve its own row and inherit the hero color. */
+@media (min-width: 1025px) {
+  .subpage {
+    --subpage-header-bg: #09090a;
+  }
+
+  .subpage--caverna,
+  .subpage--comunidade,
+  .subpage--visite,
+  .subpage--discipulado,
+  .subpage--oracao,
+  .subpage--criancas,
+  .subpage--esportes,
+  .subpage--missoes {
+    --subpage-header-bg: #4a2040;
+  }
+
+  .subpage--contribua {
+    --subpage-header-bg: #bb8055;
+  }
+
+  .subpage .site-header {
+    position: relative;
+    inset: auto;
+    height: 86px;
+    padding: 22px var(--subpage-gutter, 56px);
+    background: var(--subpage-header-bg);
+  }
+
+  .subpage-nav {
+    min-height: 42px;
+  }
+}
