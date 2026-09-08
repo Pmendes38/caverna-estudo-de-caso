@@ -2260,3 +2260,21 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 @media (max-width: 1024px) {
   .subpage--caverna .caverna-hero-image::after { display: block; content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(74,32,64,.12), rgba(74,32,64,.58)); }
 }
+
+/* D05 / Galeria horizontal B: composition matched to the Figma frame. */
+@media (min-width: 1025px) {
+  .gallery-b-leaving { top: 180px; left: 0; width: 270px; height: 570px; border-radius: 6px; object-fit: cover; }
+  .gallery-b-main { top: 90px; left: 310px; width: 400px; height: 650px; border-radius: 6px; object-fit: cover; }
+  .gallery-b-secondary { top: 240px; left: 750px; width: 300px; height: 440px; border-radius: 6px; object-fit: cover; }
+  .gallery-b-last { top: 100px; left: 1090px; width: 350px; height: 650px; border-radius: 6px; object-fit: cover; object-position: center; }
+  .gallery-b .gallery-quote { top: 680px; left: 620px; font-size: 46px; line-height: .93; }
+  .gallery-b .gallery-index { left: 72px; bottom: 38px; }
+}
+
+@media (max-width: 1024px) {
+  .mobile-gallery-b--left { top: 16svh; left: 16px; width: min(150px, 39vw); height: 34svh; }
+  .mobile-gallery-b--main { top: 9svh; right: 16px; left: auto; width: min(190px, 50vw); height: 39svh; }
+  .mobile-gallery-b--bottom-left { top: 54svh; left: 16px; width: min(155px, 42vw); height: 28svh; }
+  .mobile-gallery-b--bottom-right { top: 56svh; right: 16px; left: auto; width: min(165px, 43vw); height: 30svh; }
+  .mobile-gallery-b .mobile-gallery-quote { top: 78svh; left: 16px; max-width: 330px; }
+}

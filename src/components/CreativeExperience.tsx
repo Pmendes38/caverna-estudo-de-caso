@@ -10,9 +10,10 @@ const galleryA = [
 ];
 
 const galleryB = [
-  { src: '/assets/site-images/d04-d06-gallery/d05-01.jpg', alt: 'Cuidado e discipulado na comunidade', className: 'gallery-b-leaving' },
-  { src: '/assets/site-images/d04-d06-gallery/d05-02.jpg', alt: 'Vida em comunidade', className: 'gallery-b-main' },
-  { src: '/assets/site-images/d04-d06-gallery/d05-03.jpg', alt: 'Momento de oração', className: 'gallery-b-secondary' },
+  { src: '/assets/site-images/d04-d06-gallery/d04-03.jpg', alt: 'Mesa compartilhada na comunidade', className: 'gallery-b-leaving' },
+  { src: '/assets/site-images/d04-d06-gallery/d05-01.jpg', alt: 'Cuidado e discipulado na comunidade', className: 'gallery-b-main' },
+  { src: '/assets/site-images/d04-d06-gallery/d05-02.jpg', alt: 'Vida em comunidade', className: 'gallery-b-secondary' },
+  { src: '/assets/site-images/d04-d06-gallery/d05-03.jpg', alt: 'Momento de oração', className: 'gallery-b-last' },
 ];
 
 function Scene({ children, index, progress }: { children: ReactNode; index: number; progress: number }) {
@@ -230,9 +231,10 @@ function MobileGalleryA() {
 function MobileGalleryB() {
   return (
     <a className="mobile-panel mobile-panel-link mobile-gallery mobile-gallery-b" href="/comunidade" aria-label="Conheça nossa comunidade">
-      <img className="mobile-gallery-small mobile-gallery-b--left" src="/assets/site-images/d04-d06-gallery/d05-01.jpg" alt="Cuidado e discipulado na comunidade" />
-      <img className="mobile-gallery-main mobile-gallery-b--main" src="/assets/site-images/d04-d06-gallery/d05-02.jpg" alt="Vida em comunidade" />
-      <img className="mobile-gallery-small mobile-gallery-b--bottom-left" src="/assets/site-images/d04-d06-gallery/d05-03.jpg" alt="Momento de oração" />
+      <img className="mobile-gallery-small mobile-gallery-b--left" src="/assets/site-images/d04-d06-gallery/d04-03.jpg" alt="Mesa compartilhada na comunidade" />
+      <img className="mobile-gallery-main mobile-gallery-b--main" src="/assets/site-images/d04-d06-gallery/d05-01.jpg" alt="Cuidado e discipulado na comunidade" />
+      <img className="mobile-gallery-small mobile-gallery-b--bottom-left" src="/assets/site-images/d04-d06-gallery/d05-02.jpg" alt="Vida em comunidade" />
+      <img className="mobile-gallery-small mobile-gallery-b--bottom-right" src="/assets/site-images/d04-d06-gallery/d05-03.jpg" alt="Momento de oração" />
       <div className="mobile-gallery-quote">UM LUGAR<br />PARA PERTENCER.</div>
       <p className="mobile-gallery-index">02 / 02</p>
     </a>
