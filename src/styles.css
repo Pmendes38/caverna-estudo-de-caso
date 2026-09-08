@@ -2240,21 +2240,24 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 
 /* Ensure the Caverna frame remains the final cascade layer. */
 @media (min-width: 1025px) {
+  .subpage--caverna {
+    --caverna-gutter: max(56px, calc((100vw - 1440px) / 2 + 56px));
+  }
   .subpage--caverna .subpage-hero-copy { width: 800px; }
   .subpage--caverna .subpage-hero h1 { white-space: nowrap; }
-  .subpage--caverna .site-header { height: 86px; padding: 26px 56px; }
-  .subpage--caverna .subpage-hero { height: 474px; min-height: 474px; padding: 72px 56px 0; }
+  .subpage--caverna .site-header { height: 86px; padding: 26px var(--caverna-gutter); }
+  .subpage--caverna .subpage-hero { height: 474px; min-height: 474px; padding: 72px var(--caverna-gutter) 0; }
   .subpage--caverna .subpage-hero-copy { align-self: flex-start; transform: none; }
   .subpage--caverna .caverna-hero-image::after { display: block; content: ""; position: absolute; z-index: 1; inset: 0; background: linear-gradient(90deg, #4a2040 0%, rgba(74,32,64,.84) 18%, rgba(74,32,64,.38) 48%, rgba(74,32,64,.1) 72%, transparent 100%); }
-  .subpage--caverna .caverna-history { min-height: 1039px; padding: 66px 56px 72px; gap: 40px; }
+  .subpage--caverna .caverna-history { min-height: 1039px; padding: 66px var(--caverna-gutter) 72px; gap: 40px; }
   .subpage--caverna .caverna-timeline { height: 470px; min-height: 470px; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 16px; }
-  .subpage--caverna .caverna-values { min-height: 0; padding: 66px 56px; }
-  .subpage--caverna .caverna-liturgy { min-height: 0; padding: 66px 56px 0; }
+  .subpage--caverna .caverna-values { min-height: 0; padding: 66px var(--caverna-gutter); }
+  .subpage--caverna .caverna-liturgy { min-height: 0; padding: 66px var(--caverna-gutter) 0; }
   .subpage--caverna .caverna-liturgy-grid { grid-template-columns: 480px minmax(0, 1fr); gap: 32px; align-items: start; }
   .subpage--caverna .caverna-liturgy-grid .subpage-image { height: 260px; }
-  .subpage--caverna .caverna-house { min-height: 0; padding: 10px 56px 72px; }
+  .subpage--caverna .caverna-house { min-height: 0; padding: 10px var(--caverna-gutter) 72px; }
   .subpage--caverna .caverna-gallery { grid-template-columns: 500px 320px 460px; grid-template-rows: 260px 260px; gap: 24px; height: 544px; }
-  .subpage--caverna .subpage-cta { grid-template-columns: 1fr 470px; padding: 72px 56px; }
+  .subpage--caverna .subpage-cta { grid-template-columns: 1fr 470px; padding: 72px var(--caverna-gutter); }
 }
 
 @media (max-width: 1024px) {
