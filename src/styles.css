@@ -2238,6 +2238,36 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 }
 
+/* Keep every desktop subpage headline on the same centered 1440px frame. */
+@media (min-width: 1025px) {
+  .subpage {
+    --subpage-gutter: max(56px, calc((100vw - 1440px) / 2 + 56px));
+  }
+
+  .subpage:not(.subpage--caverna) .site-header {
+    padding-left: var(--subpage-gutter);
+    padding-right: var(--subpage-gutter);
+  }
+
+  .subpage:not(.subpage--caverna) .subpage-hero,
+  .subpage:not(.subpage--caverna) .subpage-community-hero,
+  .subpage:not(.subpage--caverna) .mission-hero {
+    padding-left: var(--subpage-gutter);
+  }
+
+  .subpage--fe .faith-hero,
+  .subpage--agenda .agenda-hero {
+    padding-right: var(--subpage-gutter);
+  }
+
+  .subpage--visite .visit-hero,
+  .subpage--contribua .contribution-hero,
+  .subpage--missoes .mission-hero {
+    padding-left: var(--subpage-gutter);
+    padding-right: var(--subpage-gutter);
+  }
+}
+
 /* Ensure the Caverna frame remains the final cascade layer. */
 @media (min-width: 1025px) {
   .subpage--caverna {
