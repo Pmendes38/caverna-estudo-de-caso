@@ -141,6 +141,15 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .gallery-index { left: 72px; bottom: 38px; color: var(--accent); font-size: 14px; }
 .gallery-quote { top: 680px; left: 620px; font-size: 46px; }
 
+@media (min-width: 1440px) {
+  /* Let the second gallery use the full desktop canvas and give the photos
+     enough height for their portrait crops to read at a larger scale. */
+  .experience-scene:has(.gallery-b) > .experience-panel { width: 100%; }
+  .gallery-b-leaving { top: 19%; left: 6.6vw; width: 25vw; height: 68%; }
+  .gallery-b-main { top: 10%; left: 29vw; width: 25vw; height: 78%; }
+  .gallery-b-secondary { top: 25%; left: 67vw; width: 20vw; height: 56%; }
+}
+
 .experience-exit { --exit-image-height: 300px; background: #f5f0e8; color: #09090a; text-align: center; }
 .exit-black-transition { position: absolute; top: 0; left: 0; width: 100%; height: var(--exit-image-height); overflow: hidden; background: #09090a; }
 .exit-black-transition img { width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center 32%; }
