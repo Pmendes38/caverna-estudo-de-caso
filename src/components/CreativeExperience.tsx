@@ -1,5 +1,5 @@
 import { type CSSProperties, type ReactNode, useEffect, useRef, useState } from 'react';
-import { getCurrentMobileProtagonist, Hero } from './Hero';
+import { getCurrentProtagonistIndex, Hero, ProtagonistPicture } from './Hero';
 import { LiveNowButton } from './LiveNowButton';
 import { SiteHeader } from './SiteHeader';
 
@@ -154,13 +154,13 @@ function DesktopExit() {
 }
 
 function MobileHero() {
-  const [protagonist] = useState(() => getCurrentMobileProtagonist());
+  const [protagonistIndex] = useState(() => getCurrentProtagonistIndex());
 
   return (
     <section className="mobile-panel mobile-hero-panel" aria-label="Início">
       <SiteHeader />
       <div className="mobile-hero-word" aria-hidden="true">A CAVERNA</div>
-      <img className="mobile-hero-person" src={protagonist} alt="Líder da Igreja A Caverna ministrando" />
+      <ProtagonistPicture index={protagonistIndex} className="mobile-hero-person" alt="Líder da Igreja A Caverna ministrando" />
       <div className="mobile-hero-actions">
         <a className="mobile-hero-cta" href="#sobre">CONHEÇA A CAVERNA</a>
         <LiveNowButton className="mobile-hero-live-cta" />

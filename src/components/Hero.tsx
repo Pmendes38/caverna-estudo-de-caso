@@ -2,51 +2,86 @@ import { useState } from 'react';
 import { siteContent } from '../data/siteContent';
 import { LiveNowButton } from './LiveNowButton';
 
-export const protagonistImages = [
-  '/assets/site-images/d01-desktop/hero-01.png',
-  '/assets/site-images/d01-desktop/hero-02.png',
-  '/assets/site-images/d01-desktop/hero-03.png',
-  '/assets/site-images/d01-desktop/hero-04.png',
-  '/assets/site-images/d01-desktop/hero-05.png',
-  '/assets/site-images/d01-desktop/hero-06.png',
-];
+type ProtagonistAsset = {
+  src: string;
+  srcSet: string;
+  sizes: string;
+};
 
-export const mobileProtagonistImages = protagonistImages.map((_, index) =>
-  `/assets/site-images/d01-mobile/hero-${String(index + 1).padStart(2, '0')}.png`,
-);
+function createProtagonistAssets(directory: string, widths: [number, number, number]): ProtagonistAsset[] {
+  return Array.from({ length: 6 }, (_, index) => {
+    const name = `hero-${String(index + 1).padStart(2, '0')}`;
+    return {
+      src: `/assets/site-images/${directory}/${name}@3x.png`,
+      srcSet: `${`/assets/site-images/${directory}/${name}@1x.png`} ${widths[0]}w, ${`/assets/site-images/${directory}/${name}@2x.png`} ${widths[1]}w, ${`/assets/site-images/${directory}/${name}@3x.png`} ${widths[2]}w`,
+      sizes: directory === 'd01-desktop'
+        ? '(min-width: 1440px) 1179px, 100vw'
+        : directory === 'd01-tablet'
+          ? 'min(603px, calc(100vw - 40px))'
+          : 'min(430px, calc(100vw - 20px))',
+    };
+  });
+}
+
+const desktopProtagonistAssets = createProtagonistAssets('d01-desktop', [1179, 2358, 3537]);
+const tabletProtagonistAssets = createProtagonistAssets('d01-tablet', [603, 1206, 1809]);
+const mobileProtagonistAssets = createProtagonistAssets('d01-mobile', [514, 1028, 1542]);
+
+export const protagonistImages = desktopProtagonistAssets.map(({ src }) => src);
+export const mobileProtagonistImages = mobileProtagonistAssets.map(({ src }) => src);
 
 export function getRotatingProtagonist() {
+  return desktopProtagonistAssets[getRotatingProtagonistIndex()].src;
+}
+
+export function getRotatingProtagonistIndex() {
   const storageKey = 'igreja-ac-protagonist-index';
   const stored = window.localStorage.getItem(storageKey);
   const previousIndex = stored === null ? -1 : Number.parseInt(stored, 10);
   const nextIndex = Number.isFinite(previousIndex)
-    ? (previousIndex + 1) % protagonistImages.length
+    ? (previousIndex + 1) % desktopProtagonistAssets.length
     : 0;
   window.localStorage.setItem(storageKey, String(nextIndex));
-  return protagonistImages[nextIndex];
+  return nextIndex;
+}
+
+export function getCurrentProtagonistIndex() {
+  const stored = window.localStorage.getItem('igreja-ac-protagonist-index');
+  const index = stored === null ? 0 : Number.parseInt(stored, 10);
+  return Number.isFinite(index) ? index % desktopProtagonistAssets.length : 0;
 }
 
 export function getCurrentProtagonist() {
-  const stored = window.localStorage.getItem('igreja-ac-protagonist-index');
-  const index = stored === null ? 0 : Number.parseInt(stored, 10);
-  return protagonistImages[Number.isFinite(index) ? index % protagonistImages.length : 0];
+  return desktopProtagonistAssets[getCurrentProtagonistIndex()].src;
 }
 
 export function getCurrentMobileProtagonist() {
-  const stored = window.localStorage.getItem('igreja-ac-protagonist-index');
-  const index = stored === null ? 0 : Number.parseInt(stored, 10);
-  return mobileProtagonistImages[Number.isFinite(index) ? index % mobileProtagonistImages.length : 0];
+  return mobileProtagonistAssets[getCurrentProtagonistIndex()].src;
+}
+
+export function ProtagonistPicture({ index, className, alt }: { index: number; className: string; alt: string }) {
+  const desktop = desktopProtagonistAssets[index % desktopProtagonistAssets.length];
+  const tablet = tabletProtagonistAssets[index % tabletProtagonistAssets.length];
+  const mobile = mobileProtagonistAssets[index % mobileProtagonistAssets.length];
+
+  return (
+    <picture>
+      <source media="(max-width: 720px)" srcSet={mobile.srcSet} sizes={mobile.sizes} />
+      <source media="(max-width: 1024px)" srcSet={tablet.srcSet} sizes={tablet.sizes} />
+      <img className={className} src={desktop.src} srcSet={desktop.srcSet} sizes={desktop.sizes} alt={alt} decoding="async" fetchPriority="high" />
+    </picture>
+  );
 }
 
 export function Hero() {
-  const [protagonist] = useState(() => getRotatingProtagonist());
+  const [protagonistIndex] = useState(() => getRotatingProtagonistIndex());
 
   return (
     <section className="hero">
       <div className="hero-word" aria-label="A Caverna">A CAVERNA</div>
       <div className="hero-stage" aria-label="Identidade visual da Igreja A Caverna">
         <div className="hero-glow" />
-        <img className="hero-person" src={protagonist} alt="Líder da Igreja A Caverna ministrando" />
+        <ProtagonistPicture index={protagonistIndex} className="hero-person" alt="Líder da Igreja A Caverna ministrando" />
       </div>
       <div className="hero-actions">
         <a className="hero-cta" href="#sobre">CONHEÇA A CAVERNA</a>
