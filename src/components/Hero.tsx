@@ -9,7 +9,7 @@ type ProtagonistAsset = {
 };
 
 const PROTAGONIST_COUNT = 16;
-const PROTAGONIST_STORAGE_ID = 'igreja-ac-protagonist-rotation-v2';
+const PROTAGONIST_STORAGE_ID = 'igreja-ac-protagonist-rotation-v3';
 const PROTAGONIST_ROTATION_LENGTH = PROTAGONIST_COUNT * 2 - 2;
 
 function createProtagonistAssets(directory: string, widths: [number, number, number]): ProtagonistAsset[] {
