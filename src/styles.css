@@ -163,9 +163,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
   /* Let the second gallery use the full desktop canvas and give the photos
      enough height for their portrait crops to read at a larger scale. */
   .experience-scene:has(.gallery-b) > .experience-panel { width: 100%; }
-  .gallery-b-leaving { top: 19%; left: 6.6vw; width: 25vw; height: 68%; }
-  .gallery-b-main { top: 10%; left: 29vw; width: 25vw; height: 78%; }
-  .gallery-b-secondary { top: 25%; left: 67vw; width: 20vw; height: 56%; }
+  .gallery-b-leaving { top: 19%; left: 7%; width: 25%; height: 68%; }
+  .gallery-b-main { top: 10%; left: 30%; width: 25%; height: 78%; }
+  .gallery-b-secondary { top: 25%; left: 58%; width: 22%; height: 56%; }
+  .gallery-b .gallery-quote { top: 72%; left: 44%; }
+  .gallery-b .gallery-index { left: 4%; }
 }
 
 .experience-exit { --exit-image-height: 300px; background: #f5f0e8; color: #09090a; text-align: center; }
