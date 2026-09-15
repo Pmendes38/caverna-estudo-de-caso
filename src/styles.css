@@ -4761,6 +4761,26 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 }
 
 @media (max-width: 1024px) {
+  .subpage--caverna .caverna-gallery {
+    grid-template-columns: 2fr repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    height: min(62vw, 520px);
+  }
+
+  .subpage--caverna .caverna-gallery-item--1 {
+    grid-row: 1 / span 2;
+  }
+
+  .subpage--caverna .caverna-gallery-item--4,
+  .subpage--caverna .caverna-gallery-item--6 {
+    display: none;
+  }
+
+  .subpage--caverna .caverna-gallery-item--5,
+  .subpage--caverna .caverna-gallery-item--7 {
+    display: block;
+  }
+
   .subpage--caverna .caverna-timeline-item-wrap.is-mobile-hidden {
     display: none;
   }
@@ -4827,6 +4847,27 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 }
 
 @media (max-width: 480px) {
+  .subpage--caverna .caverna-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    height: 232px;
+    gap: 10px;
+  }
+
+  .subpage--caverna .caverna-gallery-item--1 {
+    grid-row: auto;
+  }
+
+  .subpage--caverna .caverna-gallery-item--4,
+  .subpage--caverna .caverna-gallery-item--5,
+  .subpage--caverna .caverna-gallery-item--6 {
+    display: none;
+  }
+
+  .subpage--caverna .caverna-gallery-item--7 {
+    display: block;
+  }
+
   .caverna-liturgy-copy-desktop {
     display: none;
   }
@@ -4843,3 +4884,4 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
     background-position: 68% top;
   }
 }
+
