@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { createPortal } from 'react-dom';
+import { useEffect, useState } from 'react';
 
 export type PageKey = 'caverna' | 'fe' | 'comunidade' | 'agenda' | 'visite' | 'contato' | 'contribua' | 'discipulado' | 'oracao' | 'missoes' | 'criancas' | 'esportes';
 
@@ -32,8 +33,18 @@ export function SiteHeader({ activePage, subpage = false }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [menuOpen]);
+
   return (
-    <header className={`site-header${subpage ? ' site-header--subpage' : ''}`}>
+    <header className={`site-header${subpage ? ' site-header--subpage' : ''}${menuOpen ? ' site-header--menu-open' : ''}`}>
       {subpage ? (
         <nav className="subpage-nav" aria-label="Navegação principal">
           <a className="subpage-nav-brand" href="/" aria-label="Igreja A Caverna">
@@ -70,7 +81,7 @@ export function SiteHeader({ activePage, subpage = false }: SiteHeaderProps) {
         <button className="mobile-menu-inline" type="button" onClick={() => setMenuOpen(true)}>MENU&nbsp; ☰</button>
       </div>
 
-      {menuOpen && (
+      {menuOpen && createPortal(
         <div className="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="Menu principal">
           <a className="mobile-menu-home" href="/" onClick={closeMenu}>A CAVERNA</a>
           <button className="mobile-menu-close" type="button" onClick={closeMenu}>[FECHAR]</button>
@@ -81,7 +92,8 @@ export function SiteHeader({ activePage, subpage = false }: SiteHeaderProps) {
               <a href={link.href} onClick={closeMenu} key={link.key}>{link.label}&nbsp; →</a>
             ))}
           </nav>
-        </div>
+        </div>,
+        document.body,
       )}
     </header>
   );

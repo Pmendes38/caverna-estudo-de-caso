@@ -1,10 +1,10 @@
-import { useState, type CSSProperties, type FormEvent, type ReactNode } from 'react';
+import { useRef, useState, type CSSProperties, type FormEvent, type ReactNode } from 'react';
 import { siteContent, whatsappUrl } from '../data/siteContent';
 import { SiteHeader, subpageLinks, type PageKey } from './SiteHeader';
 
 const assets = {
   hero: '/assets/figma/d01-01.png',
-  cavernaHero: '/assets/attached/caverna-hero.jpeg',
+  cavernaHero: '/assets/attached/caverna-missao-hero.jpg',
   community: '/assets/treated/community.jpeg',
   communityHero: '/assets/treated/community-hero.jpeg',
   agendaHero: '/assets/treated/worship.jpeg',
@@ -40,6 +40,15 @@ const assets = {
   sportsPodium: '/assets/treated/sports-taekwondo.jpeg',
   sportsChampion: '/assets/treated/sports-taekwondo.jpeg',
   sportsMedalDetail: '/assets/treated/sports-paintball.jpeg',
+  faithHero: '/assets/site-images/nossa-fe/hero-oracao.jpg',
+  faithConfession: '/assets/site-images/nossa-fe/confissao-comunidade.jpg',
+  communityBanner: '/assets/site-images/comunidade/banner-comunidade.jpg',
+  communityDiscipulado: '/assets/site-images/comunidade/caminhos-discipulado.jpg',
+  communityOracao: '/assets/site-images/comunidade/caminhos-oracao.jpg',
+  communityVida: '/assets/site-images/comunidade/caminhos-vida-compartilhada.png',
+  communityCulto: '/assets/site-images/comunidade/ritmo-culto-publico.png',
+  communityRitmoDiscipulado: '/assets/site-images/comunidade/ritmo-discipulado.jpeg',
+  communityEsportes: '/assets/site-images/comunidade/ritmo-esportes.jpeg',
 };
 
 const pageNames: Record<PageKey, string> = {
@@ -75,6 +84,46 @@ function Button({ children, href = '#', light = false }: { children: ReactNode; 
 
 function ImageSlot({ src, alt, className = '' }: { src?: string; alt: string; className?: string }) {
   return <div className={`subpage-image ${className}${src ? '' : ' subpage-image--placeholder'}`} aria-label={src ? alt : undefined}>{src ? <img src={src} alt={alt} /> : null}</div>;
+}
+
+function HorizontalGallery({ items }: { items: Array<{ src: string; alt: string; className: string }> }) {
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const goTo = (index: number) => {
+    const viewport = viewportRef.current;
+    const slide = trackRef.current?.children[index] as HTMLElement | undefined;
+    if (!viewport || !slide) return;
+    viewport.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' });
+    setActiveIndex(index);
+  };
+
+  return (
+    <div className="caverna-gallery" aria-label="Galeria de fotos da nossa casa">
+      <div
+        className="caverna-gallery-viewport"
+        ref={viewportRef}
+        onScroll={(event) => {
+          const viewport = event.currentTarget;
+          setActiveIndex(Math.round(viewport.scrollLeft / viewport.clientWidth));
+        }}
+      >
+        <div className="caverna-gallery-track" ref={trackRef}>
+          {items.map((item) => (
+            <div className="caverna-gallery-slide" key={item.src}>
+              <ImageSlot src={item.src} alt={item.alt} className={item.className} />
+            </div>
+          ))}
+        </div>
+      </div>
+      <button className="caverna-gallery-arrow caverna-gallery-arrow--prev" type="button" onClick={() => goTo(Math.max(activeIndex - 1, 0))} disabled={activeIndex === 0} aria-label="Imagem anterior">←</button>
+      <button className="caverna-gallery-arrow caverna-gallery-arrow--next" type="button" onClick={() => goTo(Math.min(activeIndex + 1, items.length - 1))} disabled={activeIndex === items.length - 1} aria-label="Próxima imagem">→</button>
+      <div className="caverna-gallery-dots" aria-label="Selecionar imagem">
+        {items.map((item, index) => <button className={index === activeIndex ? 'is-active' : ''} type="button" key={item.src} onClick={() => goTo(index)} aria-label={`Ver imagem ${index + 1}`} aria-current={index === activeIndex ? 'true' : undefined} />)}
+      </div>
+    </div>
+  );
 }
 
 function InfoCard({ title, children, dark = false }: { title: string; children: ReactNode; dark?: boolean }) {
@@ -117,8 +166,49 @@ function PageFrame({ page, children }: { page: PageKey; children: ReactNode }) {
   return <div className={`subpage subpage--${page}`}><SiteHeader activePage={page} subpage />{children}<SubpageFooter /></div>;
 }
 
+function TimelineGallery({ year, title, images, onClose }: { year: string; title: string; images: string[]; onClose: () => void }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const image = images[activeIndex];
+
+  return (
+    <div className="caverna-timeline-gallery-backdrop" role="presentation" onClick={onClose}>
+      <section className="caverna-timeline-gallery" role="dialog" aria-modal="true" aria-labelledby={`timeline-gallery-title-${year}`} onClick={(event) => event.stopPropagation()}>
+        <button className="caverna-timeline-gallery-close" type="button" onClick={onClose} aria-label="Fechar galeria">FECHAR&nbsp; ×</button>
+        <div className="caverna-timeline-gallery-media">
+          <img src={image} alt={`Registro histórico de ${year}`} />
+        </div>
+        <div className="caverna-timeline-gallery-copy">
+          <span>{year}</span>
+          <h3 id={`timeline-gallery-title-${year}`}>{title}</h3>
+          <div className="caverna-timeline-gallery-controls">
+            <button type="button" onClick={() => setActiveIndex(Math.max(activeIndex - 1, 0))} disabled={activeIndex === 0} aria-label="Imagem anterior">←</button>
+            <span>{activeIndex + 1} / {images.length}</span>
+            <button type="button" onClick={() => setActiveIndex(Math.min(activeIndex + 1, images.length - 1))} disabled={activeIndex === images.length - 1} aria-label="Próxima imagem">→</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function TimelinePreview({ year, title, text, image, onOpen }: { year: string; title: string; text: string; image: string; onOpen: () => void }) {
+  return (
+    <button className="caverna-timeline-preview" type="button" onClick={onOpen} aria-label={`Abrir galeria de ${year}`}>
+      <ImageSlot src={image} alt={`Registro histórico de ${year}`} className="caverna-timeline-preview-image" />
+      <span className="caverna-timeline-preview-copy">
+        <span>{year}</span>
+        <strong>{title}</strong>
+        <span>{text}</span>
+        <span className="caverna-timeline-preview-cta">VER MAIS&nbsp; →</span>
+      </span>
+    </button>
+  );
+}
+
 function CavernaPage() {
-  const [activeMoment, setActiveMoment] = useState<string | null>('2025');
+  const [activeMoment, setActiveMoment] = useState<string | null>(null);
+  const [previewMoment, setPreviewMoment] = useState<string | null>(null);
+  const touchPreviewPending = useRef(false);
   const moments = [
     ['2013', 'A RUA SE TORNA CAMPO', 'Os projetos missionários já alcançavam o Jardim Ingá. A missão acontecia onde as pessoas estavam, antes de existir uma igreja chamada A Caverna.', 'history2013'],
     ['2015', 'A MISSÃO SE EXPANDE', 'As frentes urbanas crescem e alcançam diferentes cidades e realidades. Asilos, escolas, recuperação e pessoas em situação de rua passam a fazer parte de uma rotina intensa de missão.', 'history2015'],
@@ -128,33 +218,54 @@ function CavernaPage() {
     ['2020', 'A PANDEMIA', 'Com a pandemia, os projetos são interrompidos e o cuidado se volta para a igreja e para as famílias. Entre cultos online e encontros nos lares, a comunidade aprende a se estruturar e amadurecer.', 'history2020'],
     ['2025', 'UMA NOVA FASE', 'A origem missionária permanece, mas a visão se amplia. A igreja amadurece sua linguagem e passa a comunicar com mais clareza que o Evangelho não pertence a um perfil específico de pessoas.', 'history2025'],
   ];
+  const timelineGalleries: Record<string, string[]> = {
+    '2013': [assets.history2013],
+    '2015': [assets.history2015],
+    '2016': [assets.history2016],
+    '2017': [assets.history2017],
+    '2019': [assets.history2019],
+    '2020': [assets.history2020],
+    '2025': [assets.history2025],
+  };
+  const openMoment = (year: string) => {
+    setPreviewMoment(year);
+    setActiveMoment(year);
+  };
+
   return (
     <PageFrame page="caverna">
       <main>
         <section className="subpage-hero subpage-hero--plum caverna-hero">
-          <div className="subpage-hero-copy"><p className="subpage-kicker">[QUEM SOMOS]</p><h1>A IGREJA QUE<br />NASCEU DA MISSÃO</h1><p>Começamos em Ceilândia, em 2016. Em 2017, a missão chegou ao Jardim Ingá e se tornou comunidade.</p></div>
-          <ImageSlot src={assets.cavernaHero} alt="Comunidade reunida na Igreja A Caverna" className="caverna-hero-image" />
+          <div className="subpage-hero-copy"><p className="subpage-kicker">[QUEM SOMOS]</p><h1 aria-label="UMA IGREJA QUE NASCEU DA MISSÃO"><span className="caverna-heading-desktop">UMA IGREJA QUE<br />NASCEU DA MISSÃO</span><span className="caverna-heading-responsive">UMA IGREJA<br />QUE NASCEU<br />DA MISSÃO</span></h1><p>Começamos em Ceilândia, em 2016. Em 2017, a missão chegou ao Jardim Ingá e se tornou comunidade.</p></div>
+          <ImageSlot src={assets.cavernaHero} alt="Ação missionária da Igreja A Caverna" className="caverna-hero-image" />
         </section>
         <section className="subpage-section subpage-section--paper caverna-history">
           <h2 className="caverna-history-title">NOSSA HISTÓRIA</h2>
           <div className="subpage-history-grid"><div><p>A Caverna nasceu nas ruas, entre projetos missionários que alcançavam pessoas em escolas, asilos, casas de recuperação e diferentes contextos da cidade. Mas logo entendemos que anunciar o Evangelho era apenas o começo. Quem chegava precisava encontrar ensino, comunhão, cuidado e alguém disposto a permanecer.</p></div><div className="subpage-card-row"><InfoCard title="PERMANECER">A missão não termina quando alguém chega. A gente permanece perto.</InfoCard><InfoCard title="EDIFICAR">Anunciar o Evangelho não é o fim. A gente permanece para ensinar e formar.</InfoCard></div></div>
           <div className="caverna-history-story"><p>Foi dessa necessidade que a missão começou a se tornar comunidade. Em 2016, as primeiras reuniões deram forma àquilo que depois se tornaria a Igreja A Caverna. Desde então, atravessamos mudanças, aprendemos a cuidar melhor das pessoas e amadurecemos nossa forma de viver aquilo que permanece no centro da nossa história: formar discípulos de Jesus Cristo.</p><a href="/a-caverna">CLIQUE PARA VER NOSSA HISTÓRIA COMPLETA&nbsp; →</a></div>
           <h2 className="subpage-small-heading">MOMENTOS QUE FORMARAM A CAVERNA</h2>
-          <div className="caverna-timeline" onMouseLeave={() => setActiveMoment(null)}>
+          <div className="caverna-timeline" onMouseLeave={() => setPreviewMoment(null)}>
             <div className="caverna-timeline-line" />
-            {moments.map(([year, title, text, tone], index) => <button className={`caverna-timeline-item${activeMoment === year ? ' is-active' : ''}`} style={{ '--timeline-index': index } as CSSProperties} type="button" key={year} onMouseEnter={() => setActiveMoment(year)} onFocus={() => setActiveMoment(year)} onClick={() => setActiveMoment(year)}><span className="caverna-timeline-year">{year}</span><span className="caverna-timeline-marker" /><strong>{title}</strong><span>{text}</span></button>)}
+            {moments.map(([year, title, text], index) => {
+              const image = timelineGalleries[year]?.[0];
+              return <div className={`caverna-timeline-item-wrap${previewMoment === year ? ' is-previewing' : ''}`} key={year}>
+                <button className={`caverna-timeline-item${previewMoment === year ? ' is-active' : ''}`} style={{ '--timeline-index': index } as CSSProperties} type="button" onPointerEnter={() => setPreviewMoment(year)} onFocus={() => setPreviewMoment(year)} onPointerDown={(event) => { if (event.pointerType === 'touch') { touchPreviewPending.current = previewMoment !== year; setPreviewMoment(year); } else { touchPreviewPending.current = false; } }} onClick={() => { if (touchPreviewPending.current) { touchPreviewPending.current = false; return; } openMoment(year); }}><span className="caverna-timeline-year">{year}</span><span className="caverna-timeline-marker" /><strong>{title}</strong><span>{text}</span></button>
+                {previewMoment === year && image ? <TimelinePreview year={year} title={title} text={text} image={image} onOpen={() => openMoment(year)} /> : null}
+              </div>;
+            })}
             {activeMoment && (() => {
               const moment = moments.find(([year]) => year === activeMoment);
               if (!moment) return null;
-              const [year, title, text, tone] = moment;
-              const index = moments.findIndex(([momentYear]) => momentYear === year);
-              return <aside className={`caverna-timeline-overlay${index === 0 ? ' caverna-timeline-overlay--first' : ''}${index === moments.length - 1 ? ' caverna-timeline-overlay--last' : ''}`} style={{ '--timeline-index': index } as CSSProperties} aria-live="polite"><ImageSlot src={assets[tone as keyof typeof assets] as string} alt={`Registro histórico de ${year}`} className="caverna-timeline-overlay-image" /><div className="caverna-timeline-overlay-copy"><span>{year}</span><h3>{title}</h3><p>{text}</p></div></aside>;
+              const [year, title] = moment;
+              const images = timelineGalleries[year] ?? [];
+              if (!images.length) return null;
+              return <TimelineGallery key={year} year={year} title={title} images={images} onClose={() => setActiveMoment(null)} />;
             })()}
           </div>
         </section>
         <section className="subpage-section subpage-section--dark caverna-values"><h2>MISSÃO, VISÃO E VALORES</h2><div className="subpage-card-row"><InfoCard title="MISSÃO" dark>Anunciar o evangelho e edificar a igreja por meio da verdade, da comunhão e do serviço.</InfoCard><InfoCard title="VISÃO" dark>Ser referência de comunidade cristã com identidade, profundidade e presença local.</InfoCard><InfoCard title="VALORES" dark>Cristo no centro. Escritura. Comunidade. Compaixão. Serviço. Edificação.</InfoCard></div></section>
         <section className="subpage-section subpage-section--paper caverna-liturgy"><h2>NOSSA LITURGIA</h2><div className="caverna-liturgy-flow"><ImageSlot src={assets.liturgy} alt="Louvor na Igreja A Caverna" className="slot--plum caverna-liturgy-flow-image" /><p>Nos reunimos aos sábados, a partir das 19h30. Essa escolha não nasce de uma observância sabática, mas da realidade da nossa comunidade. Muitos de nós trabalham durante a semana em Brasília e enfrentam longos deslocamentos. Por isso, preservamos o domingo como um tempo de descanso, família e vida em casa.</p><p>Nosso culto começa com louvor e adoração. Depois, fazemos algo que se tornou parte importante de quem somos: paramos para estar à mesa. Cada pessoa pode trazer algo de casa, contribuir com o que será preparado ou simplesmente chegar. Não é um intervalo e não é um lanche vendido pela igreja. É comunhão.</p><p>É nesse momento que conversamos, recebemos quem chegou pela primeira vez, reencontramos quem passou a semana longe e partilhamos a mesa como família.</p><p>Depois da comunhão, voltamos nossa atenção para a Palavra de Deus, com ensino e exposição das Escrituras. Não trabalhamos com um horário rígido para encerrar o culto. Queremos ter tempo para adorar, estar juntos e ouvir a Palavra sem transformar a reunião em uma corrida contra o relógio.</p></div></section>
-        <section className="subpage-section subpage-section--paper caverna-house"><h2>NOSSA CASA</h2><div className="caverna-gallery"><ImageSlot src={assets.houseMesa} alt="Mesa compartilhada na Igreja A Caverna" className="slot--brown" /><ImageSlot src={assets.houseLouvor} alt="Louvor na Igreja A Caverna" className="slot--plum" /><ImageSlot src={assets.houseCommunity} alt="Comunidade reunida na Igreja A Caverna" className="slot--teal" /><ImageSlot src={assets.houseInstrumento1} alt="Música na Igreja A Caverna" className="slot--gray" /><ImageSlot src={assets.houseInstrumento2} alt="Músico servindo na Igreja A Caverna" className="slot--brown" /></div><div className="caverna-house-copy"><p>A Caverna fica no Jardim Ingá, na Av. Dr. Danton Jobim, Quadra 32, Lote 04, próxima ao tradicional Pit Dog do Jeovan, um dos pontos mais conhecidos da região.</p><p>Nossa casa está em reforma para receber melhor a comunidade. Se você quiser fazer parte dessa construção, pode nos ajudar com contribuições e ofertas.</p><a href="/contribua">CLIQUE PARA VER COMO CONTRIBUIR&nbsp; →</a></div></section>
+        <section className="subpage-section subpage-section--paper caverna-house"><h2>NOSSA CASA</h2><HorizontalGallery items={[{ src: assets.houseMesa, alt: 'Mesa compartilhada na Igreja A Caverna', className: 'slot--brown' }, { src: assets.houseLouvor, alt: 'Louvor na Igreja A Caverna', className: 'slot--plum' }, { src: assets.houseCommunity, alt: 'Comunidade reunida na Igreja A Caverna', className: 'slot--teal' }, { src: assets.houseInstrumento1, alt: 'Música na Igreja A Caverna', className: 'slot--gray' }, { src: assets.houseInstrumento2, alt: 'Músico servindo na Igreja A Caverna', className: 'slot--brown' }]} /><div className="caverna-house-copy"><p>A Caverna fica no Jardim Ingá, na Av. Dr. Danton Jobim, Quadra 32, Lote 04, próxima ao tradicional Pit Dog do Jeovan, um dos pontos mais conhecidos da região.</p><p>Nossa casa está em reforma para receber melhor a comunidade. Se você quiser fazer parte dessa construção, pode nos ajudar com contribuições e ofertas.</p><a href="/contribua">CLIQUE PARA VER COMO CONTRIBUIR&nbsp; →</a></div></section>
         <section className="subpage-cta"><h2>UMA IDENTIDADE QUE<br />VEM DA HISTÓRIA</h2><div><p>A história continua: um povo reunido em torno de Cristo para viver, servir e anunciar.</p><Button href="/nossa-fe">NOSSA FÉ&nbsp; →</Button><Button href="/comunidade">CONHEÇA A COMUNIDADE&nbsp; →</Button></div></section>
       </main>
     </PageFrame>
@@ -162,13 +273,14 @@ function CavernaPage() {
 }
 
 function FaithPage() {
+  const [showAllAffirmations, setShowAllAffirmations] = useState(false);
   const affirmations = [
-    ['ESCRITURA', 'A Bíblia é nossa única regra infalível de fé e prática. Toda doutrina, tradição e experiência devem ser examinadas à sua luz.'],
-    ['DEUS TRIUNO', 'Há um só Deus, eterno e santo, que existe como Pai, Filho e Espírito Santo: três pessoas, uma só natureza divina.'],
-    ['CRIAÇÃO E QUEDA', 'Cada pessoa carrega dignidade por ter sido criada à imagem de Deus, mas o pecado rompeu nossa comunhão com ele e revela nossa necessidade de reconciliação.'],
-    ['JESUS CRISTO', 'Verdadeiro Deus e verdadeiro homem, Jesus viveu em obediência, morreu por nossos pecados, ressuscitou e reina como único Senhor e Salvador.'],
-    ['GRAÇA E VIDA', 'A salvação é dom gratuito, recebido por arrependimento e fé, não por obras. Alcançados pela graça, somos chamados à santidade, comunhão e serviço.'],
-    ['IGREJA E MISSÃO', 'A igreja pertence a Cristo: adora, ensina, ora, cuida e forma discípulos. Todo discípulo participa da missão, começando onde Deus o colocou.'],
+    ['ESCRITURA', 'A Bíblia é a autoridade para nossa fé e prática; por isso, ela orienta tudo o que ensinamos.'],
+    ['DEUS TRIUNO', 'Um só Deus: Pai, Filho e Espírito Santo.'],
+    ['JESUS CRISTO', 'Cristo é o centro da salvação, do culto e da vida da igreja.'],
+    ['EVANGELHO', 'A boa notícia da graça de Deus em Jesus, anunciada para salvar e formar discípulos.'],
+    ['IGREJA', 'Um povo reunido pela Palavra para viver em comunhão, servir e edificar igreja.'],
+    ['ESPÍRITO SANTO', 'O Espírito Santo convence, santifica, capacita e conduz o povo de Deus.'],
   ];
   const rejectedTeachings = [
     ['NÃO É TEOLOGIA LIBERAL', 'A verdade bíblica não é reescrita para caber no espírito do tempo.'],
@@ -184,8 +296,8 @@ function FaithPage() {
   return (
     <PageFrame page="fe">
       <main>
-        <section className="subpage-hero subpage-hero--dark faith-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[NO QUE CREMOS]</p><h1>A PALAVRA É O<br />CHÃO DA CAVERNA</h1><p>Cristo é o centro. A Escritura governa nossa fé, nossa vida e a forma como servimos.</p></div><ImageSlot src={assets.teaching} alt="Estudo bíblico e ensino" className="faith-hero-slot slot--plum" /></section>
-        <section className="subpage-section subpage-section--paper faith-affirm"><h2>O QUE CREMOS EM VOZ ALTA</h2><div className="subpage-card-grid">{affirmations.map(([title, text]) => <InfoCard title={title} key={title}>{text}</InfoCard>)}</div><div className="faith-confession"><strong>UMA CONFISSÃO EM RESUMO</strong><p>Cremos no Deus Triuno, na autoridade das Escrituras, em Jesus Cristo como único Senhor e Salvador e na salvação pela graça. Vivemos como igreja para formar discípulos, anunciar o evangelho e aguardar a volta de Cristo.</p><small>CONHEÇA O QUE NOS FIRMA</small></div></section>
+        <section className="subpage-hero subpage-hero--dark faith-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[NO QUE CREMOS]</p><h1>A PALAVRA É O<br />CENTRO DA CAVERNA</h1><p>Cristo é o centro. A Escritura governa nossa fé, nossa vida e a forma como servimos.</p></div><ImageSlot src={assets.faithHero} alt="Comunidade reunida em oração" className="faith-hero-slot slot--plum" /></section>
+        <section className="subpage-section subpage-section--paper faith-affirm"><h2>O QUE CREMOS</h2><div className={`subpage-card-grid${showAllAffirmations ? ' is-expanded' : ''}`}>{affirmations.map(([title, text]) => <InfoCard title={title} key={title}>{text}</InfoCard>)}</div><button className="faith-more-button" type="button" aria-expanded={showAllAffirmations} onClick={() => setShowAllAffirmations((expanded) => !expanded)}>{showAllAffirmations ? 'OCULTAR FUNDAMENTOS ↑' : 'VER MAIS FUNDAMENTOS →'}</button><div className="faith-confession"><ImageSlot src={assets.faithConfession} alt="Comunidade reunida em oração" className="faith-confession-image" /><div className="faith-confession-content"><strong>UMA CONFISSÃO EM RESUMO</strong><p className="faith-confession-copy faith-confession-copy--desktop">Cremos no Deus Triuno, Pai, Filho e Espírito Santo. Em Jesus Cristo está o centro da salvação. A Escritura orienta nossa fé e prática; por ela, aprendemos a viver em santidade, comunhão, serviço e missão.</p><p className="faith-confession-copy faith-confession-copy--compact">Deus Triuno. Salvação em Jesus Cristo. Escritura como autoridade. Igreja como povo que adora, aprende, serve e anuncia.</p><small>LEIA OS TEMAS ACIMA COM CALMA</small></div></div></section>
         <section className="subpage-section subpage-section--plum faith-limits"><p className="subpage-kicker">O QUE NÃO ENSINAMOS</p><p className="subpage-lead">Nossa identidade também aparece naquilo que recusamos transformar em evangelho.</p><div className="subpage-card-grid faith-limits-grid">{rejectedTeachings.map(([title, text]) => <InfoCard title={title} dark key={title}>{text}</InfoCard>)}</div></section>
         <section className="subpage-cta"><h2>DOUTRINA NÃO É<br />DECORAÇÃO</h2><div><p>Ela define como cremos, vivemos, servimos e caminhamos juntos.</p><Button href="/comunidade">CONHEÇA A COMUNIDADE&nbsp; →</Button></div></section>
       </main>
@@ -194,14 +306,18 @@ function FaithPage() {
 }
 
 function CommunityPage() {
-  const paths = [['DISCIPULADO', 'Quintas, 19H30. Palavra, acompanhamento e formação de discípulos.', 'slot--plum', '/discipulado', assets.teaching], ['ORAÇÃO', 'Orar, ouvir e carregar uns aos outros diante de Deus.', 'slot--teal', '/oracao', assets.prayer], ['VIDA COMPARTILHADA', 'Não é plateia: é gente que conhece, cuida, serve e se deixa formar.', 'slot--gold', '/visite-nos', assets.community]];
+  const paths = [
+    ['DISCIPULADO', 'Quintas, 19H30. Palavra, acompanhamento e formação de discípulos.', 'Quintas, 19H30. Palavra, cuidado e formação de discípulos.', 'slot--plum', '/discipulado', assets.communityDiscipulado],
+    ['ORAÇÃO', 'Orar, ouvir e carregar uns aos outros diante de Deus.', 'Orar, ouvir e carregar uns aos outros diante de Deus.', 'slot--teal', '/oracao', assets.communityOracao],
+    ['VIDA COMPARTILHADA', 'Aqui nós não somos apenas um número, é gente que se conhece, cuida, serve e se deixa formar.', 'Não é plateia: é gente que conhece, cuida, serve e se deixa formar.', 'slot--gold', '/visite-nos', assets.communityVida],
+  ];
   return (
     <PageFrame page="comunidade">
       <main>
-        <section className="subpage-hero subpage-hero--plum subpage-community-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[VIDA EM COMUNIDADE]</p><h1>ENCONTRE UMA FAMÍLIA<br />CAMINHE COM A GENTE</h1><p>Na Caverna, você não é só mais um rosto. Chegue, seja recebido e encontre gente disposta a viver a fé perto de você durante a semana.</p></div><ImageSlot src={assets.communityHero} alt="Comunidade reunida em culto" className="slot--brown" /></section>
-        <section className="subpage-section subpage-section--paper community-paths"><h2>COMO A GENTE CAMINHA</h2><div className="community-photo-grid">{paths.map(([title, text, slot, href, src]) => <a className="community-path-card" href={href} key={title}><ImageSlot src={src} alt={title} className={slot} /><h3>{title}</h3><p>{text}</p></a>)}</div></section>
-        <section className="subpage-section subpage-section--dark community-projects"><h2>O RITMO DA COMUNIDADE</h2><div className="community-schedule-list"><InfoCard title="CULTO PÚBLICO" dark>Sábados, 19H30. Venha cultuar, ouvir a Palavra e encontrar a comunidade.</InfoCard><InfoCard title="DISCIPULADO" dark>Quintas, 19H30. Venha aprender, conversar e crescer com outros discípulos.</InfoCard><InfoCard title="ESPORTES DA CAVERNA" dark>Atletas apoiados e Sons of Caverna uma vez ao mês. Encontre seu lugar para conviver.</InfoCard></div><p className="community-presence">Quem chega é recebido, lembrado e procurado. Para ser Caverna, basta vir. Dê o primeiro passo e deixe a comunidade caminhar perto de você.</p></section>
-        <section className="subpage-cta"><h2>ENCONTRE SUA FAMÍLIA<br />COMECE A CAMINHAR</h2><div><p>A igreja não é só aos sábados. Venha viver uma fé que aprende, ora e atravessa a vida unida.</p><Button href="/visite-nos">DÊ O PRIMEIRO PASSO&nbsp; →</Button></div></section>
+        <section className="subpage-hero subpage-hero--plum subpage-community-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[VIDA EM COMUNIDADE]</p><h1><span className="community-hero-title-desktop">ENCONTRE UMA FAMÍLIA<br />CAMINHE COM A GENTE</span><span className="community-hero-title-mobile">AQUI VOCÊ TEM UMA FAMÍLIA<br />CAMINHE COM A GENTE</span></h1><p>Na Caverna, comunidade é presença durante a semana: aprender a Palavra, lembrar uns dos outros e permanecer perto.</p></div><ImageSlot src={assets.communityBanner} alt="Comunidade reunida em culto" className="slot--brown" /></section>
+        <section className="subpage-section subpage-section--paper community-paths"><h2>COMO A GENTE CAMINHA</h2><div className="community-photo-grid">{paths.map(([title, text, mobileText, slot, href, src]) => <a className="community-path-card" href={href} key={title}><ImageSlot src={src} alt={title} className={slot} /><h3>{title}</h3><p><span className="community-copy-desktop">{text}</span><span className="community-copy-mobile">{mobileText}</span></p></a>)}</div></section>
+        <section className="subpage-section subpage-section--dark community-projects"><h2>O RITMO DA COMUNIDADE</h2><div className="community-schedule-list"><article className="community-project-card"><ImageSlot src={assets.communityCulto} alt="Culto público e cuidado" className="slot--brown" /><div><strong>CULTO PÚBLICO</strong><p>Sábados, 19H30. A comunidade se reúne para cultuar e ouvir a Palavra.</p></div></article><article className="community-project-card community-project-card--reverse"><div><strong>DISCIPULADO</strong><p>Quintas, 19H30. Um espaço de ensino e acompanhamento.</p></div><ImageSlot src={assets.communityRitmoDiscipulado} alt="Discipulado" className="slot--teal" /></article><article className="community-project-card"><ImageSlot src={assets.communityEsportes} alt="Esportes da Caverna" className="slot--gold" /><div><strong>ESPORTES DA CAVERNA</strong><p><span className="community-copy-desktop">Atletas apoiados em várias modalidades nosso time de paintball.</span><span className="community-copy-mobile">Atletas apoiados e Sons of Caverna uma vez ao mês.</span></p></div></article></div><p className="community-presence">Quem chega é recebido, lembrado e procurado. Para ser Caverna, basta vir; a caminhada acontece perto de pessoas.</p></section>
+        <section className="subpage-cta"><h2><span className="community-cta-title-desktop">SER CAVERNA É ESTAR PERTO</span><span className="community-cta-title-mobile">PERTENCER É<br />CAMINHAR E<br />SERVIR</span></h2><div><p>Quem chega é recebido, lembrado e procurado. Para ser Caverna, basta vir; a caminhada acontece perto de pessoas.</p><Button href="/contato">FALE COM A EQUIPE&nbsp; →</Button></div></section>
       </main>
     </PageFrame>
   );

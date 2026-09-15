@@ -8,13 +8,14 @@ type ProtagonistAsset = {
   sizes: string;
 };
 
-const PROTAGONIST_COUNT = 16;
+const ACTIVE_PROTAGONIST_SOURCE_INDICES = [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 15];
+const PROTAGONIST_COUNT = ACTIVE_PROTAGONIST_SOURCE_INDICES.length;
 const PROTAGONIST_STORAGE_ID = 'igreja-ac-protagonist-rotation-v3';
 const PROTAGONIST_ROTATION_LENGTH = PROTAGONIST_COUNT * 2 - 2;
 
 function createProtagonistAssets(directory: string, widths: [number, number, number]): ProtagonistAsset[] {
-  return Array.from({ length: PROTAGONIST_COUNT }, (_, index) => {
-    const name = `hero-${String(index + 1).padStart(2, '0')}`;
+  return ACTIVE_PROTAGONIST_SOURCE_INDICES.map((sourceIndex) => {
+    const name = `hero-${String(sourceIndex + 1).padStart(2, '0')}`;
     return {
       src: `/assets/site-images/${directory}/${name}@3x.png`,
       srcSet: `${`/assets/site-images/${directory}/${name}@1x.png`} ${widths[0]}w, ${`/assets/site-images/${directory}/${name}@2x.png`} ${widths[1]}w, ${`/assets/site-images/${directory}/${name}@3x.png`} ${widths[2]}w`,
@@ -73,12 +74,13 @@ export function ProtagonistPicture({ index, className, alt }: { index: number; c
   const tablet = tabletProtagonistAssets[index % tabletProtagonistAssets.length];
   const mobile = mobileProtagonistAssets[index % mobileProtagonistAssets.length];
   const toneClass = index === 0 ? 'protagonist--original' : 'protagonist--alternate';
+  const indexClass = `protagonist--index-${String(index + 1).padStart(2, '0')}`;
 
   return (
     <picture>
       <source media="(max-width: 720px)" srcSet={mobile.srcSet} sizes={mobile.sizes} />
       <source media="(max-width: 1024px)" srcSet={tablet.srcSet} sizes={tablet.sizes} />
-      <img className={`${className} ${toneClass}`} src={desktop.src} srcSet={desktop.srcSet} sizes={desktop.sizes} alt={alt} decoding="async" fetchPriority="high" />
+      <img className={`${className} ${toneClass} ${indexClass}`} src={desktop.src} srcSet={desktop.srcSet} sizes={desktop.sizes} alt={alt} decoding="async" fetchPriority="high" />
     </picture>
   );
 }

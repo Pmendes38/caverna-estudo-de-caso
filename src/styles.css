@@ -12,6 +12,148 @@
   --accent: #f1ac33;
 }
 
+/* Nossa Casa: one large frame with a horizontal, snap-aligned photo gallery. */
+.subpage--caverna .caverna-gallery {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: clamp(320px, 38vw, 544px);
+  min-height: 0;
+  overflow: visible;
+}
+
+.subpage--caverna .caverna-gallery-viewport {
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  border-radius: 6px;
+}
+
+.subpage--caverna .caverna-gallery-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.subpage--caverna .caverna-gallery-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.subpage--caverna .caverna-gallery-slide {
+  position: relative;
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: start;
+}
+
+.subpage--caverna .caverna-gallery-slide .subpage-image {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border-radius: 6px;
+}
+
+.subpage--caverna .caverna-gallery-slide .subpage-image img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.subpage--caverna .caverna-gallery-arrow {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid rgba(245, 240, 232, .72);
+  border-radius: 50%;
+  background: rgba(9, 9, 10, .72);
+  color: #f5f0e8;
+  font-size: 22px;
+  line-height: 1;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: opacity .2s ease, background-color .2s ease;
+}
+
+.subpage--caverna .caverna-gallery-arrow:hover:not(:disabled) {
+  background: rgba(74, 32, 64, .9);
+}
+
+.subpage--caverna .caverna-gallery-arrow:disabled {
+  cursor: default;
+  opacity: .22;
+}
+
+.subpage--caverna .caverna-gallery-arrow--prev { left: 18px; }
+.subpage--caverna .caverna-gallery-arrow--next { right: 18px; }
+
+.subpage--caverna .caverna-gallery-dots {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 18px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.subpage--caverna .caverna-gallery-dots button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(245, 240, 232, .58);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.subpage--caverna .caverna-gallery-dots button.is-active {
+  width: 24px;
+  border-radius: 999px;
+  background: #f1ac33;
+}
+
+@media (max-width: 1024px) {
+  .subpage--caverna .caverna-gallery {
+    height: min(70vw, 360px);
+  }
+
+  .subpage--caverna .caverna-gallery-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .subpage--caverna .caverna-gallery-arrow--prev { left: 12px; }
+  .subpage--caverna .caverna-gallery-arrow--next { right: 12px; }
+}
+
+@media (max-width: 600px) {
+  .subpage--caverna .caverna-gallery {
+    height: min(78vw, 300px);
+  }
+
+  .subpage--caverna .caverna-gallery-arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .subpage--caverna .caverna-gallery-arrow--prev { left: 8px; }
+  .subpage--caverna .caverna-gallery-arrow--next { right: 8px; }
+  .subpage--caverna .caverna-gallery-dots { bottom: 12px; }
+}
+
 /* A Caverna / node 485:3 — desktop frame translated from the Figma layout. */
 @media (min-width: 1025px) {
   .subpage--caverna .site-header {
@@ -243,6 +385,91 @@
   }
 }
 
+/* Comunidade: on large screens use the same full-bleed page frame as Quem Somos.
+   The viewport owns the background; the inner content remains on the 1440px grid. */
+@media (min-width: 1025px) {
+  .subpage--comunidade {
+    --headline-background-height: 560px;
+  }
+
+  .subpage--comunidade > .site-header,
+  .subpage--comunidade > main,
+  .subpage--comunidade > .subpage-footer {
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  .subpage--comunidade .site-header {
+    height: 86px;
+    padding: 26px var(--subpage-gutter, 56px);
+    background: transparent;
+  }
+
+  .subpage--comunidade .subpage-community-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr);
+    height: 474px;
+    min-height: 474px;
+    padding: 72px var(--subpage-gutter, 56px) 0;
+    background: transparent;
+  }
+
+  .subpage--comunidade .subpage-community-hero > div:first-child {
+    align-self: flex-start;
+    width: 800px;
+    max-width: 800px;
+    padding: 0;
+    transform: none;
+  }
+
+  .subpage--comunidade .subpage-community-hero h1 {
+    max-width: 800px;
+    font-size: 72px;
+    line-height: 1.18;
+    letter-spacing: -.07em;
+    white-space: nowrap;
+  }
+
+  .subpage--comunidade .subpage-community-hero > .subpage-image {
+    display: none;
+  }
+
+  .subpage--comunidade::before,
+  .subpage--comunidade::after {
+    display: block;
+    right: 0;
+    left: auto;
+  }
+
+  .subpage--comunidade::before {
+    width: 68%;
+  }
+
+  .subpage--comunidade::after {
+    left: 0;
+    width: 100%;
+  }
+
+  .subpage--comunidade .community-paths {
+    width: 100%;
+    min-height: 617px;
+    margin-inline: 0;
+    padding: 66px max(56px, calc((100vw - 1440px) / 2 + 56px)) 72px;
+  }
+
+  .subpage--comunidade .community-projects {
+    width: 100%;
+    margin-inline: 0;
+    padding: 66px max(56px, calc((100vw - 1440px) / 2 + 56px)) 76px;
+  }
+
+  .subpage--comunidade .subpage-cta {
+    width: 100%;
+    margin-inline: 0;
+    padding: 72px max(56px, calc((100vw - 1440px) / 2 + 56px));
+  }
+}
+
 @media (max-width: 1024px) {
   .subpage--caverna .caverna-hero-image img {
     object-position: center 42%;
@@ -349,6 +576,39 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .hero-person.protagonist--alternate,
 .mobile-hero-person.protagonist--alternate { filter: saturate(1.1) contrast(1.03) brightness(1.01); }
+.protagonist--index-02 { --protagonist-scale: 1.21; }
+.protagonist--index-03 { --protagonist-scale: 1.27; }
+.protagonist--index-04 { --protagonist-scale: 1.28; }
+.protagonist--index-05 { --protagonist-scale: 1.16; }
+.protagonist--index-06 { --protagonist-scale: 1.34; }
+.protagonist--index-07 { --protagonist-scale: 1.37; }
+.protagonist--index-08 { --protagonist-scale: 1.31; }
+.protagonist--index-09 { --protagonist-scale: 1.67; }
+.protagonist--index-10 { --protagonist-scale: 1.32; }
+.protagonist--index-11 { --protagonist-scale: 1.29; }
+.protagonist--index-12 { --protagonist-scale: 1.28; }
+.protagonist--index-13 { --protagonist-scale: 1.36; }
+.protagonist--index-14 { --protagonist-scale: 1.49; }
+.protagonist--index-15 { --protagonist-scale: 1.39; }
+.protagonist--index-16 { --protagonist-scale: 1.44; }
+
+/* Desktop uses the same visual target for every cutout, but needs a calmer
+   scale than mobile because its source frame is much larger. */
+.protagonist--index-02 { --desktop-protagonist-scale: .86; }
+.protagonist--index-03 { --desktop-protagonist-scale: .90; }
+.protagonist--index-04 { --desktop-protagonist-scale: .91; }
+.protagonist--index-05 { --desktop-protagonist-scale: .82; }
+.protagonist--index-06 { --desktop-protagonist-scale: .95; }
+.protagonist--index-07 { --desktop-protagonist-scale: .97; }
+.protagonist--index-08 { --desktop-protagonist-scale: .93; }
+.protagonist--index-09 { --desktop-protagonist-scale: 1.18; }
+.protagonist--index-10 { --desktop-protagonist-scale: .94; }
+.protagonist--index-11 { --desktop-protagonist-scale: .92; }
+.protagonist--index-12 { --desktop-protagonist-scale: .91; }
+.protagonist--index-13 { --desktop-protagonist-scale: .96; }
+.protagonist--index-14 { --desktop-protagonist-scale: 1.06; }
+.protagonist--index-15 { --desktop-protagonist-scale: .99; }
+.protagonist--index-16 { --desktop-protagonist-scale: 1.07; }
 .hero-actions { position: absolute; z-index: 4; top: 680px; left: 50%; display: flex; align-items: stretch; gap: 8px; transform: translateX(-50%); }
 .hero-cta { padding: 14px 22px; background: #f5f0e8; color: #09090a; font-size: 14px; font-weight: 700; white-space: nowrap; }
 .hero-cta:hover { transform: translateY(-2px); background: var(--white); }
@@ -1403,7 +1663,7 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .mobile-exit p { top: 580px; }
   .mobile-exit a { top: 650px; left: 97px; transform: none; }
 
-  .mobile-menu-panel { z-index: 2000; padding: 24px 20px; }
+  .mobile-menu-panel { z-index: 2000; width: 100%; height: 100dvh; max-height: 100dvh; overflow-y: auto; overscroll-behavior: contain; padding: 24px 20px; box-sizing: border-box; }
   .mobile-menu-links { gap: 21px; margin-top: 34px; }
   .mobile-menu-links a { font-size: 28px; line-height: 1.15; }
 
@@ -2195,6 +2455,12 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
     padding: 12px;
   }
 
+  /* The subpage main content is its own stacking layer. Raise the header
+     while the drawer is open so the menu fully covers that content. */
+  .subpage > .site-header.site-header--menu-open {
+    z-index: 2001;
+  }
+
   .subpage-community-hero,
   .sports-hero {
     display: flex;
@@ -2294,6 +2560,296 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .subpage--caverna .caverna-hero-image::after { display: block; content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(74,32,64,.12), rgba(74,32,64,.58)); }
 }
 
+/* Mobile: dissolve the photo's left edge into the plum headline instead of exposing a hard cut. */
+@media (max-width: 1024px) {
+  .subpage--caverna .caverna-hero-image::after {
+    display: block;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, #4a2040 0%, #4a2040 28%, rgba(74, 32, 64, .95) 52%, rgba(74, 32, 64, .70) 76%, rgba(74, 32, 64, .30) 92%, transparent 100%),
+      linear-gradient(rgba(74, 32, 64, .24), rgba(74, 32, 64, .24)),
+      linear-gradient(180deg, rgba(74, 32, 64, .12), rgba(74, 32, 64, .58));
+  }
+
+  .subpage--caverna .caverna-hero-image {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 34%, #000 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 34%, #000 100%);
+  }
+}
+
+/* Nossa Fé: final Figma-aligned layout for the three supplied breakpoints. */
+.faith-hero .subpage-hero-copy > p:last-child {
+  color: #aaa7a1;
+}
+
+.faith-confession {
+  position: relative;
+  min-height: 250px;
+  margin-top: 34px;
+  padding: 20px;
+  overflow: hidden;
+  border: 1px solid #4a2040;
+  border-radius: 6px;
+  background: #09090a;
+  color: #f5f0e8;
+}
+
+.faith-confession::after {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  content: "";
+  background: rgba(9, 9, 10, .8);
+  pointer-events: none;
+}
+
+.faith-confession-image {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  background: #09090a;
+}
+
+.faith-confession-image img {
+  object-position: center 58%;
+  filter: saturate(.78) contrast(.94) brightness(.82);
+}
+
+.faith-confession-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 210px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.faith-confession-content strong {
+  margin: 0;
+  color: #f5f0e8;
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.faith-confession-copy {
+  max-width: 720px;
+  margin: 0;
+  color: #f5f0e8;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.faith-confession-copy--compact {
+  display: none;
+}
+
+.faith-confession-content small {
+  margin: 0;
+  color: #f1ac33;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.faith-more-button {
+  display: none;
+  width: 224px;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  padding: 10px 14px;
+  background: #09090a;
+  color: #f5f0e8;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+@media (min-width: 1025px) {
+  .subpage--fe .faith-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 40%;
+    height: 507px;
+    min-height: 507px;
+    padding-top: 0;
+    padding-right: 0;
+  }
+
+  .subpage--fe .faith-hero .subpage-hero-copy {
+    width: 100%;
+    max-width: 872px;
+    align-self: center;
+  }
+
+  .subpage--fe .faith-hero h1 {
+    max-width: 872px;
+    font-size: 68px;
+  }
+
+  .subpage--fe .faith-hero .faith-hero-slot {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 40%;
+    height: auto;
+    min-height: 0;
+  }
+
+  .subpage--fe .faith-hero .faith-hero-slot img {
+    object-position: center 48%;
+  }
+
+  .subpage--fe .faith-affirm {
+    padding-top: 66px;
+    padding-bottom: 70px;
+  }
+
+  .subpage--fe .faith-affirm > h2 {
+    margin-bottom: 34px;
+    font-size: 44px;
+  }
+
+  .subpage--fe .faith-affirm .subpage-card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .subpage--fe .faith-more-button {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .subpage--fe .faith-hero {
+    display: flex;
+    min-height: 390px;
+    height: 390px !important;
+    padding: 72px 24px 42px !important;
+  }
+
+  .subpage--fe .faith-hero .subpage-hero-copy {
+    z-index: 2;
+    align-self: stretch;
+    max-width: 350px;
+    padding-bottom: 0;
+  }
+
+  .subpage--fe .faith-hero h1 {
+    max-width: 350px;
+    font-size: 39px;
+  }
+
+  .subpage--fe .faith-hero .subpage-hero-copy > p:last-child {
+    max-width: 350px;
+    font-size: 14px;
+  }
+
+  .subpage--fe .faith-hero .faith-hero-slot {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .subpage--fe .faith-hero .faith-hero-slot img {
+    object-position: 64% 46%;
+    opacity: .86;
+  }
+
+  .subpage--fe .faith-affirm {
+    gap: 26px;
+    padding: 46px 20px 54px;
+  }
+
+  .subpage--fe .faith-affirm > h2 {
+    margin-bottom: 0;
+    font-size: 28px;
+  }
+
+  .subpage--fe .faith-affirm .subpage-card-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .subpage--fe .faith-affirm .subpage-card-grid:not(.is-expanded) .subpage-info-card:nth-child(n + 4) {
+    display: none;
+  }
+
+  .subpage--fe .faith-affirm .subpage-info-card {
+    padding: 20px 10px 20px;
+  }
+
+  .subpage--fe .faith-affirm .subpage-info-card strong {
+    margin-bottom: 12px;
+    font-size: 15px;
+  }
+
+  .subpage--fe .faith-affirm .subpage-info-card p {
+    font-size: 12px;
+  }
+
+  .subpage--fe .faith-more-button {
+    display: inline-flex;
+  }
+
+  .subpage--fe .faith-confession {
+    width: 100%;
+    min-height: 170px;
+    height: 170px;
+    margin-top: 0;
+    padding: 20px;
+  }
+
+  .subpage--fe .faith-confession-content {
+    min-height: 128px;
+  }
+
+  .subpage--fe .faith-confession-copy--desktop {
+    display: none;
+  }
+
+  .subpage--fe .faith-confession-copy--compact {
+    display: block;
+    max-width: 100%;
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
+  .subpage--fe .faith-confession-content small {
+    font-size: 8px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  .subpage--fe .faith-hero {
+    min-height: 360px;
+    height: 360px !important;
+    padding-right: 56px !important;
+    padding-left: 56px !important;
+  }
+
+  .subpage--fe .faith-hero .subpage-hero-copy,
+  .subpage--fe .faith-hero h1 {
+    max-width: 600px;
+  }
+
+  .subpage--fe .faith-hero .faith-hero-slot img {
+    object-position: 64% 44%;
+  }
+}
+
 /* D05 / Galeria horizontal B: composition matched to the Figma frame. */
 @media (min-width: 1025px) {
   .experience-scene:has(.gallery-b) > .experience-panel {
@@ -2386,7 +2942,7 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
     --subpage-header-overlay-soft: rgba(187, 128, 85, .78);
   }
 
-  .subpage--caverna { --subpage-header-image: url('/assets/attached/caverna-hero.jpeg'); }
+  .subpage--caverna { --subpage-header-image: url('/assets/attached/caverna-missao-hero.jpg'); }
   .subpage--fe,
   .subpage--discipulado { --subpage-header-image: url('/assets/treated/discipulado.jpeg'); }
   .subpage--comunidade { --subpage-header-image: url('/assets/treated/community-hero.jpeg'); }
@@ -2453,6 +3009,10 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   margin: 0 0 24px 32px;
 }
 
+.caverna-liturgy-flow-image img {
+  object-position: center 56%;
+}
+
 @media (max-width: 1024px) {
   .caverna-liturgy-flow-image {
     float: none;
@@ -2462,24 +3022,1765 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 }
 
-/* The Caverna header and hero share one continuous background composition. */
+/* All desktop headline compositions use one continuous image from the menu through the hero. */
 @media (min-width: 1025px) {
+  .subpage {
+    --headline-background-height: 602px;
+    --headline-overlay: var(--subpage-header-overlay);
+    --headline-overlay-soft: var(--subpage-header-overlay-soft);
+    --headline-overlay-mid: rgba(9, 9, 10, .82);
+    --headline-overlay-edge: rgba(9, 9, 10, .36);
+    position: relative;
+    isolation: isolate;
+    background-color: var(--subpage-header-bg);
+    background-image: none;
+  }
+
   .subpage--caverna {
-    background-color: #4a2040;
-    background-image:
-      linear-gradient(90deg, #4a2040 0%, rgba(74, 32, 64, .84) 18%, rgba(74, 32, 64, .38) 48%, rgba(74, 32, 64, .1) 72%, transparent 100%),
-      url('/assets/attached/caverna-hero.jpeg');
-    background-position: center top, right top;
-    background-size: 100% 560px, auto 560px;
+    --headline-background-height: 560px;
+    --headline-overlay: rgba(74, 32, 64, .98);
+    --headline-overlay-soft: rgba(74, 32, 64, .98);
+    --headline-overlay-mid: rgba(74, 32, 64, .90);
+    --headline-overlay-edge: rgba(74, 32, 64, .68);
+  }
+
+  .subpage--comunidade,
+  .subpage--visite,
+  .subpage--discipulado,
+  .subpage--oracao,
+  .subpage--criancas,
+  .subpage--esportes,
+  .subpage--missoes {
+    --headline-overlay-mid: rgba(74, 32, 64, .90);
+    --headline-overlay-edge: rgba(74, 32, 64, .68);
+  }
+
+  .subpage--contribua {
+    --headline-overlay-mid: rgba(187, 128, 85, .66);
+    --headline-overlay-edge: rgba(187, 128, 85, .24);
+  }
+
+  .subpage--fe { --headline-background-height: 791px; }
+  .subpage--agenda { --headline-background-height: 805px; }
+  .subpage--visite { --headline-background-height: 814px; }
+  .subpage--contato,
+  .subpage--contribua { --headline-background-height: 784px; }
+  .subpage--missoes { --headline-background-height: 720px; }
+
+  .subpage::before,
+  .subpage::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: var(--headline-background-height);
+    pointer-events: none;
+  }
+
+  .subpage::before {
+    right: 0;
+    width: 50%;
+    z-index: -1;
+    background: var(--subpage-header-image) center / cover no-repeat;
+  }
+
+  .subpage--caverna::before {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 34%, #000 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 34%, #000 100%);
+    background-image: linear-gradient(rgba(74, 32, 64, .24), rgba(74, 32, 64, .24)), var(--subpage-header-image);
+    background-position: center, center;
+    background-size: cover, cover;
     background-repeat: no-repeat;
   }
 
-  .subpage--caverna .site-header,
-  .subpage--caverna .subpage-hero {
+  .subpage::after {
+    right: 0;
+    left: 0;
+    z-index: 0;
+    background: linear-gradient(90deg, var(--headline-overlay) 0%, var(--headline-overlay-soft) 38%, var(--headline-overlay-mid) 54%, var(--headline-overlay-edge) 72%, transparent 100%);
+  }
+
+  .subpage > .site-header,
+  .subpage > main,
+  .subpage > .subpage-footer {
+    position: relative;
+    z-index: 1;
+  }
+
+  .subpage .site-header,
+  .subpage .subpage-hero {
     background: transparent;
   }
 
-  .subpage--caverna .caverna-hero-image {
+  .subpage .subpage-hero > .subpage-image {
     display: none;
+  }
+}
+
+/* Final home-cover composition: use one aligned image frame for every
+   protagonist, with a shared lower fade into the black background. */
+@media (min-width: 721px) and (max-width: 1024px) {
+  .mobile-hero-panel::after {
+    display: block;
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 34%;
+    background: linear-gradient(180deg, rgba(9, 9, 10, 0) 0%, rgba(9, 9, 10, .18) 34%, rgba(9, 9, 10, .7) 74%, #09090a 100%);
+    content: "";
+    pointer-events: none;
+  }
+
+  .mobile-hero-word {
+    top: 115px;
+    font-size: clamp(50px, 9vw, 72px);
+    z-index: 1;
+  }
+
+  .mobile-hero-person {
+    top: -12px;
+    width: min(620px, calc(100vw + 80px));
+    height: clamp(540px, 72svh, 660px);
+    max-height: none;
+    object-fit: cover;
+    object-position: center;
+    -webkit-mask-image: none;
+    mask-image: none;
+    z-index: 2;
+  }
+
+  .mobile-hero-person.protagonist--original {
+    top: clamp(120px, 16svh, 170px);
+  }
+
+  .mobile-hero-person.protagonist--alternate {
+    transform: translateX(-50%) scale(var(--protagonist-scale, 1.16));
+    transform-origin: 50% 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .mobile-hero-panel::after {
+    display: block;
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 34%;
+    background: linear-gradient(180deg, rgba(9, 9, 10, 0) 0%, rgba(9, 9, 10, .18) 34%, rgba(9, 9, 10, .7) 74%, #09090a 100%);
+    content: "";
+    pointer-events: none;
+  }
+
+  .mobile-hero-word {
+    top: 112px;
+    font-size: clamp(48px, 13vw, 56px);
+    z-index: 1;
+  }
+
+  .mobile-hero-person {
+    top: -12px;
+    width: min(570px, calc(100vw + 180px));
+    height: clamp(500px, 72svh, 560px);
+    max-height: none;
+    object-fit: cover;
+    object-position: center;
+    -webkit-mask-image: none;
+    mask-image: none;
+    z-index: 2;
+  }
+
+  .mobile-hero-person.protagonist--original {
+    top: clamp(140px, 18svh, 210px);
+  }
+
+  .mobile-hero-person.protagonist--alternate {
+    transform: translateX(-50%) scale(var(--protagonist-scale, 1.16));
+    transform-origin: 50% 100%;
+  }
+}
+
+/* Final gallery sizing override after the legacy masonry rules. */
+@media (max-width: 1024px) {
+  .subpage--caverna .caverna-gallery {
+    height: min(70vw, 360px);
+  }
+}
+
+@media (max-width: 600px) {
+  .subpage--caverna .caverna-gallery {
+    height: min(78vw, 300px);
+  }
+}
+
+/* Keep the headline background continuous on tablet and mobile too. */
+@media (max-width: 1024px) {
+  .subpage {
+    --headline-background-height: 762px;
+    --headline-overlay: rgba(9, 9, 10, .98);
+    --headline-overlay-soft: rgba(9, 9, 10, .88);
+    --headline-overlay-mid: rgba(9, 9, 10, .66);
+    --headline-overlay-edge: rgba(9, 9, 10, .16);
+    --subpage-header-image: none;
+    position: relative;
+    isolation: isolate;
+    background-color: var(--subpage-header-bg, #09090a);
+    background-image: none;
+  }
+
+  .subpage--caverna,
+  .subpage--comunidade,
+  .subpage--visite,
+  .subpage--discipulado,
+  .subpage--oracao,
+  .subpage--criancas,
+  .subpage--esportes,
+  .subpage--missoes {
+    --subpage-header-image: url('/assets/attached/caverna-missao-hero.jpg');
+    --headline-overlay: rgba(74, 32, 64, .98);
+    --headline-overlay-soft: rgba(74, 32, 64, .94);
+    --headline-overlay-mid: rgba(74, 32, 64, .74);
+    --headline-overlay-edge: rgba(74, 32, 64, .22);
+  }
+
+  .subpage--fe,
+  .subpage--agenda,
+  .subpage--contato {
+    --subpage-header-image: url('/assets/treated/discipulado.jpeg');
+  }
+
+  .subpage--comunidade { --subpage-header-image: url('/assets/treated/community-hero.jpeg'); }
+  .subpage--agenda { --subpage-header-image: url('/assets/treated/worship.jpeg'); }
+  .subpage--visite { --subpage-header-image: url('/assets/treated/visit.jpeg'); }
+  .subpage--contato,
+  .subpage--oracao { --subpage-header-image: url('/assets/treated/prayer.jpeg'); }
+  .subpage--contribua {
+    --subpage-header-image: url('/assets/treated/contribution.jpeg');
+    --headline-overlay: rgba(187, 128, 85, .96);
+    --headline-overlay-soft: rgba(187, 128, 85, .82);
+    --headline-overlay-mid: rgba(187, 128, 85, .56);
+    --headline-overlay-edge: rgba(187, 128, 85, .16);
+    --headline-background-height: 832px;
+  }
+  .subpage--missoes { --subpage-header-image: url('/assets/treated/mission-reino.jpeg'); }
+  .subpage--criancas { --subpage-header-image: url('/assets/treated/children.jpeg'); }
+  .subpage--esportes { --subpage-header-image: url('/assets/treated/sports-hero.jpeg'); }
+  .subpage--discipulado { --subpage-header-image: url('/assets/treated/discipulado.jpeg'); }
+
+  .subpage::before,
+  .subpage::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: var(--headline-background-height);
+    pointer-events: none;
+  }
+
+  .subpage::before {
+    right: 0;
+    width: 58%;
+    z-index: -1;
+    background: var(--subpage-header-image) center 46% / cover no-repeat;
+  }
+
+  .subpage--caverna::before {
+    background-image: linear-gradient(rgba(74, 32, 64, .24), rgba(74, 32, 64, .24)), var(--subpage-header-image);
+    background-position: center, center 46%;
+    background-size: cover, cover;
+    background-repeat: no-repeat;
+  }
+
+  .subpage::after {
+    right: 0;
+    left: 0;
+    z-index: 0;
+    background: linear-gradient(90deg, var(--headline-overlay) 0%, var(--headline-overlay-soft) 38%, var(--headline-overlay-mid) 56%, var(--headline-overlay-edge) 78%, transparent 100%);
+  }
+
+  .subpage > .site-header,
+  .subpage > main,
+  .subpage > .subpage-footer {
+    position: relative;
+    z-index: 1;
+  }
+
+  .subpage .site-header,
+  .subpage .subpage-hero {
+    background: transparent;
+  }
+
+  .subpage .subpage-hero > .subpage-image {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .subpage::before {
+    width: 64%;
+  }
+}
+
+/* Responsive Caverna headline: keep the black-clad protagonist visible and dissolve the image edge. */
+@media (max-width: 1024px) {
+  .subpage--caverna::before {
+    width: 64%;
+    background-position: 80% center, 80% center;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 56%, #000 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 56%, #000 100%);
+  }
+
+  .subpage--caverna::after {
+    background: linear-gradient(90deg, #4a2040 0%, #4a2040 42%, rgba(74, 32, 64, .98) 54%, rgba(74, 32, 64, .84) 68%, rgba(74, 32, 64, .44) 84%, transparent 100%);
+  }
+}
+
+@media (max-width: 600px) {
+  .subpage--caverna::before {
+    width: 72%;
+    background-position: 80% center, 80% center;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 54%, #000 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 54%, #000 100%);
+  }
+
+  .subpage--caverna::after {
+    background: linear-gradient(90deg, #4a2040 0%, #4a2040 38%, rgba(74, 32, 64, .99) 52%, rgba(74, 32, 64, .84) 68%, rgba(74, 32, 64, .42) 86%, transparent 100%);
+  }
+}
+
+/* Home hero: enlarge the protagonist consistently across the responsive
+   layouts while keeping the original cutout anchored below the headline. */
+@media (min-width: 1025px) {
+  .hero-person {
+    top: -410px;
+    left: -231px;
+    width: 1380px;
+    height: 1665px;
+  }
+
+  .hero-person.protagonist--original {
+    top: -82px;
+    left: -290px;
+    width: 1500px;
+    height: 1145px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mobile-hero-person {
+    top: clamp(54px, 9svh, 92px);
+    width: min(520px, calc(100vw + 72px));
+    max-height: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .mobile-hero-person {
+    top: clamp(38px, 8svh, 68px);
+    width: min(480px, calc(100vw + 72px));
+    max-height: none;
+  }
+}
+
+/* Quem Somos — mobile/tablet composition from the Figma cover frames. */
+.caverna-heading-responsive { display: none; }
+
+@media (min-width: 721px) and (max-width: 1024px) {
+  .subpage--caverna {
+    --caverna-header-height: 61px;
+    --caverna-hero-height: 304px;
+    --headline-background-height: 365px;
+    background: #f5f0e8;
+  }
+
+  .subpage--caverna .site-header {
+    position: relative;
+    height: var(--caverna-header-height);
+    padding: 0 16px;
+    background: #09090a;
+  }
+
+  .subpage--caverna .mobile-brand {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+
+  .subpage--caverna .subpage-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 18px;
+    height: var(--caverna-hero-height);
+    min-height: var(--caverna-hero-height);
+    padding: 40px 17px 24px;
+    background: transparent;
+  }
+
+  .subpage--caverna .subpage-hero-copy {
+    width: 100%;
+    max-width: 390px;
+    gap: 18px;
+    padding: 0;
+  }
+
+  .subpage--caverna .caverna-heading-desktop { display: none; }
+  .subpage--caverna .caverna-heading-responsive { display: inline; }
+  .subpage--caverna .subpage-kicker { font-size: 11px; }
+  .subpage--caverna .subpage-hero h1 {
+    max-width: 390px;
+    font-size: clamp(36px, 5.2vw, 42px);
+    line-height: .99;
+    letter-spacing: -.065em;
+    white-space: normal;
+  }
+  .subpage--caverna .subpage-hero-copy > p:last-child {
+    max-width: 310px;
+    font-size: 13px;
+    line-height: 1.18;
+  }
+
+  .subpage--caverna::before,
+  .subpage--caverna::after {
+    top: var(--caverna-header-height);
+    height: var(--caverna-hero-height);
+  }
+
+  .subpage--caverna::before {
+    width: 100%;
+    background-position: center 54%, center 54%;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .subpage--caverna::after {
+    background: linear-gradient(90deg, rgba(74, 32, 64, .94) 0%, rgba(74, 32, 64, .76) 54%, rgba(74, 32, 64, .42) 100%);
+  }
+}
+
+@media (max-width: 720px) {
+  .subpage--caverna {
+    --caverna-header-height: 96px;
+    --caverna-hero-height: 489px;
+    --headline-background-height: 585px;
+    background: #f5f0e8;
+  }
+
+  .subpage--caverna .site-header {
+    position: relative;
+    height: var(--caverna-header-height);
+    padding: 0 26px;
+    background: #09090a;
+  }
+
+  .subpage--caverna .mobile-brand {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+
+  .subpage--caverna .subpage-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 26px;
+    height: var(--caverna-hero-height);
+    min-height: var(--caverna-hero-height);
+    padding: 64px 26px 24px;
+    background: transparent;
+  }
+
+  .subpage--caverna .subpage-hero-copy {
+    width: 100%;
+    max-width: 430px;
+    gap: 26px;
+    padding: 0;
+  }
+
+  .subpage--caverna .caverna-heading-desktop { display: none; }
+  .subpage--caverna .caverna-heading-responsive { display: inline; }
+  .subpage--caverna .subpage-kicker { font-size: 12px; }
+  .subpage--caverna .subpage-hero h1 {
+    max-width: 430px;
+    font-size: clamp(42px, 11vw, 58px);
+    line-height: .99;
+    letter-spacing: -.07em;
+    white-space: normal;
+  }
+  .subpage--caverna .subpage-hero-copy > p:last-child {
+    max-width: 430px;
+    font-size: 16px;
+    line-height: 1.24;
+  }
+
+  .subpage--caverna::before,
+  .subpage--caverna::after {
+    top: var(--caverna-header-height);
+    height: var(--caverna-hero-height);
+  }
+
+  .subpage--caverna::before {
+    width: 100%;
+    background-position: center 55%, center 55%;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .subpage--caverna::after {
+    background: linear-gradient(90deg, rgba(74, 32, 64, .94) 0%, rgba(74, 32, 64, .76) 55%, rgba(74, 32, 64, .42) 100%);
+  }
+}
+
+/* Home hero: match the shared D01/M01 frame from Figma. */
+@media (min-width: 1025px) {
+  .hero::after {
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 34%;
+    background: linear-gradient(180deg, rgba(9, 9, 10, 0) 0%, rgba(9, 9, 10, .18) 34%, rgba(9, 9, 10, .7) 74%, #09090a 100%);
+    content: "";
+    pointer-events: none;
+  }
+
+  .hero-word {
+    top: 360px;
+    width: 1530px;
+    font-size: 156px;
+  }
+
+  /* Figma D01 centers the protagonist frame inside the 918px stage. The
+     responsive width prevents it from becoming oversized on wide screens. */
+  .hero-person,
+  .hero-person.protagonist--alternate {
+    top: -367px;
+    left: 50%;
+    width: clamp(900px, 54vw, 1080px);
+    height: auto;
+    max-width: none;
+    object-fit: contain;
+    object-position: center;
+    -webkit-mask-image: linear-gradient(180deg, #000 48%, rgba(0, 0, 0, .62) 68%, rgba(0, 0, 0, .14) 88%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 48%, rgba(0, 0, 0, .62) 68%, rgba(0, 0, 0, .14) 88%, transparent 100%);
+    transform: translateX(-50%);
+    transform-origin: 50% 100%;
+  }
+
+  /* The original source is a shorter 1179 x 900 cutout; keep its natural
+     ratio and anchor it lower instead of stretching it into the tall frame. */
+  .hero-person.protagonist--original {
+    top: -110px;
+    left: 50%;
+    width: clamp(980px, 54vw, 1080px);
+    height: auto;
+    max-width: none;
+    object-fit: contain;
+    object-position: center bottom;
+    -webkit-mask-image: linear-gradient(180deg, #000 62%, rgba(0, 0, 0, .78) 78%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 62%, rgba(0, 0, 0, .78) 78%, transparent 100%);
+    transform: translateX(-50%);
+  }
+
+  /* Preserve horizontal scene motion while keeping each image centered. */
+  .experience-scene .experience-panel--hero .hero-person,
+  .experience-scene .experience-panel--hero .hero-person.protagonist--alternate {
+    transform: translate3d(var(--scene-exit-x, 0px), 0, 0) translateX(-50%);
+  }
+
+  .experience-scene .experience-panel--hero .hero-person.protagonist--original {
+    transform: translate3d(var(--scene-exit-x, 0px), 0, 0) translateX(-50%);
+  }
+}
+
+@media (min-width: 721px) and (max-width: 1024px) {
+  .mobile-hero-word {
+    top: clamp(130px, 19svh, 190px);
+    font-size: clamp(58px, 15vw, 78px);
+    z-index: 1;
+  }
+
+  .mobile-hero-person {
+    top: 72px;
+    left: 50%;
+    width: min(680px, calc(100vw + 40px));
+    height: clamp(620px, 78svh, 720px);
+    max-height: none;
+    object-fit: cover;
+    object-position: center;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+}
+
+@media (max-width: 720px) {
+  .mobile-hero-word {
+    top: clamp(180px, 24svh, 260px);
+    font-size: clamp(58px, 16vw, 78px);
+    z-index: 1;
+  }
+
+  .mobile-hero-person {
+    top: 59px;
+    left: 50%;
+    width: min(620px, calc(100vw + 245px));
+    height: clamp(620px, 86svh, 738px);
+    max-height: none;
+    object-fit: cover;
+    object-position: center;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+}
+
+/* Shared subpage headline model: every page follows the Quem Somos frame;
+   only the tint and the source image change from page to page. */
+.subpage--caverna,
+.subpage--comunidade,
+.subpage--visite,
+.subpage--discipulado,
+.subpage--oracao,
+.subpage--criancas,
+.subpage--esportes,
+.subpage--missoes {
+  --shared-headline-color: #4a2040;
+  --shared-headline-rgb: 74, 32, 64;
+}
+
+.subpage--fe,
+.subpage--agenda,
+.subpage--contato {
+  --shared-headline-color: #09090a;
+  --shared-headline-rgb: 9, 9, 10;
+}
+
+.subpage--contribua {
+  --shared-headline-color: #bb8055;
+  --shared-headline-rgb: 187, 128, 85;
+}
+
+/* Let the shared headline background remain visible behind the Mission hero;
+   the following sections keep their own explicit backgrounds. */
+.subpage--missoes .mission-page {
+  background-color: transparent;
+}
+
+@media (min-width: 1025px) {
+  .subpage .site-header {
+    height: 86px;
+    padding: 26px var(--subpage-gutter, 56px);
+    background: transparent;
+  }
+
+  .subpage .subpage-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr);
+    height: 474px;
+    min-height: 474px;
+    padding: 72px var(--subpage-gutter, 56px) 0;
+  }
+
+  .subpage .subpage-hero-copy {
+    align-self: flex-start;
+    width: 800px;
+    max-width: 800px;
+    transform: none;
+  }
+
+  .subpage .subpage-hero h1 {
+    max-width: 800px;
+    font-size: 72px;
+    line-height: 1.18;
+    letter-spacing: -.07em;
+    white-space: nowrap;
+  }
+
+  .subpage > .site-header,
+  .subpage > main,
+  .subpage > .subpage-footer {
+    position: relative;
+    z-index: 1;
+  }
+
+  .subpage::before {
+    top: 0;
+    right: 0;
+    width: 68%;
+    height: var(--headline-background-height, 560px);
+    background-image:
+      linear-gradient(rgba(var(--shared-headline-rgb), .24), rgba(var(--shared-headline-rgb), .24)),
+      var(--subpage-header-image);
+    background-position: center, right 46%;
+    background-size: cover, cover;
+    background-repeat: no-repeat;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 32%, #000 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 32%, #000 100%);
+  }
+
+  .subpage::after {
+    top: 0;
+    right: 0;
+    left: 0;
+    height: var(--headline-background-height, 560px);
+    background: linear-gradient(
+      90deg,
+      rgba(var(--shared-headline-rgb), .98) 0%,
+      rgba(var(--shared-headline-rgb), .98) 38%,
+      rgba(var(--shared-headline-rgb), .90) 54%,
+      rgba(var(--shared-headline-rgb), .68) 72%,
+      transparent 100%
+    );
+  }
+
+  .subpage .subpage-hero > .subpage-image {
+    display: none;
+  }
+}
+
+@media (min-width: 721px) and (max-width: 1024px) {
+  .subpage .site-header {
+    position: relative;
+    height: 61px;
+    padding: 0 16px;
+    background: transparent;
+  }
+
+  .subpage .mobile-brand {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+
+  .subpage .subpage-hero,
+  .subpage .subpage-community-hero,
+  .subpage .mission-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 18px;
+    height: 304px;
+    min-height: 304px;
+    padding: 40px 17px 24px;
+    background: transparent;
+  }
+
+  .subpage .subpage-hero-copy,
+  .subpage .subpage-community-hero > div:first-child,
+  .subpage .mission-hero .subpage-hero-copy {
+    width: 100%;
+    max-width: 390px;
+    gap: 18px;
+    padding: 0;
+  }
+
+  .subpage .subpage-hero h1,
+  .subpage .subpage-community-hero h1,
+  .subpage .mission-hero h1 {
+    max-width: 390px;
+    font-size: clamp(36px, 5.2vw, 42px);
+    line-height: .99;
+    letter-spacing: -.065em;
+    white-space: normal;
+  }
+
+  .subpage .subpage-hero-copy > p:last-child,
+  .subpage .subpage-community-hero > div:first-child > p:last-child,
+  .subpage .mission-hero > p:not(.subpage-kicker) {
+    max-width: 310px;
+    font-size: 13px;
+    line-height: 1.18;
+  }
+
+  .subpage::before,
+  .subpage::after {
+    top: 0;
+    width: 100%;
+    height: 365px;
+  }
+
+  .subpage::before {
+    background-image:
+      linear-gradient(rgba(var(--shared-headline-rgb), .24), rgba(var(--shared-headline-rgb), .24)),
+      var(--subpage-header-image);
+    background-position: center, center 54%;
+    background-size: cover, cover;
+    background-repeat: no-repeat;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .subpage::after {
+    background: linear-gradient(
+      90deg,
+      rgba(var(--shared-headline-rgb), .94) 0%,
+      rgba(var(--shared-headline-rgb), .76) 54%,
+      rgba(var(--shared-headline-rgb), .42) 100%
+    );
+  }
+
+  .subpage .subpage-hero > .subpage-image {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .subpage .site-header {
+    position: relative;
+    height: 96px;
+    padding: 0 26px;
+    background: transparent;
+  }
+
+  .subpage .mobile-brand {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+
+  .subpage .subpage-hero,
+  .subpage .subpage-community-hero,
+  .subpage .mission-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 26px;
+    height: 489px;
+    min-height: 489px;
+    padding: 64px 26px 24px;
+    background: transparent;
+  }
+
+  .subpage .subpage-hero-copy,
+  .subpage .subpage-community-hero > div:first-child,
+  .subpage .mission-hero .subpage-hero-copy {
+    width: 100%;
+    max-width: 430px;
+    gap: 26px;
+    padding: 0;
+  }
+
+  .subpage .subpage-hero h1,
+  .subpage .subpage-community-hero h1,
+  .subpage .mission-hero h1 {
+    max-width: 430px;
+    font-size: clamp(42px, 11vw, 58px);
+    line-height: .99;
+    letter-spacing: -.07em;
+    white-space: normal;
+  }
+
+  .subpage .subpage-hero-copy > p:last-child,
+  .subpage .subpage-community-hero > div:first-child > p:last-child,
+  .subpage .mission-hero > p:not(.subpage-kicker) {
+    max-width: 430px;
+    font-size: 16px;
+    line-height: 1.24;
+  }
+
+  .subpage::before,
+  .subpage::after {
+    top: 0;
+    width: 100%;
+    height: 585px;
+  }
+
+  .subpage::before {
+    background-image:
+      linear-gradient(rgba(var(--shared-headline-rgb), .24), rgba(var(--shared-headline-rgb), .24)),
+      var(--subpage-header-image);
+    background-position: center, center 55%;
+    background-size: cover, cover;
+    background-repeat: no-repeat;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .subpage::after {
+    background: linear-gradient(
+      90deg,
+      rgba(var(--shared-headline-rgb), .94) 0%,
+      rgba(var(--shared-headline-rgb), .76) 55%,
+      rgba(var(--shared-headline-rgb), .42) 100%
+    );
+  }
+
+  .subpage .subpage-hero > .subpage-image {
+    display: none;
+  }
+}
+
+/* Final protagonist fade: conceal the image's hard lower edge without
+   changing the size or position of any protagonist. */
+@media (min-width: 1025px) {
+  .hero::after {
+    height: 42%;
+    background: linear-gradient(
+      180deg,
+      rgba(9, 9, 10, 0) 0%,
+      rgba(9, 9, 10, .06) 16%,
+      rgba(9, 9, 10, .32) 42%,
+      rgba(9, 9, 10, .78) 72%,
+      #09090a 100%
+    );
+  }
+}
+
+@media (max-width: 1024px) {
+  .mobile-hero-panel::after {
+    height: 42%;
+    background: linear-gradient(
+      180deg,
+      rgba(9, 9, 10, 0) 0%,
+      rgba(9, 9, 10, .06) 16%,
+      rgba(9, 9, 10, .34) 44%,
+      rgba(9, 9, 10, .8) 74%,
+      #09090a 100%
+    );
+  }
+}
+
+/* Keep protagonists behind interactive hero controls at every breakpoint. */
+.hero-person,
+.mobile-hero-person {
+  z-index: 1;
+}
+
+.hero-actions,
+.mobile-hero-actions {
+  z-index: 10;
+}
+
+/* The history timeline is intentionally wider than the standard content frame
+   on desktop, matching the expansive Figma composition. */
+@media (min-width: 1025px) {
+  .subpage--caverna .caverna-timeline {
+    width: 100vw;
+    height: auto;
+    min-height: 470px;
+    margin-left: calc(50% - 50vw);
+    padding: 0 clamp(48px, 8vw, 144px);
+    box-sizing: border-box;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: clamp(28px, 3.25vw, 64px);
+  }
+
+  .subpage--caverna .caverna-timeline-item-wrap {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .subpage--caverna .caverna-timeline-item-wrap.is-previewing {
+    z-index: 20;
+  }
+
+  .subpage--caverna .caverna-timeline-line {
+    top: 106px;
+    right: clamp(48px, 8vw, 144px);
+    left: clamp(48px, 8vw, 144px);
+  }
+
+  .subpage--caverna .caverna-timeline-item {
+    min-width: 0;
+    width: 100%;
+    min-height: 430px;
+  }
+
+  .subpage--caverna .caverna-timeline-year {
+    top: 42px;
+    left: 0;
+    font-size: 20px;
+  }
+
+  .subpage--caverna .caverna-timeline-marker {
+    top: 96px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .subpage--caverna .caverna-timeline-item strong {
+    top: 154px;
+    left: 0;
+    width: 100%;
+    max-width: none;
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  .subpage--caverna .caverna-timeline-item > span:not(.caverna-timeline-year):not(.caverna-timeline-marker) {
+    top: 222px;
+    left: 0;
+    width: 100%;
+    max-width: none;
+    font-size: 12px;
+    line-height: 17px;
+  }
+
+  .subpage--caverna .caverna-timeline-item:focus-visible {
+    outline: 2px solid #f1ac33;
+    outline-offset: 8px;
+  }
+
+  .subpage--caverna .caverna-timeline-item-wrap:nth-child(2) .caverna-timeline-preview {
+    left: 0;
+    transform: none;
+  }
+
+  .subpage--caverna .caverna-timeline-preview {
+    width: min(600px, calc(100vw - 96px));
+  }
+
+  .subpage--caverna .caverna-timeline-item-wrap:nth-child(8) .caverna-timeline-preview {
+    left: 100%;
+    transform: translateX(-100%);
+  }
+
+  .subpage--caverna .caverna-timeline-item-wrap:nth-child(3) .caverna-timeline-marker,
+  .subpage--caverna .caverna-timeline-item-wrap:nth-child(4) .caverna-timeline-marker,
+  .subpage--caverna .caverna-timeline-item-wrap:nth-child(7) .caverna-timeline-marker {
+    background: #f1ac33;
+  }
+}
+
+.caverna-timeline-preview {
+  position: absolute;
+  z-index: 8;
+  top: 128px;
+  left: 50%;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 28px;
+  width: min(600px, calc(100% - 32px));
+  height: 350px;
+  padding: 20px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 12px;
+  background: #151517;
+  color: #f4efe8;
+  font: inherit;
+  text-align: left;
+  box-sizing: border-box;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
+  transform: translateX(-50%);
+  cursor: pointer;
+  animation: timeline-overlay-in 160ms ease-out both;
+}
+
+.caverna-timeline-preview-image {
+  width: 220px;
+  height: 310px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.caverna-timeline-preview-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 8px;
+}
+
+.caverna-timeline-preview-copy > span:first-child {
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.caverna-timeline-preview-copy strong {
+  max-width: 250px;
+  margin: 20px 0 26px;
+  color: #f4efe8;
+  font-size: 25px;
+  line-height: 1.08;
+  letter-spacing: -.04em;
+}
+
+.caverna-timeline-preview-copy > span:nth-child(3) {
+  max-width: 250px;
+  color: #c8c4bd;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.caverna-timeline-preview-cta {
+  margin-top: auto;
+  padding-top: 18px;
+  color: #f1ac33;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.caverna-timeline-preview:focus-visible {
+  outline: 2px solid #f1ac33;
+  outline-offset: 4px;
+}
+
+.caverna-timeline-gallery-backdrop {
+  position: fixed;
+  z-index: 3000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  background: rgba(9, 9, 10, .84);
+}
+
+.caverna-timeline-gallery {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(280px, 480px) minmax(240px, 1fr);
+  gap: 32px;
+  width: min(920px, 100%);
+  max-height: min(680px, calc(100vh - 64px));
+  padding: 32px;
+  overflow: auto;
+  border: 1px solid rgba(244, 239, 232, .18);
+  border-radius: 14px;
+  background: #151517;
+  color: #f4efe8;
+  box-sizing: border-box;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .45);
+}
+
+.caverna-timeline-gallery-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  z-index: 1;
+  padding: 6px 0;
+  border: 0;
+  background: transparent;
+  color: #f1ac33;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.caverna-timeline-gallery-media {
+  min-height: 360px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #09090a;
+}
+
+.caverna-timeline-gallery-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  object-fit: cover;
+}
+
+.caverna-timeline-gallery-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 16px 16px 0;
+}
+
+.caverna-timeline-gallery-copy > span {
+  color: #f1ac33;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.caverna-timeline-gallery-copy h3 {
+  max-width: 300px;
+  margin: 20px 0 0;
+  color: #f4efe8;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1;
+  letter-spacing: -.05em;
+}
+
+.caverna-timeline-gallery-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 32px;
+  color: #c8c4bd;
+  font-size: 13px;
+}
+
+.caverna-timeline-gallery-controls button {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(244, 239, 232, .35);
+  border-radius: 50%;
+  background: transparent;
+  color: #f4efe8;
+  font: inherit;
+  cursor: pointer;
+}
+
+.caverna-timeline-gallery-controls button:disabled {
+  opacity: .3;
+  cursor: default;
+}
+
+@media (max-width: 1024px) {
+  .caverna-timeline-item-wrap {
+    position: relative;
+    width: 100%;
+  }
+
+  .caverna-timeline-preview {
+    position: relative;
+    top: auto;
+    left: auto;
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 16px;
+    width: 100%;
+    height: auto;
+    min-height: 238px;
+    margin: 12px 0 12px -28px;
+    padding: 14px;
+    transform: none;
+    animation: none;
+  }
+
+  .caverna-timeline-item-wrap:nth-child(2) .caverna-timeline-preview,
+  .caverna-timeline-item-wrap:nth-child(8) .caverna-timeline-preview {
+    left: auto;
+    transform: none;
+  }
+
+  .caverna-timeline-preview-image {
+    width: 120px;
+    height: 190px;
+  }
+
+  .caverna-timeline-preview-copy {
+    padding-top: 2px;
+  }
+
+  .caverna-timeline-preview-copy > span:first-child {
+    font-size: 15px;
+  }
+
+  .caverna-timeline-preview-copy strong {
+    margin: 14px 0 18px;
+    font-size: 20px;
+    line-height: 1.1;
+  }
+
+  .caverna-timeline-preview-copy > span:nth-child(3) {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .caverna-timeline-preview-cta {
+    padding-top: 12px;
+    font-size: 10px;
+  }
+
+  .caverna-timeline-gallery-backdrop {
+    padding: 16px;
+  }
+
+  .caverna-timeline-gallery {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-height: calc(100vh - 32px);
+    padding: 20px;
+  }
+
+  .caverna-timeline-gallery-media,
+  .caverna-timeline-gallery-media img {
+    min-height: 240px;
+    height: min(55vh, 420px);
+  }
+
+  .caverna-timeline-gallery-copy {
+    padding: 0 0 8px;
+  }
+
+  .caverna-timeline-gallery-controls {
+    margin-top: 20px;
+    padding-top: 0;
+  }
+}
+
+/* Final Nossa Fé overrides: keep the Figma hero photo visible above the shared cover. */
+.subpage--fe .subpage-hero > .faith-hero-slot {
+  display: block;
+}
+
+@media (min-width: 1025px) {
+  .subpage--fe {
+    --subpage-header-image: url('/assets/site-images/nossa-fe/hero-oracao.jpg');
+  }
+}
+
+@media (max-width: 1024px) {
+  .subpage--fe {
+    --subpage-header-image: url('/assets/site-images/nossa-fe/hero-oracao.jpg');
+  }
+}
+
+/* Last-cascade corrections for the Nossa Fé Figma frames. */
+@media (min-width: 1025px) {
+  .subpage--fe::before,
+  .subpage--fe::after {
+    display: none;
+  }
+
+  .subpage--fe .site-header {
+    background-image: none;
+  }
+
+  .subpage--fe .faith-hero h1 {
+    max-width: 872px;
+    font-size: 68px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .subpage--fe::before,
+  .subpage--fe::after {
+    display: none;
+  }
+
+  .subpage--fe .site-header {
+    background-image: none;
+  }
+
+  .subpage--fe .faith-hero h1 {
+    max-width: 350px;
+    font-size: 39px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  .subpage--fe .faith-hero h1,
+  .subpage--fe .faith-hero .subpage-hero-copy {
+    max-width: 600px;
+  }
+}
+
+/* Final Comunidade implementation: dimensions and hierarchy follow Figma 485:9/10/11. */
+.subpage--comunidade .community-hero-title-mobile,
+.subpage--comunidade .community-cta-title-mobile,
+.subpage--comunidade .community-copy-mobile {
+  display: none;
+}
+
+.subpage--comunidade .subpage-community-hero > .subpage-image {
+  display: block;
+  z-index: 0;
+}
+
+.subpage--comunidade .subpage-community-hero > .subpage-image img {
+  object-position: center 42%;
+}
+
+.subpage--comunidade .community-projects {
+  min-height: 0;
+}
+
+.subpage--comunidade .community-schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.subpage--comunidade .community-project-card {
+  display: grid;
+  grid-template-columns: 512px minmax(0, 1fr);
+  align-items: start;
+  gap: 32px;
+  width: 100%;
+  padding: 20px;
+  background: #171719;
+}
+
+.subpage--comunidade .community-project-card--reverse {
+  grid-template-columns: minmax(0, 1fr) 512px;
+}
+
+.subpage--comunidade .community-project-card--reverse .subpage-image {
+  order: 2;
+}
+
+.subpage--comunidade .community-project-card > .subpage-image {
+  width: 512px;
+  height: 230px;
+  min-height: 0;
+}
+
+.subpage--comunidade .community-project-card > div:last-child,
+.subpage--comunidade .community-project-card > div:first-child:not(.subpage-image) {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+  padding-top: 0;
+}
+
+.subpage--comunidade .community-project-card strong {
+  color: #f5f0e8;
+  font-size: 22px;
+  line-height: 1.18;
+}
+
+.subpage--comunidade .community-project-card p {
+  margin: 0;
+  color: #aaa7a1;
+  font-size: 15px;
+  line-height: 1.18;
+}
+
+@media (min-width: 1025px) {
+  .subpage--comunidade::before,
+  .subpage--comunidade::after {
+    display: none;
+  }
+
+  .subpage--comunidade .subpage-community-hero {
+    height: 507px;
+    min-height: 507px;
+    padding: 70px 56px;
+    background: #4a2040;
+  }
+
+  .subpage--comunidade .subpage-community-hero > .subpage-image {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: 50%;
+    height: 100%;
+  }
+
+  .subpage--comunidade .subpage-community-hero > .subpage-image::after {
+    background: linear-gradient(90deg, #4a2040 0%, rgba(74, 32, 64, .84) 18%, rgba(74, 32, 64, .38) 48%, rgba(74, 32, 64, .1) 72%, transparent 100%);
+  }
+
+  .subpage--comunidade .subpage-community-hero > div:first-child {
+    max-width: 680px;
+  }
+
+  .subpage--comunidade .community-paths {
+    min-height: 617px;
+    padding: 66px 56px 72px;
+  }
+
+  .subpage--comunidade .community-projects {
+    padding: 66px 56px 76px;
+  }
+
+  .subpage--comunidade .subpage-cta {
+    padding: 72px 56px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .subpage--comunidade .subpage-community-hero {
+    position: relative;
+    min-height: 0;
+    height: auto;
+    padding: 48px 20px;
+    gap: 26px;
+    background: #572047;
+  }
+
+  .subpage--comunidade .subpage-community-hero > .subpage-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .subpage--comunidade .subpage-community-hero > .subpage-image::after {
+    background: linear-gradient(90deg, #572047 0%, rgba(87, 32, 71, .82) 42%, rgba(87, 32, 71, .22) 100%);
+  }
+
+  .subpage--comunidade .subpage-community-hero > div:first-child {
+    z-index: 2;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .subpage--comunidade .subpage-community-hero h1 {
+    max-width: 100%;
+  }
+
+  .subpage--comunidade .community-paths {
+    min-height: 0;
+    padding: 46px 20px 54px;
+  }
+
+  .subpage--comunidade .community-photo-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .subpage--comunidade .community-photo-grid .subpage-image {
+    width: 100%;
+    height: 210px;
+    margin-bottom: 0;
+  }
+
+  .subpage--comunidade .community-path-card {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .subpage--comunidade .community-path-card h3,
+  .subpage--comunidade .community-path-card p {
+    margin: 0;
+  }
+
+  .subpage--comunidade .community-projects {
+    padding: 48px 20px 56px;
+  }
+
+  .subpage--comunidade .community-schedule-list {
+    gap: 18px;
+  }
+
+  .subpage--comunidade .community-project-card,
+  .subpage--comunidade .community-project-card--reverse {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 20px;
+  }
+
+  .subpage--comunidade .community-project-card--reverse .subpage-image {
+    order: initial;
+  }
+
+  .subpage--comunidade .community-project-card > .subpage-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .subpage--comunidade .community-project-card > div:last-child,
+  .subpage--comunidade .community-project-card > div:first-child:not(.subpage-image) {
+    width: 100%;
+    gap: 18px;
+  }
+
+  .subpage--comunidade .community-project-card strong {
+    font-size: 22px;
+  }
+
+  .subpage--comunidade .community-presence {
+    margin-top: 0;
+  }
+
+  .subpage--comunidade .subpage-cta {
+    gap: 22px;
+    padding: 52px 20px 56px;
+  }
+
+  .subpage--comunidade .subpage-cta h2 {
+    font-size: 36px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  .subpage--comunidade .subpage-community-hero h1 {
+    max-width: 672px;
+    font-size: 40px;
+    line-height: 1.18;
+  }
+}
+
+@media (max-width: 480px) {
+  .subpage--comunidade .community-hero-title-desktop,
+  .subpage--comunidade .community-cta-title-desktop,
+  .subpage--comunidade .community-copy-desktop {
+    display: none;
+  }
+
+  .subpage--comunidade .community-hero-title-mobile,
+  .subpage--comunidade .community-cta-title-mobile,
+  .subpage--comunidade .community-copy-mobile {
+    display: inline;
+  }
+
+  .subpage--comunidade .community-paths h2,
+  .subpage--comunidade .community-projects > h2 {
+    font-size: 28px;
+  }
+
+  .subpage--comunidade .subpage-community-hero h1 {
+    font-size: 32px;
+    line-height: 1.18;
+  }
+
+  .subpage--comunidade .community-path-card h3 {
+    font-size: 18px;
+  }
+
+  .subpage--comunidade .community-path-card p {
+    font-size: 14px;
+  }
+
+  .subpage--comunidade .community-project-card p {
+    font-size: 15px;
+  }
+}
+
+/* Comunidade: use the same continuous navbar/headline cover as the previous pages,
+   while keeping the desktop frame centered instead of stretching across the site. */
+.subpage--comunidade {
+  --subpage-header-image: url('/assets/site-images/comunidade/banner-comunidade.jpg');
+}
+
+@media (min-width: 1025px) {
+  .subpage--comunidade > .site-header,
+  .subpage--comunidade > main,
+  .subpage--comunidade > .subpage-footer {
+    width: min(100%, 1440px);
+    margin-inline: auto;
+  }
+
+  .subpage--comunidade .site-header,
+  .subpage--comunidade .subpage-community-hero {
+    background: transparent;
+  }
+
+  .subpage--comunidade .subpage-community-hero > .subpage-image {
+    display: none;
+  }
+
+  .subpage--comunidade::before,
+  .subpage--comunidade::after {
+    display: block;
+  }
+
+  .subpage--comunidade::before {
+    right: max(0px, calc((100vw - 1440px) / 2));
+    width: min(720px, 50vw);
+  }
+
+  .subpage--comunidade::after {
+    right: max(0px, calc((100vw - 1440px) / 2));
+    left: max(0px, calc((100vw - 1440px) / 2));
+  }
+}
+
+@media (max-width: 1024px) {
+  .subpage--comunidade .site-header,
+  .subpage--comunidade .subpage-community-hero {
+    background: transparent;
+  }
+
+  .subpage--comunidade .subpage-community-hero > .subpage-image {
+    display: none;
+  }
+
+  .subpage--comunidade::before,
+  .subpage--comunidade::after {
+    display: block;
+  }
+}
+
+/* Comunidade: keep the page full-bleed on large screens, like Quem Somos. */
+@media (min-width: 1025px) {
+  .subpage--comunidade {
+    --headline-background-height: 560px;
+  }
+
+  .subpage--comunidade > .site-header,
+  .subpage--comunidade > main,
+  .subpage--comunidade > .subpage-footer {
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  .subpage--comunidade .site-header {
+    height: 86px;
+    padding: 26px var(--subpage-gutter, 56px);
+    background: transparent;
+  }
+
+  .subpage--comunidade .subpage-community-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr);
+    height: 474px;
+    min-height: 474px;
+    padding: 72px var(--subpage-gutter, 56px) 0;
+    background: transparent;
+  }
+
+  .subpage--comunidade .subpage-community-hero > div:first-child {
+    align-self: flex-start;
+    width: 800px;
+    max-width: 800px;
+    padding: 0;
+    transform: none;
+  }
+
+  .subpage--comunidade .subpage-community-hero h1 {
+    max-width: 800px;
+    font-size: 72px;
+    line-height: 1.18;
+    letter-spacing: -.07em;
+    white-space: nowrap;
+  }
+
+  .subpage--comunidade .subpage-community-hero > .subpage-image {
+    display: none;
+  }
+
+  .subpage--comunidade::before,
+  .subpage--comunidade::after {
+    display: block;
+    right: 0;
+    left: auto;
+  }
+
+  .subpage--comunidade::before {
+    width: 68%;
+  }
+
+  .subpage--comunidade::after {
+    left: 0;
+    width: 100%;
+  }
+
+  .subpage--comunidade .community-paths {
+    width: 100%;
+    min-height: 617px;
+    margin-inline: 0;
+    padding: 66px max(56px, calc((100vw - 1440px) / 2 + 56px)) 72px;
+  }
+
+  .subpage--comunidade .community-projects {
+    width: 100%;
+    margin-inline: 0;
+    padding: 66px max(56px, calc((100vw - 1440px) / 2 + 56px)) 76px;
+  }
+
+  .subpage--comunidade .subpage-cta {
+    width: 100%;
+    margin-inline: 0;
+    padding: 72px max(56px, calc((100vw - 1440px) / 2 + 56px));
   }
 }

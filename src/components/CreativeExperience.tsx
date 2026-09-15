@@ -40,13 +40,15 @@ function Scene({ children, index, progress }: { children: ReactNode; index: numb
   const revealCount = index === 1 || index === 2 ? 6 : index === 3 || index === 4 ? 5 : 1;
   const revealedSteps = Math.floor(sceneRevealProgress * revealCount);
   const revealStep = (step: number) => step <= revealedSteps ? 1 : 0;
+  const sceneOpacity = Math.min(enterProgress, exitProgress);
   const style = {
     '--scene-enter-opacity': enterProgress,
     '--scene-enter-muted-opacity': enterProgress * .62,
     '--scene-enter-ghost-opacity': enterProgress * .13,
     '--scene-enter-affirm-ghost-opacity': enterProgress * .08,
     '--scene-exit-opacity': exitProgress,
-    '--scene-opacity': Math.min(enterProgress, exitProgress),
+    '--scene-opacity': sceneOpacity,
+    pointerEvents: sceneOpacity > .5 ? 'auto' : 'none',
     '--scene-enter-x': `${(1 - enterProgress) * 70}px`,
     '--scene-exit-x': `${(1 - exitProgress) * 90}px`,
     '--scene-enter-scale': 0.94 + enterProgress * 0.06,
