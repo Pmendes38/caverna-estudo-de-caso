@@ -168,7 +168,7 @@ export function InstitutionalContinuation() {
         <div className="schedule-grid">
           <a className="schedule-card" href="/agenda"><span>SÁBADO</span><strong>CULTO PÚBLICO</strong><small>19H30</small></a>
           <a className="schedule-card" href="/agenda"><span>QUINTA</span><strong>DISCIPULADO</strong><small>19H30</small></a>
-          <a className="schedule-card" href="/agenda"><span>EM DATAS SAZONAIS</span><strong>REINO EM NÓS</strong><small>CONFIRME PELO WHATSAPP</small></a>
+          <a className="schedule-card" href="/agenda"><span>EM DATAS SAZONAIS</span><strong>O REINO EM NÓS</strong><small>CONFIRME PELO WHATSAPP</small></a>
         </div>
       </section>
 

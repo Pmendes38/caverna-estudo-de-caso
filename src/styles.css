@@ -12,146 +12,63 @@
   --accent: #f1ac33;
 }
 
-/* Nossa Casa: one large frame with a horizontal, snap-aligned photo gallery. */
+/* Nossa Casa: mosaico editorial fiel aos frames do Figma. */
 .subpage--caverna .caverna-gallery {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: clamp(320px, 38vw, 544px);
-  min-height: 0;
-  overflow: visible;
-}
-
-.subpage--caverna .caverna-gallery-viewport {
-  width: 100%;
-  height: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  overscroll-behavior-x: contain;
-  border-radius: 6px;
-}
-
-.subpage--caverna .caverna-gallery-viewport::-webkit-scrollbar {
-  display: none;
-}
-
-.subpage--caverna .caverna-gallery-track {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-
-.subpage--caverna .caverna-gallery-slide {
-  position: relative;
-  flex: 0 0 100%;
-  width: 100%;
-  height: 100%;
-  scroll-snap-align: start;
-}
-
-.subpage--caverna .caverna-gallery-slide .subpage-image {
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  border-radius: 6px;
-}
-
-.subpage--caverna .caverna-gallery-slide .subpage-image img {
-  object-fit: cover;
-  object-position: center;
-}
-
-.subpage--caverna .caverna-gallery-arrow {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
   display: grid;
-  width: 44px;
-  height: 44px;
-  place-items: center;
-  border: 1px solid rgba(245, 240, 232, .72);
-  border-radius: 50%;
-  background: rgba(9, 9, 10, .72);
-  color: #f5f0e8;
-  font-size: 22px;
-  line-height: 1;
-  transform: translateY(-50%);
-  cursor: pointer;
-  transition: opacity .2s ease, background-color .2s ease;
+  grid-template-columns: 2fr repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  height: 420px;
 }
 
-.subpage--caverna .caverna-gallery-arrow:hover:not(:disabled) {
-  background: rgba(74, 32, 64, .9);
+.subpage--caverna .caverna-gallery-item {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 6px;
 }
 
-.subpage--caverna .caverna-gallery-arrow:disabled {
-  cursor: default;
-  opacity: .22;
+.subpage--caverna .caverna-gallery-item--1 {
+  grid-row: 1 / span 2;
 }
 
-.subpage--caverna .caverna-gallery-arrow--prev { left: 18px; }
-.subpage--caverna .caverna-gallery-arrow--next { right: 18px; }
-
-.subpage--caverna .caverna-gallery-dots {
-  position: absolute;
-  z-index: 2;
-  right: 0;
-  bottom: 18px;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  pointer-events: none;
+.subpage--caverna .caverna-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.subpage--caverna .caverna-gallery-dots button {
-  width: 8px;
-  height: 8px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: rgba(245, 240, 232, .58);
-  pointer-events: auto;
-  cursor: pointer;
-}
-
-.subpage--caverna .caverna-gallery-dots button.is-active {
-  width: 24px;
-  border-radius: 999px;
-  background: #f1ac33;
-}
-
-@media (max-width: 1024px) {
+@media (min-width: 481px) and (max-width: 1024px) {
   .subpage--caverna .caverna-gallery {
-    height: min(70vw, 360px);
+    grid-template-columns: 2fr repeat(2, minmax(0, 1fr));
+    height: min(62vw, 520px);
   }
 
-  .subpage--caverna .caverna-gallery-arrow {
-    width: 36px;
-    height: 36px;
-    font-size: 18px;
+  .subpage--caverna .caverna-gallery-item--4,
+  .subpage--caverna .caverna-gallery-item--6 {
+    display: none;
   }
-
-  .subpage--caverna .caverna-gallery-arrow--prev { left: 12px; }
-  .subpage--caverna .caverna-gallery-arrow--next { right: 12px; }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .subpage--caverna .caverna-gallery {
-    height: min(78vw, 300px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    height: 232px;
+    gap: 10px;
   }
 
-  .subpage--caverna .caverna-gallery-arrow {
-    width: 32px;
-    height: 32px;
+  .subpage--caverna .caverna-gallery-item--1 {
+    grid-row: auto;
   }
 
-  .subpage--caverna .caverna-gallery-arrow--prev { left: 8px; }
-  .subpage--caverna .caverna-gallery-arrow--next { right: 8px; }
-  .subpage--caverna .caverna-gallery-dots { bottom: 12px; }
+  .subpage--caverna .caverna-gallery-item--4,
+  .subpage--caverna .caverna-gallery-item--5,
+  .subpage--caverna .caverna-gallery-item--6 {
+    display: none;
+  }
 }
 
 /* A Caverna / node 485:3 — desktop frame translated from the Figma layout. */
@@ -1269,7 +1186,7 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 .subpage-button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 15px 18px; background: #09090a; color: #f5f0e8; font-size: 12px; font-weight: 800; line-height: 1.2; }
 .subpage-button--light { background: #f5f0e8; color: #09090a; }
 .subpage-button:hover { opacity: .82; }
-.subpage-footer { display: grid; grid-template-columns: 220px 1fr 280px; gap: 28px; padding: 42px max(56px, calc((100vw - 1440px) / 2 + 56px)) 46px; background: #09090a; color: #aaa7a1; }
+.subpage-footer { display: flex; align-items: center; justify-content: space-between; gap: 40px; min-height: 126px; padding: 30px max(56px, calc((100vw - 1440px) / 2 + 56px)); background: #09090a; color: #aaa7a1; }
 .subpage-footer > strong { color: #f5f0e8; font-size: 18px; letter-spacing: -.05em; }
 .subpage-footer-links { display: flex; flex-wrap: wrap; gap: 22px; align-content: flex-start; }
 .subpage-footer-links a { font-size: 10px; font-weight: 700; }
@@ -2984,41 +2901,55 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 }
 
-/* Let the liturgy copy wrap naturally around its image, like a document flow. */
+/* Nossa Liturgia: texto, imagem e fechamento seguem a composição do Figma. */
 .caverna-liturgy-flow {
-  display: flow-root;
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.48fr);
+  gap: 28px 32px;
   color: #09090a;
   font-size: 16px;
   line-height: 1.18;
-}
-
-.caverna-liturgy-flow::after {
-  content: "";
-  display: block;
-  clear: both;
 }
 
 .caverna-liturgy-flow p {
   margin: 0 0 16px;
 }
 
+.caverna-liturgy-lead,
+.caverna-liturgy-tail {
+  min-width: 0;
+}
+
 .caverna-liturgy-flow-image {
-  float: right;
-  width: min(62%, 820px);
+  width: 100%;
   height: 260px;
-  margin: 0 0 24px 32px;
+  min-height: 0;
 }
 
 .caverna-liturgy-flow-image img {
   object-position: center 56%;
 }
 
+.caverna-liturgy-tail {
+  grid-column: 1 / -1;
+}
+
+.caverna-liturgy-copy-mobile {
+  display: none;
+}
+
 @media (max-width: 1024px) {
+  .caverna-liturgy-flow {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
   .caverna-liturgy-flow-image {
-    float: none;
-    width: 100%;
     height: 300px;
-    margin: 0 0 24px;
+  }
+
+  .caverna-liturgy-tail {
+    grid-column: auto;
   }
 }
 
@@ -4782,5 +4713,133 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
     width: 100%;
     margin-inline: 0;
     padding: 72px max(56px, calc((100vw - 1440px) / 2 + 56px));
+  }
+}
+
+
+/* Correções canônicas finais: Figma 1920/1440/tablet/mobile. */
+.subpage-nav-brand img,
+.hero-nav-logo img,
+.mobile-brand-logo img,
+.subpage-footer-logo {
+  filter: brightness(0) invert(1);
+}
+
+.subpage-footer-links {
+  justify-content: flex-end;
+}
+
+.faith-limits > h2 {
+  margin: 0 0 24px;
+  color: #f5f0e8;
+  font-size: 44px;
+  line-height: 1.08;
+  letter-spacing: -.05em;
+}
+
+.faith-more-button--limits {
+  background: #f1ac33;
+  color: #09090a;
+}
+
+.caverna-timeline-more {
+  display: none;
+}
+
+@media (min-width: 1025px) {
+  .subpage--caverna .caverna-gallery {
+    grid-template-columns: 2fr repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    height: 420px;
+  }
+
+  .subpage--fe .faith-hero {
+    height: 507px;
+    min-height: 507px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .subpage--caverna .caverna-timeline-item-wrap.is-mobile-hidden {
+    display: none;
+  }
+
+  .subpage--caverna .caverna-timeline.is-expanded .caverna-timeline-item-wrap.is-mobile-hidden {
+    display: block;
+  }
+
+  .subpage--caverna .caverna-timeline:not(.is-expanded) {
+    height: 510px;
+    min-height: 510px;
+  }
+
+  .caverna-timeline-more {
+    display: inline-flex;
+    width: max-content;
+    min-height: 36px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 14px;
+    padding: 10px 14px;
+    border: 0;
+    background: #09090a;
+    color: #f5f0e8;
+    font: inherit;
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1.2;
+    cursor: pointer;
+  }
+
+  .subpage--fe .faith-limits {
+    gap: 0;
+  }
+
+  .subpage--fe .faith-limits > h2 {
+    margin-bottom: 18px;
+    font-size: 28px;
+  }
+
+  .subpage--fe .faith-limits > .subpage-lead {
+    margin-bottom: 26px;
+  }
+
+  .subpage--fe .faith-limits-grid:not(.is-expanded) .subpage-info-card:nth-child(n + 4) {
+    display: none;
+  }
+
+  .subpage--fe .faith-more-button--limits {
+    display: inline-flex;
+    margin-top: 18px;
+  }
+
+  .subpage-footer {
+    align-items: flex-start;
+    min-height: 0;
+    gap: 24px;
+    padding: 30px 20px 36px;
+  }
+
+  .subpage-footer-links {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .caverna-liturgy-copy-desktop {
+    display: none;
+  }
+
+  .caverna-liturgy-copy-mobile {
+    display: block;
+  }
+
+  .caverna-liturgy-flow-image {
+    height: 190px;
+  }
+
+  .subpage--comunidade::before {
+    background-position: 68% top;
   }
 }

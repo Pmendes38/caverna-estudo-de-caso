@@ -23,7 +23,7 @@ export const siteContent = {
   proof: [
     'CULTO PÚBLICO',
     'DISCIPULADO',
-    'REINO EM NÓS',
+    'O REINO EM NÓS',
     'ORAÇÃO',
     'ESPORTES',
     'COMUNIDADE',
@@ -47,7 +47,7 @@ export const siteContent = {
     },
     {
       number: '03',
-      title: 'REINO EM NÓS',
+      title: 'O REINO EM NÓS',
       tags: 'MISSÃO  •  PRESENÇA  •  SERVIÇO',
       image: '/assets/treated/mission-reino.jpeg',
       alt: 'Protagonista da identidade visual da Igreja A Caverna',
@@ -57,7 +57,7 @@ export const siteContent = {
   capacities: [
     { number: '01', name: 'PALAVRA E ENSINO', href: '#agenda' },
     { number: '02', name: 'DISCIPULADO E COMUNIDADE', href: '#sobre' },
-    { number: '03', name: 'REINO EM NÓS', href: '#processo' },
+    { number: '03', name: 'O REINO EM NÓS', href: '#processo' },
   ],
   impact: [
     { value: '2016', description: 'INÍCIO EM CEILÂNDIA' },
