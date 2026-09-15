@@ -4754,6 +4754,45 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
     height: 420px;
   }
 
+  .subpage--caverna .caverna-gallery .caverna-gallery-item--1 {
+    grid-row: 1 / span 2;
+    grid-column: 1;
+  }
+
+  .subpage--caverna .caverna-gallery .caverna-gallery-item--2 {
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  .subpage--caverna .caverna-gallery .caverna-gallery-item--3 {
+    grid-row: 1;
+    grid-column: 3;
+  }
+
+  .subpage--caverna .caverna-gallery .caverna-gallery-item--4 {
+    display: block;
+    grid-row: 1;
+    grid-column: 4;
+  }
+
+  .subpage--caverna .caverna-gallery .caverna-gallery-item--5 {
+    display: block;
+    grid-row: 2;
+    grid-column: 2;
+  }
+
+  .subpage--caverna .caverna-gallery .caverna-gallery-item--6 {
+    display: block;
+    grid-row: 2;
+    grid-column: 3;
+  }
+
+  .subpage--caverna .caverna-gallery .caverna-gallery-item--7 {
+    display: block;
+    grid-row: 2;
+    grid-column: 4;
+  }
+
   .subpage--fe .faith-hero {
     height: 507px;
     min-height: 507px;
