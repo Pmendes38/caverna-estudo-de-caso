@@ -462,8 +462,28 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero-nav-link { z-index: 102; }
 .hero-nav-link:hover, .hero-nav-link:focus-visible { color: var(--accent); background: rgba(241, 172, 51, .1); outline: 1px solid rgba(241, 172, 51, .65); outline-offset: -1px; }
 .hero-nav-link--active { color: var(--accent); }
+.hero-nav-link[href="/esportes"] { white-space: nowrap; }
 .hero-nav-logo { position: relative; z-index: 102; display: grid; place-items: center; width: 150px; height: 44px; }
 .hero-nav-logo img { width: 150px; height: auto; object-fit: contain; }
+.hero-nav-logo img,
+.site-header:not(.site-header--subpage) .mobile-brand-logo img { opacity: 0; }
+.hero-nav-logo::after,
+.site-header:not(.site-header--subpage) .mobile-brand-logo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  -webkit-mask-image: url('/assets/brand/logo-a-caverna-horizontal.png');
+  mask-image: url('/assets/brand/logo-a-caverna-horizontal.png');
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  pointer-events: none;
+}
+.hero-nav-logo::after { -webkit-mask-size: 150px auto; mask-size: 150px auto; }
+.site-header:not(.site-header--subpage) .mobile-brand-logo { position: relative; }
+.site-header:not(.site-header--subpage) .mobile-brand-logo::after { -webkit-mask-size: 40px auto; mask-size: 40px auto; }
 .mobile-brand, .mobile-menu, .mobile-trigger, .mobile-menu-literal { display: none; }
 .mobile-menu { border: 0; padding: 0; background: transparent; color: inherit; font: inherit; }
 .footer-column a { transition: opacity .2s ease; }
