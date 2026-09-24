@@ -3692,8 +3692,8 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 
   .subpage--agenda::before {
-    background-position: center, right top;
-    background-size: cover, auto 100%;
+    background-position: center, right -110px;
+    background-size: cover, auto 220%;
   }
 
   .subpage--visite::before {
