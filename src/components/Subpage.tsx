@@ -257,7 +257,7 @@ function CavernaPage() {
     <PageFrame page="caverna">
       <main>
         <section className="subpage-hero subpage-hero--plum caverna-hero">
-          <div className="subpage-hero-copy"><p className="subpage-kicker">[QUEM SOMOS]</p><h1 aria-label="UMA IGREJA QUE NASCEU DA MISSÃO"><span className="caverna-heading-desktop">UMA IGREJA QUE<br />NASCEU DA MISSÃO</span><span className="caverna-heading-responsive">UMA IGREJA<br />QUE NASCEU<br />DA MISSÃO</span></h1><p>Começamos em Ceilândia, em 2016. Em 2017, a missão chegou ao Jardim Ingá e se tornou comunidade.</p></div>
+          <div className="subpage-hero-copy"><p className="subpage-kicker">[QUEM SOMOS]</p><h1 aria-label="UMA IGREJA QUE NASCEU DA MISSÃO"><span className="caverna-heading-desktop">UMA IGREJA QUE<br />NASCEU DA MISSÃO</span><span className="caverna-heading-responsive">UMA IGREJA<br />QUE NASCEU<br />DA MISSÃO</span></h1><p>Somos uma igreja no Jardim Ingá, em Luziânia, com Cristo e a Palavra no centro. Caminhamos juntos para anunciar o Evangelho, cuidar de pessoas e formar discípulos.</p></div>
           <ImageSlot src={assets.cavernaHero} alt="Ação missionária da Igreja A Caverna" className="caverna-hero-image" />
         </section>
         <section className="subpage-section subpage-section--paper caverna-history">
