@@ -347,7 +347,7 @@ function CommunityPage() {
 }
 
 function SportsPage() {
-  const modalities = [['JIU-JITSU', '3 atletas apoiados pela Caverna.', 'slot--plum', assets.sportsJiuJitsu], ['JUDÔ', '2 atletas apoiados pela Caverna.', 'slot--teal', undefined], ['TAEKWONDO', '1 atleta apoiado pela Caverna.', 'slot--gold', assets.sportsTaekwondo]];
+  const modalities: Array<[string, string, string, string | undefined]> = [['JIU-JITSU', '3 atletas apoiados pela Caverna.', 'slot--plum', assets.sportsJiuJitsu], ['JUDÔ', '2 atletas apoiados pela Caverna.', 'slot--teal', undefined], ['TAEKWONDO', '1 atleta apoiado pela Caverna.', 'slot--gold', assets.sportsTaekwondo]];
 
   return (
     <PageFrame page="esportes">
