@@ -2970,7 +2970,7 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 /* All desktop headline compositions use one continuous image from the menu through the hero. */
 @media (min-width: 1025px) {
   .subpage {
-    --headline-background-height: 602px;
+    --headline-background-height: 560px;
     --headline-overlay: var(--subpage-header-overlay);
     --headline-overlay-soft: var(--subpage-header-overlay-soft);
     --headline-overlay-mid: rgba(9, 9, 10, .82);
@@ -3004,13 +3004,6 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
     --headline-overlay-mid: rgba(187, 128, 85, .66);
     --headline-overlay-edge: rgba(187, 128, 85, .24);
   }
-
-  .subpage--fe { --headline-background-height: 791px; }
-  .subpage--agenda { --headline-background-height: 805px; }
-  .subpage--visite { --headline-background-height: 814px; }
-  .subpage--contato,
-  .subpage--contribua { --headline-background-height: 784px; }
-  .subpage--missoes { --headline-background-height: 720px; }
 
   .subpage::before,
   .subpage::after {
@@ -3670,6 +3663,11 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
     mask-image: linear-gradient(90deg, transparent 0%, #000 32%, #000 100%);
   }
 
+  .subpage--caverna::before {
+    background-position: center, left 46%;
+    background-size: cover, 118% auto;
+  }
+
   .subpage::after {
     top: 0;
     right: 0;
@@ -3683,6 +3681,10 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
       rgba(var(--shared-headline-rgb), .68) 72%,
       transparent 100%
     );
+  }
+
+  .subpage--caverna::after {
+    background: linear-gradient(90deg, #4a2040 0%, rgba(74, 32, 64, .98) 38%, rgba(74, 32, 64, .78) 52%, rgba(74, 32, 64, .22) 70%, rgba(74, 32, 64, .06) 100%);
   }
 
   .subpage .subpage-hero > .subpage-image {
@@ -4284,33 +4286,13 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 }
 
-/* Last-cascade corrections for the Nossa Fé Figma frames. */
 @media (min-width: 1025px) {
-  .subpage--fe::before,
-  .subpage--fe::after {
+  .subpage--fe .subpage-hero > .faith-hero-slot {
     display: none;
-  }
-
-  .subpage--fe .site-header {
-    background-image: none;
-  }
-
-  .subpage--fe .faith-hero h1 {
-    max-width: 872px;
-    font-size: 68px;
   }
 }
 
 @media (max-width: 1024px) {
-  .subpage--fe::before,
-  .subpage--fe::after {
-    display: none;
-  }
-
-  .subpage--fe .site-header {
-    background-image: none;
-  }
-
   .subpage--fe .faith-hero h1 {
     max-width: 350px;
     font-size: 39px;
@@ -4702,12 +4684,14 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 
   .subpage--comunidade::before {
-    width: 68%;
+    width: 52%;
+    background-position: center, center 28%;
   }
 
   .subpage--comunidade::after {
     left: 0;
     width: 100%;
+    background: linear-gradient(90deg, #4a2040 0%, rgba(74, 32, 64, .98) 38%, rgba(74, 32, 64, .55) 60%, rgba(74, 32, 64, .12) 76%, rgba(74, 32, 64, .04) 100%);
   }
 
   .subpage--comunidade .community-paths {
@@ -4972,34 +4956,29 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 }
 
-/* Paridade final dos headers e do rodapé: cada página preserva a sua composição,
-   em vez de herdar o recorte genérico de hero. */
+/* A headline roxa e a referencia de medidas para todas as subpaginas desktop. */
 @media (min-width: 1025px) {
   .subpage:not(.subpage--caverna) .subpage-hero {
-    height: 507px;
-    min-height: 507px;
-    padding-left: max(56px, calc((100vw - 1440px) / 2 + 56px));
+    height: 474px;
+    min-height: 474px;
+    padding: 72px var(--subpage-gutter, 56px) 0;
+    background: transparent;
   }
 
-  .subpage--fe .faith-hero .subpage-hero-copy {
-    max-width: 872px;
+  .subpage .subpage-hero .subpage-hero-copy,
+  .subpage--comunidade .subpage-community-hero > div:first-child {
+    align-self: flex-start;
+    width: 800px;
+    max-width: 800px;
+    padding: 0;
+    transform: none;
   }
 
-  .subpage--fe .faith-hero h1 {
-    font-size: 68px;
-    line-height: 1.02;
-  }
-
-  .subpage--comunidade .subpage-community-hero > .subpage-image {
-    width: 44%;
-  }
-
-  .subpage--comunidade .subpage-community-hero > .subpage-image img {
-    object-position: 68% 0;
-  }
-
-  .subpage--agenda .agenda-hero .subpage-hero-copy {
-    max-width: 780px;
+  .subpage .subpage-hero h1 {
+    max-width: 800px;
+    font-size: 72px;
+    line-height: 1.18;
+    letter-spacing: -.07em;
   }
 
   .subpage--agenda .agenda-hero h1 {
@@ -5045,4 +5024,3 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
     width: 100%;
   }
 }
-

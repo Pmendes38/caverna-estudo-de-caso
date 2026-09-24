@@ -1,4 +1,4 @@
-import { useRef, useState, type CSSProperties, type FormEvent, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type CSSProperties, type FormEvent, type ReactNode } from 'react';
 import { siteContent, whatsappUrl } from '../data/siteContent';
 import { SiteHeader, subpageLinks, type PageKey } from './SiteHeader';
 
@@ -205,6 +205,31 @@ function CavernaPage() {
   const [previewMoment, setPreviewMoment] = useState<string | null>(null);
   const [showAllMoments, setShowAllMoments] = useState(false);
   const touchPreviewPending = useRef(false);
+  const timelineRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const timeline = timelineRef.current;
+    if (!timeline) return;
+
+    const imageUrls = [assets.history2013, assets.history2015, assets.history2016, assets.history2017, assets.history2019, assets.history2020, assets.history2025];
+    const preload = () => {
+      imageUrls.forEach((src) => {
+        const image = new Image();
+        image.src = src;
+      });
+    };
+    if (!('IntersectionObserver' in window)) {
+      preload();
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        observer.disconnect();
+        preload();
+      }
+    }, { rootMargin: '800px 0px' });
+    observer.observe(timeline);
+    return () => observer.disconnect();
+  }, []);
   const moments = [
     ['2013', 'A RUA SE TORNA CAMPO', 'Os projetos missionários já alcançavam o Jardim Ingá. A missão acontecia onde as pessoas estavam, antes de existir uma igreja chamada A Caverna.', 'history2013'],
     ['2015', 'A MISSÃO SE EXPANDE', 'As frentes urbanas crescem e alcançam diferentes cidades e realidades. Asilos, escolas, recuperação e pessoas em situação de rua passam a fazer parte de uma rotina intensa de missão.', 'history2015'],
@@ -240,7 +265,7 @@ function CavernaPage() {
           <div className="subpage-history-grid"><div><p>A Caverna nasceu nas ruas, entre projetos missionários que alcançavam pessoas em escolas, asilos, casas de recuperação e diferentes contextos da cidade. Mas logo entendemos que anunciar o Evangelho era apenas o começo. Quem chegava precisava encontrar ensino, comunhão, cuidado e alguém disposto a permanecer.</p></div><div className="subpage-card-row"><InfoCard title="ABRIGO">A missão não termina quando alguém chega. A gente permanece perto.</InfoCard><InfoCard title="EDIFICAR">Anunciar o Evangelho não é o fim. A gente permanece para ensinar e formar.</InfoCard></div></div>
           <div className="caverna-history-story"><p>Foi dessa necessidade que a missão começou a se tornar comunidade. Em 2016, as primeiras reuniões deram forma àquilo que depois se tornaria a Igreja A Caverna. Desde então, atravessamos mudanças, aprendemos a cuidar melhor das pessoas e amadurecemos nossa forma de viver aquilo que permanece no centro da nossa história: formar discípulos de Jesus Cristo.</p><a href="/a-caverna">CLIQUE PARA VER NOSSA HISTÓRIA COMPLETA&nbsp; →</a></div>
           <h2 className="subpage-small-heading">MOMENTOS QUE FORMARAM A CAVERNA</h2>
-          <div className={`caverna-timeline${showAllMoments ? ' is-expanded' : ''}`} onMouseLeave={() => setPreviewMoment(null)}>
+          <div ref={timelineRef} className={`caverna-timeline${showAllMoments ? ' is-expanded' : ''}`} onMouseLeave={() => setPreviewMoment(null)}>
             <div className="caverna-timeline-line" />
             {moments.map(([year, title, text], index) => {
               const image = timelineGalleries[year]?.[0];
