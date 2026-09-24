@@ -1243,7 +1243,7 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 .community-path-card { display: block; color: inherit; text-decoration: none; transition: opacity .2s ease; }
 .community-path-card:hover { opacity: .82; }
 .community-photo-grid .subpage-image { height: 340px; margin-bottom: 20px; }
-.sports-modalities .community-photo-grid img[alt="TAEKWONDO"] { object-position: center 12%; }
+.sports-modalities .community-photo-grid img[alt="TAEKWONDO"] { object-position: center 22%; }
 .community-photo-grid h3 { margin-bottom: 10px; font-size: 20px; letter-spacing: -.05em; }
 .community-photo-grid p { margin: 0; font-size: 14px; line-height: 1.45; }
 .community-projects { min-height: 1000px; }
