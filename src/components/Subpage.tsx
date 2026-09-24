@@ -485,6 +485,17 @@ function MissionPage() {
       <main className="mission-page">
         <section className="subpage-hero subpage-hero--plum mission-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[MISSÃO]</p><h1>A MISSÃO VEIO<br className="mission-desktop-break" /> ANTES DO TEMPLO</h1><p>A Caverna nasceu da missão. O Reino em Nós organiza suas frentes; anunciar Cristo também é permanecer, ensinar, acompanhar e servir.</p></div><ImageSlot src={assets.missionHero} alt="Ação missionária da Caverna" className="slot--brown" /></section>
         <section className="mission-paths"><h2>ONDE A MISSÃO TOMA FORMA</h2><div className="mission-path-grid">{paths.map(([title, text, className, src]) => <article className="mission-path-card" key={title}><ImageSlot src={src} alt={title} className={`mission-path-photo ${className}`} /><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+        <section className="mission-video" aria-label="Vídeo sobre as missões da Igreja A Caverna">
+          <div className="mission-video-player">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/KdjD-ub2ImU"
+              title="Vídeo sobre as missões da Igreja A Caverna"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        </section>
         <section className="mission-projects"><h2>PROJETOS EM MOVIMENTO</h2><div className="mission-project-list">{projects.map(([title, text, className, src]) => <article className={className} key={title}><div className="mission-project-image" style={{ backgroundImage: `url(${src})` }} /><div><h3>{title}</h3><p>{text}</p></div></article>)}</div></section>
         <section className="mission-cta"><h2>ANUNCIAR PERMANECER<br />E SERVIR</h2><div><p>O Reino em Nós reúne as frentes da Caverna. Escolha um caminho, venha conhecer e encontre uma forma de servir com a comunidade.</p><Button href="/contato">QUERO SERVIR&nbsp; →</Button></div></section>
       </main>
