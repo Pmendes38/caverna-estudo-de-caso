@@ -3694,6 +3694,8 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .subpage--agenda::before {
     background-position: center, right -110px;
     background-size: cover, auto 220%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 45%, #000 72%);
+    mask-image: linear-gradient(90deg, transparent 0%, transparent 45%, #000 72%);
   }
 
   .subpage--visite::before {
