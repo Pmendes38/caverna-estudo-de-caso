@@ -2024,10 +2024,6 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   object-fit: contain;
 }
 
-.subpage-footer-logo {
-  align-self: start;
-}
-
 .mission-project-image[style] {
   background-position: center;
   background-size: cover;
