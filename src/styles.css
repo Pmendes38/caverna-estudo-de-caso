@@ -3665,7 +3665,7 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 
   .subpage--caverna::before {
     background-position: center, left 46%;
-    background-size: cover, 118% auto;
+    background-size: cover, max(118%, 1000px) auto;
   }
 
   .subpage::after {
