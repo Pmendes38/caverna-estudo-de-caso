@@ -4958,3 +4958,77 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 }
 
+/* Paridade final dos headers e do rodapé: cada página preserva a sua composição,
+   em vez de herdar o recorte genérico de hero. */
+@media (min-width: 1025px) {
+  .subpage:not(.subpage--caverna) .subpage-hero {
+    height: 507px;
+    min-height: 507px;
+    padding-left: max(56px, calc((100vw - 1440px) / 2 + 56px));
+  }
+
+  .subpage--fe .faith-hero .subpage-hero-copy {
+    max-width: 872px;
+  }
+
+  .subpage--fe .faith-hero h1 {
+    font-size: 68px;
+    line-height: 1.02;
+  }
+
+  .subpage--comunidade .subpage-community-hero > .subpage-image {
+    width: 44%;
+  }
+
+  .subpage--comunidade .subpage-community-hero > .subpage-image img {
+    object-position: 68% 0;
+  }
+
+  .subpage--agenda .agenda-hero .subpage-hero-copy {
+    max-width: 780px;
+  }
+
+  .subpage--agenda .agenda-hero h1 {
+    white-space: normal;
+  }
+}
+
+.subpage-footer {
+  min-height: 126px;
+  padding-block: 30px;
+  background: #09090a;
+}
+
+.subpage-footer-logo {
+  width: 150px;
+  max-width: 150px;
+}
+
+.subpage-footer-links {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 130px));
+  gap: 28px;
+}
+
+.subpage-footer-links a {
+  color: #f5f0e8;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+@media (max-width: 1024px) {
+  .subpage:not(.subpage--caverna) .subpage-hero {
+    min-height: 390px;
+  }
+
+  .subpage--comunidade .subpage-community-hero > .subpage-image img {
+    object-position: 70% 0;
+  }
+
+  .subpage-footer-links {
+    grid-template-columns: repeat(2, minmax(110px, 1fr));
+    gap: 18px 20px;
+    width: 100%;
+  }
+}
+
