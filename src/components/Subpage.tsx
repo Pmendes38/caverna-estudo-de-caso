@@ -10,7 +10,7 @@ const assets = {
   agendaHero: '/assets/site-images/agenda/hero.jpg',
   agendaFeature: '/assets/site-images/agenda/evento-destaque.jpg',
   visitHero: '/assets/site-images/visite-nos/hero.jpg',
-  visitFacade: '/assets/site-images/visite-nos/fachada.png',
+  visitFacade: '/assets/site-images/quem-somos/casa/galeria-01-fachada-principal.jpg',
   contactHero: '/assets/site-images/contato/hero.jpg',
   contactWelcoming: '/assets/site-images/contato/acolhimento.jpg',
   contactIntercession: '/assets/site-images/contato/intercessao.jpg',
