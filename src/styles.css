@@ -1243,6 +1243,7 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 .community-path-card { display: block; color: inherit; text-decoration: none; transition: opacity .2s ease; }
 .community-path-card:hover { opacity: .82; }
 .community-photo-grid .subpage-image { height: 340px; margin-bottom: 20px; }
+.sports-modalities .community-photo-grid img[alt="TAEKWONDO"] { object-position: center 12%; }
 .community-photo-grid h3 { margin-bottom: 10px; font-size: 20px; letter-spacing: -.05em; }
 .community-photo-grid p { margin: 0; font-size: 14px; line-height: 1.45; }
 .community-projects { min-height: 1000px; }
@@ -1739,6 +1740,8 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 .subpage--agenda .agenda-hero { height: 719px; min-height: 719px; grid-template-columns: minmax(0, 1fr) 496px; padding-top: 146px; padding-right: 56px; }
 .agenda-hero .subpage-hero-copy { max-width: 780px; align-self: flex-start; }
 .agenda-hero h1 { color: #f5f0e8; max-width: 780px; font-size: 70px; }
+.agenda-heading-desktop { display: none; }
+.agenda-heading-responsive { display: inline; }
 .agenda-hero .agenda-hero-slot { position: absolute; top: 113px; right: 56px; width: 496px; height: 460px; min-height: 460px; }
 .agenda-regular { min-height: 473px; }
 .agenda-regular > h2 { font-size: 44px; }
@@ -1767,7 +1770,7 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 .subpage--contato .contact-hero, .subpage--contribua .contribution-hero { height: 698px; min-height: 698px; }
 .subpage--contato .contact-hero .subpage-hero-copy, .subpage--contribua .contribution-hero .subpage-hero-copy { align-self: flex-start; padding-top: 105px; }
 .subpage--contato .contact-hero > .subpage-image, .subpage--contribua .contribution-hero > .subpage-image { width: 42%; }
-.subpage--contribua .contribution-hero { display: grid; grid-template-columns: 650px 590px; padding: 78px 70px 0; background: #bb8055; }
+.subpage--contribua .contribution-hero { display: grid; grid-template-columns: 650px 590px; padding: 78px 70px 0; background: #09090a; }
 .subpage--contribua .contribution-hero .subpage-hero-copy { padding-top: 90px; }
 .subpage--contribua .contribution-hero > .subpage-image { position: relative; inset: auto; width: 590px; height: 620px; min-height: 620px; }
 .contribution-methods { min-height: 370px; }
@@ -1834,7 +1837,7 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 
   .subpage--contribua .contribution-hero {
-    background: #bb8055;
+    background: #09090a;
   }
 
   .visit-hero .subpage-hero-copy,
@@ -2822,7 +2825,7 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 
   .subpage--contribua {
-    --subpage-header-bg: #bb8055;
+    --subpage-header-bg: #09090a;
   }
 
   .subpage .site-header {
@@ -2869,8 +2872,8 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 
   .subpage--contribua {
-    --subpage-header-overlay: rgba(187, 128, 85, .98);
-    --subpage-header-overlay-soft: rgba(187, 128, 85, .78);
+    --subpage-header-overlay: rgba(9, 9, 10, .98);
+    --subpage-header-overlay-soft: rgba(9, 9, 10, .78);
   }
 
   .subpage--caverna { --subpage-header-image: url('/assets/attached/caverna-missao-hero.jpg'); }
@@ -3001,8 +3004,8 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 
   .subpage--contribua {
-    --headline-overlay-mid: rgba(187, 128, 85, .66);
-    --headline-overlay-edge: rgba(187, 128, 85, .24);
+    --headline-overlay-mid: rgba(9, 9, 10, .66);
+    --headline-overlay-edge: rgba(9, 9, 10, .24);
   }
 
   .subpage::before,
@@ -3196,10 +3199,10 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .subpage--oracao { --subpage-header-image: url('/assets/treated/prayer.jpeg'); }
   .subpage--contribua {
     --subpage-header-image: url('/assets/site-images/contribua/hero.jpg');
-    --headline-overlay: rgba(187, 128, 85, .96);
-    --headline-overlay-soft: rgba(187, 128, 85, .82);
-    --headline-overlay-mid: rgba(187, 128, 85, .56);
-    --headline-overlay-edge: rgba(187, 128, 85, .16);
+    --headline-overlay: rgba(9, 9, 10, .96);
+    --headline-overlay-soft: rgba(9, 9, 10, .82);
+    --headline-overlay-mid: rgba(9, 9, 10, .56);
+    --headline-overlay-edge: rgba(9, 9, 10, .16);
     --headline-background-height: 832px;
   }
   .subpage--missoes { --subpage-header-image: url('/assets/site-images/missoes/hero.jpg'); }
@@ -3601,8 +3604,8 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 }
 
 .subpage--contribua {
-  --shared-headline-color: #bb8055;
-  --shared-headline-rgb: 187, 128, 85;
+  --shared-headline-color: #09090a;
+  --shared-headline-rgb: 9, 9, 10;
 }
 
 /* Let the shared headline background remain visible behind the Mission hero;
@@ -3681,6 +3684,35 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
       rgba(var(--shared-headline-rgb), .68) 72%,
       transparent 100%
     );
+  }
+
+  .subpage--esportes::before {
+    background-position: center, left 54%;
+    background-size: cover, 130% auto;
+  }
+
+  .subpage--agenda::before {
+    background-position: center, right top;
+    background-size: cover, auto 100%;
+  }
+
+  .subpage--visite::before {
+    background-position: center, left 40%;
+    background-size: cover, 130% auto;
+  }
+
+  .subpage--contribua::before {
+    background-position: center, left 40%;
+    background-size: cover, 125% auto;
+  }
+
+  .subpage--esportes::after,
+  .subpage--visite::after {
+    background: linear-gradient(90deg, #4a2040 0%, rgba(74, 32, 64, .98) 40%, rgba(74, 32, 64, .82) 54%, rgba(74, 32, 64, .28) 72%, transparent 92%);
+  }
+
+  .subpage--contribua::after {
+    background: linear-gradient(90deg, #09090a 0%, rgba(9, 9, 10, .98) 40%, rgba(9, 9, 10, .75) 54%, rgba(9, 9, 10, .20) 72%, transparent 100%);
   }
 
   .subpage--caverna::after {
@@ -4958,6 +4990,9 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 
 /* A headline roxa e a referencia de medidas para todas as subpaginas desktop. */
 @media (min-width: 1025px) {
+  .agenda-heading-desktop { display: inline; }
+  .agenda-heading-responsive { display: none; }
+
   .subpage:not(.subpage--caverna) .subpage-hero {
     height: 474px;
     min-height: 474px;
