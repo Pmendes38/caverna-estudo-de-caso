@@ -2176,8 +2176,18 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 
   .subpage-nav-links {
     align-items: center;
-    gap: 18px;
+    justify-content: space-between;
+    gap: 8px;
+    width: min(999px, calc(100% - 240px));
+    box-sizing: border-box;
+    padding-right: 32px;
     padding-top: 4px;
+  }
+
+  .subpage-nav-link {
+    flex: 0 0 auto;
+    width: auto;
+    white-space: nowrap;
   }
 
   .subpage-hero h1 {
