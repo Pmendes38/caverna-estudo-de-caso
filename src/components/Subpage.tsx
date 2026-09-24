@@ -7,9 +7,13 @@ const assets = {
   cavernaHero: '/assets/attached/caverna-missao-hero.jpg',
   community: '/assets/treated/community.jpeg',
   communityHero: '/assets/treated/community-hero.jpeg',
-  agendaHero: '/assets/treated/worship.jpeg',
-  visitHero: '/assets/treated/visit.jpeg',
-  contactHero: '/assets/treated/prayer.jpeg',
+  agendaHero: '/assets/site-images/agenda/hero.jpg',
+  agendaFeature: '/assets/site-images/agenda/evento-destaque.jpg',
+  visitHero: '/assets/site-images/visite-nos/hero.jpg',
+  visitFacade: '/assets/site-images/visite-nos/fachada.png',
+  contactHero: '/assets/site-images/contato/hero.jpg',
+  contactWelcoming: '/assets/site-images/contato/acolhimento.jpg',
+  contactIntercession: '/assets/site-images/contato/intercessao.jpg',
   teaching: '/assets/treated/discipulado.jpeg',
   prayer: '/assets/treated/prayer.jpeg',
   worship: '/assets/treated/worship.jpeg',
@@ -17,7 +21,8 @@ const assets = {
   children: '/assets/treated/children.jpeg',
   street: '/assets/treated/mission-andarilhos.jpeg',
   building: '/assets/treated/history-2017.jpeg',
-  contribution: '/assets/treated/contribution.jpeg',
+  contribution: '/assets/site-images/contribua/hero.jpg',
+  contributionService: '/assets/site-images/contribua/servico.jpg',
   history2013: '/assets/site-images/quem-somos/timeline/2013.jpg',
   history2015: '/assets/site-images/quem-somos/timeline/2015.jpg',
   history2016: '/assets/site-images/quem-somos/timeline/2016.jpg',
@@ -36,7 +41,20 @@ const assets = {
   missionAmazonia: '/assets/treated/mission-amazonia.jpeg',
   missionReino: '/assets/treated/mission-reino.jpeg',
   sports: '/assets/treated/sports-jiujitsu.jpeg',
-  sportsHero: '/assets/treated/sports-hero.jpeg',
+  sportsHero: '/assets/site-images/esportes/hero.jpg',
+  sportsJiuJitsu: '/assets/site-images/esportes/jiu-jitsu.jpg',
+  sportsTaekwondo: '/assets/site-images/esportes/taekwondo.jpg',
+  sportsPaintball: '/assets/site-images/esportes/paintball.jpg',
+  sportsAthleteSupport: '/assets/site-images/esportes/apoio-atletas.jpg',
+  sportsCommunity: '/assets/site-images/esportes/como-apoiamos.jpg',
+  missionHero: '/assets/site-images/missoes/hero.jpg',
+  missionPathReino: '/assets/site-images/missoes/reino-em-nos.jpg',
+  missionPathPrayer: '/assets/site-images/missoes/posso-orar-por-voce.jpg',
+  missionCaldo: '/assets/site-images/missoes/caldo-em-upas.jpg',
+  missionAndarilhos: '/assets/site-images/missoes/andarilhos.jpg',
+  missionTribos: '/assets/site-images/missoes/tribos-indigenas.jpg',
+  missionAsilos: '/assets/site-images/missoes/reino-nos-asilos.jpg',
+  missionAmazoniaProject: '/assets/site-images/missoes/amazonia.jpg',
   sportsIdentity: '/assets/treated/sports-jiujitsu.jpeg',
   sportsMedal: '/assets/treated/sports-jiujitsu.jpeg',
   sportsPodium: '/assets/treated/sports-taekwondo.jpeg',
@@ -329,14 +347,14 @@ function CommunityPage() {
 }
 
 function SportsPage() {
-  const modalities = [['JIU-JITSU', '3 atletas apoiados pela Caverna.', 'slot--plum', assets.sports], ['JUDÔ', '2 atletas apoiados pela Caverna.', 'slot--teal', assets.sportsMedal], ['TAEKWONDO', '1 atleta apoiado pela Caverna.', 'slot--gold', assets.sportsChampion]];
+  const modalities = [['JIU-JITSU', '3 atletas apoiados pela Caverna.', 'slot--plum', assets.sportsJiuJitsu], ['JUDÔ', '2 atletas apoiados pela Caverna.', 'slot--teal', undefined], ['TAEKWONDO', '1 atleta apoiado pela Caverna.', 'slot--gold', assets.sportsTaekwondo]];
 
   return (
     <PageFrame page="esportes">
       <main>
         <section className="subpage-hero subpage-hero--plum subpage-community-hero sports-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[ESPORTES DA CAVERNA]</p><h1>ESPORTE TAMBÉM É<br />VIDA EM COMUNIDADE</h1><p>Apoiamos 3 atletas de jiu-jitsu, 2 de judô e 1 de taekwondo. Também caminhamos com o Sons of Caverna, nossa equipe de paintball.</p></div><ImageSlot src={assets.sportsHero} alt="Atletas da Igreja A Caverna" className="slot--brown" /></section>
         <section className="subpage-section subpage-section--paper sports-modalities"><h2>ESPORTES DA CAVERNA</h2><div className="community-photo-grid">{modalities.map(([title, text, slot, src]) => <article className="community-path-card" key={title}><ImageSlot src={src} alt={title} className={slot} /><h3>{title}</h3><p>{text}</p></article>)}</div></section>
-        <section className="subpage-section subpage-section--dark sports-paintball"><h2>PAINTBALL E APOIO A ATLETAS</h2><div className="sports-support-grid"><InfoCard title="PAINTBALL" dark>Sons of Caverna. Encontro mensal, aberto a participações.</InfoCard><InfoCard title="APOIO A ATLETAS" dark>Apoio atual a trajetórias de jiu-jitsu, judô e taekwondo.</InfoCard><InfoCard title="COMO A GENTE APOIA" dark>Apoiamos atletas e fazemos do esporte parte da nossa vida em comunidade.</InfoCard></div></section>
+        <section className="subpage-section subpage-section--dark sports-paintball"><h2>PAINTBALL E APOIO A ATLETAS</h2><div className="sports-support-grid"><article className="sports-support-card"><ImageSlot src={assets.sportsPaintball} alt="Sons of Caverna no paintball" /><div><h3>PAINTBALL</h3><p>Sons of Caverna. Encontro mensal, aberto a participações.</p></div></article><article className="sports-support-card sports-support-card--reverse"><ImageSlot src={assets.sportsAthleteSupport} alt="Atletas apoiados pela Caverna" /><div><h3>APOIO A ATLETAS</h3><p>Apoio atual a trajetórias de jiu-jitsu, judô e taekwondo.</p></div></article><article className="sports-support-card"><ImageSlot src={assets.sportsCommunity} alt="Esporte em comunidade" /><div><h3>COMO A GENTE APOIA</h3><p>Apoiamos atletas e fazemos do esporte parte da nossa vida em comunidade.</p></div></article></div></section>
         <section className="subpage-cta"><h2>DISCIPLINA TAMBÉM É<br />UMA FORMA DE CAMINHAR</h2><div><p>O esporte aproxima pessoas, exige constância e se torna parte da caminhada da comunidade.</p><Button href="/contato">FALE COM A EQUIPE&nbsp; →</Button></div></section>
       </main>
     </PageFrame>
@@ -424,24 +442,24 @@ function MinistryPage({ page }: { page: MinistryDetail['page'] }) {
 
 function MissionPage() {
   const paths = [
-    ['O REINO EM NÓS', 'Projeto-mãe das frentes missionárias da Caverna. Fora as suas vertentes do Reino em Nós: asilo, orfanatos, escolas e outras frentes.', 'mission-path mission-path--plum'],
-    ['POSSO ORAR POR VOCÊ', 'Oração e escuta com quem encontramos.', 'mission-path mission-path--teal'],
-    ['AMAZÔNIA', 'Atravessamos distâncias para servir comunidades e anunciar Cristo onde poucos conseguem chegar.', 'mission-path mission-path--gold'],
+    ['O REINO EM NÓS', 'Projeto-mãe das frentes missionárias da Caverna. Fora as suas vertentes do Reino em Nós: asilo, orfanatos, escolas e outras frentes.', 'mission-path mission-path--plum', assets.missionPathReino],
+    ['POSSO ORAR POR VOCÊ', 'Oração e escuta com quem encontramos.', 'mission-path mission-path--teal', assets.missionPathPrayer],
+    ['AMAZÔNIA', 'Atravessamos distâncias para servir comunidades e anunciar Cristo onde poucos conseguem chegar.', 'mission-path mission-path--gold', assets.missionAmazonia],
   ];
   const projects = [
-    ['CALDO EM UPAS', 'Cuidado e presença para quem enfrenta a espera, a dor e a vulnerabilidade.', 'mission-project mission-project--teal', assets.outreach],
-    ['ANDARILHOS', 'Presença e escuta com pessoas em situação de rua.', 'mission-project mission-project--reverse mission-project--brown', assets.street],
-    ['TRIBOS INDÍGENAS', 'Serviço e anúncio de Cristo em comunidades indígenas.', 'mission-project mission-project--plum', assets.community],
+    ['CALDO EM UPAS', 'Cuidado e presença para quem enfrenta a espera, a dor e a vulnerabilidade.', 'mission-project mission-project--teal', assets.missionCaldo],
+    ['ANDARILHOS', 'Presença e escuta com pessoas em situação de rua.', 'mission-project mission-project--reverse mission-project--brown', assets.missionAndarilhos],
+    ['TRIBOS INDÍGENAS', 'Serviço e anúncio de Cristo em comunidades indígenas.', 'mission-project mission-project--plum', assets.missionTribos],
     ['O REINO NAS ESCOLAS', 'Evangelismo e cuidado dentro das escolas.', 'mission-project mission-project--reverse mission-project--teal', assets.children],
-    ['O REINO NOS ASILOS', 'Presença, escuta e cuidado com idosos.', 'mission-project mission-project--brown', assets.community],
-    ['MORADORES DE RUA', 'Cuidado, alimento e anúncio de esperança nas ruas.', 'mission-project mission-project--reverse mission-project--plum', assets.street],
-    ['AMAZÔNIA', 'Atravessamos distâncias para servir comunidades e anunciar Cristo.', 'mission-project mission-project--teal', assets.missionAmazonia],
+    ['O REINO NOS ASILOS', 'Presença, escuta e cuidado com idosos.', 'mission-project mission-project--brown', assets.missionAsilos],
+    ['MORADORES DE RUA', 'Cuidado, alimento e anúncio de esperança nas ruas.', 'mission-project mission-project--reverse mission-project--plum', assets.contributionService],
+    ['AMAZÔNIA', 'Atravessamos distâncias para servir comunidades e anunciar Cristo.', 'mission-project mission-project--teal', assets.missionAmazoniaProject],
   ];
   return (
     <PageFrame page="missoes">
       <main className="mission-page">
-        <section className="subpage-hero subpage-hero--plum mission-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[MISSÃO]</p><h1>A MISSÃO VEIO<br className="mission-desktop-break" /> ANTES DO TEMPLO</h1><p>A Caverna nasceu da missão. O Reino em Nós organiza suas frentes; anunciar Cristo também é permanecer, ensinar, acompanhar e servir.</p></div><ImageSlot src={assets.outreach} alt="Foto de uma ação missionária" className="slot--brown" /></section>
-        <section className="mission-paths"><h2>ONDE A MISSÃO TOMA FORMA</h2><div className="mission-path-grid">{paths.map(([title, text, className]) => <article className="mission-path-card" key={title}><div className={`mission-color-slot ${className}`} /><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+        <section className="subpage-hero subpage-hero--plum mission-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[MISSÃO]</p><h1>A MISSÃO VEIO<br className="mission-desktop-break" /> ANTES DO TEMPLO</h1><p>A Caverna nasceu da missão. O Reino em Nós organiza suas frentes; anunciar Cristo também é permanecer, ensinar, acompanhar e servir.</p></div><ImageSlot src={assets.missionHero} alt="Ação missionária da Caverna" className="slot--brown" /></section>
+        <section className="mission-paths"><h2>ONDE A MISSÃO TOMA FORMA</h2><div className="mission-path-grid">{paths.map(([title, text, className, src]) => <article className="mission-path-card" key={title}><ImageSlot src={src} alt={title} className={`mission-path-photo ${className}`} /><h3>{title}</h3><p>{text}</p></article>)}</div></section>
         <section className="mission-projects"><h2>PROJETOS EM MOVIMENTO</h2><div className="mission-project-list">{projects.map(([title, text, className, src]) => <article className={className} key={title}><div className="mission-project-image" style={{ backgroundImage: `url(${src})` }} /><div><h3>{title}</h3><p>{text}</p></div></article>)}</div></section>
         <section className="mission-cta"><h2>ANUNCIAR PERMANECER<br />E SERVIR</h2><div><p>O Reino em Nós reúne as frentes da Caverna. Escolha um caminho, venha conhecer e encontre uma forma de servir com a comunidade.</p><Button href="/contato">QUERO SERVIR&nbsp; →</Button></div></section>
       </main>
@@ -455,7 +473,7 @@ function AgendaPage() {
       <main>
         <section className="subpage-hero subpage-hero--dark agenda-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[AGENDA]</p><h1>UMA IGREJA PARA ALÉM<br />DO FINAL DE SEMANA</h1><p>Discipulado às quintas, culto público aos sábados e O Reino em Nós em datas sazonais.</p></div><ImageSlot src={assets.agendaHero} alt="Culto, púlpito ou louvor" className="agenda-hero-slot slot--gray" /></section>
         <section className="subpage-section subpage-section--paper agenda-regular"><h2>QUANDO A CAVERNA SE REÚNE</h2><div className="agenda-schedule-list"><InfoCard title="QUINTA-FEIRA · 19H30">DISCIPULADO<br /><small>Ensino da Palavra, proximidade e formação de discípulos.</small></InfoCard><InfoCard title="SÁBADO · 19H30">CULTO PÚBLICO<br /><small>Encontro aberto para cultuar, ouvir a Palavra e estar com a comunidade.</small></InfoCard><a className="agenda-whatsapp" href={whatsappUrl('Olá! Gostaria de confirmar a programação da Caverna.')}>CONFIRMAR PELO WHATSAPP&nbsp; →<span>A programação sazonal pode mudar. Fale com a equipe.</span></a></div></section>
-        <section className="subpage-section subpage-section--plum agenda-events"><h2>PROJETOS MISSIONÁRIOS</h2><div className="agenda-event-grid"><ImageSlot src={assets.missionReino} alt="Projeto missionário" className="slot--brown" /><div className="agenda-event-copy"><InfoCard title="DATAS SAZONAIS" dark>As frentes do Reino em Nós são marcadas conforme cada período. Confirme pelo WhatsApp.</InfoCard><InfoCard title="ACOMPANHE AS ATUALIZAÇÕES" dark>Instagram: @a_cavernaa</InfoCard></div></div></section>
+        <section className="subpage-section subpage-section--plum agenda-events"><h2>PROJETOS MISSIONÁRIOS</h2><div className="agenda-event-grid"><ImageSlot src={assets.agendaFeature} alt="Encontro missionário da Caverna" className="slot--brown" /><div className="agenda-event-copy"><InfoCard title="DATAS SAZONAIS" dark>As frentes do Reino em Nós são marcadas conforme cada período. Confirme pelo WhatsApp.</InfoCard><InfoCard title="ACOMPANHE AS ATUALIZAÇÕES" dark>Instagram: @a_cavernaa</InfoCard></div></div></section>
         <section className="subpage-cta"><h2>PLANEJE SUA<br />PRIMEIRA VISITA</h2><div><p>Quintas e sábados, às 19H30. Se precisar de orientação, fale com a gente.</p><Button href="/visite-nos">VISITE-NOS&nbsp; →</Button></div></section>
       </main>
     </PageFrame>
@@ -469,7 +487,7 @@ function VisitPage() {
       <main>
         <section className="subpage-hero subpage-hero--plum visit-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[VISITE-NOS]</p><h1>VÁ COMO VOCÊ ESTÁ<br />A GENTE TE RECEBE</h1><p>Você pode chegar sozinho. A gente procura você depois do primeiro culto e continua perto.</p><div className="accent-rule" /></div><ImageSlot src={assets.visitHero} alt="Recepção da Igreja A Caverna" className="slot--brown" /></section>
         <section className="subpage-section subpage-section--paper visit-plan"><p className="subpage-kicker">ANTES DE CHEGAR</p><div className="subpage-card-row"><InfoCard title="HORÁRIOS">Quinta, 19H30 — discipulado<br />Sábado, 19H30 — culto público</InfoCard><InfoCard title="PRIMEIRA VEZ">Você pode vir sozinho. Não precisa conhecer ninguém antes de chegar.</InfoCard><InfoCard title="ACESSO">Jardim Ingá, Luziânia/GO<br />Clique aqui para ver a rota.</InfoCard></div></section>
-        <section className="subpage-section subpage-section--dark visit-arrival"><p className="subpage-kicker">O CAMINHO ATÉ A CAVERNA</p><h2>ENCONTRE UMA FAMÍLIA<br />COMECE A CAMINHAR</h2><div className="visit-arrival-grid"><div className="subpage-map"><iframe title="Localização da Igreja A Caverna" src={`https://www.google.com/maps?q=${mapsQuery}&output=embed`} loading="lazy" /><a className="map-open-link" href={siteContent.mapsUrl} target="_blank" rel="noreferrer">ABRIR LOCALIZAÇÃO&nbsp; ↗</a></div><div className="visit-arrival-copy"><InfoCard title="COMO CHEGAR" dark>Jardim Ingá, Luziânia · GO<br />Confira a rota e venha encontrar a comunidade.</InfoCard><InfoCard title="O QUE ESPERAR" dark>Pessoas reais, culto cristão e um lugar para começar a caminhar.</InfoCard><InfoCard title="PRECISA DE AJUDA?" dark>Fale com a equipe antes de vir; vamos orientar sua chegada.</InfoCard></div></div></section>
+        <section className="subpage-section subpage-section--dark visit-arrival"><p className="subpage-kicker">O CAMINHO ATÉ A CAVERNA</p><h2>ENCONTRE UMA FAMÍLIA<br />COMECE A CAMINHAR</h2><ImageSlot src={assets.visitFacade} alt="Fachada da Igreja A Caverna" className="visit-facade" /><div className="visit-arrival-grid"><div className="subpage-map"><iframe title="Localização da Igreja A Caverna" src={`https://www.google.com/maps?q=${mapsQuery}&output=embed`} loading="lazy" /><a className="map-open-link" href={siteContent.mapsUrl} target="_blank" rel="noreferrer">ABRIR LOCALIZAÇÃO&nbsp; ↗</a></div><div className="visit-arrival-copy"><InfoCard title="COMO CHEGAR" dark>Jardim Ingá, Luziânia · GO<br />Confira a rota e venha encontrar a comunidade.</InfoCard><InfoCard title="O QUE ESPERAR" dark>Pessoas reais, culto cristão e um lugar para começar a caminhar.</InfoCard><InfoCard title="PRECISA DE AJUDA?" dark>Fale com a equipe antes de vir; vamos orientar sua chegada.</InfoCard></div></div></section>
         <section className="subpage-section subpage-section--paper visit-faq"><p className="subpage-kicker">PERGUNTAS DE QUEM VEM<br />PELA PRIMEIRA VEZ</p>{['Preciso me vestir de alguma forma específica?', 'Posso ir mesmo sem conhecer ninguém?', 'Posso ir com minha família?'].map(question => <details key={question}><summary>{question}<span>+</span></summary><p>Não há código de vestimenta. Venha como está; a gente recebe você, apresenta a comunidade e continua perto.</p></details>)}</section>
       </main>
     </PageFrame>
@@ -481,8 +499,8 @@ function ContactPage() {
     <PageFrame page="contato">
       <main>
         <section className="subpage-hero subpage-hero--dark contact-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[CONTATO E ORAÇÃO]</p><h1>NÃO CARREGUE<br />SOZINHO</h1><p>Se você chegou agora, precisa de oração ou quer conversar, fale com a gente. A comunidade responde.</p></div><ImageSlot src={assets.contactHero} alt="Cuidado em comunidade" className="slot--brown" /></section>
-        <section className="subpage-section subpage-section--paper contact-form-section"><div className="form-section-grid"><div><p className="subpage-kicker">FALE COM A GENTE</p><h2>ENTRAREMOS EM CONTATO COM VOCÊ</h2><p>Envie uma mensagem e a equipe da comunidade responderá assim que possível.</p><StaticForm /></div><div className="contact-side"><ImageSlot src={assets.community} alt="Acolhimento na comunidade" className="slot--plum" /><InfoCard title="OUTROS CANAIS">WhatsApp: (00) 00000-0000<br />Instagram: @a_cavernaa</InfoCard></div></div></section>
-        <section id="oracao" className="subpage-section subpage-section--plum prayer-section"><div className="form-section-grid"><div className="prayer-copy"><p className="subpage-kicker">PEDIDO DE ORAÇÃO</p><h2>PODEMOS ORAR<br />POR VOCÊ</h2><p>Compartilhe seu pedido, identificado ou anônimo, e deixe alguém interceder com você.</p><ImageSlot src={assets.prayer} alt="Intercessão em comunidade" className="slot--teal" /></div><StaticForm prayer /></div></section>
+        <section className="subpage-section subpage-section--paper contact-form-section"><div className="form-section-grid"><div><p className="subpage-kicker">FALE COM A GENTE</p><h2>ENTRAREMOS EM CONTATO COM VOCÊ</h2><p>Envie uma mensagem e a equipe da comunidade responderá assim que possível.</p><StaticForm /></div><div className="contact-side"><ImageSlot src={assets.contactWelcoming} alt="Acolhimento na comunidade" className="slot--plum" /><InfoCard title="OUTROS CANAIS">WhatsApp: (00) 00000-0000<br />Instagram: @a_cavernaa</InfoCard></div></div></section>
+        <section id="oracao" className="subpage-section subpage-section--plum prayer-section"><div className="form-section-grid"><div className="prayer-copy"><p className="subpage-kicker">PEDIDO DE ORAÇÃO</p><h2>PODEMOS ORAR<br />POR VOCÊ</h2><p>Compartilhe seu pedido, identificado ou anônimo, e deixe alguém interceder com você.</p><ImageSlot src={assets.contactIntercession} alt="Intercessão em comunidade" className="slot--teal" /></div><StaticForm prayer /></div></section>
       </main>
     </PageFrame>
   );
@@ -494,7 +512,7 @@ function ContributionPage() {
       <main>
         <section className="subpage-hero subpage-hero--brown contribution-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[CONTRIBUA]</p><h1>GENEROSIDADE<br />NÃO É PRODUTO</h1><p>Contribuir é participar da missão e da vida da comunidade com liberdade, consciência e responsabilidade.</p></div><ImageSlot src={assets.contribution} alt="Partilha e serviço" className="slot--plum" /></section>
         <section className="subpage-section subpage-section--paper contribution-methods"><p className="subpage-kicker">FORMAS DE CONTRIBUIR</p><div className="subpage-card-row"><InfoCard title="PIX">QR Code PIX integrado será disponibilizado em breve. Para outras formas, fale com a igreja.</InfoCard><InfoCard title="OUTRAS FORMAS">Ainda não há outra forma publicada. Confirme pelo WhatsApp.</InfoCard><InfoCard title="PRESENCIAL">Para qualquer outra forma de contribuição, fale com a equipe pelo WhatsApp.</InfoCard></div></section>
-        <section className="subpage-section subpage-section--dark contribution-destination"><div className="contribution-destination-grid"><ImageSlot src={assets.community} alt="Serviço da comunidade" className="slot--teal" /><div><p className="subpage-kicker">PARA ONDE VAI</p><h2>RECURSO A SERVIÇO<br />DE PESSOAS</h2><p>Os recursos sustentam a vida da igreja, o cuidado com pessoas, a missão e a manutenção da comunidade.</p><Button href="/contato">VER TRANSPARÊNCIA</Button></div></div></section>
+        <section className="subpage-section subpage-section--dark contribution-destination"><div className="contribution-destination-grid"><ImageSlot src={assets.contributionService} alt="Serviço da comunidade" className="slot--teal" /><div><p className="subpage-kicker">PARA ONDE VAI</p><h2>RECURSO A SERVIÇO<br />DE PESSOAS</h2><p>Os recursos sustentam a vida da igreja, o cuidado com pessoas, a missão e a manutenção da comunidade.</p><Button href="/contato">VER TRANSPARÊNCIA</Button></div></div></section>
         <section className="subpage-section subpage-section--paper contribution-principles"><p className="subpage-kicker">COMO ENTENDEMOS A CONTRIBUIÇÃO</p><div className="subpage-card-row"><InfoCard title="LIBERDADE">Sem coerção, promessa de retorno ou barganha espiritual.</InfoCard><InfoCard title="RESPONSABILIDADE">Administração consciente e prestação de contas.</InfoCard><InfoCard title="COMUNIDADE">Recursos sustentam pessoas, missão e edificação.</InfoCard></div></section>
       </main>
     </PageFrame>
@@ -538,4 +556,3 @@ export function pageKeyFromPath(pathname: string): PageKey | null {
 }
 
 export { pageNames };
-

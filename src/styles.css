@@ -1204,8 +1204,9 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 .mission-path-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .mission-path-card h3 { margin: 18px 0 0; font-size: 18px; line-height: 1.18; }
 .mission-path-card p { margin: 18px 0 0; font-size: 14px; line-height: 1.18; }
-.mission-color-slot { display: flex; align-items: center; justify-content: center; height: 300px; color: rgba(245,240,232,.72); }
-.mission-color-slot span, .mission-project-image span { font-size: 10px; font-weight: 700; letter-spacing: .12em; }
+.mission-path-photo { height: 300px; }
+.mission-path-photo img { width: 100%; height: 100%; object-fit: cover; }
+.mission-project-image span { font-size: 10px; font-weight: 700; letter-spacing: .12em; }
 .mission-path--plum { background: #4a2040; }
 .mission-path--teal { background: #52828c; }
 .mission-path--gold { background: #f1ac33; color: #09090a; }
@@ -1300,6 +1301,8 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 .visit-plan .subpage-info-card { min-height: 155px; }
 .visit-arrival { min-height: 820px; }
 .visit-arrival h2 { margin-bottom: 36px; }
+.visit-facade { width: 100%; height: 360px; margin-bottom: 32px; }
+.visit-facade img { width: 100%; height: 100%; object-fit: cover; }
 .visit-arrival-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 32px; }
 .subpage-map { min-height: 500px; overflow: hidden; border-radius: 4px; background: #303035; }
 .subpage-map iframe { width: 100%; height: 100%; min-height: 500px; border: 0; filter: grayscale(.2) saturate(.8); }
@@ -1638,7 +1641,8 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .mission-paths { padding: 46px 20px 54px; }
   .mission-paths h2, .mission-projects h2 { font-size: 28px; }
   .mission-path-grid { display: flex; flex-direction: column; gap: 22px; }
-  .mission-color-slot { height: 210px; }
+  .mission-path-photo { height: 210px; }
+  .visit-facade { height: 240px; }
   .mission-projects { min-height: 0; padding: 48px 20px 56px; }
   .mission-project-list { gap: 28px; }
   .mission-project, .mission-project--reverse { display: flex; flex-direction: column; gap: 18px; padding: 20px; }
@@ -1717,7 +1721,14 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 .community-photo-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .community-photo-grid .subpage-image { height: 300px; margin-bottom: 18px; }
 .community-photo-grid h3 { margin-bottom: 0; font-size: 18px; }
-.community-schedule-list, .sports-support-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.community-schedule-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.sports-support-grid { display: flex; flex-direction: column; gap: 24px; }
+.sports-support-card { display: grid; grid-template-columns: minmax(0, 512px) minmax(0, 1fr); gap: 32px; align-items: center; padding: 20px; background: #171719; }
+.sports-support-card--reverse { grid-template-columns: minmax(0, 1fr) minmax(0, 512px); }
+.sports-support-card--reverse > .subpage-image { order: 2; }
+.sports-support-card > .subpage-image { height: 230px; }
+.sports-support-card h3 { margin: 0 0 16px; font-size: 24px; }
+.sports-support-card p { margin: 0; font-size: 16px; line-height: 1.4; }
 .community-projects { min-height: 525px; }
 .community-projects > h2, .sports-paintball > h2 { margin-bottom: 32px; font-size: 44px; }
 .community-presence { max-width: 720px; margin: 32px 0 0; color: #aaa7a1; font-size: 16px; line-height: 1.4; }
@@ -1797,6 +1808,9 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .faith-hero h1, .agenda-hero h1 { font-size: 42px; }
   .faith-affirm > h2 { white-space: normal; }
   .faith-affirm .subpage-card-grid, .community-schedule-list, .sports-support-grid, .agenda-events .agenda-event-grid { display: flex; flex-direction: column; }
+  .sports-support-card, .sports-support-card--reverse { display: flex; flex-direction: column; align-items: stretch; gap: 18px; }
+  .sports-support-card--reverse > .subpage-image { order: initial; }
+  .sports-support-card > .subpage-image { width: 100%; }
   .agenda-schedule-list .subpage-info-card { display: flex; flex-direction: column; gap: 12px; }
   .agenda-whatsapp { flex-direction: column; align-items: flex-start; gap: 12px; }
   .subpage--contribua .contribution-hero { display: flex; }
@@ -2020,7 +2034,7 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 .subpage-image,
 .subpage-image img,
 .project-image-wrap,
-.mission-color-slot,
+.mission-path-photo,
 .mission-project-image,
 .institutional-photo img,
 .ministry-card-image {
@@ -2863,14 +2877,14 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .subpage--fe,
   .subpage--discipulado { --subpage-header-image: url('/assets/treated/discipulado.jpeg'); }
   .subpage--comunidade { --subpage-header-image: url('/assets/treated/community-hero.jpeg'); }
-  .subpage--agenda { --subpage-header-image: url('/assets/treated/worship.jpeg'); }
-  .subpage--visite { --subpage-header-image: url('/assets/treated/visit.jpeg'); }
-  .subpage--contato,
+  .subpage--agenda { --subpage-header-image: url('/assets/site-images/agenda/hero.jpg'); }
+  .subpage--visite { --subpage-header-image: url('/assets/site-images/visite-nos/hero.jpg'); }
+  .subpage--contato { --subpage-header-image: url('/assets/site-images/contato/hero.jpg'); }
   .subpage--oracao { --subpage-header-image: url('/assets/treated/prayer.jpeg'); }
-  .subpage--contribua { --subpage-header-image: url('/assets/treated/contribution.jpeg'); }
-  .subpage--missoes { --subpage-header-image: url('/assets/treated/mission-reino.jpeg'); }
+  .subpage--contribua { --subpage-header-image: url('/assets/site-images/contribua/hero.jpg'); }
+  .subpage--missoes { --subpage-header-image: url('/assets/site-images/missoes/hero.jpg'); }
   .subpage--criancas { --subpage-header-image: url('/assets/treated/children.jpeg'); }
-  .subpage--esportes { --subpage-header-image: url('/assets/treated/sports-hero.jpeg'); }
+  .subpage--esportes { --subpage-header-image: url('/assets/site-images/esportes/hero.jpg'); }
 }
 
 /* Keep the liturgy flow continuous and let its image fill the remaining frame. */
@@ -3183,21 +3197,21 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 
   .subpage--comunidade { --subpage-header-image: url('/assets/treated/community-hero.jpeg'); }
-  .subpage--agenda { --subpage-header-image: url('/assets/treated/worship.jpeg'); }
-  .subpage--visite { --subpage-header-image: url('/assets/treated/visit.jpeg'); }
-  .subpage--contato,
+  .subpage--agenda { --subpage-header-image: url('/assets/site-images/agenda/hero.jpg'); }
+  .subpage--visite { --subpage-header-image: url('/assets/site-images/visite-nos/hero.jpg'); }
+  .subpage--contato { --subpage-header-image: url('/assets/site-images/contato/hero.jpg'); }
   .subpage--oracao { --subpage-header-image: url('/assets/treated/prayer.jpeg'); }
   .subpage--contribua {
-    --subpage-header-image: url('/assets/treated/contribution.jpeg');
+    --subpage-header-image: url('/assets/site-images/contribua/hero.jpg');
     --headline-overlay: rgba(187, 128, 85, .96);
     --headline-overlay-soft: rgba(187, 128, 85, .82);
     --headline-overlay-mid: rgba(187, 128, 85, .56);
     --headline-overlay-edge: rgba(187, 128, 85, .16);
     --headline-background-height: 832px;
   }
-  .subpage--missoes { --subpage-header-image: url('/assets/treated/mission-reino.jpeg'); }
+  .subpage--missoes { --subpage-header-image: url('/assets/site-images/missoes/hero.jpg'); }
   .subpage--criancas { --subpage-header-image: url('/assets/treated/children.jpeg'); }
-  .subpage--esportes { --subpage-header-image: url('/assets/treated/sports-hero.jpeg'); }
+  .subpage--esportes { --subpage-header-image: url('/assets/site-images/esportes/hero.jpg'); }
   .subpage--discipulado { --subpage-header-image: url('/assets/treated/discipulado.jpeg'); }
 
   .subpage::before,
