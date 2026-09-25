@@ -4750,8 +4750,8 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .subpage--comunidade::before {
     width: 52%;
     background-image: var(--subpage-header-image);
-    background-position: calc(100% + 60px) -200px;
-    background-size: auto 190%;
+    background-position: calc(100% + clamp(59px, calc(14vw - 143px), 126px)) clamp(-425px, calc(687px - 57.9vw), -147px);
+    background-size: auto clamp(790px, calc(118.75vw - 920px), 1360px);
     -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 52%, #000 70%);
     mask-image: linear-gradient(90deg, transparent 0%, transparent 52%, #000 70%);
   }
