@@ -1476,7 +1476,21 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .contribution-hero { min-height: 760px; }
   .contribution-methods, .contribution-principles { min-height: 650px; }
   .contribution-destination { min-height: 860px; }
-  .contribution-destination-grid .subpage-image { height: 280px; }
+  .subpage--contribua .contribution-destination-grid { align-items: stretch; }
+  .subpage--contribua .contribution-destination-grid > .subpage-image {
+    flex: none;
+    width: 100%;
+    height: 280px;
+  }
+  .subpage--contribua .contribution-destination-grid > .subpage-image img {
+    position: absolute;
+    top: -82.31%;
+    left: -11.46%;
+    width: 122.91%;
+    max-width: none;
+    height: 273.13%;
+    object-fit: cover;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -2152,22 +2166,21 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 
   .caverna-timeline {
-    min-height: 1100px;
+    min-height: 0;
   }
 
   .caverna-timeline-overlay {
-    position: absolute;
-    top: calc(var(--timeline-index) * 150px + 32px);
-    left: 28px;
+    position: relative;
+    top: auto;
+    left: auto;
     width: calc(100% - 28px);
-    margin: 0;
+    margin: 12px 0 16px 28px;
     transform: none;
-    pointer-events: none;
   }
 
   .caverna-timeline-overlay--first,
   .caverna-timeline-overlay--last {
-    left: 28px;
+    left: auto;
     transform: none;
   }
 
@@ -4333,7 +4346,7 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 }
 
-/* Final Nossa Fé overrides: keep the Figma hero photo visible above the shared cover. */
+/* Nossa Fé: on desktop the shared cover supplies the photo. */
 .subpage--fe .subpage-hero > .faith-hero-slot {
   display: block;
 }
@@ -4347,6 +4360,10 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 @media (max-width: 1024px) {
   .subpage--fe {
     --subpage-header-image: url('/assets/site-images/nossa-fe/hero-oracao.jpg');
+  }
+
+  .subpage--fe .subpage-hero > .faith-hero-slot {
+    display: none;
   }
 }
 
@@ -4917,8 +4934,8 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 
   .subpage--caverna .caverna-timeline:not(.is-expanded) {
-    height: 510px;
-    min-height: 510px;
+    height: auto;
+    min-height: 0;
   }
 
   .caverna-timeline-more {
@@ -5021,7 +5038,27 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 
   .subpage--comunidade::before {
-    background-position: 68% top;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-image: linear-gradient(rgba(74, 32, 64, .12), rgba(74, 32, 64, .12)), var(--subpage-header-image);
+    background-position: center, 23vw -33vw;
+    background-size: cover, 100% auto;
+  }
+
+  .subpage--comunidade::after {
+    background: linear-gradient(90deg, #4a2040 0%, rgba(74, 32, 64, .96) 40%, rgba(74, 32, 64, .65) 64%, rgba(74, 32, 64, .18) 86%, rgba(74, 32, 64, .12) 100%);
+  }
+
+  .subpage--fe::before {
+    left: 26%;
+    right: auto;
+    width: 100%;
+    background-position: center, center 46%;
+  }
+
+  .subpage--fe::after {
+    background: linear-gradient(90deg, #09090a 0%, #09090a 42%, rgba(9, 9, 10, .92) 60%, rgba(9, 9, 10, .65) 82%, rgba(9, 9, 10, .36) 100%);
   }
 }
 
