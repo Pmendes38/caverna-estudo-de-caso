@@ -14,7 +14,8 @@ const assets = {
   contactHero: '/assets/site-images/contato/hero.jpg',
   contactWelcoming: '/assets/site-images/contato/acolhimento.jpg',
   contactIntercession: '/assets/site-images/contato/intercessao.jpg',
-  teaching: '/assets/treated/discipulado.jpeg',
+  teaching: '/assets/site-images/discipulado/encontro-em-comunidade.jpg',
+  teachingStory: '/assets/site-images/discipulado/conversa-e-palavra.jpeg',
   prayer: '/assets/treated/prayer.jpeg',
   worship: '/assets/treated/worship.jpeg',
   outreach: '/assets/treated/mission-reino.jpeg',
@@ -396,6 +397,8 @@ type MinistryDetail = {
   description: string;
   image: string;
   imageAlt: string;
+  storyImage?: string;
+  storyImageAlt?: string;
   cards: Array<[string, string]>;
   cta: string;
   ctaHref: string;
@@ -407,7 +410,9 @@ const ministryDetails: Record<MinistryDetail['page'], Omit<MinistryDetail, 'page
     title: <>CRESCER NA PALAVRA<br />CAMINHAR EM COMUNHÃO</>,
     description: 'A Caverna nasceu quando anunciar Cristo também passou a significar permanecer, ensinar e acompanhar pessoas.',
     image: assets.teaching,
-    imageAlt: 'Leitura da Bíblia em um momento de discipulado',
+    imageAlt: 'Participantes reunidos para o discipulado da Igreja A Caverna',
+    storyImage: assets.teachingStory,
+    storyImageAlt: 'Participante compartilha uma reflexão durante o discipulado',
     cards: [['PALAVRA', 'A Escritura orienta nossa fé, nossas conversas e nossas decisões.'], ['PROXIMIDADE', 'Depois de chegar, a pessoa é lembrada e acompanhada de perto.'], ['FORMAÇÃO', 'Discipulado é aprender a seguir Cristo com outros, ao longo da vida.']],
     cta: 'CONHEÇA A COMUNIDADE',
     ctaHref: '/comunidade',
@@ -444,6 +449,17 @@ const ministryDetails: Record<MinistryDetail['page'], Omit<MinistryDetail, 'page
   },
 };
 
+const discipleshipPhotos = [
+  { src: '/assets/site-images/discipulado/leitura-da-biblia.jpg', alt: 'Participante lê a Bíblia durante o encontro de discipulado', width: 2252, height: 4000 },
+  { src: '/assets/site-images/discipulado/sorriso-no-encontro.jpeg', alt: 'Participante sorri durante uma conversa em comunidade', width: 854, height: 1280 },
+  { src: '/assets/site-images/discipulado/escuta-atenta.jpeg', alt: 'Participante acompanha a conversa do discipulado', width: 854, height: 1280 },
+  { src: '/assets/site-images/discipulado/biblia-a-mesa.jpeg', alt: 'Participante com a Bíblia aberta à mesa', width: 854, height: 1280 },
+  { src: '/assets/site-images/discipulado/aprendizado-em-grupo.jpeg', alt: 'Participante acompanha o estudo em grupo', width: 854, height: 1281 },
+  { src: '/assets/site-images/discipulado/participacao-em-comunidade.jpeg', alt: 'Participante do encontro de discipulado', width: 854, height: 1281 },
+  { src: '/assets/site-images/discipulado/conversa-em-grupo.jpeg', alt: 'Participante compartilha uma conversa no encontro', width: 720, height: 1280 },
+  { src: '/assets/site-images/discipulado/estudo-em-comunidade.jpeg', alt: 'Participante acompanha o estudo da Palavra', width: 720, height: 1280 },
+];
+
 function MinistryPage({ page }: { page: MinistryDetail['page'] }) {
   if (page === 'missoes') return <MissionPage />;
   const detail = ministryDetails[page];
@@ -460,8 +476,17 @@ function MinistryPage({ page }: { page: MinistryDetail['page'] }) {
           <div className="subpage-card-row">{detail.cards.map(([title, text]) => <InfoCard title={title} key={title}>{text}</InfoCard>)}</div>
         </section>
         <section className="subpage-section subpage-section--dark ministry-detail-story">
-          <div className="contribution-destination-grid"><ImageSlot src={detail.image} alt={detail.imageAlt} className="slot--teal" /><div><p className="subpage-kicker">VIDA COMPARTILHADA</p><h2>CAMINHAR<br />JUNTO MUDA<br />TUDO</h2><p>Na Igreja A Caverna, esta frente existe para transformar intenção em presença. Fale com a equipe e descubra como participar.</p></div></div>
+          <div className="contribution-destination-grid"><ImageSlot src={detail.storyImage ?? detail.image} alt={detail.storyImageAlt ?? detail.imageAlt} className="slot--teal" /><div><p className="subpage-kicker">VIDA COMPARTILHADA</p><h2>CAMINHAR<br />JUNTO MUDA<br />TUDO</h2><p>Na Igreja A Caverna, esta frente existe para transformar intenção em presença. Fale com a equipe e descubra como participar.</p></div></div>
         </section>
+        {page === 'discipulado' && <section className="subpage-section subpage-section--paper discipleship-gallery-section" aria-labelledby="discipleship-gallery-title">
+          <p className="subpage-kicker">[VIDA EM COMUNIDADE]</p>
+          <h2 id="discipleship-gallery-title">MOMENTOS DO NOSSO DISCIPULADO</h2>
+          <div className="discipleship-gallery-grid">
+            {discipleshipPhotos.map((photo) => <figure className="discipleship-gallery-photo" key={photo.src}>
+              <img src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} loading="lazy" decoding="async" />
+            </figure>)}
+          </div>
+        </section>}
         <section className="subpage-cta"><h2>HÁ UM PRÓXIMO<br />PASSO PARA VOCÊ</h2><div><p>Conheça a comunidade e encontre uma forma concreta de caminhar conosco.</p><Button href={detail.ctaHref}>{detail.cta}&nbsp; →</Button></div></section>
       </main>
     </PageFrame>

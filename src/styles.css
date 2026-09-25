@@ -2923,8 +2923,8 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 
   .subpage--caverna { --subpage-header-image: url('/assets/attached/caverna-missao-hero.jpg'); }
-  .subpage--fe,
-  .subpage--discipulado { --subpage-header-image: url('/assets/treated/discipulado.jpeg'); }
+  .subpage--fe { --subpage-header-image: url('/assets/treated/discipulado.jpeg'); }
+  .subpage--discipulado { --subpage-header-image: url('/assets/site-images/discipulado/encontro-em-comunidade.jpg'); }
   .subpage--comunidade { --subpage-header-image: url('/assets/treated/community-hero.jpeg'); }
   .subpage--agenda { --subpage-header-image: url('/assets/site-images/agenda/hero.jpg'); }
   .subpage--visite { --subpage-header-image: url('/assets/site-images/visite-nos/hero.jpg'); }
@@ -3254,7 +3254,7 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .subpage--missoes { --subpage-header-image: url('/assets/site-images/missoes/hero.jpg'); }
   .subpage--criancas { --subpage-header-image: url('/assets/treated/children.jpeg'); }
   .subpage--esportes { --subpage-header-image: url('/assets/site-images/esportes/hero.jpg'); }
-  .subpage--discipulado { --subpage-header-image: url('/assets/treated/discipulado.jpeg'); }
+  .subpage--discipulado { --subpage-header-image: url('/assets/site-images/discipulado/encontro-em-comunidade.jpg'); }
 
   .subpage::before,
   .subpage::after {
@@ -5134,5 +5134,67 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
     grid-template-columns: repeat(2, minmax(110px, 1fr));
     gap: 18px 20px;
     width: 100%;
+  }
+}
+
+/* The discipleship gallery keeps the original portrait framing on every screen. */
+.subpage--discipulado .discipleship-gallery-section {
+  min-height: 0;
+}
+
+.subpage--discipulado .discipleship-gallery-section h2 {
+  max-width: 850px;
+}
+
+.discipleship-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin-top: 34px;
+}
+
+.discipleship-gallery-photo {
+  margin: 0;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  background: #281923;
+  border-radius: 4px;
+}
+
+.discipleship-gallery-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.subpage--discipulado .ministry-detail-story .subpage-image img {
+  object-position: center 32%;
+}
+
+@media (min-width: 1025px) {
+  .subpage--discipulado::before {
+    width: 50%;
+    background-position: center, right 28%;
+  }
+}
+
+@media (min-width: 721px) and (max-width: 1024px) {
+  .discipleship-gallery-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
+
+@media (max-width: 720px) {
+  .subpage--discipulado::before {
+    background-position: center, center 12%;
+  }
+
+  .discipleship-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 8px;
   }
 }
