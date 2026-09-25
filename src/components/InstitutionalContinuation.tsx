@@ -11,6 +11,12 @@ function formatCountdown(value: number) {
 
 export type EventMode = 'discipulado' | 'culto' | 'live';
 
+const eventVisualDimensions: Record<EventMode, { width: number; height: number }> = {
+  discipulado: { width: 1683, height: 935 },
+  culto: { width: 1683, height: 935 },
+  live: { width: 900, height: 500 },
+};
+
 function EventCountdown() {
   const [now, setNow] = useState<Date | null>(null);
   const next = now ? getNextMeeting(now) : null;
@@ -113,11 +119,12 @@ export function EventVisual({ mode, onDiscipleshipClick }: { mode: EventMode; on
       ? '/assets/attached/saturday-live.png'
       : '/assets/attached/saturday-service.png';
   const alt = mode === 'discipulado' ? 'Encontro de discipulado da Igreja A Caverna' : mode === 'live' ? 'Culto de sábado ao vivo na Igreja A Caverna' : 'Culto de sábado às 19h30 na Igreja A Caverna';
+  const dimensions = eventVisualDimensions[mode];
 
   if (mode === 'discipulado') {
     return (
       <button className="event-visual event-visual--button" type="button" onClick={onDiscipleshipClick}>
-        <img src={image} alt={alt} loading="lazy" decoding="async" />
+        <img src={image} alt={alt} width={dimensions.width} height={dimensions.height} loading="lazy" decoding="async" />
         <span>CLIQUE AQUI PARA MAIS INFORMAÇÕES&nbsp; ↗</span>
       </button>
     );
@@ -125,17 +132,17 @@ export function EventVisual({ mode, onDiscipleshipClick }: { mode: EventMode; on
 
   return (
     <a className="event-visual" href={mode === 'live' ? 'https://www.youtube.com/@acaverna396/live' : '/agenda'} target={mode === 'live' ? '_blank' : undefined} rel={mode === 'live' ? 'noreferrer' : undefined}>
-      <img src={image} alt={alt} loading="lazy" decoding="async" />
+      <img src={image} alt={alt} width={dimensions.width} height={dimensions.height} loading="lazy" decoding="async" />
       <span>{mode === 'live' ? 'ASSISTIR LIVE AGORA&nbsp; ↗' : 'VER DETALHES DO CULTO&nbsp; ↗'}</span>
     </a>
   );
 }
 
 const ministries = [
-  { title: 'DISCIPULADO', description: 'Cresça na Palavra e caminhe em comunhão.', image: '/assets/whatsapp/foto-38.jpeg', href: '/discipulado' },
-  { title: 'ORAÇÃO', description: 'Não caminhe sozinho. Deixe alguém orar com você.', image: '/assets/attached/ministry-prayer.jpg', href: '/oracao' },
-  { title: 'MISSÕES', description: 'Sirva pessoas dentro e fora da comunidade.', image: '/assets/whatsapp/foto-53.jpeg', href: '/missoes' },
-  { title: 'ESPORTES DA CAVERNA', description: 'Atletas, disciplina e comunidade em movimento.', image: '/assets/sports/jiu-jitsu-atleta.jpeg', href: '/esportes' },
+  { title: 'DISCIPULADO', description: 'Cresça na Palavra e caminhe em comunhão.', image: '/assets/whatsapp/foto-38.jpeg', width: 720, height: 1280, href: '/discipulado' },
+  { title: 'ORAÇÃO', description: 'Não caminhe sozinho. Deixe alguém orar com você.', image: '/assets/attached/ministry-prayer.jpg', width: 900, height: 1600, href: '/oracao' },
+  { title: 'MISSÕES', description: 'Sirva pessoas dentro e fora da comunidade.', image: '/assets/whatsapp/foto-53.jpeg', width: 1280, height: 960, href: '/missoes' },
+  { title: 'ESPORTES DA CAVERNA', description: 'Atletas, disciplina e comunidade em movimento.', image: '/assets/sports/jiu-jitsu-atleta.jpeg', width: 3123, height: 4160, href: '/esportes' },
 ];
 
 export function InstitutionalContinuation() {
@@ -144,7 +151,7 @@ export function InstitutionalContinuation() {
       <section className="institutional-about" id="sobre">
         <p className="institutional-label">01 / A CAVERNA</p>
         <div className="institutional-split">
-          <div className="institutional-photo"><img src="/assets/whatsapp/foto-43.jpeg" alt="Comunidade da Igreja A Caverna reunida" loading="lazy" decoding="async" /></div>
+          <div className="institutional-photo"><img src="/assets/whatsapp/foto-43.jpeg" alt="Comunidade da Igreja A Caverna reunida" width="870" height="1280" loading="lazy" decoding="async" /></div>
           <div className="institutional-copy">
             <h2>UMA IGREJA<br />NASCIDA DA<br />MISSÃO</h2>
             <p>A Igreja A Caverna é uma comunidade cristã protestante, bíblica, missionária e discipuladora no Jardim Ingá, em Luziânia-GO. Começamos nas ruas de Ceilândia, em 2016. Em 2017, a missão chegou ao Jardim Ingá e se tornou comunidade: firmada na Palavra, centrada em Cristo e presente na vida das pessoas.</p>
@@ -167,9 +174,9 @@ export function InstitutionalContinuation() {
         <p className="institutional-label">03 / VIDA EM COMUNIDADE</p>
         <h2>CAMINHE COM A<br />CAVERNA DURANTE A SEMANA</h2>
         <div className="ministry-grid">
-          {ministries.map(({ title, description, image, href }, index) => (
+          {ministries.map(({ title, description, image, width, height, href }, index) => (
             <a className={`ministry-card ministry-card--${index % 2 ? 'plum' : 'gray'}`} href={href} key={title}>
-              <img className={`ministry-card-image ministry-card-image--${index === 0 ? 'bottom' : index === 1 ? 'center' : index === 3 ? 'sports' : 'center'}`} src={image} alt="" loading="lazy" decoding="async" />
+              <img className={`ministry-card-image ministry-card-image--${index === 0 ? 'bottom' : index === 1 ? 'center' : index === 3 ? 'sports' : 'center'}`} src={image} alt="" width={width} height={height} loading="lazy" decoding="async" />
               <h3>{title}</h3>
               <p>{description}</p>
             </a>
@@ -185,7 +192,7 @@ export function InstitutionalContinuation() {
             <p>A missão trouxe pessoas até nós. A Palavra nos firma, a comunidade nos aproxima e o serviço nos envia para além do prédio.</p>
             <a className="institutional-action" href="/nossa-fe">NOSSA IDENTIDADE&nbsp; ↗</a>
           </div>
-          <div className="institutional-photo"><img src="/assets/whatsapp/foto-46.jpeg" alt="Liderança ministrando em um culto" loading="lazy" decoding="async" /></div>
+          <div className="institutional-photo"><img src="/assets/whatsapp/foto-46.jpeg" alt="Liderança ministrando em um culto" width="853" height="1280" loading="lazy" decoding="async" /></div>
         </div>
       </section>
 

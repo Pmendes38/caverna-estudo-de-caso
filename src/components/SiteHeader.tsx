@@ -48,7 +48,7 @@ export function SiteHeader({ activePage, subpage = false }: SiteHeaderProps) {
       {subpage ? (
         <nav className="subpage-nav" aria-label="Navegação principal">
           <a className="subpage-nav-brand" href="/" aria-label="Igreja A Caverna">
-            <img src="/assets/brand/logo-a-caverna-horizontal.png" alt="Igreja A Caverna" />
+            <img src="/assets/brand/logo-a-caverna-horizontal.png" alt="Igreja A Caverna" width="2351" height="468" />
           </a>
           <div className="subpage-nav-links">
             {subpageLinks.map((link) => (
@@ -66,7 +66,7 @@ export function SiteHeader({ activePage, subpage = false }: SiteHeaderProps) {
           <a className="hero-nav-link" href={homeNavigation[1].href} aria-label={homeNavigation[1].aria}>{homeNavigation[1].label}</a>
           <a className="hero-nav-link" href={homeNavigation[2].href} aria-label={homeNavigation[2].aria}>{homeNavigation[2].label}</a>
           <a className="hero-nav-logo" href="#inicio" aria-label="Ir para o início">
-            <img src="/assets/brand/logo-a-caverna-horizontal.png" alt="Igreja A Caverna" />
+            <img src="/assets/brand/logo-a-caverna-horizontal.png" alt="Igreja A Caverna" width="2351" height="468" />
           </a>
           <a className="hero-nav-link" href={homeNavigation[3].href} aria-label={homeNavigation[3].aria}>{homeNavigation[3].label}</a>
           <a className="hero-nav-link" href={homeNavigation[4].href} aria-label={homeNavigation[4].aria}>{homeNavigation[4].label}</a>
@@ -76,7 +76,7 @@ export function SiteHeader({ activePage, subpage = false }: SiteHeaderProps) {
 
       <div className="mobile-brand">
         <a className={`mobile-brand-logo${subpage ? ' mobile-brand-word' : ''}`} href={subpage ? '/' : '#inicio'} aria-label="Ir para o início">
-          <img src="/assets/brand/logo-a-caverna-horizontal.png" alt="Igreja A Caverna" />
+          <img src="/assets/brand/logo-a-caverna-horizontal.png" alt="Igreja A Caverna" width="2351" height="468" />
         </a>
         <button className="mobile-menu-inline" type="button" onClick={() => setMenuOpen(true)}>MENU&nbsp; ☰</button>
       </div>
