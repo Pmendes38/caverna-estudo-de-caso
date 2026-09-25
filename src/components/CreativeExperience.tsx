@@ -100,10 +100,10 @@ function DesktopManifestoAffirm() {
   );
 }
 
-function DesktopGalleryA() {
+function DesktopGalleryA({ loadImages }: { loadImages: boolean }) {
   return (
     <a className="experience-panel experience-panel-link gallery-panel gallery-a" href="/comunidade" aria-label="Conheça nossa comunidade">
-      {galleryA.map((image) => <img key={image.className} className={`gallery-image ${image.className}`} src={image.src} alt={image.alt} loading="lazy" decoding="async" />)}
+      {galleryA.map((image) => <img key={image.className} className={`gallery-image ${image.className}`} src={loadImages ? image.src : undefined} data-src={image.src} alt={image.alt} loading="lazy" decoding="async" />)}
       <div className="gallery-title"><p>VIDA EM</p><p>COMUNIDADE</p></div>
       <p className="gallery-subtitle">Culto • comunhão • discipulado • missão</p>
       <p className="gallery-index">01 / 02</p>
@@ -111,10 +111,10 @@ function DesktopGalleryA() {
   );
 }
 
-function DesktopGalleryB() {
+function DesktopGalleryB({ loadImages }: { loadImages: boolean }) {
   return (
     <a className="experience-panel experience-panel-link gallery-panel gallery-b" href="/comunidade" aria-label="Conheça nossa comunidade">
-      {galleryB.map((image) => <img key={image.className} className={`gallery-image ${image.className}`} src={image.src} alt={image.alt} loading="lazy" decoding="async" />)}
+      {galleryB.map((image) => <img key={image.className} className={`gallery-image ${image.className}`} src={loadImages ? image.src : undefined} data-src={image.src} alt={image.alt} loading="lazy" decoding="async" />)}
       <div className="gallery-quote"><p>“UM LUGAR PARA</p><p>PERTENCER, CRESCER</p><p>E SERVIR.”</p></div>
       <p className="gallery-index">02 / 02</p>
     </a>
@@ -143,11 +143,11 @@ function MobileScene({ children, index, progress }: { children: ReactNode; index
   );
 }
 
-function DesktopExit() {
+function DesktopExit({ loadImages }: { loadImages: boolean }) {
   return (
     <section className="experience-panel experience-exit" aria-label="Saída para o site institucional">
       <div className="exit-black-transition">
-        <img src="/assets/site-images/d04-d06-gallery/d06-01.jpg" alt="Comunidade da Igreja A Caverna reunida em oração" loading="lazy" decoding="async" />
+        <img src={loadImages ? '/assets/site-images/d04-d06-gallery/d06-01.jpg' : undefined} alt="Comunidade da Igreja A Caverna reunida em oração" loading="lazy" decoding="async" />
       </div>
       <h2>VOCÊ JÁ SABE O QUE NÃO SOMOS<br />AGORA CONHEÇA QUEM SOMOS</h2>
       <p>Conheça nossa fé, nossa história e a vida em comunidade na A Caverna.</p>
@@ -220,36 +220,36 @@ function MobileAffirm({ progress }: { progress: number }) {
   );
 }
 
-function MobileGalleryA() {
+function MobileGalleryA({ loadImages }: { loadImages: boolean }) {
   return (
     <a className="mobile-panel mobile-panel-link mobile-gallery mobile-gallery-a" href="/comunidade" aria-label="Conheça nossa comunidade">
       <div className="mobile-gallery-title"><p>VIDA EM</p><p>COMUNIDADE</p></div>
-      <img className="mobile-gallery-main" src="/assets/site-images/d04-d06-gallery/d04-01.jpg" alt="Comunidade servindo nas ruas" loading="lazy" decoding="async" />
-      <img className="mobile-gallery-small mobile-gallery-small--left" src="/assets/site-images/d04-d06-gallery/d04-02.jpg" alt="Música e comunhão na comunidade" loading="lazy" decoding="async" />
-      <img className="mobile-gallery-small mobile-gallery-small--right" src="/assets/site-images/d04-d06-gallery/d04-03.jpg" alt="Mesa compartilhada na comunidade" loading="lazy" decoding="async" />
+      <img className="mobile-gallery-main" src={loadImages ? '/assets/site-images/d04-d06-gallery/d04-01.jpg' : undefined} alt="Comunidade servindo nas ruas" loading="lazy" decoding="async" />
+      <img className="mobile-gallery-small mobile-gallery-small--left" src={loadImages ? '/assets/site-images/d04-d06-gallery/d04-02.jpg' : undefined} alt="Música e comunhão na comunidade" loading="lazy" decoding="async" />
+      <img className="mobile-gallery-small mobile-gallery-small--right" src={loadImages ? '/assets/site-images/d04-d06-gallery/d04-03.jpg' : undefined} alt="Mesa compartilhada na comunidade" loading="lazy" decoding="async" />
       <p className="mobile-gallery-index">01 / 02</p>
     </a>
   );
 }
 
-function MobileGalleryB() {
+function MobileGalleryB({ loadImages }: { loadImages: boolean }) {
   return (
     <a className="mobile-panel mobile-panel-link mobile-gallery mobile-gallery-b" href="/comunidade" aria-label="Conheça nossa comunidade">
-      <img className="mobile-gallery-small mobile-gallery-b--left" src="/assets/site-images/d04-d06-gallery/d04-03.jpg" alt="Mesa compartilhada na comunidade" loading="lazy" decoding="async" />
-      <img className="mobile-gallery-main mobile-gallery-b--main" src="/assets/site-images/d04-d06-gallery/d05-01.jpg" alt="Cuidado e discipulado na comunidade" loading="lazy" decoding="async" />
-      <img className="mobile-gallery-small mobile-gallery-b--bottom-left" src="/assets/site-images/d04-d06-gallery/d05-02.jpg" alt="Vida em comunidade" loading="lazy" decoding="async" />
-      <img className="mobile-gallery-small mobile-gallery-b--bottom-right" src="/assets/site-images/d04-d06-gallery/d05-03.jpg" alt="Momento de oração" loading="lazy" decoding="async" />
+      <img className="mobile-gallery-small mobile-gallery-b--left" src={loadImages ? '/assets/site-images/d04-d06-gallery/d04-03.jpg' : undefined} alt="Mesa compartilhada na comunidade" loading="lazy" decoding="async" />
+      <img className="mobile-gallery-main mobile-gallery-b--main" src={loadImages ? '/assets/site-images/d04-d06-gallery/d05-01.jpg' : undefined} alt="Cuidado e discipulado na comunidade" loading="lazy" decoding="async" />
+      <img className="mobile-gallery-small mobile-gallery-b--bottom-left" src={loadImages ? '/assets/site-images/d04-d06-gallery/d05-02.jpg' : undefined} alt="Vida em comunidade" loading="lazy" decoding="async" />
+      <img className="mobile-gallery-small mobile-gallery-b--bottom-right" src={loadImages ? '/assets/site-images/d04-d06-gallery/d05-03.jpg' : undefined} alt="Momento de oração" loading="lazy" decoding="async" />
       <div className="mobile-gallery-quote">UM LUGAR<br />PARA PERTENCER.</div>
       <p className="mobile-gallery-index">02 / 02</p>
     </a>
   );
 }
 
-function MobileExit() {
+function MobileExit({ loadImages }: { loadImages: boolean }) {
   return (
     <section className="mobile-panel mobile-exit" aria-label="Saída para o site institucional">
       <div className="mobile-exit-black">
-        <img src="/assets/site-images/d04-d06-gallery/d06-01.jpg" alt="Comunidade da Igreja A Caverna reunida em oração" loading="lazy" decoding="async" />
+        <img src={loadImages ? '/assets/site-images/d04-d06-gallery/d06-01.jpg' : undefined} alt="Comunidade da Igreja A Caverna reunida em oração" loading="lazy" decoding="async" />
       </div>
       <h2>VOCÊ JÁ SABE<br />O QUE NÃO SOMOS<br />AGORA CONHEÇA<br />QUEM SOMOS</h2>
       <p>Conheça nossa fé, nossa história e a vida em comunidade na A Caverna.</p>
@@ -308,9 +308,9 @@ export function CreativeExperience() {
             <Scene index={0} progress={progress}><div className="experience-panel experience-panel--hero"><SiteHeader /><Hero /></div></Scene>
             <Scene index={1} progress={progress}><DesktopManifestoNot /></Scene>
             <Scene index={2} progress={progress}><DesktopManifestoAffirm /></Scene>
-            <Scene index={3} progress={progress}><DesktopGalleryA /></Scene>
-            <Scene index={4} progress={progress}><DesktopGalleryB /></Scene>
-            <Scene index={5} progress={progress}><DesktopExit /></Scene>
+            <Scene index={3} progress={progress}><DesktopGalleryA loadImages={progress >= .4} /></Scene>
+            <Scene index={4} progress={progress}><DesktopGalleryB loadImages={progress >= .62} /></Scene>
+            <Scene index={5} progress={progress}><DesktopExit loadImages={progress >= .83} /></Scene>
           </div>
         </div>
       </section>
@@ -320,9 +320,9 @@ export function CreativeExperience() {
             <MobileScene index={0} progress={mobileProgress}><MobileHero /></MobileScene>
             <MobileScene index={1} progress={mobileProgress}><MobileNot progress={mobileProgress} /></MobileScene>
             <MobileScene index={2} progress={mobileProgress}><MobileAffirm progress={mobileProgress} /></MobileScene>
-            <MobileScene index={3} progress={mobileProgress}><MobileGalleryA /></MobileScene>
-            <MobileScene index={4} progress={mobileProgress}><MobileGalleryB /></MobileScene>
-            <MobileScene index={5} progress={mobileProgress}><MobileExit /></MobileScene>
+            <MobileScene index={3} progress={mobileProgress}><MobileGalleryA loadImages={mobileProgress >= .5} /></MobileScene>
+            <MobileScene index={4} progress={mobileProgress}><MobileGalleryB loadImages={mobileProgress >= .7} /></MobileScene>
+            <MobileScene index={5} progress={mobileProgress}><MobileExit loadImages={mobileProgress >= .9} /></MobileScene>
           </div>
         </div>
       </div>
