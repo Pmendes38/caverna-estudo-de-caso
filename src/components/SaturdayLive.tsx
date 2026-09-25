@@ -13,7 +13,7 @@ function getBrasiliaWeekday() {
 }
 
 export function SaturdayLive() {
-  const [weekday, setWeekday] = useState(getBrasiliaWeekday);
+  const [weekday, setWeekday] = useState<string | null>(null);
   const [leadOpen, setLeadOpen] = useState(false);
   const { isSaturday, isLive } = useSaturdayLiveStatus();
 

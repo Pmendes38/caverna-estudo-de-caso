@@ -1,5 +1,5 @@
 export const siteContent = {
-  churchName: 'Comunidade de Fé A Caverna',
+  churchName: 'Igreja A Caverna',
   shortName: 'A CAVERNA',
   slogan: 'Igreja que edifica igreja',
   whatsapp: '5500000000000',

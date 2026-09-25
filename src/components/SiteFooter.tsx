@@ -16,7 +16,7 @@ export function SiteFooter() {
         <a href="#inicio">VOLTAR AO TOPO</a>
         <a href="#contato">PRIVACIDADE</a>
       </div>
-      <p className="footer-address">{siteContent.address}</p>
+      <address className="footer-address">Igreja A Caverna<br />{siteContent.address}</address>
     </footer>
   );
 }

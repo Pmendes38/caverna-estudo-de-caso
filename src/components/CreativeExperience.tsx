@@ -103,7 +103,7 @@ function DesktopManifestoAffirm() {
 function DesktopGalleryA() {
   return (
     <a className="experience-panel experience-panel-link gallery-panel gallery-a" href="/comunidade" aria-label="Conheça nossa comunidade">
-      {galleryA.map((image) => <img key={image.className} className={`gallery-image ${image.className}`} src={image.src} alt={image.alt} />)}
+      {galleryA.map((image) => <img key={image.className} className={`gallery-image ${image.className}`} src={image.src} alt={image.alt} loading="lazy" decoding="async" />)}
       <div className="gallery-title"><p>VIDA EM</p><p>COMUNIDADE</p></div>
       <p className="gallery-subtitle">Culto • comunhão • discipulado • missão</p>
       <p className="gallery-index">01 / 02</p>
@@ -114,7 +114,7 @@ function DesktopGalleryA() {
 function DesktopGalleryB() {
   return (
     <a className="experience-panel experience-panel-link gallery-panel gallery-b" href="/comunidade" aria-label="Conheça nossa comunidade">
-      {galleryB.map((image) => <img key={image.className} className={`gallery-image ${image.className}`} src={image.src} alt={image.alt} />)}
+      {galleryB.map((image) => <img key={image.className} className={`gallery-image ${image.className}`} src={image.src} alt={image.alt} loading="lazy" decoding="async" />)}
       <div className="gallery-quote"><p>“UM LUGAR PARA</p><p>PERTENCER, CRESCER</p><p>E SERVIR.”</p></div>
       <p className="gallery-index">02 / 02</p>
     </a>
@@ -147,7 +147,7 @@ function DesktopExit() {
   return (
     <section className="experience-panel experience-exit" aria-label="Saída para o site institucional">
       <div className="exit-black-transition">
-        <img src="/assets/site-images/d04-d06-gallery/d06-01.jpg" alt="Comunidade da Igreja A Caverna reunida em oração" />
+        <img src="/assets/site-images/d04-d06-gallery/d06-01.jpg" alt="Comunidade da Igreja A Caverna reunida em oração" loading="lazy" decoding="async" />
       </div>
       <h2>VOCÊ JÁ SABE O QUE NÃO SOMOS<br />AGORA CONHEÇA QUEM SOMOS</h2>
       <p>Conheça nossa fé, nossa história e a vida em comunidade na A Caverna.</p>
@@ -157,7 +157,9 @@ function DesktopExit() {
 }
 
 function MobileHero() {
-  const [protagonistIndex] = useState(() => getCurrentProtagonistIndex());
+  const [protagonistIndex, setProtagonistIndex] = useState(0);
+
+  useEffect(() => setProtagonistIndex(getCurrentProtagonistIndex()), []);
 
   return (
     <section className="mobile-panel mobile-hero-panel" aria-label="Início">
@@ -222,9 +224,9 @@ function MobileGalleryA() {
   return (
     <a className="mobile-panel mobile-panel-link mobile-gallery mobile-gallery-a" href="/comunidade" aria-label="Conheça nossa comunidade">
       <div className="mobile-gallery-title"><p>VIDA EM</p><p>COMUNIDADE</p></div>
-      <img className="mobile-gallery-main" src="/assets/site-images/d04-d06-gallery/d04-01.jpg" alt="Comunidade servindo nas ruas" />
-      <img className="mobile-gallery-small mobile-gallery-small--left" src="/assets/site-images/d04-d06-gallery/d04-02.jpg" alt="Música e comunhão na comunidade" />
-      <img className="mobile-gallery-small mobile-gallery-small--right" src="/assets/site-images/d04-d06-gallery/d04-03.jpg" alt="Mesa compartilhada na comunidade" />
+      <img className="mobile-gallery-main" src="/assets/site-images/d04-d06-gallery/d04-01.jpg" alt="Comunidade servindo nas ruas" loading="lazy" decoding="async" />
+      <img className="mobile-gallery-small mobile-gallery-small--left" src="/assets/site-images/d04-d06-gallery/d04-02.jpg" alt="Música e comunhão na comunidade" loading="lazy" decoding="async" />
+      <img className="mobile-gallery-small mobile-gallery-small--right" src="/assets/site-images/d04-d06-gallery/d04-03.jpg" alt="Mesa compartilhada na comunidade" loading="lazy" decoding="async" />
       <p className="mobile-gallery-index">01 / 02</p>
     </a>
   );
@@ -233,10 +235,10 @@ function MobileGalleryA() {
 function MobileGalleryB() {
   return (
     <a className="mobile-panel mobile-panel-link mobile-gallery mobile-gallery-b" href="/comunidade" aria-label="Conheça nossa comunidade">
-      <img className="mobile-gallery-small mobile-gallery-b--left" src="/assets/site-images/d04-d06-gallery/d04-03.jpg" alt="Mesa compartilhada na comunidade" />
-      <img className="mobile-gallery-main mobile-gallery-b--main" src="/assets/site-images/d04-d06-gallery/d05-01.jpg" alt="Cuidado e discipulado na comunidade" />
-      <img className="mobile-gallery-small mobile-gallery-b--bottom-left" src="/assets/site-images/d04-d06-gallery/d05-02.jpg" alt="Vida em comunidade" />
-      <img className="mobile-gallery-small mobile-gallery-b--bottom-right" src="/assets/site-images/d04-d06-gallery/d05-03.jpg" alt="Momento de oração" />
+      <img className="mobile-gallery-small mobile-gallery-b--left" src="/assets/site-images/d04-d06-gallery/d04-03.jpg" alt="Mesa compartilhada na comunidade" loading="lazy" decoding="async" />
+      <img className="mobile-gallery-main mobile-gallery-b--main" src="/assets/site-images/d04-d06-gallery/d05-01.jpg" alt="Cuidado e discipulado na comunidade" loading="lazy" decoding="async" />
+      <img className="mobile-gallery-small mobile-gallery-b--bottom-left" src="/assets/site-images/d04-d06-gallery/d05-02.jpg" alt="Vida em comunidade" loading="lazy" decoding="async" />
+      <img className="mobile-gallery-small mobile-gallery-b--bottom-right" src="/assets/site-images/d04-d06-gallery/d05-03.jpg" alt="Momento de oração" loading="lazy" decoding="async" />
       <div className="mobile-gallery-quote">UM LUGAR<br />PARA PERTENCER.</div>
       <p className="mobile-gallery-index">02 / 02</p>
     </a>
@@ -247,7 +249,7 @@ function MobileExit() {
   return (
     <section className="mobile-panel mobile-exit" aria-label="Saída para o site institucional">
       <div className="mobile-exit-black">
-        <img src="/assets/site-images/d04-d06-gallery/d06-01.jpg" alt="Comunidade da Igreja A Caverna reunida em oração" />
+        <img src="/assets/site-images/d04-d06-gallery/d06-01.jpg" alt="Comunidade da Igreja A Caverna reunida em oração" loading="lazy" decoding="async" />
       </div>
       <h2>VOCÊ JÁ SABE<br />O QUE NÃO SOMOS<br />AGORA CONHEÇA<br />QUEM SOMOS</h2>
       <p>Conheça nossa fé, nossa história e a vida em comunidade na A Caverna.</p>

@@ -10,7 +10,7 @@ export function isSaturdayInBrasilia() {
 }
 
 export function useSaturdayLiveStatus() {
-  const [isSaturday, setIsSaturday] = useState(isSaturdayInBrasilia);
+  const [isSaturday, setIsSaturday] = useState(false);
   const [isLive, setIsLive] = useState(false);
 
   useEffect(() => {

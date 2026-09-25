@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { siteContent } from '../data/siteContent';
 import { LiveNowButton } from './LiveNowButton';
 
@@ -86,11 +86,13 @@ export function ProtagonistPicture({ index, className, alt }: { index: number; c
 }
 
 export function Hero() {
-  const [protagonistIndex] = useState(() => getRotatingProtagonistIndex());
+  const [protagonistIndex, setProtagonistIndex] = useState(0);
+
+  useEffect(() => setProtagonistIndex(getRotatingProtagonistIndex()), []);
 
   return (
     <section className="hero">
-      <div className="hero-word" aria-label="A Caverna">A CAVERNA</div>
+      <h1 className="hero-word" aria-label="Igreja A Caverna">A CAVERNA</h1>
       <div className="hero-stage" aria-label="Identidade visual da Igreja A Caverna">
         <div className="hero-glow" />
         <ProtagonistPicture index={protagonistIndex} className="hero-person" alt="Líder da Igreja A Caverna ministrando" />

@@ -94,6 +94,7 @@ function SubpageFooter() {
       <div className="subpage-footer-links">
         {footerLinks.map((link) => <a href={link.href} key={link.key}>{link.label}</a>)}
       </div>
+      <address>Igreja A Caverna<br />{siteContent.address}</address>
     </footer>
   );
 }
@@ -103,7 +104,9 @@ function Button({ children, href = '#', light = false }: { children: ReactNode; 
 }
 
 function ImageSlot({ src, alt, className = '' }: { src?: string; alt: string; className?: string }) {
-  return <div className={`subpage-image ${className}${src ? '' : ' subpage-image--placeholder'}`} aria-label={src ? alt : undefined}>{src ? <img src={src} alt={alt} /> : null}</div>;
+  const heroImages = [assets.cavernaHero, assets.faithHero, assets.communityBanner, assets.sportsHero, assets.missionHero, assets.agendaHero, assets.visitHero, assets.contactHero, assets.contribution];
+  const priority = src ? heroImages.includes(src) : false;
+  return <div className={`subpage-image ${className}${src ? '' : ' subpage-image--placeholder'}`} aria-label={src ? alt : undefined}>{src ? <img src={src} alt={alt} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : undefined} decoding="async" /> : null}</div>;
 }
 
 function HouseGallery({ items }: { items: Array<{ src: string; alt: string; className: string }> }) {
@@ -522,8 +525,8 @@ function VisitPage() {
     <PageFrame page="visite">
       <main>
         <section className="subpage-hero subpage-hero--plum visit-hero"><div className="subpage-hero-copy"><p className="subpage-kicker">[VISITE-NOS]</p><h1>VÁ COMO VOCÊ ESTÁ<br />A GENTE TE RECEBE</h1><p>Você pode chegar sozinho. A gente procura você depois do primeiro culto e continua perto.</p><div className="accent-rule" /></div><ImageSlot src={assets.visitHero} alt="Recepção da Igreja A Caverna" className="slot--brown" /></section>
-        <section className="subpage-section subpage-section--paper visit-plan"><p className="subpage-kicker">ANTES DE CHEGAR</p><div className="subpage-card-row"><InfoCard title="HORÁRIOS">Quinta, 19H30 — discipulado<br />Sábado, 19H30 — culto público</InfoCard><InfoCard title="PRIMEIRA VEZ">Você pode vir sozinho. Não precisa conhecer ninguém antes de chegar.</InfoCard><InfoCard title="ACESSO">Jardim Ingá, Luziânia/GO<br />Clique aqui para ver a rota.</InfoCard></div></section>
-        <section className="subpage-section subpage-section--dark visit-arrival"><p className="subpage-kicker">O CAMINHO ATÉ A CAVERNA</p><h2>ENCONTRE UMA FAMÍLIA<br />COMECE A CAMINHAR</h2><ImageSlot src={assets.visitFacade} alt="Fachada da Igreja A Caverna" className="visit-facade" /><div className="visit-arrival-grid"><div className="subpage-map"><iframe title="Localização da Igreja A Caverna" src={`https://www.google.com/maps?q=${mapsQuery}&output=embed`} loading="lazy" /><a className="map-open-link" href={siteContent.mapsUrl} target="_blank" rel="noreferrer">ABRIR LOCALIZAÇÃO&nbsp; ↗</a></div><div className="visit-arrival-copy"><InfoCard title="COMO CHEGAR" dark>Jardim Ingá, Luziânia · GO<br />Confira a rota e venha encontrar a comunidade.</InfoCard><InfoCard title="O QUE ESPERAR" dark>Pessoas reais, culto cristão e um lugar para começar a caminhar.</InfoCard><InfoCard title="PRECISA DE AJUDA?" dark>Fale com a equipe antes de vir; vamos orientar sua chegada.</InfoCard></div></div></section>
+        <section className="subpage-section subpage-section--paper visit-plan"><p className="subpage-kicker">ANTES DE CHEGAR</p><div className="subpage-card-row"><InfoCard title="HORÁRIOS">Quinta, 19H30 — discipulado<br />Sábado, 19H30 — culto público</InfoCard><InfoCard title="PRIMEIRA VEZ">Você pode vir sozinho. Não precisa conhecer ninguém antes de chegar.</InfoCard><InfoCard title="ACESSO">{siteContent.address}<br /><a href={siteContent.mapsUrl} target="_blank" rel="noreferrer">Ver rota no Google Maps</a></InfoCard></div></section>
+        <section className="subpage-section subpage-section--dark visit-arrival"><p className="subpage-kicker">O CAMINHO ATÉ A CAVERNA</p><h2>ENCONTRE UMA FAMÍLIA<br />COMECE A CAMINHAR</h2><ImageSlot src={assets.visitFacade} alt="Fachada da Igreja A Caverna" className="visit-facade" /><div className="visit-arrival-grid"><div className="subpage-map"><iframe title="Localização da Igreja A Caverna" src={`https://www.google.com/maps?q=${mapsQuery}&output=embed`} loading="lazy" /><a className="map-open-link" href={siteContent.mapsUrl} target="_blank" rel="noreferrer">ABRIR LOCALIZAÇÃO&nbsp; ↗</a></div><div className="visit-arrival-copy"><InfoCard title="COMO CHEGAR" dark>{siteContent.address}<br />Confira a rota e venha encontrar a comunidade.</InfoCard><InfoCard title="O QUE ESPERAR" dark>Pessoas reais, culto cristão e um lugar para começar a caminhar.</InfoCard><InfoCard title="PRECISA DE AJUDA?" dark>Fale com a equipe antes de vir; vamos orientar sua chegada.</InfoCard></div></div></section>
         <section className="subpage-section subpage-section--paper visit-faq"><p className="subpage-kicker">PERGUNTAS DE QUEM VEM<br />PELA PRIMEIRA VEZ</p>{['Preciso me vestir de alguma forma específica?', 'Posso ir mesmo sem conhecer ninguém?', 'Posso ir com minha família?'].map(question => <details key={question}><summary>{question}<span>+</span></summary><p>Não há código de vestimenta. Venha como está; a gente recebe você, apresenta a comunidade e continua perto.</p></details>)}</section>
       </main>
     </PageFrame>

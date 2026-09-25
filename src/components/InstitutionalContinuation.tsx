@@ -1,19 +1,9 @@
 import { type FormEvent, useEffect, useState } from 'react';
 import { siteContent, whatsappUrl } from '../data/siteContent';
+import { getNextMeeting } from '../data/meetings';
 
 const mapsQuery = encodeURIComponent(`${siteContent.churchName}, ${siteContent.address}`);
 const mapsEmbedUrl = `https://www.google.com/maps?q=${mapsQuery}&output=embed`;
-const publicService = { title: 'CULTO PÚBLICO', timeLabel: '19H30' };
-
-function getNextPublicService(now: Date) {
-  const target = new Date(now);
-  const daysUntilSaturday = (6 - target.getDay() + 7) % 7;
-  target.setDate(target.getDate() + daysUntilSaturday);
-  target.setHours(19, 30, 0, 0);
-
-  if (target.getTime() <= now.getTime()) target.setDate(target.getDate() + 7);
-  return target;
-}
 
 function formatCountdown(value: number) {
   return String(value).padStart(2, '0');
@@ -22,24 +12,25 @@ function formatCountdown(value: number) {
 export type EventMode = 'discipulado' | 'culto' | 'live';
 
 function EventCountdown() {
-  const [now, setNow] = useState(() => new Date());
-  const target = getNextPublicService(now);
-  const totalSeconds = Math.max(Math.floor((target.getTime() - now.getTime()) / 1000), 0);
+  const [now, setNow] = useState<Date | null>(null);
+  const next = now ? getNextMeeting(now) : null;
+  const totalSeconds = next && now ? Math.max(Math.floor((next.start.getTime() - now.getTime()) / 1000), 0) : 0;
   const countdown = {
-    target,
     days: Math.floor(totalSeconds / 86400),
     hours: Math.floor((totalSeconds % 86400) / 3600),
     minutes: Math.floor((totalSeconds % 3600) / 60),
     seconds: totalSeconds % 60,
   };
-  const eventDate = new Intl.DateTimeFormat('pt-BR', {
+  const eventDate = next ? new Intl.DateTimeFormat('pt-BR', {
+    timeZone: 'America/Sao_Paulo',
     weekday: 'long',
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
-  }).format(countdown?.target ?? now);
+  }).format(next.start) : '';
 
   useEffect(() => {
+    setNow(new Date());
     const timer = window.setInterval(() => setNow(new Date()), 1000);
     return () => window.clearInterval(timer);
   }, []);
@@ -54,13 +45,13 @@ function EventCountdown() {
   return (
     <>
       <span>PRÓXIMA REUNIÃO</span>
-      <h2>{publicService.title.split(' ')[0]}<br />{publicService.title.split(' ').slice(1).join(' ')}</h2>
-      <p>{eventDate} às {publicService.timeLabel}<br />{siteContent.address}</p>
-      <div className="event-countdown" aria-live="polite" aria-label="Contagem regressiva para o próximo culto público">
+      <h2>{next ? next.title.split(' ')[0] : 'VENHA'}<br />{next ? next.title.split(' ').slice(1).join(' ') || 'COM A GENTE' : 'NOS CONHECER'}</h2>
+      <p>{next ? <><time dateTime={next.localStart}>{eventDate} às {String(next.hour).padStart(2, '0')}h{String(next.minute).padStart(2, '0')}</time><br /></> : <>Discipulado às quintas e culto público aos sábados, às 19h30.<br /></>}{siteContent.address}</p>
+      {next && <div className="event-countdown" aria-live="polite" aria-label={`Contagem regressiva para ${next.title.toLowerCase()}`}>
         <div className="event-countdown-header">
           <div>
             <span>PRÓXIMA REUNIÃO</span>
-            <strong>{eventDate} às {publicService.timeLabel} • {publicService.title}</strong>
+            <strong>{eventDate} às {String(next.hour).padStart(2, '0')}h{String(next.minute).padStart(2, '0')} • {next.title}</strong>
           </div>
           <a href="#agenda">Ver agenda</a>
         </div>
@@ -72,7 +63,7 @@ function EventCountdown() {
             </div>
           ))}
         </div>
-      </div>
+      </div>}
     </>
   );
 }
@@ -126,7 +117,7 @@ export function EventVisual({ mode, onDiscipleshipClick }: { mode: EventMode; on
   if (mode === 'discipulado') {
     return (
       <button className="event-visual event-visual--button" type="button" onClick={onDiscipleshipClick}>
-        <img src={image} alt={alt} />
+        <img src={image} alt={alt} loading="lazy" decoding="async" />
         <span>CLIQUE AQUI PARA MAIS INFORMAÇÕES&nbsp; ↗</span>
       </button>
     );
@@ -134,7 +125,7 @@ export function EventVisual({ mode, onDiscipleshipClick }: { mode: EventMode; on
 
   return (
     <a className="event-visual" href={mode === 'live' ? 'https://www.youtube.com/@acaverna396/live' : '/agenda'} target={mode === 'live' ? '_blank' : undefined} rel={mode === 'live' ? 'noreferrer' : undefined}>
-      <img src={image} alt={alt} />
+      <img src={image} alt={alt} loading="lazy" decoding="async" />
       <span>{mode === 'live' ? 'ASSISTIR LIVE AGORA&nbsp; ↗' : 'VER DETALHES DO CULTO&nbsp; ↗'}</span>
     </a>
   );
@@ -153,10 +144,10 @@ export function InstitutionalContinuation() {
       <section className="institutional-about" id="sobre">
         <p className="institutional-label">01 / A CAVERNA</p>
         <div className="institutional-split">
-          <div className="institutional-photo"><img src="/assets/whatsapp/foto-43.jpeg" alt="Comunidade da Igreja A Caverna reunida" /></div>
+          <div className="institutional-photo"><img src="/assets/whatsapp/foto-43.jpeg" alt="Comunidade da Igreja A Caverna reunida" loading="lazy" decoding="async" /></div>
           <div className="institutional-copy">
             <h2>UMA IGREJA<br />NASCIDA DA<br />MISSÃO</h2>
-            <p>A Caverna começou nas ruas de Ceilândia, em 2016. Em 2017, a missão chegou ao Jardim Ingá e se tornou comunidade: firmada na Palavra, centrada em Cristo e presente na vida das pessoas.</p>
+            <p>A Igreja A Caverna é uma comunidade cristã protestante, bíblica, missionária e discipuladora no Jardim Ingá, em Luziânia-GO. Começamos nas ruas de Ceilândia, em 2016. Em 2017, a missão chegou ao Jardim Ingá e se tornou comunidade: firmada na Palavra, centrada em Cristo e presente na vida das pessoas.</p>
             <a className="institutional-action" href="/a-caverna">CONHEÇA NOSSA HISTÓRIA&nbsp; ↗</a>
           </div>
         </div>
@@ -178,7 +169,7 @@ export function InstitutionalContinuation() {
         <div className="ministry-grid">
           {ministries.map(({ title, description, image, href }, index) => (
             <a className={`ministry-card ministry-card--${index % 2 ? 'plum' : 'gray'}`} href={href} key={title}>
-              <img className={`ministry-card-image ministry-card-image--${index === 0 ? 'bottom' : index === 1 ? 'center' : index === 3 ? 'sports' : 'center'}`} src={image} alt="" />
+              <img className={`ministry-card-image ministry-card-image--${index === 0 ? 'bottom' : index === 1 ? 'center' : index === 3 ? 'sports' : 'center'}`} src={image} alt="" loading="lazy" decoding="async" />
               <h3>{title}</h3>
               <p>{description}</p>
             </a>
@@ -194,7 +185,7 @@ export function InstitutionalContinuation() {
             <p>A missão trouxe pessoas até nós. A Palavra nos firma, a comunidade nos aproxima e o serviço nos envia para além do prédio.</p>
             <a className="institutional-action" href="/nossa-fe">NOSSA IDENTIDADE&nbsp; ↗</a>
           </div>
-          <div className="institutional-photo"><img src="/assets/whatsapp/foto-46.jpeg" alt="Liderança ministrando em um culto" /></div>
+          <div className="institutional-photo"><img src="/assets/whatsapp/foto-46.jpeg" alt="Liderança ministrando em um culto" loading="lazy" decoding="async" /></div>
         </div>
       </section>
 
@@ -229,7 +220,7 @@ export function InstitutionalContinuation() {
         </div>
         <div className="institutional-footer-bottom">
           <strong>{siteContent.shortName}</strong>
-          <span>JARDIM INGÁ • LUZIÂNIA/GO</span>
+          <address>{siteContent.address}</address>
           <div className="institutional-social-links" aria-label="Redes sociais">
             <a className="institutional-social-button" href="https://instagram.com/a_cavernaa" target="_blank" rel="noreferrer">INSTAGRAM</a>
             <a className="institutional-social-button" href={whatsappUrl('Olá! Quero falar com a Igreja A Caverna.')}>WHATSAPP</a>
