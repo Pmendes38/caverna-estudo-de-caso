@@ -4777,7 +4777,7 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .subpage--comunidade::after {
     left: 0;
     width: 100%;
-    background: linear-gradient(90deg, #4a2040 0%, rgba(74, 32, 64, .96) 38%, rgba(74, 32, 64, .32) 60%, rgba(74, 32, 64, .06) 76%, transparent 100%);
+    background: linear-gradient(90deg, #4a2040 0%, rgba(74, 32, 64, .96) 38%, rgba(74, 32, 64, .46) 60%, rgba(74, 32, 64, .30) 76%, rgba(74, 32, 64, .24) 100%);
   }
 
   .subpage--comunidade .community-paths {
