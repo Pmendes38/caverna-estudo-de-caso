@@ -4748,12 +4748,13 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 
   .subpage--comunidade::before {
+    --community-image-visible-width: clamp(386px, calc(52.9vw - 376px), 640px);
     width: 52%;
     background-image: var(--subpage-header-image);
     background-position: calc(100% + clamp(59px, calc(14vw - 143px), 126px)) clamp(-425px, calc(687px - 57.9vw), -147px);
     background-size: auto clamp(790px, calc(118.75vw - 920px), 1360px);
-    -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 38%, #000 62%);
-    mask-image: linear-gradient(90deg, transparent 0%, transparent 38%, #000 62%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent calc(100% - var(--community-image-visible-width)), #000 calc(100% - var(--community-image-visible-width) + 120px));
+    mask-image: linear-gradient(90deg, transparent 0%, transparent calc(100% - var(--community-image-visible-width)), #000 calc(100% - var(--community-image-visible-width) + 120px));
   }
 
   .subpage--comunidade::after {
