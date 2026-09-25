@@ -265,7 +265,7 @@ function CavernaPage() {
           <div className="subpage-history-grid"><div><p>A Caverna nasceu nas ruas, entre projetos missionários que alcançavam pessoas em escolas, asilos, casas de recuperação e diferentes contextos da cidade. Mas logo entendemos que anunciar o Evangelho era apenas o começo. Quem chegava precisava encontrar ensino, comunhão, cuidado e alguém disposto a permanecer.</p></div><div className="subpage-card-row"><InfoCard title="ABRIGO">A missão não termina quando alguém chega. A gente permanece perto.</InfoCard><InfoCard title="EDIFICAR">Anunciar o Evangelho não é o fim. A gente permanece para ensinar e formar.</InfoCard></div></div>
           <div className="caverna-history-story"><p>Foi dessa necessidade que a missão começou a se tornar comunidade. Em 2016, as primeiras reuniões deram forma àquilo que depois se tornaria a Igreja A Caverna. Desde então, atravessamos mudanças, aprendemos a cuidar melhor das pessoas e amadurecemos nossa forma de viver aquilo que permanece no centro da nossa história: formar discípulos de Jesus Cristo.</p><a href="/a-caverna">CLIQUE PARA VER NOSSA HISTÓRIA COMPLETA&nbsp; →</a></div>
           <h2 className="subpage-small-heading">MOMENTOS QUE FORMARAM A CAVERNA</h2>
-          <div ref={timelineRef} className={`caverna-timeline${showAllMoments ? ' is-expanded' : ''}`} onMouseLeave={() => setPreviewMoment(null)}>
+          <div ref={timelineRef} className={`caverna-timeline${showAllMoments ? ' is-expanded' : ''}`} onMouseLeave={() => { if (window.matchMedia('(min-width: 1025px)').matches) setPreviewMoment(null); }}>
             <div className="caverna-timeline-line" />
             {moments.map(([year, title, text], index) => {
               const image = timelineGalleries[year]?.[0];
@@ -283,7 +283,7 @@ function CavernaPage() {
               return <TimelineGallery key={year} year={year} title={title} images={images} onClose={() => setActiveMoment(null)} />;
             })()}
           </div>
-          <button className="caverna-timeline-more" type="button" aria-expanded={showAllMoments} onClick={() => setShowAllMoments((expanded) => !expanded)}>
+          <button className="caverna-timeline-more" type="button" aria-expanded={showAllMoments} onClick={() => { setPreviewMoment(null); setShowAllMoments((expanded) => !expanded); }}>
             {showAllMoments ? 'MOSTRAR MENOS DA NOSSA HISTÓRIA ↑' : 'VER MAIS DA NOSSA HISTÓRIA →'}
           </button>
         </section>
