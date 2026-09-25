@@ -2,13 +2,18 @@
 <html lang="pt-BR">
   <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E23YREN7B9"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'G-E23YREN7B9');
+      window.addEventListener('load', function () {
+        var tag = document.createElement('script');
+        tag.async = true;
+        tag.src = 'https://www.googletagmanager.com/gtag/js?id=G-E23YREN7B9';
+        document.head.appendChild(tag);
+      }, { once: true });
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,8 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" as="image" type="image/webp" href="/assets/site-images/d01-mobile/hero-01-optimized-514.webp" imagesrcset="/assets/site-images/d01-mobile/hero-01-optimized-514.webp 514w, /assets/site-images/d01-mobile/hero-01-optimized-1028.webp 1028w" imagesizes="min(360px, calc(100vw - 32px))" fetchpriority="high" media="(max-width: 720px)" />
-    <link rel="preload" as="image" href="/assets/site-images/d01-tablet/contato@example.com" imagesrcset="/assets/site-images/d01-tablet/contato@example.com 1179w" imagesizes="100vw" fetchpriority="high" media="(min-width: 721px) and (max-width: 1024px)" />
-    <link rel="preload" as="image" href="/assets/site-images/d01-desktop/contato@example.com" imagesrcset="/assets/site-images/d01-desktop/contato@example.com 1179w, /assets/site-images/d01-desktop/contato@example.com 2358w, /assets/site-images/d01-desktop/contato@example.com 3537w" imagesizes="min(1273px, 100vw)" fetchpriority="high" media="(min-width: 1025px)" />
+    <link rel="preload" as="image" type="image/webp" href="/assets/site-images/d01-desktop/hero-01-optimized.webp" fetchpriority="high" media="(min-width: 721px)" />
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" /></noscript>
     <link rel="icon" type="image/png" href="/assets/raw-01.png" />

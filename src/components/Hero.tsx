@@ -94,6 +94,7 @@ export function ProtagonistPicture({ index, className, alt }: { index: number; c
     <picture>
       {mobile.webpSrcSet && <source type="image/webp" media="(max-width: 720px)" srcSet={mobile.webpSrcSet} sizes={mobile.sizes} />}
       <source media="(max-width: 720px)" srcSet={mobile.srcSet} sizes={mobile.sizes} />
+      {index === 0 && <source type="image/webp" media="(min-width: 721px)" srcSet="/assets/site-images/d01-desktop/hero-01-optimized.webp 1179w" sizes={desktop.sizes} />}
       <source media="(max-width: 1024px)" srcSet={tablet.srcSet} sizes={tablet.sizes} />
       <img className={`${className} ${toneClass} ${indexClass}`} src={desktop.src} srcSet={desktop.srcSet} sizes={desktop.sizes} alt={alt} width={desktop.width} height={desktop.height} loading="eager" decoding="async" fetchPriority="high" />
     </picture>

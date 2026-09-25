@@ -1,5 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
+import postcss from 'postcss';
 import { createSeoHead, renderPage, seoPages, siteOrigin } from '../dist-server/entry-server.js';
 
 const outputDir = resolve('dist');
@@ -8,8 +10,31 @@ if (!template.includes('<meta name="seo-head-placeholder" content="" />') || !te
   throw new Error('SEO placeholders not found in the Vite output');
 }
 
+const stylesheet = template.match(/<link rel="stylesheet" crossorigin href="([^"]+\.css)">/);
+if (!stylesheet) throw new Error('Vite stylesheet not found in the output');
+
+const homeMarkup = renderPage('/');
+const homeClasses = new Set([...homeMarkup.matchAll(/class="([^"]+)"/g)].flatMap((match) => match[1].split(/\s+/)));
+const homeClassPrefix = /^(site|hero|mobile|experience|manifesto|gallery|institutional|event|schedule|ministry|footer|live|scroll|affirm|protagonist|editorial|exit|saturday|map|creative)/;
+const homeCssTree = postcss.parse(await readFile(resolve('src/styles.css'), 'utf8'));
+homeCssTree.walkRules((rule) => {
+  const selectors = rule.selectors.filter((selector) => {
+    const classes = [...selector.matchAll(/\.([a-zA-Z_][\w-]*)/g)].map((match) => match[1]);
+    return classes.every((name) => homeClasses.has(name) || homeClassPrefix.test(name));
+  });
+  if (selectors.length === 0) rule.remove();
+  else rule.selectors = selectors;
+});
+homeCssTree.walkComments((comment) => comment.remove());
+homeCssTree.walkAtRules((rule) => { if (rule.nodes?.length === 0) rule.remove(); });
+const homeCss = homeCssTree.toString();
+const homeCssName = `home-${createHash('sha256').update(homeCss).digest('hex').slice(0, 8)}.css`;
+await writeFile(resolve(outputDir, 'assets', homeCssName), homeCss, 'utf8');
+const homeStylesheet = `<link rel="stylesheet" href="/assets/${homeCssName}">`;
+
 for (const page of seoPages) {
-  const html = template
+  const pageTemplate = page.path === '/' ? template.replace(stylesheet[0], homeStylesheet) : template;
+  const html = pageTemplate
     .replace('<meta name="seo-head-placeholder" content="" />', createSeoHead(page))
     .replace('<!--ssr-outlet-->', renderPage(page.path));
   const filename = page.path === '/' ? 'index.html' : `${page.path.slice(1)}.html`;
