@@ -473,8 +473,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   position: absolute;
   inset: 0;
   background: var(--accent);
-  -webkit-mask-image: url('/assets/brand/logo-a-caverna-horizontal.png');
-  mask-image: url('/assets/brand/logo-a-caverna-horizontal.png');
+  -webkit-mask-image: url('/assets/brand/logo-a-caverna-horizontal-optimized.png');
+  mask-image: url('/assets/brand/logo-a-caverna-horizontal-optimized.png');
   -webkit-mask-position: center;
   mask-position: center;
   -webkit-mask-repeat: no-repeat;

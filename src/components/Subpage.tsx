@@ -91,7 +91,7 @@ function SubpageFooter() {
   const footerLinks = subpageLinks.filter(({ key }) => ['caverna', 'fe', 'comunidade', 'agenda', 'visite', 'contato', 'contribua'].includes(key));
   return (
     <footer className="subpage-footer">
-      <img className="subpage-footer-logo" src="/assets/brand/logo-a-caverna-horizontal.png" alt="Igreja A Caverna" />
+      <img className="subpage-footer-logo" src="/assets/brand/logo-a-caverna-horizontal-optimized.png" alt="Igreja A Caverna" width="800" height="159" />
       <div className="subpage-footer-links">
         {footerLinks.map((link) => <a href={link.href} key={link.key}>{link.label}</a>)}
       </div>
