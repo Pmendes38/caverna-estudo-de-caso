@@ -4384,31 +4384,14 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 }
 
-/* Nossa Fé: on desktop the shared cover supplies the photo. */
+/* Nossa Fé: the shared cover owns the photo at every breakpoint so the
+   navbar and headline render as one continuous background. */
+.subpage--fe {
+  --subpage-header-image: url('/assets/site-images/nossa-fe/hero-oracao.jpg');
+}
+
 .subpage--fe .subpage-hero > .faith-hero-slot {
-  display: block;
-}
-
-@media (min-width: 1025px) {
-  .subpage--fe {
-    --subpage-header-image: url('/assets/site-images/nossa-fe/hero-oracao.jpg');
-  }
-}
-
-@media (max-width: 1024px) {
-  .subpage--fe {
-    --subpage-header-image: url('/assets/site-images/nossa-fe/hero-oracao.jpg');
-  }
-
-  .subpage--fe .faith-hero-slot::after {
-    background: linear-gradient(90deg, #09090a 0%, rgba(9, 9, 10, .97) 40%, rgba(9, 9, 10, .78) 67%, rgba(9, 9, 10, .36) 100%);
-  }
-}
-
-@media (min-width: 1025px) {
-  .subpage--fe .subpage-hero > .faith-hero-slot {
-    display: none;
-  }
+  display: none;
 }
 
 @media (max-width: 1024px) {
