@@ -1,5 +1,4 @@
 import { readFile, writeFile } from 'node:fs/promises';
-import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import postcss from 'postcss';
 import { createSeoHead, renderPage, seoPages, siteOrigin } from '../dist-server/entry-server.js';
@@ -28,9 +27,7 @@ homeCssTree.walkRules((rule) => {
 homeCssTree.walkComments((comment) => comment.remove());
 homeCssTree.walkAtRules((rule) => { if (rule.nodes?.length === 0) rule.remove(); });
 const homeCss = homeCssTree.toString();
-const homeCssName = `home-${createHash('sha256').update(homeCss).digest('hex').slice(0, 8)}.css`;
-await writeFile(resolve(outputDir, 'assets', homeCssName), homeCss, 'utf8');
-const homeStylesheet = `<link rel="stylesheet" href="/assets/${homeCssName}">`;
+const homeStylesheet = `<style>${homeCss.replace(/<\/style/gi, '<\\/style')}</style>`;
 
 for (const page of seoPages) {
   const pageTemplate = page.path === '/' ? template.replace(stylesheet[0], homeStylesheet) : template;
