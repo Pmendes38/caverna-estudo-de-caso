@@ -6141,16 +6141,33 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .mobile-hero-person.protagonist--index-16 { top: 72px !important; }
 }
 
-/* Tablet baseline correction for the two tall portrait cutouts.
-   These two sources are visually taller than the rest, so size the rendered
-   frame directly instead of relying on --protagonist-scale (the tablet
-   transform rule overrides that scale). */
+/* Tablet correction for the actual oversized cutouts:
+   index-09 = gray-shirt close-up; index-14 = singer with glasses.
+   Keep index-10 on the shared tablet baseline. */
 @media (min-width: 721px) and (max-width: 1024px) {
-  .mobile-hero-person.protagonist--index-10,
-  .mobile-hero-person.protagonist--index-16 {
+  .mobile-hero-person.protagonist--index-10 {
+    top: 128px !important;
+    width: min(680px, calc(100vw + 40px)) !important;
+    height: clamp(620px, 78svh, 720px) !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .mobile-hero-person.protagonist--index-09 {
+    top: 88px !important;
+    width: min(470px, 61vw) !important;
+    height: clamp(500px, 61svh, 565px) !important;
+    max-height: none !important;
+    object-fit: contain !important;
+    object-position: center bottom !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .mobile-hero-person.protagonist--index-14 {
     top: 92px !important;
-    width: min(500px, 65vw) !important;
-    height: clamp(520px, 64svh, 590px) !important;
+    width: min(455px, 59vw) !important;
+    height: clamp(490px, 60svh, 550px) !important;
     max-height: none !important;
     object-fit: contain !important;
     object-position: center bottom !important;
