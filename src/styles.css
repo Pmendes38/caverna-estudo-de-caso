@@ -6142,20 +6142,19 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 }
 
 /* Tablet baseline correction for the two tall portrait cutouts.
-   Keep their feet/fade on the same visual base while avoiding head cropping. */
+   These two sources are visually taller than the rest, so size the rendered
+   frame directly instead of relying on --protagonist-scale (the tablet
+   transform rule overrides that scale). */
 @media (min-width: 721px) and (max-width: 1024px) {
-  .mobile-hero-person.protagonist--index-10 {
-    top: 85px !important;
-    --protagonist-scale: 1.08;
-    object-fit: contain !important;
-    object-position: center bottom !important;
-  }
-
+  .mobile-hero-person.protagonist--index-10,
   .mobile-hero-person.protagonist--index-16 {
-    top: 90px !important;
-    --protagonist-scale: 1.10;
+    top: 92px !important;
+    width: min(500px, 65vw) !important;
+    height: clamp(520px, 64svh, 590px) !important;
+    max-height: none !important;
     object-fit: contain !important;
     object-position: center bottom !important;
+    transform: translateX(-50%) !important;
   }
 }
 
