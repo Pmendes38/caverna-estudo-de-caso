@@ -3641,8 +3641,8 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
     z-index: 2;
   }
 
-  .mobile-hero-person.protagonist--index-03 {
-    top: 29px;
+  .mobile-hero-person.protagonist--original {
+    top: calc(clamp(140px, 18svh, 210px) - 30px);
   }
 }
 
