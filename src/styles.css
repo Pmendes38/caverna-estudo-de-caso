@@ -5286,3 +5286,349 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
     line-height: 1.08;
   }
 }
+
+/* ==========================================================================
+   CANONICAL SUBPAGE HEADLINE SYSTEM
+   One geometry for every internal page. The source image never determines
+   the cover height; navbar, headline, typography and subject framing are
+   controlled by the same breakpoint rules on every subpage.
+   ========================================================================== */
+
+.subpage {
+  --canonical-headline-image-x: 50%;
+  --canonical-headline-image-y: 46%;
+}
+
+.subpage .subpage-hero,
+.subpage .subpage-community-hero,
+.subpage .mission-hero {
+  position: relative;
+  overflow: hidden;
+  background: transparent !important;
+}
+
+.subpage .subpage-hero > .subpage-image,
+.subpage .subpage-community-hero > .subpage-image,
+.subpage .mission-hero > .subpage-image {
+  display: none !important;
+}
+
+.subpage > .site-header,
+.subpage > main,
+.subpage > .subpage-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.subpage::before,
+.subpage::after {
+  content: "";
+  position: absolute;
+  top: 0 !important;
+  pointer-events: none;
+}
+
+.subpage::before {
+  z-index: -1;
+  background-image: var(--subpage-header-image) !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+.subpage::after {
+  z-index: 0;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+/* Desktop: 86px navigation + 474px headline = 560px total. */
+@media (min-width: 1025px) {
+  .subpage {
+    --canonical-header-height: 86px;
+    --canonical-hero-height: 474px;
+    --canonical-headline-height: 560px;
+    --canonical-headline-image-y: 46%;
+  }
+
+  .subpage .site-header {
+    position: relative !important;
+    inset: auto !important;
+    height: var(--canonical-header-height) !important;
+    padding: 26px var(--subpage-gutter, 56px) !important;
+    background: transparent !important;
+  }
+
+  .subpage .subpage-hero,
+  .subpage .subpage-community-hero,
+  .subpage .mission-hero {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    width: 100%;
+    height: var(--canonical-hero-height) !important;
+    min-height: var(--canonical-hero-height) !important;
+    max-height: var(--canonical-hero-height) !important;
+    gap: 22px !important;
+    padding: 72px var(--subpage-gutter, 56px) 0 !important;
+  }
+
+  .subpage .subpage-hero-copy,
+  .subpage .subpage-community-hero > .subpage-hero-copy,
+  .subpage .mission-hero .subpage-hero-copy {
+    align-self: flex-start !important;
+    width: 800px !important;
+    max-width: min(800px, calc(100vw - 112px)) !important;
+    gap: 22px !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+
+  .subpage .subpage-kicker {
+    font-size: 12px !important;
+    line-height: 1.35 !important;
+  }
+
+  .subpage .subpage-hero h1,
+  .subpage .subpage-community-hero h1,
+  .subpage .mission-hero h1 {
+    width: auto !important;
+    max-width: 800px !important;
+    margin: 0 !important;
+    font-size: clamp(58px, 5vw, 72px) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -.07em !important;
+    white-space: normal !important;
+  }
+
+  .subpage .subpage-hero-copy > p:last-child,
+  .subpage .subpage-community-hero > .subpage-hero-copy > p:last-child,
+  .subpage .mission-hero .subpage-hero-copy > p:last-child {
+    max-width: 560px !important;
+    margin: 0 !important;
+    font-size: 17px !important;
+    line-height: 1.35 !important;
+  }
+
+  .subpage::before,
+  .subpage::after {
+    height: var(--canonical-headline-height) !important;
+  }
+
+  .subpage::before {
+    left: auto !important;
+    right: 0 !important;
+    width: 68% !important;
+    background-position: var(--canonical-headline-image-x) var(--canonical-headline-image-y) !important;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 32%, #000 100%) !important;
+    mask-image: linear-gradient(90deg, transparent 0%, #000 32%, #000 100%) !important;
+  }
+
+  .subpage::after {
+    background: linear-gradient(
+      90deg,
+      rgba(var(--shared-headline-rgb), .98) 0%,
+      rgba(var(--shared-headline-rgb), .98) 38%,
+      rgba(var(--shared-headline-rgb), .90) 54%,
+      rgba(var(--shared-headline-rgb), .68) 72%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+/* Tablet: same frame on every page, independent of image aspect ratio. */
+@media (min-width: 721px) and (max-width: 1024px) {
+  .subpage {
+    --canonical-header-height: 61px;
+    --canonical-hero-height: 304px;
+    --canonical-headline-height: 365px;
+    --canonical-headline-image-y: 54%;
+  }
+
+  .subpage .site-header {
+    position: relative !important;
+    height: var(--canonical-header-height) !important;
+    padding: 0 16px !important;
+    background: transparent !important;
+  }
+
+  .subpage .mobile-brand {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+  }
+
+  .subpage .subpage-hero,
+  .subpage .subpage-community-hero,
+  .subpage .mission-hero {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    width: 100%;
+    height: var(--canonical-hero-height) !important;
+    min-height: var(--canonical-hero-height) !important;
+    max-height: var(--canonical-hero-height) !important;
+    gap: 18px !important;
+    padding: 40px 17px 24px !important;
+  }
+
+  .subpage .subpage-hero-copy,
+  .subpage .subpage-community-hero > .subpage-hero-copy,
+  .subpage .mission-hero .subpage-hero-copy {
+    align-self: flex-start !important;
+    width: 100% !important;
+    max-width: 390px !important;
+    gap: 18px !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+
+  .subpage .subpage-kicker {
+    font-size: 11px !important;
+  }
+
+  .subpage .subpage-hero h1,
+  .subpage .subpage-community-hero h1,
+  .subpage .mission-hero h1 {
+    max-width: 390px !important;
+    margin: 0 !important;
+    font-size: clamp(36px, 5.2vw, 42px) !important;
+    line-height: .99 !important;
+    letter-spacing: -.065em !important;
+    white-space: normal !important;
+  }
+
+  .subpage .subpage-hero-copy > p:last-child,
+  .subpage .subpage-community-hero > .subpage-hero-copy > p:last-child,
+  .subpage .mission-hero .subpage-hero-copy > p:last-child {
+    max-width: 310px !important;
+    margin: 0 !important;
+    font-size: 13px !important;
+    line-height: 1.18 !important;
+  }
+
+  .subpage::before,
+  .subpage::after {
+    height: var(--canonical-headline-height) !important;
+  }
+
+  .subpage::before {
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    background-position: var(--canonical-headline-image-x) var(--canonical-headline-image-y) !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+
+  .subpage::after {
+    background: linear-gradient(
+      90deg,
+      rgba(var(--shared-headline-rgb), .94) 0%,
+      rgba(var(--shared-headline-rgb), .76) 54%,
+      rgba(var(--shared-headline-rgb), .42) 100%
+    ) !important;
+  }
+}
+
+/* Phone: 96px navigation + 489px headline = 585px total. */
+@media (max-width: 720px) {
+  .subpage {
+    --canonical-header-height: 96px;
+    --canonical-hero-height: 489px;
+    --canonical-headline-height: 585px;
+    --canonical-headline-image-y: 55%;
+  }
+
+  .subpage .site-header {
+    position: relative !important;
+    height: var(--canonical-header-height) !important;
+    padding: 0 26px !important;
+    background: transparent !important;
+  }
+
+  .subpage .mobile-brand {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+  }
+
+  .subpage .subpage-hero,
+  .subpage .subpage-community-hero,
+  .subpage .mission-hero {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    width: 100%;
+    height: var(--canonical-hero-height) !important;
+    min-height: var(--canonical-hero-height) !important;
+    max-height: var(--canonical-hero-height) !important;
+    gap: 26px !important;
+    padding: 64px 26px 24px !important;
+  }
+
+  .subpage .subpage-hero-copy,
+  .subpage .subpage-community-hero > .subpage-hero-copy,
+  .subpage .mission-hero .subpage-hero-copy {
+    align-self: flex-start !important;
+    width: 100% !important;
+    max-width: 430px !important;
+    gap: 26px !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+
+  .subpage .subpage-kicker {
+    font-size: 12px !important;
+  }
+
+  .subpage .subpage-hero h1,
+  .subpage .subpage-community-hero h1,
+  .subpage .mission-hero h1 {
+    max-width: 430px !important;
+    margin: 0 !important;
+    font-size: clamp(34px, 10vw, 40px) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -.07em !important;
+    white-space: normal !important;
+  }
+
+  .subpage .subpage-hero-copy > p:last-child,
+  .subpage .subpage-community-hero > .subpage-hero-copy > p:last-child,
+  .subpage .mission-hero .subpage-hero-copy > p:last-child {
+    max-width: 430px !important;
+    margin: 0 !important;
+    font-size: 16px !important;
+    line-height: 1.24 !important;
+  }
+
+  .subpage::before,
+  .subpage::after {
+    height: var(--canonical-headline-height) !important;
+  }
+
+  .subpage::before {
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    background-position: var(--canonical-headline-image-x) var(--canonical-headline-image-y) !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+
+  .subpage::after {
+    background: linear-gradient(
+      90deg,
+      rgba(var(--shared-headline-rgb), .94) 0%,
+      rgba(var(--shared-headline-rgb), .76) 55%,
+      rgba(var(--shared-headline-rgb), .42) 100%
+    ) !important;
+  }
+}
+
