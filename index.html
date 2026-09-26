@@ -19,10 +19,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#141417" />
     <meta name="seo-head-placeholder" content="" />
+    <script>
+      (function () {
+        if (location.pathname !== '/' || !matchMedia('(max-width: 1024px)').matches) return;
+
+        var sources = [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 16];
+        var length = sources.length * 2 - 2;
+        var index = 0;
+        try {
+          var stored = localStorage.getItem('igreja-ac-protagonist-rotation-v3');
+          var previous = stored === null ? 0 : parseInt(stored, 10);
+          var step = Number.isFinite(previous) ? ((previous % length) + length) % length : 0;
+          index = step % 2 === 0 ? 0 : (step + 1) / 2;
+          localStorage.setItem('igreja-ac-protagonist-rotation-v3', String((step + 1) % length));
+        } catch (error) {
+          index = 0;
+        }
+
+        window.__cavernaHeroIndex = index;
+        if (index !== 0) document.documentElement.classList.add('mobile-hero-image-pending');
+
+        var phone = matchMedia('(max-width: 720px)').matches;
+        var base = '/assets/site-images/' + (phone ? 'd01-mobile/' : 'd01-tablet/');
+        var source = String(sources[index]).padStart(2, '0');
+        var name = 'hero-' + source;
+        var sizes = phone ? 'min(360px, calc(100vw - 32px))' : 'min(603px, calc(100vw - 40px))';
+        var preload = document.createElement('link');
+        preload.rel = 'preload';
+        preload.as = 'image';
+        preload.fetchPriority = 'high';
+        if (phone && index === 0) {
+          preload.type = 'image/webp';
+          preload.href = base + 'hero-01-optimized-514.webp';
+          preload.setAttribute('imagesrcset', base + 'hero-01-optimized-514.webp 514w, ' + base + 'hero-01-optimized-1028.webp 1028w');
+        } else {
+          var widths = phone ? [514, 1028, 1542] : [603, 1206, 1809];
+          preload.href = base + name + '@1x.png';
+          preload.setAttribute('imagesrcset', base + name + '@1x.png ' + widths[0] + 'w, ' + base + name + '@2x.png ' + widths[1] + 'w, ' + base + name + '@3x.png ' + widths[2] + 'w');
+        }
+        preload.setAttribute('imagesizes', sizes);
+        document.head.appendChild(preload);
+      })();
+    </script>
+    <style>@media (max-width: 1024px) { html.mobile-hero-image-pending .mobile-hero-panel .mobile-hero-person { visibility: hidden; } }</style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="image" type="image/webp" href="/assets/site-images/d01-mobile/hero-01-optimized-514.webp" imagesrcset="/assets/site-images/d01-mobile/hero-01-optimized-514.webp 514w, /assets/site-images/d01-mobile/hero-01-optimized-1028.webp 1028w" imagesizes="min(360px, calc(100vw - 32px))" fetchpriority="high" media="(max-width: 720px)" />
-    <link rel="preload" as="image" type="image/webp" href="/assets/site-images/d01-desktop/hero-01-optimized.webp" fetchpriority="high" media="(min-width: 721px)" />
+    <link rel="preload" as="image" type="image/webp" href="/assets/site-images/d01-desktop/hero-01-optimized.webp" fetchpriority="high" media="(min-width: 1025px)" />
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" /></noscript>
     <link rel="icon" type="image/png" href="/assets/raw-01.png" />

@@ -187,6 +187,49 @@ function MobileHero() {
 
   useEffect(() => setProtagonistIndex(getCurrentProtagonistIndex()), []);
 
+  useEffect(() => {
+    if (!document.documentElement.classList.contains('mobile-hero-image-pending')) return;
+    if (protagonistIndex !== getCurrentProtagonistIndex()) return;
+
+    const image = document.querySelector<HTMLImageElement>('.mobile-hero-panel .mobile-hero-person');
+    if (!image) return;
+
+    let cancelled = false;
+    const fallback = () => {
+      if (cancelled) return;
+      setProtagonistIndex(0);
+      document.documentElement.classList.remove('mobile-hero-image-pending');
+    };
+    const fallbackTimer = window.setTimeout(fallback, 3500);
+    const reveal = () => {
+      if (!image.decode) {
+        if (!cancelled) {
+          window.clearTimeout(fallbackTimer);
+          document.documentElement.classList.remove('mobile-hero-image-pending');
+        }
+        return;
+      }
+      void image.decode().then(() => {
+        if (!cancelled) {
+          window.clearTimeout(fallbackTimer);
+          document.documentElement.classList.remove('mobile-hero-image-pending');
+        }
+      }).catch(fallback);
+    };
+    if (image.complete) reveal();
+    else {
+      image.addEventListener('load', reveal, { once: true });
+      image.addEventListener('error', reveal, { once: true });
+    }
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(fallbackTimer);
+      image.removeEventListener('load', reveal);
+      image.removeEventListener('error', reveal);
+    };
+  }, [protagonistIndex]);
+
   return (
     <section className="mobile-panel mobile-hero-panel" aria-label="Início">
       <SiteHeader />

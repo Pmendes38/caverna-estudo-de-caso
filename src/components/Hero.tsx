@@ -15,6 +15,7 @@ const ACTIVE_PROTAGONIST_SOURCE_INDICES = [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12
 const PROTAGONIST_COUNT = ACTIVE_PROTAGONIST_SOURCE_INDICES.length;
 const PROTAGONIST_STORAGE_ID = 'igreja-ac-protagonist-rotation-v3';
 const PROTAGONIST_ROTATION_LENGTH = PROTAGONIST_COUNT * 2 - 2;
+let pageProtagonistIndex: number | null = null;
 
 function createProtagonistAssets(directory: string, widths: [number, number, number]): ProtagonistAsset[] {
   return ACTIVE_PROTAGONIST_SOURCE_INDICES.map((sourceIndex) => {
@@ -54,25 +55,30 @@ export function getRotatingProtagonist() {
 }
 
 export function getRotatingProtagonistIndex() {
-  const stored = window.localStorage.getItem(PROTAGONIST_STORAGE_ID);
-  const previousStep = stored === null ? 0 : Number.parseInt(stored, 10);
-  const step = Number.isFinite(previousStep)
-    ? ((previousStep % PROTAGONIST_ROTATION_LENGTH) + PROTAGONIST_ROTATION_LENGTH) % PROTAGONIST_ROTATION_LENGTH
-    : 0;
-  const protagonistIndex = step % 2 === 0 ? 0 : (step + 1) / 2;
-  window.localStorage.setItem(PROTAGONIST_STORAGE_ID, String((step + 1) % PROTAGONIST_ROTATION_LENGTH));
-  return protagonistIndex;
+  if (pageProtagonistIndex !== null) return pageProtagonistIndex;
+
+  const initialIndex = (window as Window & { __cavernaHeroIndex?: number }).__cavernaHeroIndex;
+  if (typeof initialIndex === 'number' && Number.isInteger(initialIndex) && initialIndex >= 0 && initialIndex < PROTAGONIST_COUNT) {
+    pageProtagonistIndex = initialIndex;
+    return pageProtagonistIndex;
+  }
+
+  try {
+    const stored = window.localStorage.getItem(PROTAGONIST_STORAGE_ID);
+    const previousStep = stored === null ? 0 : Number.parseInt(stored, 10);
+    const step = Number.isFinite(previousStep)
+      ? ((previousStep % PROTAGONIST_ROTATION_LENGTH) + PROTAGONIST_ROTATION_LENGTH) % PROTAGONIST_ROTATION_LENGTH
+      : 0;
+    pageProtagonistIndex = step % 2 === 0 ? 0 : (step + 1) / 2;
+    window.localStorage.setItem(PROTAGONIST_STORAGE_ID, String((step + 1) % PROTAGONIST_ROTATION_LENGTH));
+  } catch {
+    pageProtagonistIndex = 0;
+  }
+  return pageProtagonistIndex;
 }
 
 export function getCurrentProtagonistIndex() {
-  const stored = window.localStorage.getItem(PROTAGONIST_STORAGE_ID);
-  if (stored === null) return 0;
-
-  const step = Number.parseInt(stored, 10);
-  const normalizedStep = Number.isFinite(step)
-    ? ((step - 1) % PROTAGONIST_ROTATION_LENGTH + PROTAGONIST_ROTATION_LENGTH) % PROTAGONIST_ROTATION_LENGTH
-    : 0;
-  return normalizedStep % 2 === 0 ? 0 : (normalizedStep + 1) / 2;
+  return getRotatingProtagonistIndex();
 }
 
 export function getCurrentProtagonist() {

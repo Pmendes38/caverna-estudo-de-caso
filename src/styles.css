@@ -3642,7 +3642,7 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 
   .mobile-hero-person.protagonist--original {
-    top: calc(clamp(140px, 18svh, 210px) - 30px);
+    top: calc(clamp(180px, 24svh, 260px) - 90px);
   }
 }
 
