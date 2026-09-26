@@ -5641,3 +5641,350 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 }
 
+/* ==========================================================================
+   TABLET HOME TYPOGRAPHY — D01 → D06 + institutional continuation
+   Tablet has a much larger canvas than mobile, so do not reuse the phone
+   type scale. This block changes typography only between 721px and 1024px.
+   ========================================================================== */
+@media (min-width: 721px) and (max-width: 1024px) {
+  /* D01 — home cover */
+  .mobile-hero-panel .mobile-menu-inline {
+    font-size: 13px !important;
+  }
+
+  .mobile-hero-word {
+    font-size: clamp(72px, 10.5vw, 92px) !important;
+    line-height: .94 !important;
+  }
+
+  .mobile-hero-cta {
+    padding: 15px 20px !important;
+    font-size: 14px !important;
+  }
+
+  .mobile-hero-live-cta {
+    padding: 15px 18px !important;
+    font-size: 12px !important;
+  }
+
+  .mobile-hero-info {
+    width: min(520px, calc(100% - 64px)) !important;
+    font-size: 21px !important;
+    line-height: 1.12 !important;
+  }
+
+  .mobile-hero-info strong {
+    font-size: 21px !important;
+  }
+
+  .mobile-hero-info span {
+    margin-top: 10px !important;
+    font-size: 17px !important;
+    line-height: 1.2 !important;
+  }
+
+  .mobile-scroll-hint {
+    font-size: 11px !important;
+  }
+
+  /* Shared editorial labels — D02 through D06 */
+  .mobile-eyebrow {
+    top: 24px !important;
+    left: 24px !important;
+    font-size: 12px !important;
+  }
+
+  .mobile-progress,
+  .mobile-gallery-index {
+    left: 24px !important;
+    bottom: 28px !important;
+    font-size: 12px !important;
+  }
+
+  /* D02 — manifesto / não somos */
+  .mobile-not-copy--truth {
+    left: 24px !important;
+    width: calc(50% - 36px) !important;
+    font-size: clamp(31px, 4.6vw, 38px) !important;
+    line-height: 1 !important;
+  }
+
+  .mobile-not-copy--bible {
+    right: 24px !important;
+    width: calc(50% - 36px) !important;
+    font-size: clamp(29px, 4.35vw, 36px) !important;
+    line-height: 1 !important;
+  }
+
+  .mobile-not-copy--pulpit {
+    right: 24px !important;
+    width: calc(50% - 36px) !important;
+    font-size: clamp(23px, 3.45vw, 29px) !important;
+    line-height: 1.02 !important;
+  }
+
+  .mobile-not-copy--worship {
+    left: 24px !important;
+    width: calc(50% - 36px) !important;
+    font-size: clamp(28px, 4.2vw, 35px) !important;
+    line-height: 1 !important;
+  }
+
+  .mobile-not-copy--prosperity {
+    right: 24px !important;
+    width: calc(50% - 36px) !important;
+    font-size: clamp(21px, 3.15vw, 27px) !important;
+    line-height: 1.04 !important;
+  }
+
+  .mobile-not-copy--gospel {
+    left: 24px !important;
+    width: calc(100% - 48px) !important;
+    font-size: clamp(23px, 3.45vw, 29px) !important;
+    line-height: 1.1 !important;
+  }
+
+  .mobile-ghost {
+    font-size: 132px !important;
+  }
+
+  /* D03 — manifesto / afirmamos */
+  .mobile-affirm-muted--one,
+  .mobile-affirm-muted--two,
+  .mobile-affirm-muted--three {
+    font-size: clamp(18px, 2.6vw, 22px) !important;
+  }
+
+  .mobile-affirm-strong--one,
+  .mobile-affirm-strong--two {
+    font-size: clamp(39px, 5.6vw, 48px) !important;
+    line-height: .96 !important;
+  }
+
+  .mobile-affirm-strong--three {
+    font-size: clamp(56px, 7.8vw, 68px) !important;
+    line-height: .94 !important;
+  }
+
+  .mobile-affirm-ghost {
+    font-size: 106px !important;
+  }
+
+  /* D04 / D05 — galleries */
+  .mobile-state-label {
+    padding: 8px 10px !important;
+  }
+
+  .mobile-state-label span {
+    font-size: 11px !important;
+  }
+
+  .mobile-state-label strong {
+    font-size: 14px !important;
+  }
+
+  .mobile-gallery-title {
+    left: 28px !important;
+    max-width: calc(100% - 56px) !important;
+    font-size: clamp(42px, 6vw, 52px) !important;
+    line-height: .96 !important;
+  }
+
+  .mobile-gallery-quote {
+    left: 24px !important;
+    width: calc(100% - 48px) !important;
+    max-width: 480px !important;
+    font-size: clamp(34px, 4.8vw, 42px) !important;
+    line-height: .98 !important;
+  }
+
+  /* D06 — exit */
+  .mobile-exit h2 {
+    left: 28px !important;
+    right: 28px !important;
+    font-size: clamp(48px, 6.6vw, 58px) !important;
+    line-height: .96 !important;
+  }
+
+  .mobile-exit p {
+    left: 28px !important;
+    right: 28px !important;
+    max-width: 620px !important;
+    font-size: 18px !important;
+    line-height: 1.35 !important;
+  }
+
+  .mobile-exit a {
+    padding: 17px 28px !important;
+    font-size: 14px !important;
+  }
+
+  /* Saturday live / meeting block */
+  .saturday-live-label {
+    font-size: 13px !important;
+  }
+
+  .saturday-live h2 {
+    font-size: clamp(50px, 6.4vw, 62px) !important;
+    line-height: .96 !important;
+  }
+
+  .saturday-live-copy > p:not(.saturday-live-label) {
+    max-width: 620px !important;
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+  }
+
+  .saturday-live-link {
+    padding: 16px 21px !important;
+    font-size: 14px !important;
+  }
+
+  .saturday-live .event-visual span {
+    font-size: 12px !important;
+  }
+
+  /* Institutional continuation */
+  .institutional-continuation section,
+  .institutional-footer {
+    padding-right: 32px !important;
+    padding-left: 32px !important;
+  }
+
+  .institutional-label {
+    margin-bottom: 24px !important;
+    font-size: 13px !important;
+  }
+
+  .institutional-copy h2,
+  .institutional-agenda h2,
+  .institutional-ministries h2,
+  .institutional-event h2,
+  .institutional-footer h2 {
+    font-size: clamp(44px, 5.8vw, 54px) !important;
+    line-height: .96 !important;
+  }
+
+  .institutional-copy p,
+  .event-copy p {
+    max-width: 680px !important;
+    font-size: 18px !important;
+    line-height: 1.42 !important;
+  }
+
+  .institutional-action {
+    padding: 15px 20px !important;
+    font-size: 14px !important;
+  }
+
+  .institutional-agenda h2,
+  .institutional-ministries h2 {
+    font-size: clamp(44px, 5.6vw, 52px) !important;
+  }
+
+  .schedule-card {
+    min-height: 180px !important;
+    height: auto !important;
+    padding: 20px !important;
+  }
+
+  .schedule-grid span {
+    font-size: 12px !important;
+  }
+
+  .schedule-grid strong {
+    font-size: 24px !important;
+    line-height: 1.08 !important;
+  }
+
+  .schedule-grid small {
+    font-size: 14px !important;
+  }
+
+  .ministry-card {
+    min-height: 300px !important;
+    height: auto !important;
+    padding: 20px !important;
+  }
+
+  .ministry-card h3 {
+    font-size: 23px !important;
+    line-height: 1.05 !important;
+  }
+
+  .ministry-card p {
+    font-size: 16px !important;
+    line-height: 1.3 !important;
+  }
+
+  .institutional-split--identity .institutional-copy h2 {
+    font-size: clamp(36px, 4.8vw, 44px) !important;
+    line-height: .98 !important;
+  }
+
+  .institutional-split--identity .institutional-copy p {
+    font-size: 17px !important;
+    line-height: 1.4 !important;
+  }
+
+  .event-copy > span {
+    font-size: 13px !important;
+  }
+
+  .event-copy h2 {
+    font-size: clamp(40px, 5.3vw, 48px) !important;
+    line-height: .98 !important;
+  }
+
+  .event-copy p {
+    font-size: 17px !important;
+  }
+
+  .event-countdown-header span {
+    font-size: 12px !important;
+  }
+
+  .event-countdown-header strong {
+    font-size: 18px !important;
+  }
+
+  .event-countdown-header a {
+    font-size: 14px !important;
+  }
+
+  .event-countdown-unit strong {
+    font-size: 36px !important;
+  }
+
+  .event-countdown-unit span {
+    font-size: 11px !important;
+  }
+
+  .event-visual span {
+    padding: 13px 12px !important;
+    font-size: 12px !important;
+  }
+
+  .institutional-footer h2 {
+    font-size: clamp(50px, 6.4vw, 60px) !important;
+  }
+
+  .footer-actions a {
+    padding: 15px 20px !important;
+    font-size: 14px !important;
+  }
+
+  .institutional-footer-bottom {
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+  }
+
+  .institutional-footer-bottom strong {
+    font-size: 24px !important;
+  }
+
+  .institutional-social-button {
+    font-size: 12px !important;
+  }
+}
+
