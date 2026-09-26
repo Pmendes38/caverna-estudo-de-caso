@@ -6115,3 +6115,29 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 }
 
+/* ==========================================================================
+   Tablet protagonist baseline — mirrors the mobile per-person calibration
+   ========================================================================== */
+@media (min-width: 721px) and (max-width: 1024px) {
+  .mobile-hero-person {
+    top: 72px !important;
+  }
+
+  .mobile-hero-person.protagonist--original { top: -8px !important; }
+  .mobile-hero-person.protagonist--index-02 { top: 61px !important; }
+  .mobile-hero-person.protagonist--index-03 { top: 64px !important; }
+  .mobile-hero-person.protagonist--index-04 { top: 70px !important; }
+  .mobile-hero-person.protagonist--index-05 { top: 41px !important; }
+  .mobile-hero-person.protagonist--index-06 { top: 102px !important; }
+  .mobile-hero-person.protagonist--index-07 { top: 101px !important; }
+  .mobile-hero-person.protagonist--index-08 { top: 93px !important; }
+  .mobile-hero-person.protagonist--index-09 { top: -48px !important; }
+  .mobile-hero-person.protagonist--index-10 { top: 128px !important; }
+  .mobile-hero-person.protagonist--index-11 { top: 59px !important; }
+  .mobile-hero-person.protagonist--index-12 { top: 93px !important; }
+  .mobile-hero-person.protagonist--index-13 { top: 129px !important; }
+  .mobile-hero-person.protagonist--index-14 { top: -50px !important; }
+  .mobile-hero-person.protagonist--index-15 { top: 72px !important; }
+  .mobile-hero-person.protagonist--index-16 { top: 72px !important; }
+}
+
