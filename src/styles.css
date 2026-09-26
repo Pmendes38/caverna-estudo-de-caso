@@ -6056,3 +6056,62 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   filter: saturate(1.08) contrast(1.03) brightness(1.01) var(--protagonist-blur-aura) !important;
 }
 
+/* ==========================================================================
+   Universal protagonist bottom fade
+   Hide the hard lower edge of every cutout without moving or resizing it.
+   ========================================================================== */
+.hero-person,
+.mobile-hero-person {
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    #000 0%,
+    #000 64%,
+    rgba(0, 0, 0, .96) 70%,
+    rgba(0, 0, 0, .82) 76%,
+    rgba(0, 0, 0, .56) 84%,
+    rgba(0, 0, 0, .26) 91%,
+    transparent 98%
+  ) !important;
+  mask-image: linear-gradient(
+    180deg,
+    #000 0%,
+    #000 64%,
+    rgba(0, 0, 0, .96) 70%,
+    rgba(0, 0, 0, .82) 76%,
+    rgba(0, 0, 0, .56) 84%,
+    rgba(0, 0, 0, .26) 91%,
+    transparent 98%
+  ) !important;
+  -webkit-mask-size: 100% 100% !important;
+  mask-size: 100% 100% !important;
+  -webkit-mask-repeat: no-repeat !important;
+  mask-repeat: no-repeat !important;
+}
+
+/* The tablet frame exposes the lower edge more clearly, so start the fade
+   slightly earlier there while keeping the same protagonist geometry. */
+@media (min-width: 721px) and (max-width: 1024px) {
+  .mobile-hero-person {
+    -webkit-mask-image: linear-gradient(
+      180deg,
+      #000 0%,
+      #000 58%,
+      rgba(0, 0, 0, .94) 66%,
+      rgba(0, 0, 0, .74) 74%,
+      rgba(0, 0, 0, .44) 82%,
+      rgba(0, 0, 0, .18) 90%,
+      transparent 97%
+    ) !important;
+    mask-image: linear-gradient(
+      180deg,
+      #000 0%,
+      #000 58%,
+      rgba(0, 0, 0, .94) 66%,
+      rgba(0, 0, 0, .74) 74%,
+      rgba(0, 0, 0, .44) 82%,
+      rgba(0, 0, 0, .18) 90%,
+      transparent 97%
+    ) !important;
+  }
+}
+
