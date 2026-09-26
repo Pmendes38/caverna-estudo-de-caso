@@ -37,15 +37,17 @@ export function SaturdayLive() {
         <p className="saturday-live-label">{isDiscipulado ? 'QUINTA · DISCIPULADO' : isLiveNow ? 'SÁBADO · AO VIVO' : 'SÁBADO · CULTO'}</p>
         <h2>{isDiscipulado ? <>DISCIPULADO<br />ACONTECE AQUI</> : isLiveNow ? <>O CULTO<br />ESTÁ AO VIVO</> : <>CULTO DE<br />SÁBADO</>}</h2>
         <p>{isDiscipulado ? 'Toda quinta-feira, às 19h30, existe um lugar para crescer na Palavra e caminhar em comunhão.' : isLiveNow ? 'A transmissão do culto está acontecendo agora no canal da A Caverna.' : 'O culto de sábado começa às 19h30. A transmissão aparece aqui quando entrar no ar.'}</p>
-        {isDiscipulado ? (
-          <button className="saturday-live-link" type="button" onClick={() => setLeadOpen(true)}>CLIQUE PARA MAIS INFORMAÇÕES&nbsp; ↗</button>
+        {isLiveNow ? (
+          <a className="saturday-live-link" href={youtubeChannelUrl} target="_blank" rel="noreferrer">ABRIR CANAL NO YOUTUBE ↗</a>
         ) : (
-          <a className="saturday-live-link" href={youtubeChannelUrl} target="_blank" rel="noreferrer">ABRIR CANAL NO YOUTUBE&nbsp; ↗</a>
+          <button className="saturday-live-link" type="button" onClick={() => setLeadOpen(true)}>
+            {isDiscipulado ? 'CLIQUE PARA MAIS INFORMAÇÕES ↗' : 'QUERO PARTICIPAR DO CULTO ↗'}
+          </button>
         )}
       </div>
       <div className="saturday-live-media">
         <div className="saturday-live-player">
-          <EventVisual mode={mode} onDiscipleshipClick={() => setLeadOpen(true)} />
+          <EventVisual mode={mode} onLeadClick={() => setLeadOpen(true)} />
         </div>
         {isLiveNow && (
           <div className="saturday-live-embed">
@@ -59,7 +61,7 @@ export function SaturdayLive() {
           </div>
         )}
       </div>
-      {leadOpen && <EventLeadModal onClose={() => setLeadOpen(false)} />}
+      {leadOpen && !isLiveNow && <EventLeadModal mode={isDiscipulado ? 'discipulado' : 'culto'} onClose={() => setLeadOpen(false)} />}
     </section>
   );
 }
