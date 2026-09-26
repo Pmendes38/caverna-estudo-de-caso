@@ -5999,3 +5999,60 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 }
 
+/* ==========================================================================
+   Tablet home refinements — tighter D05 gallery rhythm + shared protagonist blur
+   ========================================================================== */
+@media (min-width: 721px) and (max-width: 1024px) {
+  .mobile-gallery-b--left {
+    top: 14svh !important;
+    left: 52px !important;
+    width: min(176px, 23vw) !important;
+    height: 34svh !important;
+  }
+
+  .mobile-gallery-b--main {
+    top: 8svh !important;
+    right: 56px !important;
+    width: min(208px, 27vw) !important;
+    height: 38svh !important;
+  }
+
+  .mobile-gallery-b--bottom-left {
+    top: 55svh !important;
+    left: 52px !important;
+    width: min(176px, 23vw) !important;
+    height: 30svh !important;
+  }
+
+  .mobile-gallery-b--bottom-right {
+    top: 56svh !important;
+    right: 56px !important;
+    width: min(176px, 23vw) !important;
+    height: 31svh !important;
+  }
+
+  .mobile-gallery-b .mobile-gallery-quote {
+    top: 78svh !important;
+    left: 56px !important;
+    max-width: 380px !important;
+  }
+}
+
+.hero-person,
+.mobile-hero-person {
+  --protagonist-blur-aura:
+    drop-shadow(0 0 14px rgba(9, 9, 10, .28))
+    drop-shadow(0 18px 42px rgba(0, 0, 0, .44));
+  filter: saturate(.98) contrast(1.01) var(--protagonist-blur-aura) !important;
+}
+
+.hero-person.protagonist--original,
+.mobile-hero-person.protagonist--original {
+  filter: contrast(1.01) var(--protagonist-blur-aura) !important;
+}
+
+.hero-person.protagonist--alternate,
+.mobile-hero-person.protagonist--alternate {
+  filter: saturate(1.08) contrast(1.03) brightness(1.01) var(--protagonist-blur-aura) !important;
+}
+
