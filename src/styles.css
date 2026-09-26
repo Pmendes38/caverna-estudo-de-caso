@@ -1360,11 +1360,11 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
 .contact-side { display: flex; flex-direction: column; gap: 24px; }
 .contact-side .subpage-image { height: 390px; }
 .contact-side .subpage-info-card { min-height: 150px; }
-.prayer-section { min-height: 760px; }
+.prayer-section { min-height: 0; padding-bottom: 48px; }
 .prayer-section .form-section-grid { align-items: start; }
 .prayer-copy .subpage-image { height: 250px; margin-top: 32px; }
 .prayer-section .subpage-form { padding-top: 45px; }
-.prayer-section .subpage-field input, .prayer-section .subpage-field textarea { border-color: #8a637c; color: #f5f0e8; }
+.prayer-section .subpage-field input, .prayer-section .subpage-field textarea { box-sizing: border-box; border-color: #8a637c; color: #f5f0e8; }
 .prayer-section .subpage-field span, .prayer-section .subpage-check span { color: #f5f0e8; }
 .subpage-check { display: flex; align-items: center; gap: 8px; }
 .contribution-hero h1 { font-size: clamp(57px, 5vw, 72px); }
@@ -1473,7 +1473,8 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .contact-form-section { min-height: 1150px; }
   .form-section-grid h2 { font-size: 36px; }
   .contact-side .subpage-image { height: 260px; }
-  .prayer-section { min-height: 980px; }
+  .prayer-section { min-height: 0; padding-bottom: 32px; }
+  .prayer-section .form-section-grid { align-items: stretch; }
   .prayer-section .subpage-form { padding-top: 0; }
   .prayer-copy .subpage-image { height: 210px; }
   .contribution-hero { min-height: 760px; }
