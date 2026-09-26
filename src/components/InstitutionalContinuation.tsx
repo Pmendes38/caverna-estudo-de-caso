@@ -74,21 +74,33 @@ function EventCountdown() {
   );
 }
 
-export function EventLeadModal({ onClose }: { onClose: () => void }) {
+export function EventLeadModal({ onClose, mode = 'discipulado' }: { onClose: () => void; mode?: Exclude<EventMode, 'live'> }) {
   const [sent, setSent] = useState(false);
+  const isCulto = mode === 'culto';
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const name = String(data.get('NOME') ?? '').trim();
     const phone = String(data.get('WHATSAPP/TELEFONE') ?? '').trim();
-    const body = `NOME: ${name}\nWHATSAPP/TELEFONE: ${phone}\nTenho interesse em saber mais sobre o discipulado da A Caverna.`;
-    window.location.href = `mailto:${siteContent.email}?subject=${encodeURIComponent('Interesse em discipulado - Igreja A Caverna')}&body=${encodeURIComponent(body)}`;
+    const interest = isCulto
+      ? 'Tenho interesse em participar do culto de sábado da A Caverna.'
+      : 'Tenho interesse em saber mais sobre o discipulado da A Caverna.';
+    const subject = isCulto
+      ? 'Interesse no culto de sábado - Igreja A Caverna'
+      : 'Interesse em discipulado - Igreja A Caverna';
+    const body = `NOME: ${name}\nWHATSAPP/TELEFONE: ${phone}\n${interest}`;
+    window.location.href = `mailto:${siteContent.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSent(true);
   };
 
   return (
-    <div className="event-lead-backdrop" role="dialog" aria-modal="true" aria-label="Mais informações sobre discipulado">
+    <div
+      className="event-lead-backdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-label={isCulto ? 'Formulário de interesse no culto de sábado' : 'Mais informações sobre discipulado'}
+    >
       <div className="event-lead-modal">
         <button className="event-lead-close" type="button" onClick={onClose} aria-label="Fechar formulário">×</button>
         {sent ? (
@@ -99,12 +111,12 @@ export function EventLeadModal({ onClose }: { onClose: () => void }) {
           </div>
         ) : (
           <form className="event-lead-form" onSubmit={handleSubmit}>
-            <p className="institutional-label">[DISCIPULADO]</p>
-            <h3>CLIQUE AQUI<br />PARA MAIS<br />INFORMAÇÕES</h3>
-            <p>Deixe seu nome e telefone. A equipe da A Caverna entra em contato com você.</p>
+            <p className="institutional-label">{isCulto ? '[CULTO DE SÁBADO]' : '[DISCIPULADO]'}</p>
+            <h3>{isCulto ? <>QUERO PARTICIPAR<br />DO CULTO</> : <>CLIQUE AQUI<br />PARA MAIS<br />INFORMAÇÕES</>}</h3>
+            <p>{isCulto ? 'Deixe seu nome e telefone. A equipe da A Caverna entra em contato para orientar sua visita.' : 'Deixe seu nome e telefone. A equipe da A Caverna entra em contato com você.'}</p>
             <label><span>NOME</span><input name="NOME" required autoComplete="name" /></label>
             <label><span>WHATSAPP/TELEFONE</span><input name="WHATSAPP/TELEFONE" type="tel" required autoComplete="tel" /></label>
-            <button className="institutional-action" type="submit">ENVIAR MEU CONTATO&nbsp; ↗</button>
+            <button className="institutional-action" type="submit">ENVIAR MEU CONTATO ↗</button>
           </form>
         )}
       </div>
@@ -112,7 +124,7 @@ export function EventLeadModal({ onClose }: { onClose: () => void }) {
   );
 }
 
-export function EventVisual({ mode, onDiscipleshipClick }: { mode: EventMode; onDiscipleshipClick: () => void }) {
+export function EventVisual({ mode, onLeadClick }: { mode: EventMode; onLeadClick: () => void }) {
   const image = mode === 'discipulado'
     ? '/assets/attached/discipulado-event.png'
     : mode === 'live'
@@ -121,19 +133,19 @@ export function EventVisual({ mode, onDiscipleshipClick }: { mode: EventMode; on
   const alt = mode === 'discipulado' ? 'Encontro de discipulado da Igreja A Caverna' : mode === 'live' ? 'Culto de sábado ao vivo na Igreja A Caverna' : 'Culto de sábado às 19h30 na Igreja A Caverna';
   const dimensions = eventVisualDimensions[mode];
 
-  if (mode === 'discipulado') {
+  if (mode !== 'live') {
     return (
-      <button className="event-visual event-visual--button" type="button" onClick={onDiscipleshipClick}>
+      <button className="event-visual event-visual--button" type="button" onClick={onLeadClick}>
         <img src={image} alt={alt} width={dimensions.width} height={dimensions.height} loading="lazy" decoding="async" />
-        <span>CLIQUE AQUI PARA MAIS INFORMAÇÕES&nbsp; ↗</span>
+        <span>{mode === 'culto' ? 'QUERO PARTICIPAR DO CULTO ↗' : 'CLIQUE AQUI PARA MAIS INFORMAÇÕES ↗'}</span>
       </button>
     );
   }
 
   return (
-    <a className="event-visual" href={mode === 'live' ? 'https://www.youtube.com/@acaverna396/live' : '/agenda'} target={mode === 'live' ? '_blank' : undefined} rel={mode === 'live' ? 'noreferrer' : undefined}>
+    <a className="event-visual" href="https://www.youtube.com/@acaverna396/live" target="_blank" rel="noreferrer">
       <img src={image} alt={alt} width={dimensions.width} height={dimensions.height} loading="lazy" decoding="async" />
-      <span>{mode === 'live' ? 'ASSISTIR LIVE AGORA&nbsp; ↗' : 'VER DETALHES DO CULTO&nbsp; ↗'}</span>
+      <span>ASSISTIR LIVE AGORA ↗</span>
     </a>
   );
 }
