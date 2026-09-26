@@ -1520,6 +1520,20 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
     overflow: hidden;
   }
   .mobile-brand-logo img { display: block; width: 40px; height: 35px; object-fit: contain; }
+  .site-header:not(.site-header--subpage) .mobile-brand-logo {
+    flex: 0 0 144px;
+    width: 144px;
+    padding: 6px 0;
+  }
+  .site-header:not(.site-header--subpage) .mobile-brand-logo img {
+    width: 132px;
+    height: auto;
+    max-height: 42px;
+  }
+  .site-header:not(.site-header--subpage) .mobile-brand-logo::after {
+    -webkit-mask-size: 132px auto;
+    mask-size: 132px auto;
+  }
   .subpage .mobile-brand-logo.mobile-brand-word {
     flex: 0 1 auto;
     width: auto;
