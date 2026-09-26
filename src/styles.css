@@ -5632,3 +5632,12 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   }
 }
 
+/* Contribua: let the final principles section end with its content on
+   tablet/mobile instead of inheriting the legacy 650px minimum height. */
+@media (max-width: 1024px) {
+  .subpage--contribua .contribution-principles {
+    min-height: 0 !important;
+    height: auto !important;
+  }
+}
+
