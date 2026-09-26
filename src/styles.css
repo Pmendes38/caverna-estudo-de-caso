@@ -6141,41 +6141,24 @@ blockquote { max-width: 584px; margin: 0; padding: 20px 22px; border-left: 4px s
   .mobile-hero-person.protagonist--index-16 { top: 72px !important; }
 }
 
-/* Tablet calibration for the three protagonists that need a larger visual
-   presence. Scale from the bottom-center so they grow without losing the
-   shared baseline established for the tablet hero. */
+/* Tablet reset for the three previously undersized protagonists.
+   Use the exact same tablet frame as every other cutout; keep only the
+   per-person vertical calibration that aligns the visible subject. */
 @media (min-width: 721px) and (max-width: 1024px) {
-  .mobile-hero-person.protagonist--index-09 {
-    top: 72px !important;
-    width: min(535px, 70vw) !important;
-    height: clamp(560px, 68svh, 625px) !important;
-    max-height: none !important;
-    object-fit: contain !important;
-    object-position: center bottom !important;
-    transform: translateX(-50%) scale(1.13) !important;
-    transform-origin: 50% 100% !important;
-  }
-
-  .mobile-hero-person.protagonist--index-10 {
-    top: 92px !important;
-    width: min(650px, 84vw) !important;
-    height: clamp(590px, 72svh, 665px) !important;
-    max-height: none !important;
-    object-fit: contain !important;
-    object-position: center bottom !important;
-    transform: translateX(-50%) scale(1.10) !important;
-    transform-origin: 50% 100% !important;
-  }
-
+  .mobile-hero-person.protagonist--index-09,
+  .mobile-hero-person.protagonist--index-10,
   .mobile-hero-person.protagonist--index-14 {
-    top: 74px !important;
-    width: min(520px, 68vw) !important;
-    height: clamp(545px, 67svh, 610px) !important;
+    width: min(680px, calc(100vw + 40px)) !important;
+    height: clamp(620px, 78svh, 720px) !important;
     max-height: none !important;
-    object-fit: contain !important;
-    object-position: center bottom !important;
-    transform: translateX(-50%) scale(1.14) !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    transform: translateX(-50%) !important;
     transform-origin: 50% 100% !important;
   }
+
+  .mobile-hero-person.protagonist--index-09 { top: -48px !important; }
+  .mobile-hero-person.protagonist--index-10 { top: 128px !important; }
+  .mobile-hero-person.protagonist--index-14 { top: -50px !important; }
 }
 
