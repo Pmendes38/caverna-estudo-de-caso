@@ -1,8 +1,8 @@
-# A Caverna — estudo de caso
+# A Caverna
 
 Site institucional em React, TypeScript e Vite, implementado a partir do Figma. Este é o projeto principal da minha seleção de trabalhos de desenvolvimento web.
 
-> Cópia pública sanitizada para avaliação técnica. Não é o repositório oficial nem uma configuração de produção. Leia [os limites e a preservação do histórico](ESTUDO-DE-CASO.md).
+[Site](https://igrejaacaverna.com.br/) · [Ver projeto no portfólio](https://portfolio-iota-woad-84p4egesbx.vercel.app/projetos/caverna)
 
 ## Problema e solução
 
@@ -10,7 +10,7 @@ O projeto precisava comunicar a identidade da comunidade com uma experiência cl
 
 As páginas são pré-renderizadas: o conteúdo e os metadados ficam disponíveis no HTML, sem depender apenas do JavaScript do navegador para mecanismos de busca.
 
-## O que avaliar no código
+## Estrutura
 
 - `src/components/`: cabeçalho, imagens protagonistas, navegação, seções e rodapé.
 - `src/data/`: conteúdo institucional e agenda.
@@ -32,4 +32,8 @@ npm run build
 npm run check:seo
 ```
 
-Os contatos da versão de estudo são fictícios. Fotografias e marcas continuam pertencendo aos seus titulares. O histórico e as ramificações mostram a evolução da implementação; não utilize configurações antigas como uma base pronta para produção.
+## Histórico
+
+O histórico e as ramificações registram a evolução da implementação.
+
+Fotografias e marcas pertencem aos respectivos titulares.
