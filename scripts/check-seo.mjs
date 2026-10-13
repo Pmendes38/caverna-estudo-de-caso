@@ -7,7 +7,7 @@ const outputDir = resolve('dist');
 const sitemap = await readFile(resolve(outputDir, 'sitemap.xml'), 'utf8');
 const robots = await readFile(resolve(outputDir, 'robots.txt'), 'utf8');
 assert.match(robots, /User-agent: OAI-SearchBot\nAllow: \/\n/);
-assert.match(robots, /Sitemap: https:\/\/www\.igrejaacaverna\.com\.br\/sitemap\.xml/);
+assert.ok(robots.includes(`Sitemap: ${siteOrigin}/sitemap.xml`));
 
 for (const page of seoPages) {
   const file = page.path === '/' ? 'index.html' : `${page.path.slice(1)}.html`;

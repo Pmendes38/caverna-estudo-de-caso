@@ -1,32 +1,35 @@
-# Igreja A Caverna
+# A Caverna — estudo de caso
 
-Frontend institucional da Comunidade de Fé A Caverna, reconstruído a partir do Figma atual e com referências conceituais de navegação do site anterior.
+Site institucional em React, TypeScript e Vite, implementado a partir do Figma. Este é o projeto principal da minha seleção de trabalhos de desenvolvimento web.
 
-## Desenvolvimento
+> Cópia pública sanitizada para avaliação técnica. Não é o repositório oficial nem uma configuração de produção. Leia [os limites e a preservação do histórico](ESTUDO-DE-CASO.md).
 
-```bash
-npm install
+## Problema e solução
+
+O projeto precisava comunicar a identidade da comunidade com uma experiência clara em celular, tablet e desktop. Implementei componentes, conteúdo institucional centralizado e ajustes de imagens, tipografia e navegação por tamanho de tela.
+
+As páginas são pré-renderizadas: o conteúdo e os metadados ficam disponíveis no HTML, sem depender apenas do JavaScript do navegador para mecanismos de busca.
+
+## O que avaliar no código
+
+- `src/components/`: cabeçalho, imagens protagonistas, navegação, seções e rodapé.
+- `src/data/`: conteúdo institucional e agenda.
+- `src/seo.ts`: metadados e rotas públicas.
+- `src/entry-server.tsx` e `scripts/prerender.mjs`: renderização das páginas.
+- `src/styles.css`: composição visual e adaptações responsivas.
+
+## Executar localmente
+
+```sh
+npm ci
 npm run dev
 ```
 
-Para validar o build de produção:
+## Validar
 
-```bash
+```sh
 npm run build
+npm run check:seo
 ```
 
-## Diretrizes do projeto
-
-- O Figma atual é a fonte de verdade para layout, tipografia, cores e responsividade.
-- O site anterior foi consultado somente para compreender a hierarquia de conteúdo e CTAs.
-- O código é uma implementação independente em React + TypeScript + CSS, sem dependência do repositório anterior.
-- Conteúdos institucionais e dados de contato ficam centralizados em `src/data/siteContent.ts`.
-- Os valores de impacto devem ser validados pela igreja antes da publicação final.
-
-## Assets
-
-Os assets do hero foram exportados do arquivo do Figma e estão em `public/assets/`.
-
-## Deploy
-
-O projeto é compatível com Vercel usando o preset padrão de Vite. O repositório GitHub novo deve ser conectado antes de configurar o projeto na Vercel.
+Os contatos da versão de estudo são fictícios. Fotografias e marcas continuam pertencendo aos seus titulares. O histórico e as ramificações mostram a evolução da implementação; não utilize configurações antigas como uma base pronta para produção.
